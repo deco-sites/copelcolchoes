@@ -127,13 +127,8 @@ function NavItem({ item }: { item: INavItem }) {
     >
       <a
         href={href}
-        class={`px-4 py-2 my-2 w-full text-center ${
-          highlighted ? "bg-white rounded-3xl flex justify-center gap-2" : ""
-        }`}
+        class={`px-4 py-2 my-2 w-full text-center`}
       >
-        {highlighted && (
-          <Icon id="AllCategories" width={18} height={18} strokeWidth={1} />
-        )}
         <span
           class={`relative text-sm transition-all font-bold duration-300 ${
             highlighted
