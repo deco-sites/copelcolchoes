@@ -121,16 +121,14 @@ function NavItem({ item }: { item: INavItem }) {
   const { href, label, children, highlighted, variant, image } = item;
   return (
     <li
-      class={`group flex items-center ${
-        highlighted ? "w-[260px]" : "flex-1"
-      } justify-center`}
+      class={`group flex items-center flex-1`}
     >
       <a
         href={href}
         class={`px-4 py-2 my-2 w-full text-center`}
       >
         <span
-          class={`relative text-sm transition-all font-bold duration-300 ${
+          class={`relative text-sm transition-all font-bold duration-300 after:absolute after:transition-all after:duration-100 after:-bottom-1 after:left-0 group-hover:after:w-full after:w-0 after:h-[1px] after:bg-secondary ${
             highlighted
               ? "text-secondary group-hover:text-secondary-focus"
               : "text-primary group-hover:text-primary-focus"
