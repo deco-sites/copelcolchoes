@@ -1,5 +1,7 @@
 {
   "imports": {
+    "deco-sites/copelcolchoes/": "./",
+
     "deco-sites/boilerplaten1v2/": "./",
     "$store/": "./",
     "deco-sites/std/": "https://denopkg.com/deco-sites/std@1.22.11/",
