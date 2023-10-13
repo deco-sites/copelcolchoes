@@ -261,8 +261,7 @@ const manifest = {
     "$live/sections/PageInclude.tsx": i1$$$$2,
     "$live/sections/Slot.tsx": i1$$$$3,
     "$live/sections/UseSlot.tsx": i1$$$$4,
-    "deco-sites/copelcolchoes/sections/Category/CategoryBanner.tsx":
-      $$$$$$$$0,
+    "deco-sites/copelcolchoes/sections/Category/CategoryBanner.tsx": $$$$$$$$0,
     "deco-sites/copelcolchoes/sections/Category/CategoryBreadcrumb.tsx":
       $$$$$$$$1,
     "deco-sites/copelcolchoes/sections/Category/CategoryList.tsx": $$$$$$$$2,
@@ -284,12 +283,10 @@ const manifest = {
     "deco-sites/copelcolchoes/sections/Images/BannerGrid.tsx": $$$$$$$$17,
     "deco-sites/copelcolchoes/sections/Images/Carousel.tsx": $$$$$$$$18,
     "deco-sites/copelcolchoes/sections/Images/ImageGallery.tsx": $$$$$$$$19,
-    "deco-sites/copelcolchoes/sections/Images/ShoppableBanner.tsx":
-      $$$$$$$$20,
+    "deco-sites/copelcolchoes/sections/Images/ShoppableBanner.tsx": $$$$$$$$20,
     "deco-sites/copelcolchoes/sections/Institutional/AccordionsContent.tsx":
       $$$$$$$$21,
-    "deco-sites/copelcolchoes/sections/Institutional/AsideMenu.tsx":
-      $$$$$$$$22,
+    "deco-sites/copelcolchoes/sections/Institutional/AsideMenu.tsx": $$$$$$$$22,
     "deco-sites/copelcolchoes/sections/Institutional/CardsContent.tsx":
       $$$$$$$$23,
     "deco-sites/copelcolchoes/sections/Institutional/ContactForm.tsx":
@@ -304,15 +301,13 @@ const manifest = {
       $$$$$$$$29,
     "deco-sites/copelcolchoes/sections/Miscellaneous/CookieConsent.tsx":
       $$$$$$$$30,
-    "deco-sites/copelcolchoes/sections/Miscellaneous/NotFound.tsx":
-      $$$$$$$$31,
+    "deco-sites/copelcolchoes/sections/Miscellaneous/NotFound.tsx": $$$$$$$$31,
     "deco-sites/copelcolchoes/sections/Miscellaneous/ProxyIframe.tsx":
       $$$$$$$$32,
     "deco-sites/copelcolchoes/sections/Newsletter/Newsletter.tsx": $$$$$$$$33,
     "deco-sites/copelcolchoes/sections/Newsletter/NewsletterModal.tsx":
       $$$$$$$$34,
-    "deco-sites/copelcolchoes/sections/Product/ProductDetails.tsx":
-      $$$$$$$$35,
+    "deco-sites/copelcolchoes/sections/Product/ProductDetails.tsx": $$$$$$$$35,
     "deco-sites/copelcolchoes/sections/Product/ProductShelf.tsx": $$$$$$$$36,
     "deco-sites/copelcolchoes/sections/Product/SearchResult.tsx": $$$$$$$$37,
     "deco-sites/copelcolchoes/sections/Product/Wishlist.tsx": $$$$$$$$38,

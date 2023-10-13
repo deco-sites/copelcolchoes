@@ -1,4 +1,4 @@
-import { useUI } from "deco-sites/boilerplaten1v2/sdk/useUI.ts";
+import { useUI } from "deco-sites/copelcolchoes/sdk/useUI.ts";
 import CloseButton from "$store/islands/CloseButton.tsx";
 
 function BuyWarning() {

@@ -1,8 +1,8 @@
 import { useSignal } from "@preact/signals";
 import { useCallback } from "preact/hooks";
 import { useCart } from "deco-sites/std/packs/vtex/hooks/useCart.ts";
-import { useUI } from "deco-sites/boilerplaten1v2/sdk/useUI.ts";
-import { sendEvent } from "deco-sites/boilerplaten1v2/sdk/analytics.tsx";
+import { useUI } from "deco-sites/copelcolchoes/sdk/useUI.ts";
+import { sendEvent } from "deco-sites/copelcolchoes/sdk/analytics.tsx";
 
 export interface Options {
   skuId: string;
