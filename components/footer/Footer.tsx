@@ -111,7 +111,7 @@ function Footer(
       <div class="bg-white flex flex-col">
         <div class="flex items-start justify-start gap-5 lg:gap-16 mt-12 max-lg:flex-col">
           <div class="pt-11 px-8 pb-10 max-lg:w-full bg-[#F7F7F7] rounded-[10px]">
-            <Icon id="Logo" class={"max-lg:m-auto"} height={27} width={120} />
+            <Icon id="Logo" class={"max-lg:m-auto"} height={79} width={159} />
             {socialNetWorks?.length && (
               <SocialNetWorks socialItems={socialNetWorks} />
             )}

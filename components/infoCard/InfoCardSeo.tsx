@@ -29,10 +29,10 @@ export default function InfoCard(
       class={`${textAlignment} p-8 lg:py-10 lg:px-[60px] flex flex-col lg:flex-row lg:gap-12 border rounded-3xl mb-12`}
     >
       <div class="hidden lg:flex items-center justify-center w-[155px]">
-        <Icon id="LogoSeo" height={130} width={133} class="w-full" />
+        <Icon id="LogoSeo" height={79} width={159} class="w-full" />
       </div>
       <div class="lg:hidden flex gap-5 items-center justify-between w-full mb-4">
-        <Icon id="LogoSeo" height={80} width={82} />
+        <Icon id="LogoSeo" height={79} width={159} />
         <h3 class="lg:hidden block text-[#4A4B51] flex-1 font-medium text-base">
           {title}
         </h3>
