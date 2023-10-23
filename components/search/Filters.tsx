@@ -75,8 +75,7 @@ function FilterValues({ key, values }: FilterToggle) {
 
 function Filters({ filters }: Props) {
   const _filters = filters.filter(isToggle).filter((filter) =>
-    !(filter.key.includes("category-") && filter.key != "category-1" &&
-      filter.key != "category-2")
+    !(filter.key.includes("category-"))
   );
   const selectedFilters = _filters.reduce<FilterToggleValue[]>(
     (initial, filter) => {
