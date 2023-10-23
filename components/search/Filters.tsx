@@ -75,8 +75,11 @@ function FilterValues({ key, values }: FilterToggle) {
 
 function Filters({ filters }: Props) {
   const _filters = filters.filter(isToggle).filter((filter) =>
-    !(filter.key.includes("category-"))
+    !(filter.key.includes("category-") || filter.key === ("price") || filter.label === "Marca")
   );
+  const orderFilter = ['Firmeza', 'Medidas', 'Para', 'Molas', 'Tipo colchão', 'Composição', 'Densidade', 'Faixa de Altura do Colchão'];
+  _filters.sort((a, b) => orderFilter.indexOf(a.label) - orderFilter.indexOf(b.label));
+  
   const selectedFilters = _filters.reduce<FilterToggleValue[]>(
     (initial, filter) => {
       const selected = filter.values.find((value) => value.selected);
@@ -99,9 +102,9 @@ function Filters({ filters }: Props) {
           ))
         )}
       </li>
-      {_filters.map((filter) => (
+      {_filters.map((filter, index) => (
         <li class="flex flex-col gap-4">
-          <details class="collapse collapse-plus" open>
+          <details class="collapse collapse-plus" open={index < 3 ? true : false}>
             <summary class="collapse-title text-sm text-primary font-medium min-h-0 px-0 py-2.5 border-b mb-4 after:!right-[10px] after:text-[20px] after:!top-[10px] border-[#D7D7DA] after:!font-medium">
               {filter.label}
             </summary>
