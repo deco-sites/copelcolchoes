@@ -9,7 +9,7 @@ export default {
       center: true,
     },
     fontFamily: {
-      "quicksand": ['Quicksand', 'Arial', 'sans-serif']
+      "quicksand": ["Quicksand", "Arial", "sans-serif"],
     },
     extend: {
       colors: {

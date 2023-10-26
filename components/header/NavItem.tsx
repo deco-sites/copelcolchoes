@@ -44,10 +44,12 @@ function NavItemDropDown(
       "Cama Box": "!left-0 !translate-x-0",
       "Cama Box Colchão": "!pr-[12.5rem]",
       "Acessórios": "!pr-[12.5rem]",
-    }
+    };
     return (
       <div
-        class={`left-[50%] translate-x-[-50%] shadow-md rounded-b-[20px] absolute pt-9 pb-[3.875rem] px-6 top-[100%] z-20 hidden hover:flex group-hover:flex flex-col items-center bg-white ${navStyle[label as keyof typeof navStyle] || ""}`}
+        class={`left-[50%] translate-x-[-50%] shadow-md rounded-b-[20px] absolute pt-9 pb-[3.875rem] px-6 top-[100%] z-20 hidden hover:flex group-hover:flex flex-col items-center bg-white ${
+          navStyle[label as keyof typeof navStyle] || ""
+        }`}
       >
         <div class="container w-full pt-5 pb-5 m-auto px-5 flex items-start justify-start gap-16">
           {elements.map((element) => {
@@ -142,7 +144,12 @@ function NavItem({ item }: { item: INavItem }) {
           {label}
         </span>
       </a>
-      <NavItemDropDown variant={variant} elements={children} image={image} label={label} />
+      <NavItemDropDown
+        variant={variant}
+        elements={children}
+        image={image}
+        label={label}
+      />
     </li>
   );
 }
