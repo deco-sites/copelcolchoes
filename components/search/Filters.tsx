@@ -1,6 +1,3 @@
-import Avatar from "$store/components/ui/Avatar.tsx";
-import { parseRange } from "deco-sites/std/utils/filters.ts";
-import { formatPrice } from "$store/sdk/format.ts";
 import type {
   Filter,
   FilterToggle,
@@ -10,6 +7,7 @@ import type {
 
 interface Props {
   filters: ProductListingPage["filters"];
+  category: string;
 }
 
 const isToggle = (filter: Filter): filter is FilterToggle =>
@@ -36,61 +34,80 @@ function ValueItem({ url, selected, label, quantity }: FilterToggleValue) {
   );
 }
 
-function FilterValues({ key, values }: FilterToggle) {
-  const flexDirection = key === "tamanho" || key === "cor"
-    ? "flex-row flex-wrap"
-    : "flex-col md:max-h-[135px] md:overflow-auto scrollbar-list";
-
+function FilterValues({ values }: FilterToggle) {
   return (
-    <ul class={`flex gap-2 ${flexDirection}`}>
+    <ul
+      class={`flex gap-2 flex-col md:max-h-[135px] md:overflow-auto scrollbar-list`}
+    >
       {values.map((item) => {
-        const { url, selected, value, quantity } = item;
-
-        if (key === "cor" || key === "tamanho") {
-          return (
-            <a href={url}>
-              <Avatar content={value} variant={"default"} active={selected} />
-            </a>
-          );
-        }
-
-        if (key === "price") {
-          const range = parseRange(item.value);
-
-          return (
-            range && (
-              <ValueItem
-                {...item}
-                label={`${formatPrice(range.from)} - ${formatPrice(range.to)}`}
-              />
-            )
-          );
-        }
-
         return <ValueItem {...item} />;
       })}
     </ul>
   );
 }
 
-function Filters({ filters }: Props) {
+function Filters({ filters, category }: Props) {
+  console.log(category);
+
   const _filters = filters.filter(isToggle).filter((filter) =>
     !(filter.key.includes("category-") || filter.key === ("price") ||
       filter.label === "Marca")
   );
-  const orderFilter = [
-    "Firmeza",
-    "Medidas",
-    "Para",
-    "Molas",
-    "Tipo colchão",
-    "Composição",
-    "Densidade",
-    "Faixa de Altura do Colchão",
-  ];
-  _filters.sort((a, b) =>
-    orderFilter.indexOf(a.label) - orderFilter.indexOf(b.label)
-  );
+  const orderFilter = {
+    "Colchões": [
+      "Firmeza",
+      "Medidas",
+      "Para",
+      "Molas",
+      "Tipo colchão",
+      "Composição",
+      "Densidade",
+      "Faixa de Altura do Colchão",
+    ],
+    "Cama Box": [
+      "Medidas",
+      "Para",
+      "Tipo",
+      "Cor Lateral",
+    ],
+    "Cama Box mais Colchão": [
+      "Medidas",
+      "Para",
+      "Tipo colchão",
+      "Modelo Box",
+      "Firmeza",
+      "Mola",
+      "Composição",
+      "Densidade",
+      "Faixa de Altura do Colchão",
+    ],
+    "Móveis": [
+      "Medidas",
+      "Móveis",
+      "Tipo",
+      "Cor",
+    ],
+    "Acessórios": [
+      "Acessórios",
+      "Material",
+      "Medidas",
+    ],
+    "Travesseiros": [
+      "Material",
+      "Medidas",
+      "Tipo",
+      "Perfil",
+      "Faixa de Altura",
+      "Revestimento travesseiro",
+    ],
+  };
+
+  if (orderFilter[category as keyof typeof orderFilter]) {
+    _filters.sort((a, b) =>
+      orderFilter[category as keyof typeof orderFilter].indexOf(a.label) -
+      orderFilter[category as keyof typeof orderFilter].indexOf(b.label)
+    );
+  }
 
   const selectedFilters = _filters.reduce<FilterToggleValue[]>(
     (initial, filter) => {

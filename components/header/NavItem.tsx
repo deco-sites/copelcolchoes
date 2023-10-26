@@ -1,5 +1,4 @@
 import { headerHeight } from "./constants.ts";
-import Icon from "$store/components/ui/Icon.tsx";
 import type { Image as LiveImage } from "deco-sites/std/components/types.ts";
 
 export interface INavItem {
@@ -29,20 +28,26 @@ function splitNatItems(children: INavItem[], number = 6) {
 }
 
 function NavItemDropDown(
-  { elements, variant, image }: {
+  { elements, variant, image, label }: {
     elements?: INavItem[];
     variant?: string;
     image?: Image;
+    label: string;
   },
 ) {
   if (!elements || !elements?.length) {
     return <span />;
   }
   if (variant === "AllCategories") {
+    const navStyle = {
+      "Colchões": "!left-0 !translate-x-0 !pr-[12.5rem]",
+      "Cama Box": "!left-0 !translate-x-0",
+      "Cama Box Colchão": "!pr-[12.5rem]",
+      "Acessórios": "!pr-[12.5rem]",
+    }
     return (
       <div
-        class="absolute hidden hover:flex group-hover:flex bg-base-100 z-50 items-start justify-center gap-6 w-full shadow-md"
-        style={{ top: "0px", left: "0px", marginTop: headerHeight }}
+        class={`left-[50%] translate-x-[-50%] shadow-md rounded-b-[20px] absolute pt-9 pb-[3.875rem] px-6 top-[100%] z-20 hidden hover:flex group-hover:flex flex-col items-center bg-white ${navStyle[label as keyof typeof navStyle] || ""}`}
       >
         <div class="container w-full pt-5 pb-5 m-auto px-5 flex items-start justify-start gap-16">
           {elements.map((element) => {
@@ -90,7 +95,7 @@ function NavItemDropDown(
     );
   }
   const navItemsCol = variant === "AllCategories"
-    ? splitNatItems(elements, 16)
+    ? splitNatItems(elements, 6)
     : splitNatItems(elements, 8);
   return (
     <div
@@ -121,23 +126,23 @@ function NavItem({ item }: { item: INavItem }) {
   const { href, label, children, highlighted, variant, image } = item;
   return (
     <li
-      class={`group flex items-center flex-1`}
+      class={`group flex items-center justify-center relative`}
     >
       <a
         href={href}
-        class={`px-4 py-2 my-2 w-full text-center`}
+        class={`py-3 text-center relative after:absolute after:transition-all after:duration-150 after:-bottom-1 after:left-0 after:z-30 group-hover:after:opacity-100 after:w-full after:opacity-0 after:h-1 after:bg-secondary`}
       >
         <span
-          class={`relative text-sm transition-all font-bold duration-300 after:absolute after:transition-all after:duration-100 after:-bottom-1 after:left-0 group-hover:after:w-full after:w-0 after:h-[1px] after:bg-secondary ${
+          class={`relative transition-all font-bold duration-300  ${
             highlighted
-              ? "text-secondary group-hover:text-secondary-focus"
+              ? "text-secondary group-hover:text-primary"
               : "text-primary group-hover:text-primary-focus"
           }`}
         >
           {label}
         </span>
       </a>
-      <NavItemDropDown variant={variant} elements={children} image={image} />
+      <NavItemDropDown variant={variant} elements={children} image={image} label={label} />
     </li>
   );
 }

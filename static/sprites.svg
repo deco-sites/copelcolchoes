@@ -21,10 +21,8 @@
         </g>
     </symbol>
 
-    <symbol id="MagnifyingGlass" xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
-        <g id="search">
-        <path id="Icon" fill-rule="evenodd" clip-rule="evenodd" d="M17.1701 16.2694C18.3159 14.8209 19 12.9903 19 11C19 6.30558 15.1944 2.5 10.5 2.5C5.80558 2.5 2 6.30558 2 11C2 15.6944 5.80558 19.5 10.5 19.5C12.4834 19.5 14.3081 18.8207 15.7542 17.682L20.294 22.2082C20.6851 22.5981 21.3182 22.5972 21.7082 22.206C22.0981 21.8149 22.0972 21.1818 21.706 20.7918L17.1701 16.2694Z" fill="currentColor"/>
-        </g>
+    <symbol id="MagnifyingGlass" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 18 18" fill="none">
+        <path d="M7.851 0a7.849 7.849 0 0 1 5.919 13.007l4.072 4.072a.54.54 0 0 1-.764.764l-4.072-4.072A7.851 7.851 0 1 1 7.85.001zM13 12.237a6.789 6.789 0 1 0-.764.764" fill="currentColor"></path>
     </symbol>
     <symbol id="User" xmlns="http://www.w3.org/2000/svg" width="24" height="25" viewBox="0 0 24 25" fill="none">
         <g id="user">

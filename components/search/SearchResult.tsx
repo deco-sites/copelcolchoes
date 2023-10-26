@@ -7,7 +7,6 @@ import ProductGallery, { Columns } from "../product/ProductGallery.tsx";
 import type { LoaderReturnType } from "$live/types.ts";
 import type { ProductListingPage } from "deco-sites/std/commerce/types.ts";
 import Sort from "$store/islands/Sort.tsx";
-import Breadcrumb from "$store/components/ui/Breadcrumb.tsx";
 import SearchPagination from "$store/components/search/SearchPagination.tsx";
 import { Section } from "$live/blocks/section.ts";
 
@@ -34,6 +33,7 @@ function Result({
   page: ProductListingPage;
 }) {
   const { products, filters, breadcrumb, pageInfo, sortOptions } = page;
+  const categoryName = breadcrumb.itemListElement[0].name || "";
 
   const productsFound = (
     <h6 class="text-primary font-medium">
@@ -47,7 +47,7 @@ function Result({
         <div class="flex flex-row gap-8">
           {variant === "aside" && filters.length > 0 && (
             <aside class="hidden lg:block w-min mt-1 min-w-[270px]">
-              <Filters filters={filters} />
+              <Filters filters={filters} category={categoryName} />
             </aside>
           )}
           <div class="flex flex-col gap-5 w-full">

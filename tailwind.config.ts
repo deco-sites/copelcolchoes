@@ -8,6 +8,9 @@ export default {
     container: {
       center: true,
     },
+    fontFamily: {
+      "quicksand": ['Quicksand', 'Arial', 'sans-serif']
+    },
     extend: {
       colors: {
         "emphasis": "#E93A7D",

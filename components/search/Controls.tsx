@@ -1,6 +1,4 @@
 import Filters from "$store/components/search/Filters.tsx";
-import Sort from "$store/components/search/Sort.tsx";
-import Breadcrumb from "$store/components/ui/Breadcrumb.tsx";
 import Button from "$store/components/ui/Button.tsx";
 import Icon from "$store/components/ui/Icon.tsx";
 import Modal from "$store/components/ui/Modal.tsx";
@@ -17,10 +15,10 @@ type Props =
   };
 
 function SearchControls(
-  { filters, displayFilter }: Props,
+  { filters, displayFilter, breadcrumb }: Props,
 ) {
   const open = useSignal(false);
-
+  const categoryName = breadcrumb.itemListElement[0].name || "";
   return (
     <>
       <Button
@@ -52,7 +50,7 @@ function SearchControls(
         }}
       >
         <div class="p-8 py-2">
-          <Filters filters={filters} />
+          <Filters filters={filters} category={categoryName} />
         </div>
       </Modal>
     </>

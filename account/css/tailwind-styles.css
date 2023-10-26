@@ -334,13 +334,13 @@ input[type=number] {
 
 @media (min-width: 1280px) {
   .container {
-      max-width:1280px
+      max-width:1135px
   }
 }
 
 @media (min-width: 1536px) {
   .container {
-      max-width:1536px
+      max-width:1135px
   }
 }
 
@@ -6657,13 +6657,13 @@ details.collapse summary::-webkit-details-marker {
 
   @media (min-width: 1280px) {
       .lg\:container {
-          max-width:1280px
+          max-width:1135px
       }
   }
 
   @media (min-width: 1536px) {
       .lg\:container {
-          max-width:1536px
+          max-width:1135px
       }
   }
 

@@ -134,12 +134,6 @@ function TopNavBar({ alerts = [], interval = 5 }: Props) {
           ))}
         </div>
       </div>
-
-      <CloseButton
-        classes={"absolute max-lg:w-4 max-lg:h-4 right-5 top-[7px] text-white"}
-        size={20}
-        onClickBtn={() => displayTopBar.value = false}
-      />
     </div>
   );
 }

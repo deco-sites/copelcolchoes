@@ -18,10 +18,12 @@ function HeaderNavMenu(
   return (
     <div class="z-50">
       <div class="flex justify-between items-center lg:p-0">
-        <div class="max-lg:hidden flex justify-between flex-1 whitespace-nowrap">
-          {navItems && navItems?.length
-            ? navItems?.map((item) => <NavItem key={item.label} item={item} />)
-            : null}
+        <div class="max-lg:hidden flex justify-between flex-1 whitespace-nowrap px-16">
+          <ul class="flex justify-between items-center h-[3.25rem] border-b border-[rgba(219,219,219,0.36)] w-full">
+            {navItems && navItems?.length
+              ? navItems?.map((item) => <NavItem key={item.label} item={item} />)
+              : null}
+          </ul>
         </div>
       </div>
 

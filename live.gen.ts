@@ -64,6 +64,7 @@ import * as $$$$$$$$37 from "./sections/Product/SearchResult.tsx";
 import * as $$$$$$$$38 from "./sections/Product/Wishlist.tsx";
 import * as $$$$$$$$39 from "./sections/Social/InstagramPosts.tsx";
 import * as $$$$$$$$40 from "./sections/Social/WhatsApp.tsx";
+import * as $$$$$$$$41 from "./sections/Theme/Theme.tsx";
 import * as $live_workflows from "$live/routes/live/workflows/run.ts";
 import * as $live_middleware from "$live/routes/_middleware.ts";
 import * as $live_workbench from "$live/routes/live/workbench.ts";
@@ -313,6 +314,7 @@ const manifest = {
     "deco-sites/copelcolchoes/sections/Product/Wishlist.tsx": $$$$$$$$38,
     "deco-sites/copelcolchoes/sections/Social/InstagramPosts.tsx": $$$$$$$$39,
     "deco-sites/copelcolchoes/sections/Social/WhatsApp.tsx": $$$$$$$$40,
+    "deco-sites/copelcolchoes/sections/Theme/Theme.tsx": $$$$$$$$41,
     "deco-sites/std/sections/Analytics.tsx": i2$$$$$0,
     "deco-sites/std/sections/configButterCMS.global.tsx": i2$$$$$1,
     "deco-sites/std/sections/configLinxImpulse.global.tsx": i2$$$$$2,
