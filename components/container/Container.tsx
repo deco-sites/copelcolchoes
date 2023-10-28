@@ -53,7 +53,7 @@ function Container({ sections }: Props) {
         >
           {withContainer
             ? (
-              <div class="container max-w-[80rem] w-full m-auto px-[4rem]">
+              <div class="container lg:max-w-[80rem] w-full m-auto px-[4rem]">
                 <Component {...props} />
               </div>
             )
