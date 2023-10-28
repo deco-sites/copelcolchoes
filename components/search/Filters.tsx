@@ -69,6 +69,9 @@ function Filters({ filters, category }: Props) {
       "Para",
       "Tipo",
       "Cor Lateral",
+      "Pezinho",
+      "Revestimento",
+      "Tratamento",
     ],
     "Cama Box mais Colchão": [
       "Medidas",
@@ -80,6 +83,13 @@ function Filters({ filters, category }: Props) {
       "Composição",
       "Densidade",
       "Faixa de Altura do Colchão",
+      "Altura Box",
+      "Marca da Cama Box",
+      "Marca do Colchão",
+      "Pezinho Cama",
+      "Pillow Top",
+      "Revestimento Box",
+      "Suporte Total de Peso do Colchão",
     ],
     "Móveis": [
       "Medidas",

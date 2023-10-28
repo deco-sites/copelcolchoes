@@ -100,7 +100,7 @@ function TopNavBar({ alerts = [], interval = 5 }: Props) {
         <SliderJS rootId={id} interval={interval && interval * 1e3} />
       </div>
 
-      <div class="h-[34px] max-lg:hidden w-full">
+      <div class="min-h-[34px] w-full">
         <div class="flex justify-center items-center gap-28">
           {alerts.map((alert, index) => (
             <>
