@@ -7,7 +7,7 @@ import type {
 
 interface Props {
   filters: ProductListingPage["filters"];
-  category: string;
+  category?: string;
 }
 
 const isToggle = (filter: Filter): filter is FilterToggle =>
@@ -46,9 +46,7 @@ function FilterValues({ values }: FilterToggle) {
   );
 }
 
-function Filters({ filters, category }: Props) {
-  console.log(category);
-
+function Filters({ filters, category = "" }: Props) {
   const _filters = filters.filter(isToggle).filter((filter) =>
     !(filter.key.includes("category-") || filter.key === ("price") ||
       filter.label === "Marca")

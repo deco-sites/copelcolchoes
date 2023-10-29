@@ -65,6 +65,7 @@ export type AvailableIcons =
   | "LeftArrowFigma"
   | "RightArrowFigma"
   | "Chat"
+  | "Lojas"
   | "AllCategories";
 
 interface Props extends JSX.SVGAttributes<SVGSVGElement> {

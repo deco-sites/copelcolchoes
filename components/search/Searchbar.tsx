@@ -13,8 +13,9 @@ import type { Layout as CardLayout } from "$store/components/product/ProductCard
 import Icon from "$store/components/ui/Icon.tsx";
 import { sendEvent } from "$store/sdk/analytics.tsx";
 import { useAutocomplete } from "deco-sites/std/packs/vtex/hooks/useAutocomplete.ts";
-import { useEffect, useRef, useState } from "preact/compat";
+import { useRef, useState } from "preact/compat";
 import ResultSearch from "deco-sites/copelcolchoes/components/search/ResultSearch.tsx";
+import { useSignal } from "@preact/signals";
 
 // Editable props
 export interface EditableProps {
@@ -63,20 +64,15 @@ function Searchbar({
   noContainer = false,
 }: Props) {
   const searchInputRef = useRef<HTMLInputElement>(null);
-  const { setSearch, suggestions, loading } = useAutocomplete();
-  const [valueSearch, setValueSearch] = useState<string>("");
+  const { setSearch, suggestions } = useAutocomplete();
+  const valueSearchSignal = useSignal<string>("");
   const hasProducts = Boolean(suggestions.value?.products?.length);
   const hasTerms = Boolean(suggestions.value?.searches?.length);
   const notFound = !hasProducts && !hasTerms;
-
-  useEffect(() => {
-    if (!searchInputRef.current) return;
-
-    searchInputRef.current.focus();
-  }, []);
+  const valueSearch = valueSearchSignal.value;
 
   const Searchbar = (
-    <div class="flex items-center gap-4 w-[487px] ml-[4.5rem]">
+    <div>
       <form
         id="searchbar"
         action={action}
@@ -85,7 +81,7 @@ function Searchbar({
         <input
           ref={searchInputRef}
           id="search-input"
-          class="flex w-full outline-none placeholder:text-neutral placeholder:font-normal pl-2 text-sm placeholder:text-sm"
+          class="flex w-full outline-none placeholder:text-neutral placeholder:font-normal pl-2 text-sm placeholder:text-sm text-[#8c9aad]"
           name={name}
           defaultValue={query}
           onInput={(e) => {
@@ -97,7 +93,7 @@ function Searchbar({
                 params: { search_term: value },
               });
             }
-            setValueSearch(value);
+            valueSearchSignal.value = value;
             setSearch(value);
           }}
           placeholder={placeholder}
@@ -125,12 +121,11 @@ function Searchbar({
   if (noContainer) return Searchbar;
 
   return (
-    <div class="flex flex-col">
+    <div class="relative lg:w-[487px] w-full h-[3.25rem] border rounded-md ml-[4.5rem] border-[#dbdbdb]">
       {Searchbar}
       {hide.results ? null : (
         <ResultSearch
           cardLayout={cardLayout}
-          loading={loading}
           notFound={notFound}
           suggestions={suggestions}
           valueSearch={valueSearch}

@@ -1,4 +1,5 @@
 import { Section } from "$live/blocks/section.ts";
+import { headerHeight } from "$store/components/header/constants.ts";
 
 export type VerticalSpacing = "top" | "bottom" | "both" | "none";
 export type ShadowSize =
@@ -29,37 +30,42 @@ export interface Props {
      */
     spacing?: number;
   }[];
+  /** @default false */
+  isHeader?: boolean;
 }
 
-function Container({ sections }: Props) {
+function Container({ sections, isHeader = false }: Props) {
   return (
     <>
-      {sections?.map((
-        {
-          section: { Component, props },
-          withContainer = false,
-          backgroundColor = "",
-          verticalSpacing = "both",
-          shadow = "none",
-          spacing = 0,
-        },
-      ) => (
-        <div
-          class={`w-full
-          ${VERTICAL_SPACING[verticalSpacing]} 
-          ${SPACING[spacing]}
-          ${SHADOW_SIZE[shadow]}`}
-          style={backgroundColor && { background: `${backgroundColor}` }}
-        >
-          {withContainer
-            ? (
-              <div class="container lg:max-w-[80rem] w-full m-auto px-[4rem]">
-                <Component {...props} />
-              </div>
-            )
-            : <Component {...props} />}
-        </div>
-      ))}
+      <div class={isHeader ? "fixed top-0 w-full bg-white z-[5000]" : ""}>
+        {sections?.map((
+          {
+            section: { Component, props },
+            withContainer = false,
+            backgroundColor = "",
+            verticalSpacing = "both",
+            shadow = "none",
+            spacing = 0,
+          },
+        ) => (
+          <div
+            class={`w-full
+            ${VERTICAL_SPACING[verticalSpacing]} 
+            ${SPACING[spacing]}
+            ${SHADOW_SIZE[shadow]}`}
+            style={backgroundColor && { background: `${backgroundColor}` }}
+          >
+            {withContainer
+              ? (
+                <div class="container lg:max-w-[80rem] w-full m-auto lg:px-[4rem] px-[1.375rem]">
+                  <Component {...props} />
+                </div>
+              )
+              : <Component {...props} />}
+          </div>
+        ))}
+      </div>
+      {isHeader && <div style={{ height: headerHeight }}></div>}
     </>
   );
 }

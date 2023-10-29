@@ -65,7 +65,7 @@ function ChatButton() {
 function CartButton() {
   const { displayCart } = useUI();
   const { loading, cart, mapItemsToAnalyticsItems } = useCart();
-  const totalItems = cart.value?.items.length || null;
+  const totalItems = cart.value?.items.length || 0;
   const currencyCode = cart.value?.storePreferencesData.currencyCode;
   const total = cart.value?.totalizers.find((item) => item.id === "Items");
   const discounts = cart.value?.totalizers.find((item) =>
@@ -89,23 +89,19 @@ function CartButton() {
 
   return (
     <Button
-      class="btn-square btn-ghost relative flex justify-center items-center"
+      class="btn-square btn-ghost relative flex justify-center items-center hover:bg-white"
       aria-label="open cart"
       data-deco={displayCart.value && "open-cart"}
       loading={loading.value}
       onClick={onClick}
     >
-      <div class="indicator">
-        {totalItems && (
-          <span class="indicator-item text-base-100 bg-secondary w-4 h-4 rounded-t-full rounded-r-full text-xs left-3 top-0 font-bold">
-            {totalItems > 9 ? "9+" : totalItems}
-          </span>
-        )}
+      <div class="flex relative">
+        <span class="flex justify-center items-center text-white bg-[#d81a4d] text-xs rounded-full font-bold w-[17px] h-[17px] absolute top-[-0.3125rem] right-[-0.625rem]">
+          {totalItems > 9 ? "9+" : totalItems}
+        </span>
         <Icon
-          class="text-base-content"
           id="ShoppingCart"
-          width={24}
-          height={25}
+          size={28}
           strokeWidth={1}
         />
       </div>

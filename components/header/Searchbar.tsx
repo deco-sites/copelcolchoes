@@ -8,7 +8,7 @@ interface Props {
 function Searchbar({ searchbar }: Props) {
   return (
     <div className="flex flex-col items-end justify-end">
-      <p class="font-quicksand text-sm font-bold mb-[0.8125rem]">
+      <p class="font-quicksand text-sm font-bold mb-[0.8125rem] max-lg:hidden">
         Televendas: (11) 2109-9109
       </p>
       <Suspense fallback={<span class="loading loading-ring" />}>

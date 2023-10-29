@@ -25,17 +25,11 @@ function HeaderLayout(
 ) {
   return (
     <header class="z-50 pb-6 lg:mt-9 border-b border-[rgba(219,219,219,0.36)]">
-      <div class="flex justify-between items-center lg:p-0">
+      <div class="flex justify-between items-center lg:p-0 max-md:h-[4.875rem]">
         <div class="flex items-center gap-5">
           <Buttons variant="menu" />
           <a href="/" class="" aria-label="Store logo">
             <Icon id="Logo" class="max-sm:hidden" width={159} height={79} />
-            <Icon
-              id="LogoMobile"
-              class="sm:hidden max-w-[45vw]"
-              width={176}
-              height={35}
-            />
           </a>
         </div>
         <div className="hidden md:flex flex-1 w-full">
@@ -43,23 +37,47 @@ function HeaderLayout(
             searchbar={{ variant: "desktop", ...searchbar }}
           />
         </div>
-        <div class="max-lg:hidden flex justify-between">
+        <div class="md:hidden">
+          <a href="/" class="" aria-label="Store logo">
+            <Icon id="Logo" width={105} height={52.16} />
+          </a>
         </div>
-        <div class="flex items-center w-auto lg:justify-between xl:gap-8 lg:gap-2">
-          <div class="flex items-center xl:gap-4 lg:gap-2">
-            <a
-              class="max-lg:hidden rounded-full border-2 border-solid no-animation btn-square btn-ghost flex items-center justify-center"
-              href="/account"
-            >
-              <Icon
-                class="text-base-content"
-                id="User"
-                width={24}
-                height={25}
-                strokeWidth={1}
-              />
-            </a>
-            <Buttons variant="cart" />
+        <div class="flex justify-end">
+          <div class="flex justify-end">
+            <div class="max-lg:hidden ml-10 lg:flex lg:items-center">
+              <a
+                class="lg:flex lg:items-center lg:justify-center"
+                href="/nossas-lojas"
+              >
+                <Icon
+                  class="mr-[0.625rem]"
+                  id="Lojas"
+                  width={21.253}
+                  height={28.661}
+                  strokeWidth={1}
+                />
+                <span class="font-medium text-primary">Lojas</span>
+              </a>
+            </div>
+            <div class="max-lg:hidden ml-10 flex items-center text-primary">
+              <div class="relative flex items-center justify-center">
+                <a
+                  class="relative font-medium text-primary text-[0.8125rem] leading-[1.125rem] w-full flex items-center justify-center appearance-none"
+                  href="/account"
+                >
+                  <Icon
+                    class="mr-[0.625rem]"
+                    id="User"
+                    size={28.661}
+                    strokeWidth={1}
+                  />
+                  <p>Minha Conta</p>
+                </a>
+              </div>
+            </div>
+            <div class="lg:ml-10">
+              <Buttons variant="cart" />
+            </div>
           </div>
         </div>
       </div>

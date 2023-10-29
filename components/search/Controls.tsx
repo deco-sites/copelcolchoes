@@ -18,7 +18,9 @@ function SearchControls(
   { filters, displayFilter, breadcrumb }: Props,
 ) {
   const open = useSignal(false);
-  const categoryName = breadcrumb.itemListElement[0].name || "";
+  const categoryName = breadcrumb.numberOfItems > 0
+    ? breadcrumb.itemListElement[0].name
+    : "";
   return (
     <>
       <Button

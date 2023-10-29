@@ -1,4 +1,3 @@
-import { headerHeight } from "./constants.ts";
 import type { Image as LiveImage } from "deco-sites/std/components/types.ts";
 
 export interface INavItem {
@@ -16,109 +15,81 @@ export interface Image {
   href?: string;
 }
 
-function splitNatItems(children: INavItem[], number = 6) {
-  const slices = [];
-  const totalSlices = Math.ceil(children.length / number);
-
-  for (let i = 0; i < totalSlices; i++) {
-    slices.push(children.slice(i * number, (i + 1) * number));
-  }
-
-  return slices;
-}
-
 function NavItemDropDown(
-  { elements, variant, image, label }: {
+  { elements, image, label, href }: {
     elements?: INavItem[];
-    variant?: string;
     image?: Image;
     label: string;
+    href: string;
   },
 ) {
   if (!elements || !elements?.length) {
     return <span />;
   }
-  if (variant === "AllCategories") {
-    const navStyle = {
-      "Colchões": "!left-0 !translate-x-0 !pr-[12.5rem]",
-      "Cama Box": "!left-0 !translate-x-0",
-      "Cama Box Colchão": "!pr-[12.5rem]",
-      "Acessórios": "!pr-[12.5rem]",
-    };
-    return (
-      <div
-        class={`left-[50%] translate-x-[-50%] shadow-md rounded-b-[20px] absolute pt-9 pb-[3.875rem] px-6 top-[100%] z-20 hidden hover:flex group-hover:flex flex-col items-center bg-white ${
-          navStyle[label as keyof typeof navStyle] || ""
-        }`}
-      >
-        <div class="container w-full pt-5 pb-5 m-auto px-5 flex items-start justify-start gap-16">
+  const navStyle = {
+    "Colchões": "!left-0 !translate-x-0 !pr-[12.5rem]",
+    "Cama Box": "!left-0 !translate-x-0",
+    "Cama Box Colchão": "!pr-[12.5rem]",
+    "Acessórios": "!pr-[12.5rem]",
+  };
+  const imgStyle = {
+    "Colchões": "!right-[-299px] !max-w-[232px]",
+    "Cama Box": "!right-[-150px] !max-w-[232px]",
+    "Cama Box Colchão": "!right-[-300px] !max-w-[232px]",
+    "Travesseiros": "!right-[-180px] !max-w-[232px] !bottom-[-29px]",
+    "Acessórios": "!right-[-330px]",
+    "Móveis": "!right-[-156px] !top-[-33px]",
+  };
+  return (
+    <div
+      class={`left-[50%] translate-x-[-50%] shadow-md rounded-b-[20px] absolute pt-9 pb-[3.875rem] px-6 top-[100%] z-20 hidden hover:flex group-hover:flex flex-col items-center bg-white ${
+        navStyle[label as keyof typeof navStyle] || ""
+      }`}
+    >
+      <div class="flex justify-center">
+        <ul class="flex gap-[64px] items-start relative w-full">
           {elements.map((element) => {
             return (
-              <div class="mr-[83px]">
-                {element.href
-                  ? (
-                    <a
-                      href={element.href || ""}
-                      class="hover:font-extrabold font-bold hover:underline transition-all duration-300"
-                    >
-                      <span>{element.label}</span>
-                    </a>
-                  )
-                  : <span>{element.label}</span>}
-                <ul
-                  class={`mt-3 grid gap-x-[14px]`}
-                >
+              <li class="relative">
+                <span class="text-primary inline-block w-full font-quicksand font-bold leading-5 mb-4">
+                  {element.label}
+                </span>
+                <ul class="relative w-full max-h-[15.6875rem] mt-[0.9375rem] flex flex-col flex-wrap">
                   {element.children &&
                     element.children.map((child) => (
-                      <li class="mb-3">
+                      <li class="w-[12.5rem]">
                         <a
-                          class="text-sm text-base-content hover:font-bold hover:underline transition-all duration-300"
+                          class="font-quicksand text-[#828282] leading-5 inline-block w-full mb-4 whitespace-break-spaces font-light"
                           href={child.href || ""}
                         >
-                          <span>{child.label}</span>
+                          {child.label}
                         </a>
                       </li>
                     ))}
                 </ul>
-              </div>
+              </li>
             );
           })}
           {image && (
-            <a href={image.href || ""}>
+            <div class="w-full">
               <img
                 src={image.src}
                 alt={image.alt || "Banner vertical do menu"}
-                class="h-full w-auto justify-self-end"
+                class={`right-[-200px] absolute max-w-[200px] w-full h-auto inline-block align-middle ${
+                  imgStyle[label as keyof typeof imgStyle]
+                }`}
               />
-            </a>
+            </div>
           )}
-        </div>
+        </ul>
       </div>
-    );
-  }
-  const navItemsCol = variant === "AllCategories"
-    ? splitNatItems(elements, 6)
-    : splitNatItems(elements, 8);
-  return (
-    <div
-      class="absolute hidden hover:flex group-hover:flex bg-base-100 z-50 items-start justify-center gap-6 w-full shadow-md"
-      style={{ top: "0px", left: "0px", marginTop: headerHeight }}
-    >
-      <div class="container w-full pt-5 pb-5 m-auto px-5 flex items-start justify-start gap-16">
-        {navItemsCol.map((column) => (
-          <ul class="flex items-start justify-start flex-col">
-            {column.map((node) => (
-              <li class="mb-3">
-                <a
-                  class="text-sm text-base-content hover:font-bold hover:underline transition-all duration-300"
-                  href={node.href || ""}
-                >
-                  <span>{node.label}</span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        ))}
+      <div class="flex items-end pb-[1.375rem] min-w-[12.5rem]">
+        <a
+          href={href}
+          class="leading-5 font-bold absolute bottom-[-20px] bg-primary py-[10px] px-[18px] text-white rounded-md left-[50%] translate-x-[-50%] w-auto text-center whitespace-break-spaces"
+        >
+          Ver tudo de {label}
+        </a>
       </div>
     </div>
   );
@@ -145,10 +116,10 @@ function NavItem({ item }: { item: INavItem }) {
         </span>
       </a>
       <NavItemDropDown
-        variant={variant}
         elements={children}
         image={image}
         label={label}
+        href={href || ""}
       />
     </li>
   );
