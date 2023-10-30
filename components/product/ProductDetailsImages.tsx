@@ -1,7 +1,7 @@
 import { useSignal } from "@preact/signals";
 import Slider from "$store/components/ui/Slider.tsx";
 import DiscountBadge from "./DiscountBadge.tsx";
-import type { ImageObject, Product } from "deco-sites/std/commerce/types.ts";
+import type { ImageObject, Product } from "apps/commerce/types.ts";
 import { useOffer } from "$store/sdk/useOffer.ts";
 import Image from "deco-sites/std/components/Image.tsx";
 

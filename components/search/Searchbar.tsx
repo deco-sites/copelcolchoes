@@ -12,8 +12,8 @@
 import type { Layout as CardLayout } from "$store/components/product/ProductCard.tsx";
 import Icon from "$store/components/ui/Icon.tsx";
 import { sendEvent } from "$store/sdk/analytics.tsx";
-import { useAutocomplete } from "deco-sites/std/packs/vtex/hooks/useAutocomplete.ts";
-import { useRef, useState } from "preact/compat";
+import { useAutocomplete } from "apps/vtex/hooks/useAutocomplete.ts";
+import { useRef } from "preact/compat";
 import ResultSearch from "deco-sites/copelcolchoes/components/search/ResultSearch.tsx";
 import { useSignal } from "@preact/signals";
 
