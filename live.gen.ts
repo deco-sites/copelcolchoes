@@ -23,48 +23,49 @@ import * as $$$$$15 from "./islands/SliderJS.tsx";
 import * as $$$$$16 from "./islands/Sort.tsx";
 import * as $$$$$17 from "./islands/TopBar.tsx";
 import * as $$$$$18 from "./islands/WishlistButton.tsx";
-import * as $$$$$$$$0 from "./sections/Category/CategoryBanner.tsx";
-import * as $$$$$$$$1 from "./sections/Category/CategoryBreadcrumb.tsx";
-import * as $$$$$$$$2 from "./sections/Category/CategoryList.tsx";
-import * as $$$$$$$$3 from "./sections/Category/CategoryText.tsx";
-import * as $$$$$$$$4 from "./sections/Container.tsx";
-import * as $$$$$$$$5 from "./sections/Content/Benefits.tsx";
-import * as $$$$$$$$6 from "./sections/Content/CopyRight.tsx";
-import * as $$$$$$$$7 from "./sections/Content/Faq.tsx";
-import * as $$$$$$$$8 from "./sections/Content/InfoCard.tsx";
-import * as $$$$$$$$9 from "./sections/Content/InfoCardSeo.tsx";
-import * as $$$$$$$$10 from "./sections/Content/Logos.tsx";
-import * as $$$$$$$$11 from "./sections/Content/Testimonials.tsx";
-import * as $$$$$$$$12 from "./sections/DesignSystem/DesignSystem.tsx";
-import * as $$$$$$$$13 from "./sections/Footer/Footer.tsx";
-import * as $$$$$$$$14 from "./sections/Header/HeaderLayout.tsx";
-import * as $$$$$$$$15 from "./sections/Header/HeaderNavMenu.tsx";
-import * as $$$$$$$$16 from "./sections/Header/TopNavBar.tsx";
-import * as $$$$$$$$17 from "./sections/Images/BannerGrid.tsx";
-import * as $$$$$$$$18 from "./sections/Images/Carousel.tsx";
-import * as $$$$$$$$19 from "./sections/Images/ImageGallery.tsx";
-import * as $$$$$$$$20 from "./sections/Images/ShoppableBanner.tsx";
-import * as $$$$$$$$21 from "./sections/Institutional/AccordionsContent.tsx";
-import * as $$$$$$$$22 from "./sections/Institutional/AsideMenu.tsx";
-import * as $$$$$$$$23 from "./sections/Institutional/CardsContent.tsx";
-import * as $$$$$$$$24 from "./sections/Institutional/ContactForm.tsx";
-import * as $$$$$$$$25 from "./sections/Institutional/InstitutionalPage.tsx";
-import * as $$$$$$$$26 from "./sections/Institutional/TextContent.tsx";
-import * as $$$$$$$$27 from "./sections/Links/LinkTree.tsx";
-import * as $$$$$$$$28 from "./sections/Links/Shortcuts.tsx";
-import * as $$$$$$$$29 from "./sections/Miscellaneous/CampaignTimer.tsx";
-import * as $$$$$$$$30 from "./sections/Miscellaneous/CookieConsent.tsx";
-import * as $$$$$$$$31 from "./sections/Miscellaneous/NotFound.tsx";
-import * as $$$$$$$$32 from "./sections/Miscellaneous/ProxyIframe.tsx";
-import * as $$$$$$$$33 from "./sections/Newsletter/Newsletter.tsx";
-import * as $$$$$$$$34 from "./sections/Newsletter/NewsletterModal.tsx";
-import * as $$$$$$$$35 from "./sections/Product/ProductDetails.tsx";
-import * as $$$$$$$$36 from "./sections/Product/ProductShelf.tsx";
-import * as $$$$$$$$37 from "./sections/Product/SearchResult.tsx";
-import * as $$$$$$$$38 from "./sections/Product/Wishlist.tsx";
-import * as $$$$$$$$39 from "./sections/Social/InstagramPosts.tsx";
-import * as $$$$$$$$40 from "./sections/Social/WhatsApp.tsx";
-import * as $$$$$$$$41 from "./sections/Theme/Theme.tsx";
+import * as $$$$$$$$0 from "./sections/Category/CategoriesCarroussel.tsx";
+import * as $$$$$$$$1 from "./sections/Category/CategoryBanner.tsx";
+import * as $$$$$$$$2 from "./sections/Category/CategoryBreadcrumb.tsx";
+import * as $$$$$$$$3 from "./sections/Category/CategoryList.tsx";
+import * as $$$$$$$$4 from "./sections/Category/CategoryText.tsx";
+import * as $$$$$$$$5 from "./sections/Container.tsx";
+import * as $$$$$$$$6 from "./sections/Content/Benefits.tsx";
+import * as $$$$$$$$7 from "./sections/Content/CopyRight.tsx";
+import * as $$$$$$$$8 from "./sections/Content/Faq.tsx";
+import * as $$$$$$$$9 from "./sections/Content/InfoCard.tsx";
+import * as $$$$$$$$10 from "./sections/Content/InfoCardSeo.tsx";
+import * as $$$$$$$$11 from "./sections/Content/Logos.tsx";
+import * as $$$$$$$$12 from "./sections/Content/Testimonials.tsx";
+import * as $$$$$$$$13 from "./sections/DesignSystem/DesignSystem.tsx";
+import * as $$$$$$$$14 from "./sections/Footer/Footer.tsx";
+import * as $$$$$$$$15 from "./sections/Header/HeaderLayout.tsx";
+import * as $$$$$$$$16 from "./sections/Header/HeaderNavMenu.tsx";
+import * as $$$$$$$$17 from "./sections/Header/TopNavBar.tsx";
+import * as $$$$$$$$18 from "./sections/Images/BannerGrid.tsx";
+import * as $$$$$$$$19 from "./sections/Images/Carousel.tsx";
+import * as $$$$$$$$20 from "./sections/Images/ImageGallery.tsx";
+import * as $$$$$$$$21 from "./sections/Images/ShoppableBanner.tsx";
+import * as $$$$$$$$22 from "./sections/Institutional/AccordionsContent.tsx";
+import * as $$$$$$$$23 from "./sections/Institutional/AsideMenu.tsx";
+import * as $$$$$$$$24 from "./sections/Institutional/CardsContent.tsx";
+import * as $$$$$$$$25 from "./sections/Institutional/ContactForm.tsx";
+import * as $$$$$$$$26 from "./sections/Institutional/InstitutionalPage.tsx";
+import * as $$$$$$$$27 from "./sections/Institutional/TextContent.tsx";
+import * as $$$$$$$$28 from "./sections/Links/LinkTree.tsx";
+import * as $$$$$$$$29 from "./sections/Links/Shortcuts.tsx";
+import * as $$$$$$$$30 from "./sections/Miscellaneous/CampaignTimer.tsx";
+import * as $$$$$$$$31 from "./sections/Miscellaneous/CookieConsent.tsx";
+import * as $$$$$$$$32 from "./sections/Miscellaneous/NotFound.tsx";
+import * as $$$$$$$$33 from "./sections/Miscellaneous/ProxyIframe.tsx";
+import * as $$$$$$$$34 from "./sections/Newsletter/Newsletter.tsx";
+import * as $$$$$$$$35 from "./sections/Newsletter/NewsletterModal.tsx";
+import * as $$$$$$$$36 from "./sections/Product/ProductDetails.tsx";
+import * as $$$$$$$$37 from "./sections/Product/ProductShelf.tsx";
+import * as $$$$$$$$38 from "./sections/Product/SearchResult.tsx";
+import * as $$$$$$$$39 from "./sections/Product/Wishlist.tsx";
+import * as $$$$$$$$40 from "./sections/Social/InstagramPosts.tsx";
+import * as $$$$$$$$41 from "./sections/Social/WhatsApp.tsx";
+import * as $$$$$$$$42 from "./sections/Theme/Theme.tsx";
 import * as $live_workflows from "$live/routes/live/workflows/run.ts";
 import * as $live_middleware from "$live/routes/_middleware.ts";
 import * as $live_workbench from "$live/routes/live/workbench.ts";
@@ -262,59 +263,61 @@ const manifest = {
     "$live/sections/PageInclude.tsx": i1$$$$2,
     "$live/sections/Slot.tsx": i1$$$$3,
     "$live/sections/UseSlot.tsx": i1$$$$4,
-    "deco-sites/copelcolchoes/sections/Category/CategoryBanner.tsx": $$$$$$$$0,
+    "deco-sites/copelcolchoes/sections/Category/CategoriesCarroussel.tsx":
+      $$$$$$$$0,
+    "deco-sites/copelcolchoes/sections/Category/CategoryBanner.tsx": $$$$$$$$1,
     "deco-sites/copelcolchoes/sections/Category/CategoryBreadcrumb.tsx":
-      $$$$$$$$1,
-    "deco-sites/copelcolchoes/sections/Category/CategoryList.tsx": $$$$$$$$2,
-    "deco-sites/copelcolchoes/sections/Category/CategoryText.tsx": $$$$$$$$3,
-    "deco-sites/copelcolchoes/sections/Container.tsx": $$$$$$$$4,
-    "deco-sites/copelcolchoes/sections/Content/Benefits.tsx": $$$$$$$$5,
-    "deco-sites/copelcolchoes/sections/Content/CopyRight.tsx": $$$$$$$$6,
-    "deco-sites/copelcolchoes/sections/Content/Faq.tsx": $$$$$$$$7,
-    "deco-sites/copelcolchoes/sections/Content/InfoCard.tsx": $$$$$$$$8,
-    "deco-sites/copelcolchoes/sections/Content/InfoCardSeo.tsx": $$$$$$$$9,
-    "deco-sites/copelcolchoes/sections/Content/Logos.tsx": $$$$$$$$10,
-    "deco-sites/copelcolchoes/sections/Content/Testimonials.tsx": $$$$$$$$11,
+      $$$$$$$$2,
+    "deco-sites/copelcolchoes/sections/Category/CategoryList.tsx": $$$$$$$$3,
+    "deco-sites/copelcolchoes/sections/Category/CategoryText.tsx": $$$$$$$$4,
+    "deco-sites/copelcolchoes/sections/Container.tsx": $$$$$$$$5,
+    "deco-sites/copelcolchoes/sections/Content/Benefits.tsx": $$$$$$$$6,
+    "deco-sites/copelcolchoes/sections/Content/CopyRight.tsx": $$$$$$$$7,
+    "deco-sites/copelcolchoes/sections/Content/Faq.tsx": $$$$$$$$8,
+    "deco-sites/copelcolchoes/sections/Content/InfoCard.tsx": $$$$$$$$9,
+    "deco-sites/copelcolchoes/sections/Content/InfoCardSeo.tsx": $$$$$$$$10,
+    "deco-sites/copelcolchoes/sections/Content/Logos.tsx": $$$$$$$$11,
+    "deco-sites/copelcolchoes/sections/Content/Testimonials.tsx": $$$$$$$$12,
     "deco-sites/copelcolchoes/sections/DesignSystem/DesignSystem.tsx":
-      $$$$$$$$12,
-    "deco-sites/copelcolchoes/sections/Footer/Footer.tsx": $$$$$$$$13,
-    "deco-sites/copelcolchoes/sections/Header/HeaderLayout.tsx": $$$$$$$$14,
-    "deco-sites/copelcolchoes/sections/Header/HeaderNavMenu.tsx": $$$$$$$$15,
-    "deco-sites/copelcolchoes/sections/Header/TopNavBar.tsx": $$$$$$$$16,
-    "deco-sites/copelcolchoes/sections/Images/BannerGrid.tsx": $$$$$$$$17,
-    "deco-sites/copelcolchoes/sections/Images/Carousel.tsx": $$$$$$$$18,
-    "deco-sites/copelcolchoes/sections/Images/ImageGallery.tsx": $$$$$$$$19,
-    "deco-sites/copelcolchoes/sections/Images/ShoppableBanner.tsx": $$$$$$$$20,
+      $$$$$$$$13,
+    "deco-sites/copelcolchoes/sections/Footer/Footer.tsx": $$$$$$$$14,
+    "deco-sites/copelcolchoes/sections/Header/HeaderLayout.tsx": $$$$$$$$15,
+    "deco-sites/copelcolchoes/sections/Header/HeaderNavMenu.tsx": $$$$$$$$16,
+    "deco-sites/copelcolchoes/sections/Header/TopNavBar.tsx": $$$$$$$$17,
+    "deco-sites/copelcolchoes/sections/Images/BannerGrid.tsx": $$$$$$$$18,
+    "deco-sites/copelcolchoes/sections/Images/Carousel.tsx": $$$$$$$$19,
+    "deco-sites/copelcolchoes/sections/Images/ImageGallery.tsx": $$$$$$$$20,
+    "deco-sites/copelcolchoes/sections/Images/ShoppableBanner.tsx": $$$$$$$$21,
     "deco-sites/copelcolchoes/sections/Institutional/AccordionsContent.tsx":
-      $$$$$$$$21,
-    "deco-sites/copelcolchoes/sections/Institutional/AsideMenu.tsx": $$$$$$$$22,
+      $$$$$$$$22,
+    "deco-sites/copelcolchoes/sections/Institutional/AsideMenu.tsx": $$$$$$$$23,
     "deco-sites/copelcolchoes/sections/Institutional/CardsContent.tsx":
-      $$$$$$$$23,
-    "deco-sites/copelcolchoes/sections/Institutional/ContactForm.tsx":
       $$$$$$$$24,
-    "deco-sites/copelcolchoes/sections/Institutional/InstitutionalPage.tsx":
+    "deco-sites/copelcolchoes/sections/Institutional/ContactForm.tsx":
       $$$$$$$$25,
-    "deco-sites/copelcolchoes/sections/Institutional/TextContent.tsx":
+    "deco-sites/copelcolchoes/sections/Institutional/InstitutionalPage.tsx":
       $$$$$$$$26,
-    "deco-sites/copelcolchoes/sections/Links/LinkTree.tsx": $$$$$$$$27,
-    "deco-sites/copelcolchoes/sections/Links/Shortcuts.tsx": $$$$$$$$28,
+    "deco-sites/copelcolchoes/sections/Institutional/TextContent.tsx":
+      $$$$$$$$27,
+    "deco-sites/copelcolchoes/sections/Links/LinkTree.tsx": $$$$$$$$28,
+    "deco-sites/copelcolchoes/sections/Links/Shortcuts.tsx": $$$$$$$$29,
     "deco-sites/copelcolchoes/sections/Miscellaneous/CampaignTimer.tsx":
-      $$$$$$$$29,
-    "deco-sites/copelcolchoes/sections/Miscellaneous/CookieConsent.tsx":
       $$$$$$$$30,
-    "deco-sites/copelcolchoes/sections/Miscellaneous/NotFound.tsx": $$$$$$$$31,
+    "deco-sites/copelcolchoes/sections/Miscellaneous/CookieConsent.tsx":
+      $$$$$$$$31,
+    "deco-sites/copelcolchoes/sections/Miscellaneous/NotFound.tsx": $$$$$$$$32,
     "deco-sites/copelcolchoes/sections/Miscellaneous/ProxyIframe.tsx":
-      $$$$$$$$32,
-    "deco-sites/copelcolchoes/sections/Newsletter/Newsletter.tsx": $$$$$$$$33,
+      $$$$$$$$33,
+    "deco-sites/copelcolchoes/sections/Newsletter/Newsletter.tsx": $$$$$$$$34,
     "deco-sites/copelcolchoes/sections/Newsletter/NewsletterModal.tsx":
-      $$$$$$$$34,
-    "deco-sites/copelcolchoes/sections/Product/ProductDetails.tsx": $$$$$$$$35,
-    "deco-sites/copelcolchoes/sections/Product/ProductShelf.tsx": $$$$$$$$36,
-    "deco-sites/copelcolchoes/sections/Product/SearchResult.tsx": $$$$$$$$37,
-    "deco-sites/copelcolchoes/sections/Product/Wishlist.tsx": $$$$$$$$38,
-    "deco-sites/copelcolchoes/sections/Social/InstagramPosts.tsx": $$$$$$$$39,
-    "deco-sites/copelcolchoes/sections/Social/WhatsApp.tsx": $$$$$$$$40,
-    "deco-sites/copelcolchoes/sections/Theme/Theme.tsx": $$$$$$$$41,
+      $$$$$$$$35,
+    "deco-sites/copelcolchoes/sections/Product/ProductDetails.tsx": $$$$$$$$36,
+    "deco-sites/copelcolchoes/sections/Product/ProductShelf.tsx": $$$$$$$$37,
+    "deco-sites/copelcolchoes/sections/Product/SearchResult.tsx": $$$$$$$$38,
+    "deco-sites/copelcolchoes/sections/Product/Wishlist.tsx": $$$$$$$$39,
+    "deco-sites/copelcolchoes/sections/Social/InstagramPosts.tsx": $$$$$$$$40,
+    "deco-sites/copelcolchoes/sections/Social/WhatsApp.tsx": $$$$$$$$41,
+    "deco-sites/copelcolchoes/sections/Theme/Theme.tsx": $$$$$$$$42,
     "deco-sites/std/sections/Analytics.tsx": i2$$$$$0,
     "deco-sites/std/sections/configButterCMS.global.tsx": i2$$$$$1,
     "deco-sites/std/sections/configLinxImpulse.global.tsx": i2$$$$$2,

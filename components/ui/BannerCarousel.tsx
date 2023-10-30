@@ -67,6 +67,10 @@ export interface Banner {
 export interface Props {
   images?: Banner[];
   /**
+     * @title Barra de vantagens
+     */
+  advantages?: BannerBarAdvantages[];
+  /**
    * @description Check this option when this banner is the biggest image on the screen for image optimizations
    */
   preload?: boolean;
@@ -84,6 +88,11 @@ export interface Props {
    * @default Always
    */
   showPaginationDots?: ResponsiveConditionals;
+}
+
+export interface BannerBarAdvantages {
+  image?: LiveImage;
+  label?: string;
 }
 
 interface BannerTitleProps {
@@ -202,12 +211,12 @@ function Dots({ images, className, interval = 0 }: DotsProps) {
         }}
       />
       <ul
-        class={`carousel justify-center col-span-full gap-2 z-10 row-start-4 ${className}`}
+        class={`carousel absolute bottom-[1.875rem] w-full justify-center col-span-full gap-2 z-10 row-start-4 ${className}`}
       >
         {images?.map((_, index) => (
           <li class="carousel-item">
             <Slider.Dot index={index}>
-              <div class="py-5">
+              <div>
                 <div
                   class="w-3 h-3 group-disabled:opacity-100 opacity-20 rounded-full bg-primary"
                   style={{ animationDuration: `${interval}s` }}
@@ -231,10 +240,10 @@ function Buttons({ className }: ButtonsProps) {
       <div
         class={`flex items-center justify-center z-10 col-start-1 row-start-2 ${className}`}
       >
-        <Slider.PrevButton class="btn btn-circle border-none shadow-md bg-white lg:opacity-60 lg:hover:bg-white lg:hover:opacity-100">
+        <Slider.PrevButton class="btn btn-circle border-none shadow-md bg-primary hover:bg-primary min-h-0 h-[42px] w-[42px]">
           <Icon
-            class="text-primary"
-            size={32}
+            class="text-white"
+            size={17}
             id="LeftArrowFigma"
           />
         </Slider.PrevButton>
@@ -242,10 +251,10 @@ function Buttons({ className }: ButtonsProps) {
       <div
         class={`flex items-center justify-center z-10 col-start-3 row-start-2 ${className}`}
       >
-        <Slider.NextButton class="btn btn-circle border-none shadow-md bg-white lg:opacity-60 lg:hover:bg-white lg:hover:opacity-100">
+        <Slider.NextButton class="btn btn-circle border-none shadow-md bg-primary hover:bg-primary min-h-0 h-[42px] w-[42px]">
           <Icon
-            class="text-primary"
-            size={32}
+            class="text-white"
+            size={17}
             id="RightArrowFigma"
           />
         </Slider.NextButton>
@@ -255,16 +264,17 @@ function Buttons({ className }: ButtonsProps) {
 }
 
 function BannerCarousel(
-  { images, preload, interval, showPaginationArrows, showPaginationDots }:
+  { images, preload, interval, showPaginationArrows, showPaginationDots, advantages }:
     Props,
 ) {
   const id = useId();
+  const idAdvantages = useId();
 
   return (
     <div class="max-w-[112.5rem] m-auto">
       <div
         id={id}
-        class="grid grid-cols-[48px_1fr_48px] sm:grid-cols-[120px_1fr_120px] grid-rows-[1fr_48px_1fr_64px]"
+        class="grid grid-cols-[42px_1fr_42px] sm:grid-cols-[42px_1fr_42px] grid-rows-[1fr_42px_1fr] relative"
       >
         <Slider class="carousel carousel-center w-full col-span-full row-span-full scrollbar-none gap-6">
           {images?.map((image, index) => (
@@ -289,8 +299,21 @@ function BannerCarousel(
         />
         <SliderJS rootId={id} interval={interval && interval * 1e3} infinite />
       </div>
-      <div class="w-full bg-black h-5">
+      {advantages && (
+        <div class="w-full px-8 bg-transparent shadow-md lg:mb-9 lg:py-2">
+          <div class="m-auto max-w-[1220px] grid" id={idAdvantages}>
+            <Slider class="carousel carousel-start col-span-full row-span-full scrollbar-none gap-6">
+              {advantages?.map((adv, index) => (
+                <Slider.Item index={index} class="carousel-item flex items-center justify-center">
+                  <img src={adv.image} alt="Advantage svg" />
+                  <div class="w-[52%] font-quicksand text-sm leading-[1.125rem] ml-[14px] text-[#828282]">{adv.label}</div>
+                </Slider.Item>
+              ))}
+            </Slider>
+            <SliderJS rootId={idAdvantages} itemsPerPage={{[720]: 4, [0]: 1}} interval={interval && interval * 1e3} infinite />
+          </div>
       </div>
+      )}
     </div>
   );
 }
