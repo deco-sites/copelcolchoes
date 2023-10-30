@@ -67,8 +67,8 @@ export interface Banner {
 export interface Props {
   images?: Banner[];
   /**
-     * @title Barra de vantagens
-     */
+   * @title Barra de vantagens
+   */
   advantages?: BannerBarAdvantages[];
   /**
    * @description Check this option when this banner is the biggest image on the screen for image optimizations
@@ -264,8 +264,14 @@ function Buttons({ className }: ButtonsProps) {
 }
 
 function BannerCarousel(
-  { images, preload, interval, showPaginationArrows, showPaginationDots, advantages }:
-    Props,
+  {
+    images,
+    preload,
+    interval,
+    showPaginationArrows,
+    showPaginationDots,
+    advantages,
+  }: Props,
 ) {
   const id = useId();
   const idAdvantages = useId();
@@ -304,15 +310,25 @@ function BannerCarousel(
           <div class="m-auto max-w-[1220px] grid" id={idAdvantages}>
             <Slider class="carousel carousel-start col-span-full row-span-full scrollbar-none gap-6">
               {advantages?.map((adv, index) => (
-                <Slider.Item index={index} class="carousel-item flex items-center justify-center">
+                <Slider.Item
+                  index={index}
+                  class="carousel-item flex items-center justify-center"
+                >
                   <img src={adv.image} alt="Advantage svg" />
-                  <div class="w-[52%] font-quicksand text-sm leading-[1.125rem] ml-[14px] text-[#828282]">{adv.label}</div>
+                  <div class="w-[52%] font-quicksand text-sm leading-[1.125rem] ml-[14px] text-[#828282]">
+                    {adv.label}
+                  </div>
                 </Slider.Item>
               ))}
             </Slider>
-            <SliderJS rootId={idAdvantages} itemsPerPage={{[720]: 4, [0]: 1}} interval={interval && interval * 1e3} infinite />
+            <SliderJS
+              rootId={idAdvantages}
+              itemsPerPage={{ [720]: 4, [0]: 1 }}
+              interval={interval && interval * 1e3}
+              infinite
+            />
           </div>
-      </div>
+        </div>
       )}
     </div>
   );
