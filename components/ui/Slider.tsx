@@ -1,14 +1,15 @@
 import type { ComponentChildren, JSX } from "preact";
 
-function Dot({ index, children }: {
+function Dot({ index, classes, children }: {
   index: number;
+  classes?: string;
   children: ComponentChildren;
 }) {
   return (
     <button
       data-dot={index}
       aria-label={`go to slider item ${index}`}
-      class="focus:outline-none group"
+      class={`focus:outline-none group ${classes}`}
     >
       {children}
     </button>

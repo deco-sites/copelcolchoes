@@ -22,8 +22,6 @@ const urlToLabel = (url: string, searchValue: string) => {
 };
 
 const Suggestions = ({ products, searchValue }: SuggestionsProps) => {
-  // console.log(products);
-
   if (!products) return <></>;
   return (
     <ul class="flex flex-col lg:gap-3">

@@ -33,7 +33,6 @@ function Result({
   page: ProductListingPage;
 }) {
   const { products, filters, breadcrumb, pageInfo, sortOptions } = page;
-  console.log(breadcrumb);
   const categoryName = breadcrumb.numberOfItems > 0
     ? breadcrumb.itemListElement[0].name
     : "";

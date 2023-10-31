@@ -1,15 +1,8 @@
-import {
-  BUTTON_VARIANTS,
-  ButtonVariant,
-} from "$store/components/minicart/Cart.tsx";
-import Avatar from "$store/components/ui/Avatar.tsx";
-import AddToCartButton from "$store/islands/AddToCartButton.tsx";
-import WishlistIcon from "$store/islands/WishlistButton.tsx";
+import { ButtonVariant } from "$store/components/minicart/Cart.tsx";
 import { sendEventOnClick } from "$store/sdk/analytics.tsx";
 import { formatPrice } from "$store/sdk/format.ts";
 import { useOffer } from "$store/sdk/useOffer.ts";
-import { useVariantPossibilities } from "$store/sdk/useVariantPossiblities.ts";
-import type { Product } from "apps/commerce/types.ts";
+import type { Product, PropertyValue } from "apps/commerce/types.ts";
 import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalyticsItem.ts";
 import Image from "deco-sites/std/components/Image.tsx";
 import DiscountBadge from "./DiscountBadge.tsx";
@@ -73,11 +66,30 @@ export const relative = (url: string) => {
   return `${link.pathname}${link.search}`;
 };
 
-const WIDTH = 279;
-const HEIGHT = 270;
+const getMedidas = (prop: PropertyValue[]) => {
+  const larguraArray = prop.find((objeto) => objeto.name === "Largura (cm)");
+  const comprimentoArray = prop.find((objeto) =>
+    objeto.name === "Comprimento (cm)"
+  );
+  const larguraString = larguraArray ? larguraArray.value : undefined;
+  const comprimentoString = comprimentoArray
+    ? comprimentoArray.value
+    : undefined;
+  if (!larguraString || !comprimentoString) return "";
+  return `${larguraString} x ${comprimentoString}`;
+};
+
+const getPara = (prop: PropertyValue[]) => {
+  const paraArray = prop.find((objeto) => objeto.name === "Para");
+  const paraString = paraArray ? paraArray.value : "";
+  return paraString || "";
+};
+
+const WIDTH = 630;
+const HEIGHT = 630;
 
 function ProductCard(
-  { product, preload, itemListName, layout, class: _class }: Props,
+  { product, itemListName, class: _class }: Props,
 ) {
   const {
     url,
@@ -87,13 +99,14 @@ function ProductCard(
     offers,
     isVariantOf,
   } = product;
-  const productGroupID = isVariantOf?.productGroupID;
-  const [front, back] = images ?? [];
-  const { listPrice, price, installment, seller, availability } = useOffer(
+  // deno-lint-ignore no-explicit-any
+  const { additionalProperty } = isVariantOf as any;
+  const medidas = getMedidas(additionalProperty);
+  const para = getPara(additionalProperty);
+  const [front] = images ?? [];
+  const { listPrice, price, installment, availability } = useOffer(
     offers,
   );
-  const possibilities = useVariantPossibilities(product);
-  const variants = Object.entries(Object.values(possibilities)[0] ?? {});
   const clickEvent = {
     name: "select_item" as const,
     params: {
@@ -107,274 +120,121 @@ function ProductCard(
       ],
     },
   };
-  const l = layout;
-  const align =
-    !l?.basics?.contentAlignment || l?.basics?.contentAlignment == "Left"
-      ? "left"
-      : "center";
-  const skuSelector = variants.map(([value, { urls }]) => (
-    <li>
-      <a href={urls[0]}>
-        <Avatar
-          variant={"default"}
-          content={value}
-          active={urls[0] === url}
-        />
-      </a>
-    </li>
-  ));
-
-  const addToCartButtonClassNames = (variant: string | undefined) =>
-    `lg:text-sm font-medium text-xs whitespace-nowrap btn max-md:min-h-12 max-md:h-12 max-md:w-auto max-md:m-auto max-md:px-10 max-md:max-w-full btn-${
-      BUTTON_VARIANTS[variant ?? "primary"]
-    }`;
-
-  const cta = layout?.basics?.ctaMode === "Go to Product Page"
-    ? (
-      <a
-        href={url && relative(url)}
-        aria-label="view product"
-        class={`min-w-[162px] ${
-          addToCartButtonClassNames(layout?.basics?.ctaVariation)
-        }`}
-      >
-        <span class="max-lg:hidden flex font-medium">
-          {l?.basics?.ctaText || "Ver produto"}
-        </span>
-        <span class="lg:hidden flex font-medium">
-          {l?.basics?.mobileCtaText || "Add ao carrinho"}
-        </span>
-      </a>
-    )
-    : l?.basics?.mobileCtaText
-    ? (
-      <>
-        <AddToCartButton
-          quantity={1}
-          name={product.name as string}
-          discount={price && listPrice ? listPrice - price : 0}
-          productGroupId={product.isVariantOf?.productGroupID ?? ""}
-          price={price as number}
-          sellerId={seller as string}
-          skuId={product.sku}
-          label={l?.basics?.ctaText}
-          classes={addToCartButtonClassNames(layout?.basics?.ctaVariation)}
-        />
-      </>
-    )
-    : (
-      <AddToCartButton
-        quantity={1}
-        name={product.name as string}
-        discount={price && listPrice ? listPrice - price : 0}
-        productGroupId={product.isVariantOf?.productGroupID ?? ""}
-        price={price as number}
-        sellerId={seller as string}
-        skuId={product.sku}
-        label={l?.basics?.ctaText}
-        classes={`${addToCartButtonClassNames(layout?.basics?.ctaVariation)}`}
-      />
-    );
 
   const price2: number = price as number;
   const listPrice2: number = listPrice as number;
 
   return (
-    <div
-      class={`card card-compact opacity-100 bg-opacity-100 group w-full p-5 ${
-        align === "center" ? "text-center" : "text-start"
-      } ${
-        l?.onMouseOver?.showCardShadow ? "lg:hover:shadow-lg shadow-black" : ""
-      } ${_class ? `${_class}` : ""}`}
+    <article
+      class="h-full shadow-md rounded-[5px] border border-[#dbdbdb] flex flex-col justify-between hover:border-primary"
       data-deco="view-product"
       id={`product-card-${productID}`}
       {...sendEventOnClick(clickEvent)}
     >
-      <figure
-        class="relative rounded-lg"
-        style={{ aspectRatio: `${WIDTH} / ${HEIGHT}` }}
-      >
-        {/* Wishlist button */}
-        <div
-          class={`absolute top-2 z-10
-          ${
-            l?.elementsPositions?.favoriteIcon === "Top left"
-              ? "left-2"
-              : "right-2"
-          }
-          ${
-            l?.onMouseOver?.showFavoriteIcon
-              ? "lg:hidden lg:group-hover:block"
-              : "lg:hidden"
-          }
-        `}
-        >
-          <WishlistIcon productGroupID={productGroupID} productID={productID} />
+      <div class="relative overflow-hidden px-7 pt-[1.375rem] max-lg:py-7 max-lg:px-6">
+        <div class="relative">
+          <a
+            href={url && relative(url)}
+            aria-label="view product"
+            class="block"
+          >
+            <Image
+              src={front.url!}
+              alt={front.alternateName}
+              width={WIDTH}
+              height={HEIGHT}
+              class="aspect-square object-cover block w-full h-auto"
+            />
+          </a>
         </div>
+        {listPrice2 !== price2 && (
+          <DiscountBadge
+            price={price2}
+            listPrice={listPrice2}
+          />
+        )}
+      </div>
+
+      {/* Prices & Name */}
+      <div class="lg:py-6 lg:px-5 relative overflow-hidden max-lg:pt-0 max-lg:px-5 max-lg:pb-7">
         <a
           href={url && relative(url)}
           aria-label="view product"
-          class="contents relative"
+          class="block"
         >
-          {listPrice2 !== price2 && (
-            <DiscountBadge
-              price={price2}
-              listPrice={listPrice2}
-              label={l?.discount?.label}
-              variant={l?.discount?.variant}
-            />
-          )}
-          <Image
-            src={front.url!}
-            alt={front.alternateName}
-            width={WIDTH}
-            height={HEIGHT}
-            class={`
-              absolute rounded-lg w-full
-              ${
-              (!l?.onMouseOver?.image ||
-                  l?.onMouseOver?.image == "Change image")
-                ? "duration-100 transition-opacity opacity-100 lg:group-hover:opacity-0"
-                : ""
-            }
-              ${
-              l?.onMouseOver?.image == "Zoom image"
-                ? "duration-100 transition-scale scale-100 lg:group-hover:scale-105"
-                : ""
-            }
-            `}
-            sizes="(max-width: 640px) 50vw, 20vw"
-            preload={preload}
-            loading={preload ? "eager" : "lazy"}
-            decoding="async"
-          />
-          {(!l?.onMouseOver?.image ||
-            l?.onMouseOver?.image == "Change image") && (
-            <Image
-              src={back?.url ?? front.url!}
-              alt={back?.alternateName ?? front.alternateName}
-              width={WIDTH}
-              height={HEIGHT}
-              class="absolute transition-opacity rounded-lg w-full opacity-0 lg:group-hover:opacity-100"
-              sizes="(max-width: 640px) 50vw, 20vw"
-              loading="lazy"
-              decoding="async"
-            />
-          )}
+          <h2 class="lg:text-base lg:leading-[1.375rem] text-[#828282] font-medium mb-[1.125rem]">
+            {isVariantOf?.name || name}
+          </h2>
         </a>
-      </figure>
-      {/* Prices & Name */}
-      <div class="flex-auto flex flex-col">
-        {/* SKU Selector */}
-        {(!l?.elementsPositions?.skuSelector ||
-          l?.elementsPositions?.skuSelector === "Top") && (
-          <>
-            {l?.hide.skuSelector ? "" : (
-              <ul
-                class={`flex items-center gap-2 w-full ${
-                  align === "center" ? "justify-center" : "justify-start"
-                } ${l?.onMouseOver?.showSkuSelector ? "lg:hidden" : ""}`}
-              >
-                {skuSelector}
-              </ul>
-            )}
-          </>
-        )}
-
-        {l?.hide.productName && l?.hide.productDescription
-          ? ""
-          : (
-            <div class="flex flex-col gap-0 mt-[15px]">
-              {l?.hide.productName ? "" : (
-                <h2 class="text-sm text-[#4A4B51]">
-                  {isVariantOf?.name || name}
-                </h2>
-              )}
-              {l?.hide.productDescription
-                ? ""
-                : (
-                  <p class="truncate text-sm lg:text-sm text-neutral">
-                    {product.description}
-                  </p>
-                )}
-            </div>
-          )}
-        {availability === "https://schema.org/InStock"
-          ? (
-            <>
-              {l?.hide.allPrices ? "" : (
-                <div class="flex flex-col mt-2">
-                  <div
-                    class={`flex items-center gap-2.5 ${
-                      l?.basics?.oldPriceSize === "Normal" ? "lg:flex-row" : ""
-                    } ${
-                      align === "center" ? "justify-center" : "justify-start"
-                    }`}
-                  >
-                    {(listPrice && price) && listPrice > price && (
-                      <p
-                        class={`line-through text-[#999BA2] text-sm ${
-                          l?.basics?.oldPriceSize === "Normal"
-                            ? "lg:text-xl"
-                            : ""
-                        }`}
-                      >
-                        {formatPrice(listPrice, offers!.priceCurrency!)}
-                      </p>
-                    )}
-                    <p class="text-emphasis font-medium">
-                      {formatPrice(price, offers!.priceCurrency!)}
+        <div>
+          {(medidas.length > 0 || para.length > 0) &&
+            (
+              <div class="flex mb-4 flex-wrap gap-y-2">
+                {medidas.length > 0 && (
+                  <div class="mr-2">
+                    <p class="flex w-fit text-center text-white bg-[#466fa3] text-xs leading-4 py-1 px-[0.625rem] rounded-[10px]">
+                      {medidas}
                     </p>
                   </div>
-                  {l?.hide.installments
-                    ? ""
-                    : (
-                      <div class="text-sm font-normal text-[#4A4B51] mt-[5px]">
-                        ou {installment?.billingDuration}x de ${formatPrice(
-                          installment?.billingIncrement,
-                          offers!.priceCurrency!,
-                        )}
-                      </div>
-                    )}
-                </div>
-              )}
-            </>
-          )
-          : null}
-
-        {/* SKU Selector */}
-        {(l?.elementsPositions?.skuSelector === "Bottom" &&
-          availability === "https://schema.org/InStock") && (
-          <>
-            {l?.hide.skuSelector ? "" : (
-              <ul
-                class={`flex items-center gap-2 w-full ${
-                  align === "center" ? "justify-center" : "justify-start"
-                } ${l?.onMouseOver?.showSkuSelector ? "lg:hidden" : ""}`}
-              >
-                {skuSelector}
-              </ul>
+                )}
+                {para.length > 0 && (
+                  <div>
+                    <p class="flex w-fit text-center text-white bg-[#466fa3] text-xs leading-4 py-1 px-[0.625rem] rounded-[10px]">
+                      {para}
+                    </p>
+                  </div>
+                )}
+              </div>
             )}
-          </>
-        )}
-
+        </div>
+        <div class="flex flex-col">
+          <div class="flex flex-col max-lg:contents">
+            {availability === "https://schema.org/InStock"
+              ? (
+                <>
+                  {(listPrice && price) && listPrice > price && (
+                    <del class="mb-[0.3125rem] text-[#464646] font-light text-[0.875rem] leading-[1.125rem]">
+                      De {formatPrice(listPrice, offers!.priceCurrency!)}
+                    </del>
+                  )}
+                  <ins class="font-bold no-underline text-emphasis text-xl leading-[1.5625rem] mb-[0.3125rem]">
+                    POR: {installment?.billingDuration}x de ${formatPrice(
+                      installment?.billingIncrement,
+                      offers!.priceCurrency!,
+                    )}
+                  </ins>
+                  <span class="text-[#828282] text-[0.8125rem] font-medium">
+                    À vista: {formatPrice(price, offers!.priceCurrency!)}
+                  </span>
+                  <span class="text-[#828282] text-[0.8125rem] font-medium">
+                    10% de desconto no Pix ou Boleto
+                  </span>
+                </>
+              )
+              : null}
+          </div>
+        </div>
         {availability === "https://schema.org/InStock"
           ? (
-            <div
-              class={`w-full flex flex-col mt-[10px]
-          ${
-                l?.onMouseOver?.showSkuSelector || l?.onMouseOver?.showCta
-                  ? "transition-opacity lg:opacity-0 lg:group-hover:opacity-100"
-                  : "lg:hidden"
-              }
-        `}
+            <a
+              href={url && relative(url)}
+              aria-label="view product"
+              class="block"
             >
-              {l?.onMouseOver?.showCta && cta}
-            </div>
+              <div>
+                <button
+                  title="Saiba mais"
+                  type="button"
+                  class="bg-black w-full text-white tracking-normal capitalize mt-[1.875rem] leading-5 rounded-[0.3125rem] p-0 flex justify-center items-center border border-transparent font-bold relative h-[2.625rem]"
+                >
+                  Saiba mais
+                </button>
+              </div>
+            </a>
           )
           : null}
       </div>
-    </div>
+    </article>
   );
 }
 

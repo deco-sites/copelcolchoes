@@ -72,7 +72,6 @@ function ProductDetailsImages(
               <DiscountBadge
                 price={price}
                 listPrice={listPrice}
-                className="lg:left-auto lg:right-0 left-4"
               />
             )
             : null}

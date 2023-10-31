@@ -1,24 +1,17 @@
 type Props = {
   price: number;
   listPrice: number;
-  label?: string;
-  variant?: string;
-  className?: string;
 };
 
-function DiscountBadge({ price, listPrice, label, variant, className }: Props) {
+function DiscountBadge({ price, listPrice }: Props) {
   const discount = Math.round(((listPrice - price) / listPrice) * 100);
 
   return (
-    <div
-      class={`absolute left-0 top-0 lg:p-[10px] flex items-center z-10 ${className}`}
-    >
-      <div
-        class={`text-xs uppercase font-bold border-none px-[10px] py-[7px] rounded-lg flex box-content bg-opacity-100 opacity-100 text-white bg-emphasis bg-${
-          variant ?? "secondary"
-        }`}
-      >
-        {discount}% {label ?? "OFF"}
+    <div class="pointer-events-none absolute top-[1.375rem] bg-black text-left font-bold z-[1] py-1 px-2 max-lg:py-[0.1875rem] max-lg:px-[0.3125rem] max-lg:top-[1.5624rem]">
+      <div class="flex justify-center items-center h-full flex-col text-white">
+        <p class="whitespace-nowrap font-black text-[0.6875rem]">
+          - {discount}%
+        </p>
       </div>
     </div>
   );
