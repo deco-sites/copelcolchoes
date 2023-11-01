@@ -1,6 +1,6 @@
 import Icon from "$store/components/ui/Icon.tsx";
 import type { Image as LiveImage } from "deco-sites/std/components/types.ts";
-import BackToTop from "$store/islands/BackToTopButton.tsx"
+import BackToTop from "$store/islands/BackToTopButton.tsx";
 
 export interface Props {
   phone?: number;
