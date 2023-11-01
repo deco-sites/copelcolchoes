@@ -139,6 +139,8 @@ export default function CategoriesCarroussel(props: Props) {
                         preload={undefined}
                         src={svg.image}
                         alt={svg.alt}
+                        height={69}
+                        width={39}
                         decoding="async"
                       />
                     ))}

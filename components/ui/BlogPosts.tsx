@@ -40,6 +40,8 @@ export default function BlogPosts({
                     src={post.banner}
                     alt={post.alt || "Banner da postagem do blog"}
                     class="object-cover h-full w-full inline-block"
+                    width={374}
+                    height={249}
                   />
                 </div>
               </a>

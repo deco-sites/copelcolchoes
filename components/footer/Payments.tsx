@@ -30,7 +30,7 @@ export default function FooterSectionList({ list, label }: FooterSectionList) {
                   <img
                     loading="lazy"
                     src={item.image}
-                    width={44}
+                    width={32}
                     height={30}
                     alt={item.alt || "footer image"}
                     class="relative w-auto h-[30px] mix-blend-multiply"
@@ -43,7 +43,7 @@ export default function FooterSectionList({ list, label }: FooterSectionList) {
                 <img
                   loading="lazy"
                   src={item.image}
-                  width={44}
+                  width={32}
                   height={30}
                   alt={item.alt || "footer image"}
                   class="relative w-auto h-[30px] mix-blend-multiply"

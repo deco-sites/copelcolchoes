@@ -85,8 +85,8 @@ const getPara = (prop: PropertyValue[]) => {
   return paraString || "";
 };
 
-const WIDTH = 630;
-const HEIGHT = 630;
+const WIDTH = 200;
+const HEIGHT = 200;
 
 function ProductCard(
   { product, itemListName, class: _class }: Props,
