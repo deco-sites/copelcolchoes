@@ -57,22 +57,8 @@ interface InputNewletterProps {
   required: boolean;
 }
 
-function InputNewsletter(
-  { name, placeholder, required, type }: InputNewletterProps,
-) {
-  return (
-    <input
-      name={name}
-      type={type}
-      class="input lg:h-12 h-9 px-5 join-item w-full rounded-full placeholder:text-placeholder outline-none lg:text-base text-xs"
-      placeholder={placeholder}
-      required={required}
-    />
-  );
-}
-
 function Form(props: Props) {
-  const { text, form } = props;
+  const { form } = props;
   const loading = useSignal(false);
   const success = useSignal(false);
 
@@ -85,12 +71,8 @@ function Form(props: Props) {
       const email =
         (e.currentTarget.elements.namedItem("email") as RadioNodeList)?.value;
 
-      let name = "";
-
-      if (form?.name?.show) {
-        name = (e.currentTarget.elements.namedItem("name") as RadioNodeList)
-          ?.value;
-      }
+      const name = 
+        (e.currentTarget.elements.namedItem("name") as RadioNodeList)?.value;
 
       await subscribe({ email, name });
     } finally {
@@ -103,65 +85,53 @@ function Form(props: Props) {
     }
   };
 
-  const emailInput = !form?.email?.show
-    ? (
-      <InputNewsletter
-        name="email"
-        required
-        type="email"
-        placeholder={form?.email?.placeholder || "E-mail"}
-      />
-    )
-    : null;
-
-  const nameInput = !form?.name?.show
-    ? (
-      <InputNewsletter
-        name="name"
-        type="text"
-        placeholder={form?.name?.placeholder || "Nome"}
-        required
-      />
-    )
-    : null;
-
   return (
-    <div class="flex flex-col lg:flex-row items-baseline lg:items-center gap-5 lg:gap-16 py-10 w-full justify-between">
+    <section class="bg-black font-quicksand rounded-[12px] flex w-full lg:h-[8.5625rem] lg:justify-between lg:items-center lg:mb-[2.625rem] lg:px-[2.625rem]">
       <div
-        dangerouslySetInnerHTML={{ __html: text }}
-        class="text-base lg:text-xl text-left text-base-100 lg:max-w-sm max-lg:w-full lg:pr-0 whitespace-nowrap"
-      />
-      {success.value
-        ? (
-          <div class="text-base lg:text-xl text-left text-base-100">
-            E-mail cadastrado com sucesso!
-          </div>
-        )
-        : (
-          <form
-            class="w-full form-control"
-            onSubmit={handleSubmit}
-          >
-            <div class="flex gap-4 w-full lg:flex-row flex-col items-center lg:justify-between justify-center">
-              {nameInput}
-              {emailInput}
-              <button
-                style={{
-                  minWidth: "150px",
-                }}
-                type="submit"
-                class={`capitalize md:ml-5 font-medium btn disabled:loading max-lg:self-start rounded-full join-item btn-${
-                  BUTTON_VARIANTS[form?.button?.variant as string] ||
-                  BUTTON_VARIANTS["primary"]
-                }`}
-                disabled={loading}
-              >
-                {form?.button?.label || "Cadastrar"}
-              </button>
+        class="relative lg:mr-[3.75rem]"
+      >
+        <div class="text-white">
+          <h2 class="font-medium lg:text-[1.75rem] lg:leading-[2.1875rem]">Newsletter</h2>
+          <p class="text-[0.875rem] leading-[1.125rem] mt-3 font-medium">
+            Cadastre seu e-mail para ficar por dentro de
+            <br />nossas promoções e receber descontos
+            <br />exclusivos!
+          </p>
+        </div>
+      </div>
+      <div>
+        {success.value
+          ? (
+            <div class="text-base lg:text-xl text-left text-base-100">
+              E-mail cadastrado com sucesso!
             </div>
-          </form>
-        )}
-    </div>
+          )
+          : (
+            <form
+              onSubmit={handleSubmit}
+            >
+              <div class="flex justify-between items-end flex-1">
+                <div class="flex-1 relative flex flex-col">
+                  <label for="name" class="font-medium text-white text-base inline-block">Nome *</label>
+                  <input id="name" name="name" type="text" class="lg:w-[11.9375rem] lg:mr-[1.875rem] border-none text-sm leading-9 font-normal px-6 h-10 bg-white rounded-[5px]" />
+                </div>
+                <div class="flex-1 relative flex flex-col">
+                <label for="email" class="font-medium text-white text-base inline-block">Email *</label>
+                  <input id="email" name="email" type="text" class="lg:w-[18rem] lg:mr-[1.875rem] border-none text-sm leading-9 font-normal px-6 h-10 bg-white rounded-[5px]" />
+                </div>
+                <button
+                  type="submit"
+                  class="w-[8.1875rem] h-[2.8125rem] bg-secondary border-secondary rounded-[5px] font-semibold text-white"
+                  disabled={loading}
+                  title="Enviar Newsletter"
+                >
+                  {form?.button?.label || "Entrar"}
+                </button>
+              </div>
+            </form>
+          )}
+      </div>
+    </section>
   );
 }
 
