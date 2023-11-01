@@ -92,7 +92,7 @@ function Form(props: Props) {
           <h2 class="font-medium lg:text-[1.75rem] lg:leading-[2.1875rem] max-lg:text-2xl">
             Newsletter
           </h2>
-          <p class="text-[0.875rem] leading-[1.125rem] mt-3 font-medium max-lg:font-base max-lg:mb-6">
+          <p class="text-[0.875rem] leading-[1.125rem] mt-3 font-medium max-lg:text-base max-lg:mb-6">
             Cadastre seu e-mail para ficar por dentro de
             <br />nossas promoções e receber descontos
             <br />exclusivos!
@@ -125,7 +125,7 @@ function Form(props: Props) {
                     class="lg:w-[11.9375rem] lg:mr-[1.875rem] border-none text-sm leading-9 font-normal px-6 h-10 bg-white rounded-[5px] max-lg:w-full"
                   />
                 </div>
-                <div class="flex-1 relative flex flex-col">
+                <div class="flex-1 relative flex flex-col max-lg:w-full">
                   <label
                     for="email"
                     class="font-medium text-white text-base inline-block"
