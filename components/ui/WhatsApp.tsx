@@ -1,5 +1,6 @@
 import Icon from "$store/components/ui/Icon.tsx";
 import type { Image as LiveImage } from "deco-sites/std/components/types.ts";
+import BackToTop from "$store/islands/BackToTopButton.tsx"
 
 export interface Props {
   phone?: number;
@@ -21,9 +22,7 @@ function WhatsApp({ phone, whatsappImage }: Props) {
       >
         <img src={whatsappImage} alt="Whatsapp" class="w-[65%]" />
       </a>
-      <button class="fixed bottom-[6px] right-[25px] z-40 w-[50px] block">
-        <Icon id="BackToTop" size={50} />
-      </button>
+      <BackToTop />
     </>
   );
 }
