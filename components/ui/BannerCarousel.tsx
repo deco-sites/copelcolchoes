@@ -314,7 +314,12 @@ function BannerCarousel(
                   index={index}
                   class="carousel-item flex items-center justify-center"
                 >
-                  <img src={adv.image} alt="Advantage svg" width={38} height={38} />
+                  <img
+                    src={adv.image}
+                    alt="Advantage svg"
+                    width={38}
+                    height={38}
+                  />
                   <div class="w-[52%] font-quicksand text-sm leading-[1.125rem] ml-[14px] text-[#828282]">
                     {adv.label}
                   </div>

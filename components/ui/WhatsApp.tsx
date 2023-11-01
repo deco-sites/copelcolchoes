@@ -20,7 +20,13 @@ function WhatsApp({ phone, whatsappImage }: Props) {
         aria-label="Chat on WhatsApp"
         target="_blank"
       >
-        <img src={whatsappImage} alt="Whatsapp" class="w-[65%]" width={36} height={36} />
+        <img
+          src={whatsappImage}
+          alt="Whatsapp"
+          class="w-[65%]"
+          width={36}
+          height={36}
+        />
       </a>
       <BackToTop />
     </>
