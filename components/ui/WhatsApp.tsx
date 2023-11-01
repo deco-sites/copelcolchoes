@@ -1,7 +1,6 @@
 import Icon from "$store/components/ui/Icon.tsx";
 import type { Image as LiveImage } from "deco-sites/std/components/types.ts";
 
-
 export interface Props {
   phone?: number;
   whatsappImage: LiveImage;
