@@ -17,7 +17,7 @@ export interface Props {
 
 export default function BlogPosts({
   title,
-  blogPost
+  blogPost,
 }: Props) {
   return (
     <section class="py-10 mx-auto max-lg:py-[25px]">
@@ -28,9 +28,19 @@ export default function BlogPosts({
         {blogPost.map((post) => (
           <article class="mx-[5px] max-lg:mx-auto">
             <div>
-              <a href={post.href} target="_blank" rel="noopener noreferrer" class="h-full w-full block">
+              <a
+                href={post.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="h-full w-full block"
+              >
                 <div class="h-full w-full">
-                  <img loading="lazy" src={post.banner} alt={post.alt || "Banner da postagem do blog"} class="object-cover h-full w-full inline-block" />
+                  <img
+                    loading="lazy"
+                    src={post.banner}
+                    alt={post.alt || "Banner da postagem do blog"}
+                    class="object-cover h-full w-full inline-block"
+                  />
                 </div>
               </a>
             </div>
