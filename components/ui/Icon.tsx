@@ -66,7 +66,9 @@ export type AvailableIcons =
   | "RightArrowFigma"
   | "Chat"
   | "Lojas"
-  | "AllCategories";
+  | "WhatsappModal"
+  | "AllCategories"
+  | "BackToTop";
 
 interface Props extends JSX.SVGAttributes<SVGSVGElement> {
   /**

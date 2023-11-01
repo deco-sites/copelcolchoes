@@ -107,10 +107,10 @@ function Footer(
   }: Props,
 ) {
   return (
-    <footer class="">
-      <div class="bg-white flex flex-col">
+    <footer class="container lg:max-w-[80rem] w-full m-auto lg:px-[4rem] px-[1.375rem]">
+      <div class="flex flex-col">
         <div class="flex items-start justify-start gap-5 lg:gap-16 mt-12 max-lg:flex-col">
-          <div class="pt-11 px-8 pb-10 max-lg:w-full bg-[#F7F7F7] rounded-[10px]">
+          <div class="pt-11 px-8 pb-10 max-lg:w-full rounded-[10px]">
             <Icon id="Logo" class={"max-lg:m-auto"} height={79} width={159} />
             {socialNetWorks?.length && (
               <SocialNetWorks socialItems={socialNetWorks} />

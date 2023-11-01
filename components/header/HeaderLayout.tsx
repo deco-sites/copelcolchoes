@@ -87,7 +87,6 @@ function HeaderLayout(
       <Modals
         minicart={minicart}
       />
-      <WhatsApp phone={5511994958667} />
     </header>
   );
 }
