@@ -1,6 +1,17 @@
 import type { JSX } from "preact";
+import { useSignal } from "@preact/signals";
+import Spinner from "$store/components/ui/Spinner.tsx";
+import { Product } from "deco-sites/std/packs/vtex/types.ts";
+import ProductCard from "$store/components/product/SearchHomeProductCard.tsx";
 
+interface SearchResponse {
+  products: Product[];
+  recordsFiltered: number;
+}
 function Form() {
+  const products = useSignal(undefined);
+  const loading = useSignal(false);
+  const slider = useSignal("50");
   const comfortToString = (comfort: string) => {
     const numberComfort = Number(comfort);
     const stringComfort = {
@@ -15,16 +26,27 @@ function Form() {
       numberComfort <= stringComfort[nivel as keyof typeof stringComfort][1]
     );
   };
-  const handleSubmit: JSX.GenericEventHandler<HTMLFormElement> = (e) => {
+  const handleSubmit: JSX.GenericEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     if (e.target === null) return;
     const formData = new FormData(e.target as HTMLFormElement);
     const formProps = Object.fromEntries(formData);
     const { size, type, comfort } = formProps;
+    slider.value = comfort as string;
     const stringComfort = comfortToString(comfort as string);
-    const filters =
-      `filter.para=${size}&filter.tipo-colchao=${type}&filter.firmeza=${stringComfort}`;
-    window.location.href = `/colchoes?${filters}`;
+    const facets =
+      `/category-1/colchoes/para/${size}/tipo-colchao/${type}/firmeza/${stringComfort}`;
+    try {
+      loading.value = true;
+      const response = await fetch(
+        `/api/io/_v/api/intelligent-search/product_search${facets}`,
+      );
+      const json = await response.json();
+      products.value = json;
+    } finally {
+      loading.value = false;
+      console.log(products.value);
+    }
   };
   return (
     <div class="max-w-[1170px] my-[82px] mx-auto bg-black text-white rounded-[12px] py-[29px] px-[42px] w-full max-lg:w-[90%]">
@@ -92,7 +114,7 @@ function Form() {
                   id="comfort"
                   min="0"
                   max="100"
-                  value="50"
+                  value={slider}
                 />
                 <p class="right-0 absolute text-xs font-normal bottom-[-19px]">
                   Extra firme
@@ -101,13 +123,43 @@ function Form() {
             </span>
             <button
               type="submit"
-              class="btn btn-secondary ml-[42px] h-10 w-[150px] rounded-[5px] max-lg:my-0 max-lg:mx-auto"
+              class="btn btn-secondary disabled:bg-secondary disabled:text-white disabled:bg-opacity-70 ml-[42px] h-10 w-[150px] rounded-[5px] max-lg:my-0 max-lg:mx-auto"
+              disabled={loading.value}
             >
-              Buscar
+              {!loading.value ? "Buscar" : <Spinner />}
             </button>
           </div>
         </form>
       </div>
+      {products.value &&
+        (((products.value as SearchResponse).recordsFiltered) === 0
+          ? (
+            <p class="text-center text-[32px] leading-normal mb-5 mt-[56px] font-quicksand max-lg:text-center font-bold">
+              Não encontramos esse tipo de colchão.
+            </p>
+          )
+          : (
+            <>
+              <h4 class="text-[32px] leading-normal mb-5 mt-[56px] font-quicksand max-lg:text-center font-bold">
+                Confira o que separamos para você
+              </h4>
+              <div class={`flex justify-center gap-5`}>
+                {products.value &&
+                  (products.value as SearchResponse).products.map((
+                    product,
+                    index,
+                  ) => (
+                    <>
+                      {index < 4 && (
+                        <div class={index > 0 ? "max-lg:hidden" : ""}>
+                          <ProductCard product={product} />
+                        </div>
+                      )}
+                    </>
+                  ))}
+              </div>
+            </>
+          ))}
     </div>
   );
 }

@@ -136,11 +136,9 @@ export default function CategoriesCarroussel(props: Props) {
                   <div class="w-[150px] h-[150px] flex items-center justify-center rounded-3xl shadow-md hover:border hover:border-primary">
                     {item.svgs.map((svg) => (
                       <img
-                        preload={undefined}
+                        loading="lazy"
                         src={svg.image}
                         alt={svg.alt}
-                        height={69}
-                        width={39}
                         decoding="async"
                       />
                     ))}

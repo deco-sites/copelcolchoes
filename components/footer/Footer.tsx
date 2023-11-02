@@ -76,7 +76,7 @@ function Footer(
     <div class="bg-[#e8ebef] font-quicksand">
       <div class="flex bg-white justify-center text-base p-0 leading-9 relative max-w-7xl my-0 mx-auto max-lg:flex-col max-lg:py-[3.125rem] max-lg:px-[1.1875rem]">
       </div>
-      <footer class="lg:relative lg:z-50">
+      <footer class="lg:relative">
         <div class="flex text-primary lg:justify-between lg:py-16 container lg:max-w-[80rem] w-full m-auto lg:px-[4rem] px-[1.375rem] max-lg:flex-col max-lg:pb-[1.875rem]">
           <div class="flex flex-col w-1/4 max-lg:w-full">
             <div class="flex flex-col mb-[2.0625rem] w-[9.9375rem] max-lg:text-center max-lg:my-6 max-lg:mx-auto">

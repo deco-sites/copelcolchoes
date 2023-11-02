@@ -214,11 +214,11 @@ function Dots({ images, className, interval = 0 }: DotsProps) {
         class={`carousel absolute bottom-[1.875rem] w-full justify-center col-span-full gap-2 z-10 row-start-4 ${className}`}
       >
         {images?.map((_, index) => (
-          <li class="carousel-item">
+          <li class="carousel-item block">
             <Slider.Dot index={index}>
               <div>
                 <div
-                  class="w-3 h-3 group-disabled:opacity-100 opacity-20 rounded-full bg-primary"
+                  class="w-[5px] h-[5px] opacity-50 bg-[#f1f1f1] group-disabled:opacity-100 group-disabled:scale-[2] rounded-full group-disabled:bg-primary"
                   style={{ animationDuration: `${interval}s` }}
                 />
               </div>
@@ -306,7 +306,7 @@ function BannerCarousel(
         <SliderJS rootId={id} interval={interval && interval * 1e3} infinite />
       </div>
       {advantages && (
-        <div class="w-full px-8 bg-transparent shadow-md lg:mb-9 lg:py-2">
+        <div class="w-full px-8 bg-transparent shadow-md lg:mb-9 lg:py-2 max-lg:py-4">
           <div class="m-auto max-w-[1220px] grid" id={idAdvantages}>
             <Slider class="carousel carousel-start col-span-full row-span-full scrollbar-none gap-6">
               {advantages?.map((adv, index) => (
@@ -317,10 +317,9 @@ function BannerCarousel(
                   <img
                     src={adv.image}
                     alt="Advantage svg"
-                    width={38}
-                    height={38}
+                    loading="lazy"
                   />
-                  <div class="w-[52%] font-quicksand text-sm leading-[1.125rem] ml-[14px] text-[#828282]">
+                  <div class="w-[52%] text-sm leading-[1.125rem] ml-[14px] text-[#828282]">
                     {adv.label}
                   </div>
                 </Slider.Item>

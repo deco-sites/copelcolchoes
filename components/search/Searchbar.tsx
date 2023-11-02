@@ -76,12 +76,12 @@ function Searchbar({
       <form
         id="searchbar"
         action={action}
-        class="flex-grow flex gap-3 placeholder-base-200 px-5 py-4 border border-base-200 h-[3.25rem] rounded-md"
+        class="flex-grow flex gap-3 placeholder-base-200 px-5 py-4 h-[3.25rem] rounded-md"
       >
         <input
           ref={searchInputRef}
           id="search-input"
-          class="flex w-full outline-none placeholder:text-neutral placeholder:font-normal pl-2 text-sm placeholder:text-sm text-[#8c9aad]"
+          class="flex w-full outline-none placeholder:text-primary placeholder:font-normal text-sm placeholder:text-sm text-[#8c9aad]"
           name={name}
           defaultValue={query}
           onInput={(e) => {
