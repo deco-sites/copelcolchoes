@@ -1,48 +1,26 @@
-import Icon, { AvailableIcons } from "$store/components/ui/Icon.tsx";
+import Icon from "$store/components/ui/Icon.tsx";
 import type { Image as LiveImage } from "deco-sites/std/components/types.ts";
-import FooterSectionList, { FooterSectionItem } from "./Payments.tsx";
+import { FooterSectionItem } from "./Payments.tsx";
 import SocialNetWorks, { SocialItem } from "./SocialNetWorks.tsx";
 
-export type IconItem = { icon: AvailableIcons };
-export type StringItem = {
+export type Item = {
   label: string;
   href: string;
 };
-
-export type Item = StringItem | IconItem;
 
 export type Section = {
   label: string;
   children: Item[];
 };
 
-const isIcon = (item: Item): item is IconItem =>
-  // deno-lint-ignore no-explicit-any
-  typeof (item as any)?.icon === "string";
-
 function SectionItem({ item }: { item: Item }) {
   return (
-    <span>
-      {isIcon(item)
-        ? (
-          <div class="border border-solid py-3 px-2.5">
-            <Icon
-              id={item.icon}
-              width={25}
-              height={20}
-              strokeWidth={0.01}
-            />
-          </div>
-        )
-        : (
-          <a
-            href={item.href}
-            class="text-sm font-normal text-[#4A4B51] hover:text-primary transition-all duration-500"
-          >
-            {item.label}
-          </a>
-        )}
-    </span>
+    <a
+      href={item.href}
+      class="text-sm leading-4 text-[#8c9aad] font-medium"
+    >
+      {item.label}
+    </a>
   );
 }
 
@@ -71,16 +49,6 @@ export interface Props {
    */
   phone: string;
   /**
-   * @title E-mail
-   */
-  email: string;
-  /**
-   * @title Opening hours
-   * @format html
-   * @default Seg. à Sex. das 09:00h às 18:00h <br /> Sábado das 10:00h às 14:00h
-   */
-  openingHours: string;
-  /**
    * @title Payments
    */
   payments?: FooterSectionItem[];
@@ -98,8 +66,6 @@ function Footer(
   {
     sections = [],
     socialNetWorks,
-    openingHours,
-    email,
     phone,
     payments,
     securities,
@@ -107,74 +73,71 @@ function Footer(
   }: Props,
 ) {
   return (
-    <footer class="container lg:max-w-[80rem] w-full m-auto lg:px-[4rem] px-[1.375rem]">
-      <div class="flex flex-col">
-        <div class="flex items-start justify-start gap-5 lg:gap-16 mt-12 max-lg:flex-col">
-          <div class="pt-11 px-8 pb-10 max-lg:w-full rounded-[10px]">
-            <Icon id="Logo" class={"max-lg:m-auto"} height={79} width={159} />
-            {socialNetWorks?.length && (
-              <SocialNetWorks socialItems={socialNetWorks} />
-            )}
-            <div class="flex items-center gap-2 mt-5">
-              <Icon id="Phone" width={20} height={20} class="text-primary" />
-              <span class="text-primary text-xs font-bold text-left">
-                {phone}
-              </span>
+    <div class="bg-[#e8ebef] font-quicksand">
+      <div class="flex bg-white justify-center text-base p-0 leading-9 relative max-w-7xl my-0 mx-auto max-lg:flex-col max-lg:py-[3.125rem] max-lg:px-[1.1875rem]">
+      </div>
+      <footer class="lg:relative lg:z-50">
+        <div class="flex text-primary lg:justify-between lg:py-16 container lg:max-w-[80rem] w-full m-auto lg:px-[4rem] px-[1.375rem] max-lg:flex-col max-lg:pb-[1.875rem]">
+          <div class="flex flex-col w-1/4 max-lg:w-full">
+            <div class="flex flex-col mb-[2.0625rem] w-[9.9375rem] max-lg:text-center max-lg:my-6 max-lg:mx-auto">
+              <Icon id="Logo" class={"max-lg:m-auto"} height={79} width={159} />
             </div>
-            <div class="flex items-center gap-2 mt-3">
-              <Icon id="Email" width={20} height={20} class="text-primary" />
-              <span class="text-primary text-xs font-bold text-left">
-                {email}
-              </span>
+            <div class="flex flex-col max-lg:mx-auto">
+              <div>
+                <div class="flex flex-col mx-auto my-0 max-lg:text-center">
+                  <span class="text-base uppercase font-bold mb-3">
+                    Televendas
+                  </span>
+                  <div class="lg:mb-4 text-xl font-black">{phone}</div>
+                  <p class="lg:mb-4 text-sm leading-6 text-[##8c9aad]">
+                    Segunda à sexta das{" "}
+                    <strong class="text-primary">8h às 18h</strong>
+                    <br />
+                    Sábado de <strong class="text-primary">10h às 15h</strong>
+                    <br />
+                    Domingo <strong class="text-primary">fechado</strong>
+                    <br></br>
+                  </p>
+                </div>
+                {socialNetWorks?.length && (
+                  <SocialNetWorks socialItems={socialNetWorks} />
+                )}
+              </div>
             </div>
-            <span
-              class="text-base-800 text-left text-xs font-normal mt-3 block leading-6"
-              dangerouslySetInnerHTML={{
-                __html: openingHours,
-              }}
-            />
           </div>
-          <div class="container w-full flex flex-col">
-            <ul class="max-lg:hidden flex flex-row gap-[25%] justify-start">
+          <div>
+            <ul class="max-lg:hidden flex justify-between lg:gap-[3.375rem]">
               {sections.map((section) => (
                 <li>
-                  <div>
-                    <span class="text-base text-primary font-medium">
-                      {section.label}
-                    </span>
-
-                    <ul
-                      class={`flex ${
-                        isIcon(section.children[0]) ? "flex-row" : "flex-col"
-                      } gap-1 pt-5 flex-wrap`}
-                    >
-                      {section.children.map((item) => (
-                        <li class="leading-normal">
-                          <SectionItem item={item} />
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
+                  <span class="font-bold text-base uppercase mb-4 block">
+                    {section.label}
+                  </span>
+                  <ul class="flex flex-col">
+                    {section.children.map((item) => (
+                      <li class="mb-4">
+                        <SectionItem item={item} />
+                      </li>
+                    ))}
+                  </ul>
                 </li>
               ))}
             </ul>
-
             <div
-              class="max-lg:flex hidden flex-col items-center justify-center relative"
+              class="max-lg:flex hidden flex-col items-center justify-center relative mt-5 px-5"
               id="accordion-container--footer"
             >
               {sections.map((section) => (
-                <div class="collapse collapse-plus w-full rounded-none">
+                <div class="collapse collapse-arrow w-full rounded-none">
                   <input
                     type="checkbox"
                     name="my-accordion-mobile--footer"
                     class="absolute left-0 w-full top-0"
                   />
-                  <div class="collapse-title border-b border-[##D2D1D7] py-2.5 text-base-content font-medium pl-0 flex items-center justify-between pr-0">
+                  <div class="collapse-title border-b border-[#dbdbdb] py-2.5 text-primary font-bold pl-0 flex items-center justify-between pr-0 uppercase">
                     {section.label}
                   </div>
                   <div class="collapse-content pl-0">
-                    <ul class="pt-5 pb-2">
+                    <ul>
                       {section.children.map((item) => (
                         <li class="leading-normal py-1">
                           <SectionItem item={item} />
@@ -185,40 +148,96 @@ function Footer(
                 </div>
               ))}
             </div>
-
-            <div class="max-md:mt-5 mt-16 flex items-end w-full justify-between max-lg:flex-col max-lg:gap-7">
-              <div class="flex items-center justify-between gap-8 w-full max-md:flex-col flex-row max-md:items-start">
-                <FooterSectionList label="Pagamentos" list={payments} />
-                <FooterSectionList label="Segurança" list={securities} />
-                <ul class="flex self-center md:self-end items-center max-lg:justify-center gap-8">
-                  {poweredby?.map((item) => (
-                    <li class="flex items-center gap-2">
-                      <span class="text-neutral text-[10px]">
-                        {item.label}
+          </div>
+        </div>
+        <div class="bg-white">
+          <div class="lg:flex lg:w-full lg:justify-between lg:py-8 container lg:max-w-[80rem] w-full m-auto lg:px-[4rem] px-[1.375rem] max-lg:py-5">
+            <ul class="max-lg:my-[2.8125rem]">
+              <div class="text-base font-medium text-primary mb-4">
+                Pagamento
+              </div>
+              <div class="mb-[3.125rem] w-[359px] flex max-lg:w-full max-lg:grid max-lg:grid-cols-7 max-lg:my-0 max-lg:mx-auto max-lg:gap-y-[0.3125rem] max-lg:gap-x-[0.9375rem]">
+                {payments &&
+                  payments.map((item) => (
+                    <li class="lg:w-[3.125rem] mr-[0.3125rem] mb-4">
+                      <span>
+                        <img
+                          loading="lazy"
+                          src={item.image}
+                          width={34}
+                          height={25}
+                          alt={item.alt || "footer image"}
+                          class="h-auto w-full inline-block align-middle mix-blend-multiply"
+                        />
                       </span>
-                      {item.images.map((image) => (
-                        <>
-                          <a href={image.link}>
-                            <img
-                              src={image.image}
-                              alt={image.alt}
-                              width={89}
-                              height={20}
-                              target="_blank"
-                              class="w-auto h-auto"
-                            />
-                          </a>
-                        </>
-                      ))}
                     </li>
                   ))}
-                </ul>
+              </div>
+            </ul>
+            <ul class="max-lg:my-6">
+              <div class="text-base font-medium text-primary mb-4">
+                Certificados e Segurança
+              </div>
+              <div class="flex gap-5 max-lg:mx-auto">
+                <li class="w-[3.8125rem]"></li>
+                {securities &&
+                  securities.map((item) => (
+                    <li class="w-[3.8125rem] flex items-center">
+                      <span>
+                        <a href={item.href || "#"} class="block">
+                          <img
+                            loading="lazy"
+                            src={item.image}
+                            width={61}
+                            alt={item.alt || "footer image"}
+                            class="h-auto w-full inline-block align-middle mix-blend-multiply"
+                          />
+                        </a>
+                      </span>
+                    </li>
+                  ))}
+              </div>
+            </ul>
+            <div class="max-lg:mt-[1.4375rem]">
+              <div class="flex flex-col max-lg:my-8">
+                <span class="block text-base mb-4 font-medium text-primary">
+                  Desenvolvimento
+                </span>
+                <div class="flex items-center gap-5">
+                  {poweredby?.map((item) => (
+                    item.images.map((image) => (
+                      <a href={image.link}>
+                        <img
+                          src={image.image}
+                          alt={image.alt}
+                          width={89}
+                          height={20}
+                          target="_blank"
+                          class="w-auto h-auto"
+                        />
+                      </a>
+                    ))
+                  ))}
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </footer>
+        <div class="bg-white">
+          <div class="lg:w-full px-8 lg:px-52 lg:pb-[3.4375rem] max-w-7xl mx-auto max-lg:pb-[1.25rem]">
+            <p class="text-xs leading-[0.9375rem] text-center w-full font-medium text-[#8c9aad]">
+              <span>
+                Copyright © Copel Colchões 2010 - Todos os direitos reservados.
+                CONFORTO REDE COMERCIAL DE COLCHÕES LTDA - CNPJ:
+                61.522.850/0112-60 Rodovia Vice Prefeito Hermenegildo Tonolli,
+                3049 - São Roque da Chave - Itupeva - SP 13295-000 - Tel.: (11)
+                3995-3950 - atendimento@copelcolchoes.com.br
+              </span>
+            </p>
+          </div>
+        </div>
+      </footer>
+    </div>
   );
 }
 

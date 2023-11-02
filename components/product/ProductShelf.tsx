@@ -103,7 +103,7 @@ function ProductShelf({
           {products?.map((product, index) => (
             <Slider.Item
               index={index}
-              class="carousel-item h-auto"
+              class="carousel-item h-auto w-[264px]"
             >
               <ProductCard
                 product={product}
