@@ -20,8 +20,8 @@ export interface Props {
 
   title?: string;
   seeMore?: {
-    url: string;
-    label: string;
+    url?: string;
+    label?: string;
   };
   layout?: {
     headerAlignment?: "center" | "left";
