@@ -158,6 +158,12 @@ function Form() {
                     </>
                   ))}
               </div>
+              <a
+                href="/colchoes"
+                class="block underline mt-[32px] font-medium text-center text-white font-quicksand"
+              >
+                Ver mais produtos
+              </a>
             </>
           ))}
     </div>
