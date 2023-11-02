@@ -185,7 +185,7 @@ function ProductShelf({
           )}
         />
       </div>
-      {seeMore
+      {seeMore && seeMore.label
         ? (
           <span class="my-5 mx-auto p-[0.625rem] bg-white border border-primary text-primary text-[0.9375rem] rounded-[5px] font-bold text-center block w-[14.6875rem]">
             <a href={seeMore.url}>
