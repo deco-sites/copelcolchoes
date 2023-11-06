@@ -10,9 +10,13 @@ function Breadcrumb({ class: _class, itemListElement = [] }: Props) {
 
   return (
     <div
-      class={`${_class} mb-[3.125rem] max-lg:mb-8 ${items.length <= 1 ? "h-0 p-0" : "pt-5"}`}
+      class={`${_class} mb-[3.125rem] max-lg:mb-8 ${
+        items.length <= 1 ? "h-0 p-0" : "pt-5"
+      }`}
     >
-      <ul class={`flex flex-wrap text-primary font-quicksand text-sm font-medium capitalize`}>
+      <ul
+        class={`flex flex-wrap text-primary font-quicksand text-sm font-medium capitalize`}
+      >
         {items
           .filter(({ name, item }) => name && item)
           .map(({ name, item }, index) => {

@@ -29,7 +29,9 @@ function CategoryText(
   const { html } = category;
 
   return (
-    <div class={`container lg:max-w-[80rem] w-full m-auto lg:px-[4rem] px-[1.375rem] font-quicksand mt-[1.875rem] mb-[3.125rem] max-lg:mb-8`}>
+    <div
+      class={`container lg:max-w-[80rem] w-full m-auto lg:px-[4rem] px-[1.375rem] font-quicksand mt-[1.875rem] mb-[3.125rem] max-lg:mb-8`}
+    >
       <h1 class="text-primary text-[1.75rem] mb-6 font-bold">
         {categoryText}
       </h1>
