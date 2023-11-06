@@ -151,7 +151,7 @@ function Filters({ filters, category = "" }: Props) {
   };
   return (
     <div class="w-[18.25rem] text-primary font-quicksand">
-      <div class="flex text-center border-b-2 border-[#dbdbdb]">
+      <div class="flex text-center border-b-2 border-[#dbdbdb] max-lg:hidden">
         <p class="text-xl font-semibold mb-5">Filtrar</p>
       </div>
       <div class="py-9">
@@ -173,7 +173,7 @@ function Filters({ filters, category = "" }: Props) {
                 {selectedFilters.map((filter) => (
                   <a
                     href={filter.url}
-                    class="block text-sm bg-black text-white py-2 px-3 rounded-[5px] mr-[0.375rem] mb-6 cursor-pointer appearance-none"
+                    class="block text-sm bg-black max-lg:bg-secondary text-white py-2 px-3 rounded-[5px] mr-[0.375rem] mb-6 cursor-pointer appearance-none"
                   >
                     {filter.label}
                     <Icon
