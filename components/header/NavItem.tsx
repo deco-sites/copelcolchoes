@@ -106,7 +106,7 @@ function NavItem({ item }: { item: INavItem }) {
         class={`py-3 text-center relative after:absolute after:transition-all after:duration-150 after:-bottom-1 after:left-0 after:z-30 group-hover:after:opacity-100 after:w-full after:opacity-0 after:h-1 after:bg-secondary`}
       >
         <span
-          class={`relative transition-all font-bold duration-300  ${
+          class={`relative transition-all font-bold duration-300 leading-[0.03125rem] ${
             highlighted
               ? "text-secondary group-hover:text-primary"
               : "text-primary group-hover:text-primary-focus"

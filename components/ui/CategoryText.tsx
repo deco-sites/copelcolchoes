@@ -3,15 +3,6 @@ import type { SectionProps } from "$live/types.ts";
 import type { LoaderReturnType } from "$live/types.ts";
 import type { ProductListingPage } from "apps/commerce/types.ts";
 
-export type TextAlign = "Left" | "Center" | "Right" | "Justify";
-
-export const TEXT_ALIGMENT: Record<TextAlign, string> = {
-  "Left": "text-left",
-  "Center": "text-center",
-  "Right": "text-right",
-  "Justify": "text-justify",
-};
-
 export interface Category {
   /** @description RegExp to enable this text category on the current URL. Use /feminino/* to display this text category on feminino category  */
   matcher: string;
@@ -22,7 +13,6 @@ export interface Category {
    * @format html
    */
   html?: string;
-  textAlign?: TextAlign;
 }
 
 function CategoryText(
@@ -36,20 +26,18 @@ function CategoryText(
     ?.itemListElement[category?.page?.breadcrumb?.itemListElement.length - 1]
     ?.name;
 
-  const { html, textAlign } = category;
-
-  const textAlignment = TEXT_ALIGMENT[textAlign ? textAlign : "Center"];
+  const { html } = category;
 
   return (
-    <div class={`container ${textAlignment}`}>
-      <h3 class="text-secondary max-w-5xl m-auto font-normal text-2xl mb-5">
+    <div class={`container lg:max-w-[80rem] w-full m-auto lg:px-[4rem] px-[1.375rem] font-quicksand mt-[1.875rem] mb-[3.125rem] max-lg:mb-8`}>
+      <h1 class="text-primary text-[1.75rem] mb-6 font-bold">
         {categoryText}
-      </h3>
+      </h1>
       {html
         ? (
           <div
             dangerouslySetInnerHTML={{ __html: html }}
-            class="text-neutral font-normal text-sm max-w-5xl m-auto pb-12"
+            class="text-[#828282] text-[1rem] leading-7 font-medium"
           />
         )
         : null}

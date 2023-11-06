@@ -25,7 +25,7 @@ function ProductCard(
 
   return (
     <article
-      class="h-full w-[255px] shadow-md rounded-[5px] border border-[#dbdbdb] flex flex-col justify-between hover:border-primary bg-white flex-1"
+      class="h-full w-[255px] font-quicksand shadow-md rounded-[5px] border border-[#dbdbdb] flex flex-col justify-between hover:border-primary bg-white flex-1"
       data-deco="view-product"
       id={`product-card-${productId}`}
     >
@@ -49,7 +49,7 @@ function ProductCard(
           <DiscountBadge
             price={price2}
             listPrice={listPrice2}
-            className="bg-primary"
+            className="bg-primary font-quicksand"
           />
         )}
       </div>
@@ -61,23 +61,23 @@ function ProductCard(
           aria-label="view product"
           class="block"
         >
-          <h2 class="lg:text-base lg:leading-[1.375rem] text-[#828282] font-medium mb-[1.125rem]">
+          <h2 class="lg:text-base lg:leading-[1.375rem] text-[#828282] font-medium mb-[1.125rem] font-quicksand">
             {nameComplete}
           </h2>
         </a>
         <div class="flex mb-4">
-          <span class="flex w-fit text-center text-white bg-[#466fa3] text-xs leading-4 py-1 px-[0.625rem] rounded-[10px]">
+          <span class="flex w-fit text-center text-white bg-[#466fa3] text-xs leading-4 py-1 px-[0.625rem] rounded-[10px] font-quicksand">
             {name}
           </span>
         </div>
         <div class="flex flex-col">
-          <div class="flex flex-col max-lg:contents">
+          <div class="flex flex-col max-lg:contents font-quicksand">
             {(listPrice && price) && listPrice > price && (
               <del class="mb-[0.3125rem] text-[#464646] font-light text-[0.875rem] leading-[1.125rem]">
                 De {formatPrice(listPrice)}
               </del>
             )}
-            <ins class="font-bold no-underline text-emphasis text-xl leading-[1.5625rem] mb-[0.3125rem]">
+            <ins class="font-bold no-underline text-secondary text-xl leading-[1.5625rem] mb-[0.3125rem]">
               POR: {formatPrice(price)}
             </ins>
           </div>
@@ -91,7 +91,7 @@ function ProductCard(
             <button
               title="Comprar"
               type="button"
-              class="bg-primary w-full text-white tracking-normal capitalize mt-[1.875rem] leading-5 rounded-[0.3125rem] p-0 flex justify-center items-center border border-transparent font-bold relative h-[2.625rem]"
+              class="bg-primary font-quicksand w-full text-white tracking-normal capitalize mt-[1.875rem] leading-5 rounded-[0.3125rem] p-0 flex justify-center items-center border border-transparent font-bold relative h-[2.625rem]"
             >
               Comprar
             </button>

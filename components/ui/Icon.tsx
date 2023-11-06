@@ -68,6 +68,8 @@ export type AvailableIcons =
   | "Lojas"
   | "WhatsappModal"
   | "AllCategories"
+  | "DeleteFilter"
+  | "CheckFilter"
   | "BackToTop";
 
 interface Props extends JSX.SVGAttributes<SVGSVGElement> {

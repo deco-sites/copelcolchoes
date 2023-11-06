@@ -126,7 +126,7 @@ function ProductCard(
 
   return (
     <article
-      class="h-full shadow-md rounded-[5px] border border-[#dbdbdb] flex flex-col justify-between hover:border-primary"
+      class="h-full font-quicksand shadow-md rounded-[5px] border border-[#dbdbdb] flex flex-col justify-between hover:border-primary"
       data-deco="view-product"
       id={`product-card-${productID}`}
       {...sendEventOnClick(clickEvent)}
@@ -193,20 +193,20 @@ function ProductCard(
               ? (
                 <>
                   {(listPrice && price) && listPrice > price && (
-                    <del class="mb-[0.3125rem] text-[#464646] font-light text-[0.875rem] leading-[1.125rem]">
+                    <del class="mb-[0.3125rem] text-[#464646] font-light text-[0.875rem] leading-[1.125rem] font-quicksand">
                       De {formatPrice(listPrice, offers!.priceCurrency!)}
                     </del>
                   )}
-                  <ins class="font-bold no-underline text-emphasis text-xl leading-[1.5625rem] mb-[0.3125rem]">
+                  <ins class="font-bold no-underline text-secondary text-xl leading-[1.5625rem] mb-[0.3125rem] font-quicksand">
                     POR: {installment?.billingDuration}x de ${formatPrice(
                       installment?.billingIncrement,
                       offers!.priceCurrency!,
                     )}
                   </ins>
-                  <span class="text-[#828282] text-[0.8125rem] font-medium">
+                  <span class="text-[#828282] text-[0.8125rem] font-medium font-quicksand">
                     À vista: {formatPrice(price, offers!.priceCurrency!)}
                   </span>
-                  <span class="text-[#828282] text-[0.8125rem] font-medium">
+                  <span class="text-[#828282] text-[0.8125rem] font-medium font-quicksand">
                     10% de desconto no Pix ou Boleto
                   </span>
                 </>
