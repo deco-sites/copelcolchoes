@@ -39,7 +39,7 @@ function Result({
       Exibindo 12 resultados
     </h6>
   );
-  console.log(sortOptions)
+  console.log(sortOptions);
 
   return (
     <>

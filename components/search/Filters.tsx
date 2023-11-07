@@ -37,9 +37,7 @@ function ValueItem({ url, selected, label, quantity }: FilterToggleValue) {
           }`}
         >
           {label}
-          {quantity > 0 && (
-            <span class="ml-1">({quantity})</span>
-          )}
+          {quantity > 0 && <span class="ml-1">({quantity})</span>}
         </span>
       </a>
     </li>

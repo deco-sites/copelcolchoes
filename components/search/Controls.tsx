@@ -41,15 +41,15 @@ function SearchControls(
         />
       </Button>
       {sortOptions.length > 0
-      ? (
-        <label class="flex gap-[20px] w-1/2 lg:w-auto items-center lg:hidden">
-          <span class="text-[#4A4B51] text-sm max-lg:hidden whitespace-nowrap lg:inline">
-            Ordenar
-          </span>
-          <Sort sortOptions={sortOptions} />
-        </label>
-      )
-      : null}
+        ? (
+          <label class="flex gap-[20px] w-1/2 lg:w-auto items-center lg:hidden">
+            <span class="text-[#4A4B51] text-sm max-lg:hidden whitespace-nowrap lg:inline">
+              Ordenar
+            </span>
+            <Sort sortOptions={sortOptions} />
+          </label>
+        )
+        : null}
 
       <Modal
         showHeader

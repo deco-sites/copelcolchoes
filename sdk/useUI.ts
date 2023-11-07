@@ -10,7 +10,7 @@ const displayMenu = signal(false);
 const displaySearchbar = signal(false);
 const displayBuyWarning = signal(false);
 const displayTopBar = signal(true);
-const searchResultCols = signal({mobile: 1, desktop: 2})
+const searchResultCols = signal({ mobile: 1, desktop: 2 });
 
 const state = {
   displayCart,
@@ -18,7 +18,7 @@ const state = {
   displaySearchbar,
   displayBuyWarning,
   displayTopBar,
-  searchResultCols
+  searchResultCols,
 };
 
 export const useUI = () => state;

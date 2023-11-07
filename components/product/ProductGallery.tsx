@@ -1,6 +1,6 @@
 import { Product } from "apps/commerce/types.ts";
 import { computed } from "@preact/signals";
-import { gridColsSignal } from "$store/components/search/SearchResultsGridChoice.tsx"
+import { gridColsSignal } from "$store/components/search/SearchResultsGridChoice.tsx";
 
 import ProductCard from "./ProductCard.tsx";
 
@@ -11,7 +11,9 @@ export interface Props {
 function ProductGallery({ products }: Props) {
   const gridCols = computed(() => gridColsSignal.value);
   return (
-    <div class={`grid grid-cols-${gridCols.value.mobile} gap-2 items-center lg:grid-cols-${gridCols.value.desktop} lg:gap-[30px]`}>
+    <div
+      class={`grid grid-cols-${gridCols.value.mobile} gap-2 items-center lg:grid-cols-${gridCols.value.desktop} lg:gap-[30px]`}
+    >
       {products?.map((product, index) => (
         <ProductCard
           product={product}

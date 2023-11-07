@@ -1,1 +1,1 @@
-export { default } from '$store/components/product/ProductGallery.tsx'
+export { default } from "$store/components/product/ProductGallery.tsx";
