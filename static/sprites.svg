@@ -484,4 +484,10 @@
     <symbol id="CheckFilter" xmlns="http://www.w3.org/2000/svg" width="12.176" height="11.52" viewBox="0 0 12.176 11.52">
         <path id="Caminho_7098" data-name="Caminho 7098" d="M5.119,9.263,9.55,13.854,15.2,4.585" transform="translate(-4.058 -3.554)" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="1.5"/>
     </symbol>
+    <symbol id="BlackFriday" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none">
+        <path d="M6.6 1.722a2 2 0 0 1 2.8 0l.235.23a2 2 0 0 0 1.38.572l.33.003a2 2 0 0 1 1.979 1.98l.003.33a2 2 0 0 0 .571 1.378l.231.236a2 2 0 0 1 0 2.8l-.23.235a2 2 0 0 0-.572 1.38l-.003.33a2 2 0 0 1-1.98 1.979l-.33.003a2 2 0 0 0-1.379.571l-.236.231a2 2 0 0 1-2.798 0l-.236-.231a2 2 0 0 0-1.38-.571l-.33-.004a2 2 0 0 1-1.979-1.979l-.003-.33a2 2 0 0 0-.571-1.379L1.87 9.25a2 2 0 0 1 0-2.799l.23-.236a2 2 0 0 0 .572-1.378l.003-.33a2 2 0 0 1 1.98-1.98l.33-.003a2 2 0 0 0 1.379-.571l.236-.231z" stroke="#fff" stroke-width="1.2"></path>
+        <path d="M5.75 10.1l4.5-4.5" stroke="#fff" stroke-width="1.2" stroke-linecap="round"></path>
+        <circle cx="6.125" cy="5.976" r="1.125" stroke="#fff" stroke-width="1.2"></circle>
+        <circle cx="9.875" cy="9.726" r="1.125" stroke="#fff" stroke-width="1.2"></circle>
+    </symbol>
 </svg>
