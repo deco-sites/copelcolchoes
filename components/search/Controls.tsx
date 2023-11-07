@@ -4,6 +4,7 @@ import Icon from "$store/components/ui/Icon.tsx";
 import Modal from "$store/components/ui/Modal.tsx";
 import { useSignal } from "@preact/signals";
 import type { ProductListingPage } from "apps/commerce/types.ts";
+import Sort from "$store/islands/Sort.tsx";
 
 type Props =
   & Pick<
@@ -15,7 +16,7 @@ type Props =
   };
 
 function SearchControls(
-  { filters, displayFilter, breadcrumb }: Props,
+  { filters, sortOptions, displayFilter, breadcrumb }: Props,
 ) {
   const open = useSignal(false);
   const categoryName = breadcrumb.numberOfItems > 0
@@ -39,6 +40,16 @@ function SearchControls(
           class="text-primary"
         />
       </Button>
+      {sortOptions.length > 0
+      ? (
+        <label class="flex gap-[20px] w-1/2 lg:w-auto items-center lg:hidden">
+          <span class="text-[#4A4B51] text-sm max-lg:hidden whitespace-nowrap lg:inline">
+            Ordenar
+          </span>
+          <Sort sortOptions={sortOptions} />
+        </label>
+      )
+      : null}
 
       <Modal
         showHeader

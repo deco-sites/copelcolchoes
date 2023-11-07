@@ -53,7 +53,7 @@ function Sort({ sortOptions }: Props) {
               <span class="text-base-content lg:hidden font-bold tracking-[1px]">
                 Ordenar
               </span>
-              <span class="max-lg:hidden">Selecionar</span>
+              <span class="max-lg:hidden">Mais vendidos</span>
             </>
           )}
         <Icon

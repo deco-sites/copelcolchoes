@@ -108,7 +108,6 @@ function ProductCard(
   const [front] = images ?? [];
   const bestOferta = additionalProperty &&
     additionalProperty.some((prop) => prop.propertyID === "244");
-  console.log(bestOferta);
   const { listPrice, price, installment, availability } = useOffer(
     offers,
   );
