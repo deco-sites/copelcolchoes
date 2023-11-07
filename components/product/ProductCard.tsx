@@ -99,14 +99,15 @@ function ProductCard(
     image: images,
     offers,
     isVariantOf,
-    additionalProperty
+    additionalProperty,
   } = product;
   // deno-lint-ignore no-explicit-any
   const { additionalProperty: additionalPropertyVariant } = isVariantOf as any;
   const medidas = getMedidas(additionalPropertyVariant);
   const para = getPara(additionalPropertyVariant);
   const [front] = images ?? [];
-  const bestOferta = additionalProperty && additionalProperty.some(prop => prop.propertyID === "244");
+  const bestOferta = additionalProperty &&
+    additionalProperty.some((prop) => prop.propertyID === "244");
   console.log(bestOferta);
   const { listPrice, price, installment, availability } = useOffer(
     offers,
@@ -193,13 +194,19 @@ function ProductCard(
           {bestOferta && (
             <div class="mb-[0.625rem]">
               <div class="bg-black rounded-[5px] flex items-center justify-center py-[0.6875rem] px-[0.625rem] w-fit uppercase">
-                <Icon id="BlackFriday" size={16} class="w-[0.9375rem] mr-[0.3125rem]" />
-                <p class="flex text-center font-quicksand text-white text-[0.75rem] leading-4 font-bold">Black Friday</p>
+                <Icon
+                  id="BlackFriday"
+                  size={16}
+                  class="w-[0.9375rem] mr-[0.3125rem]"
+                />
+                <p class="flex text-center font-quicksand text-white text-[0.75rem] leading-4 font-bold">
+                  Black Friday
+                </p>
               </div>
             </div>
           )}
         </div>
-        
+
         <div class="flex flex-col">
           <div class="flex flex-col max-lg:contents">
             {availability === "https://schema.org/InStock"
