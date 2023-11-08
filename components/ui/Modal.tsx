@@ -77,7 +77,7 @@ const Modal = ({
     <dialog
       {...props}
       ref={ref}
-      class={`backdrop:bg-black backdrop:opacity-80 bg-transparent p-0 m-0 max-w-[87.5%] w-full max-h-full h-full backdrop-opacity-50 lg:max-w-[33%] ${
+      class={`backdrop:bg-black backdrop:opacity-80 bg-transparent p-0 m-0 max-w-full w-full max-h-full h-full backdrop-opacity-50 lg:max-w-[33%] ${
         dialogStyles[mode]
       } ${props.class ?? ""}`}
       onClick={(e) =>
@@ -94,30 +94,28 @@ const Modal = ({
         >
           {showHeader && (
             <header
-              class={`mx-5 mt-4 mb-[10.5px] flex ${
+              class={`w-full justify-between shadow-lg flex font-quicksand items-center ${
                 invertCloseIcon ? "flex-row-reverse" : ""
-              } items-center justify-between border-solid border-b-[1px] border-[#F7F7F7] lg:mx-10`}
+              } px-5 py-4`}
             >
-              <h1 className="flex items-center justify-between gap-1">
-                <span class="text-base-content lg:text-[24px] text-[19px]">
-                  {title}
-                </span>
-              </h1>
+              <div class="text-xl font-bold text-primary">
+                {title}
+              </div>
               <Button
-                class="btn btn-ghost p-0 flex justify-center w-12 h-4"
+                class="btn btn-ghost p-0 flex justify-center min-h-0 max-h-4"
                 onClick={onClose}
               >
                 <Icon
-                  class="text-base-content"
-                  id={closeIcon || "XMark"}
-                  width={25}
-                  height={25}
-                  strokeWidth={2}
+                  class="text-primary"
+                  id={closeIcon || "XMarkModal"}
+                  width={16}
+                  height={14}
+                  strokeWidth={1}
                 />
               </Button>
             </header>
           )}
-          <div class="flex-grow flex flex-col w-full">
+          <div class="flex-grow flex flex-col w-full overflow-auto">
             {loading === "lazy" ? lazy.value && children : children}
           </div>
         </div>

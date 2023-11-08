@@ -24,28 +24,26 @@ function SearchControls(
     : "";
   return (
     <>
-      <Button
-        class={`btn justify-between w-1/2 lg:w-48 btn-sm font-normal max-lg:font-bold max-lg:tracking-[1px] max-lg:text-primary text-base-200 h-[34px] border-2 border-base-200 bg-white hover:bg-white ${
+      <button
+        class={`bg-primary border border-primary w-[98px] text-white font-quicksand mr-[3.125rem] p-3 rounded-[5px] font-medium mb-11 flex ${
           displayFilter ? "" : "lg:hidden"
         }`}
         onClick={() => {
           open.value = true;
         }}
       >
-        Filtrar
-        <Icon
-          id="Plus"
-          size={20}
-          strokeWidth={2}
-          class="text-primary"
-        />
-      </Button>
+        <span class="font-medium flex items-center">
+          Filtrar
+          <Icon
+            id="ChevronDown"
+            size={16}
+            class="text-white ml-[0.625rem]"
+          />
+        </span>
+      </button>
       {sortOptions.length > 0
         ? (
-          <label class="flex gap-[20px] w-1/2 lg:w-auto items-center lg:hidden">
-            <span class="text-[#4A4B51] text-sm max-lg:hidden whitespace-nowrap lg:inline">
-              Ordenar
-            </span>
+          <label class="flex gap-[20px] lg:w-auto items-center lg:hidden mb-11">
             <Sort sortOptions={sortOptions} />
           </label>
         )
@@ -56,13 +54,13 @@ function SearchControls(
         class="lg:w-[20%]"
         loading="lazy"
         title="Filtrar"
-        mode="sidebar-left"
+        mode="sidebar-right"
         open={open.value}
         onClose={() => {
           open.value = false;
         }}
       >
-        <div class="p-8 py-2">
+        <div class="px-4">
           <Filters filters={filters} category={categoryName} />
         </div>
       </Modal>

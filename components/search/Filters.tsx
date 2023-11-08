@@ -148,7 +148,7 @@ function Filters({ filters, category = "" }: Props) {
     return category2 ? category2 : category1;
   };
   return (
-    <div class="w-[18.25rem] text-primary font-quicksand">
+    <div class="w-full lg:w-[18.25rem] text-primary font-quicksand">
       <div class="flex text-center border-b-2 border-[#dbdbdb] max-lg:hidden">
         <p class="text-xl font-semibold mb-5">Filtrar</p>
       </div>
@@ -156,17 +156,19 @@ function Filters({ filters, category = "" }: Props) {
         {selectedFilters.length > 0 && (
           <>
             <div class="flex justify-between">
-              <p class="text-lg font-bold">Filtros selecionados</p>
+              <p class="lg:text-lg font-medium lg:font-bold">
+                Filtros selecionados
+              </p>
               <a
                 href={cleanFilters(selectedFilters[0].url)}
-                class="hover:opacity-80 underline text-normal font-medium transition-opacity duration-200"
+                class="hover:opacity-80 underline text-normal max-lg:text-sm font-medium transition-opacity duration-200"
                 aria-label="limpar filtros"
                 title="limpar-filtros"
               >
                 limpar filtros
               </a>
             </div>
-            <div class="my-6">
+            <div class="my-6 max-lg:border-b max-lg:border-[#dbdbdb]">
               <div class="flex flex-wrap">
                 {selectedFilters.map((filter) => (
                   <a

@@ -59,7 +59,7 @@ const SearchResultsGridChoice = ({ variant }: Props) => {
           </div>
         )
         : (
-          <div class="flex items-center">
+          <div class="flex items-center max-lg:hidden">
             <p class="text-primary w-max text-base leading-7 font-bold mr-3 font-quicksand">
               Visualização
             </p>

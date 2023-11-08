@@ -39,8 +39,6 @@ function Result({
       Exibindo 12 resultados
     </h6>
   );
-  console.log(sortOptions);
-
   return (
     <>
       <div>
@@ -50,7 +48,7 @@ function Result({
               <Filters filters={filters} category={categoryName} />
             </aside>
           )}
-          <div class="flex flex-col gap-5 w-full">
+          <div class="flex flex-col lg:gap-5 w-full">
             <div class="flex justify-between items-center gap-2.5">
               <div class="hidden lg:block">
                 {productsFound}
@@ -63,8 +61,8 @@ function Result({
               />
               {sortOptions.length > 0
                 ? (
-                  <label class="flex gap-[20px] w-1/2 lg:w-auto items-center max-lg:hidden">
-                    <span class="text-[#4A4B51] text-sm max-lg:hidden whitespace-nowrap lg:inline">
+                  <label class="flex lg:w-auto items-center max-lg:hidden">
+                    <span class="text-primary font-quicksand font-bold mr-[0.1875rem] max-lg:hidden whitespace-nowrap lg:inline">
                       Ordenar por
                     </span>
                     <Sort sortOptions={sortOptions} />
@@ -73,11 +71,11 @@ function Result({
                 : null}
               <SearchResultsGridChoice variant="desktop" />
             </div>
-            <div class="lg:hidden text-sm">
+            <div class="lg:hidden flex justify-between text-sm">
               {productsFound}
+              <SearchResultsGridChoice variant="mobile" />
             </div>
-            <SearchResultsGridChoice variant="mobile" />
-            <div class="flex-grow">
+            <div class="flex-grow max-lg:mt-6">
               <ProductGallery products={products} />
               <SearchPagination pageInfo={pageInfo} />
             </div>
