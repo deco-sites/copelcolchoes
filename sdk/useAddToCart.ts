@@ -21,7 +21,7 @@ export const useAddToCart = (
   { skuId, sellerId, price, discount, name, productGroupId, quantity }: Options,
 ) => {
   const isAddingToCart = useSignal(false);
-  const { displayBuyWarning } = useUI();
+  const { displayCart } = useUI();
   const { addItems } = useCart();
 
   const onClick = useCallback(async (e: MouseEvent) => {
@@ -52,12 +52,9 @@ export const useAddToCart = (
         },
       });
 
-      displayBuyWarning.value = true;
+      displayCart.value = true;
     } finally {
       isAddingToCart.value = false;
-      setTimeout(function () {
-        displayBuyWarning.value = false;
-      }, 3000);
     }
   }, [skuId, sellerId, quantity]);
 

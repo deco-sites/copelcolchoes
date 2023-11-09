@@ -59,11 +59,11 @@ function Totalizer(
   if (!value) return null;
 
   return (
-    <div class="flex justify-between items-center w-full text-gray-500">
-      <span class="text-sm max-md:text-xs text-base-content">{label}</span>
-      <span class="text-sm max-md:text-xs text-base-content">
+    <div class="flex font-quicksand justify-between items-center mb-2 w-full text-[#333] text-base font-medium leading-snug capitalize">
+      <p>{label}</p>
+      <p>
         {formatPrice(value / 100, currencyCode!, locale)}
-      </span>
+      </p>
     </div>
   );
 }
@@ -71,16 +71,9 @@ function Totalizer(
 function Cart(props: ICartProps) {
   const { displayCart } = useUI();
   const {
-    desktop: {
-      buttonMode,
-    },
-    mobile: {
-      buttonMode: buttonModeMobile,
-    },
-    showClearButton = true,
     goToCartLabel = "Finalizar compra",
   } = props;
-  const { loading, mapItemsToAnalyticsItems, removeAllItems, cart } = useCart();
+  const { loading, mapItemsToAnalyticsItems, cart } = useCart();
   const isCartEmpty = cart.value?.items.length === 0;
 
   const locale = cart.value?.clientPreferencesData.locale;
@@ -94,116 +87,124 @@ function Cart(props: ICartProps) {
     return null;
   }
 
-  // Empty State
-  if (isCartEmpty) {
-    return (
-      <div class="flex flex-col items-between h-full p-5 lg:p-8 lg:pb-[90px]">
-        <div></div>
-        <div class="flex flex-col justify-center items-center h-full">
-          <Icon id="SadFace" width={70} height={70} />
-          <span class="font-medium text-[19px] text-primary mt-6 lg:text-base">
-            Sua sacola esta vazia
-          </span>
-          <p class="text-sm font-normal max-w-[260px] text-center text-[#707279]">
-            Você ainda não adicionou nenhuma peça na sua sacola.
-          </p>
-        </div>
-        <Button
-          data-deco="buy-button"
-          class="h-10 btn-outline text-xs lg:text-sm font-medium transition-all lg:h-12 whitespace-nowrap px-6"
-          onClick={() => {
-            displayCart.value = false;
-          }}
-        >
-          Continue comprando
-        </Button>
-      </div>
-    );
-  }
-
   const subTotal = cart.value.items.reduce(
     (acc, current) => current.price + acc,
     0,
   );
 
+  const logisticsInfo = cart.value?.shippingData.logisticsInfo[0];
+  const deliveryPrice = logisticsInfo && logisticsInfo.slas.length > 0
+    ? logisticsInfo.slas[0].price
+    : undefined;
   return (
     <>
-      <ul
-        role="list"
-        class="px-5 max-h-[calc(100vh-390px)] lg:max-h-[calc(100vh-480px)] my-3 flex-grow overflow-y-auto flex flex-col gap-6 lg:mx-10 scrollbar-list"
-      >
-        {cart.value.items.map((_, index) => (
-          <li key={index}>
-            <CartItem index={index} currency={currencyCode!} />
-          </li>
-        ))}
-      </ul>
+      <div class="py-3 lg:py-[0.78125rem] lg:px-0 bg-primary font-quicksand relative">
+        <div class="lg:my-0 lg:mx-auto flex items-center justify-center gap-[0.375rem]">
+          <h3 class="lg:text-lg lg:!leading-[1.4375rem] text-white text-center font-extrabold capitalize">
+            Seu Carrinho
+          </h3>
+          <p class="lg:text-lg lg:!leading-[1.4375rem] text-white text-center font-extrabold capitalize">
+            ({cart.value?.items.length >= 10
+              ? cart.value?.items.length
+              : `0${cart.value?.items.length}`} Itens)
+          </p>
+          <button
+            class="absolute right-6"
+            onClick={() => {
+              displayCart.value = false;
+            }}
+          >
+            <Icon
+              id="XMarkModal"
+              class="text-white"
+              size={15}
+              strokeWidth={1}
+            />
+          </button>
+        </div>
+      </div>
+      <div class="h-full max-h-[calc(100%-17.5625rem] border-t border-[#f2f3f8] pr-[0.625rem] pl-5">
+        <div class="h-full overflow-y-auto pr-[0.625rem]">
+          <ul role="list">
+            {cart.value.items.map((_, index) => (
+              <li
+                class={`py-6 relative border-b border-[#e6e6e6] flex gap-4 ${
+                  loading.value ? "opacity-50" : ""
+                } transition-opacity duration-150 ease-in-out`}
+                key={index}
+              >
+                <CartItem index={index} currency={currencyCode!} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
 
-      <footer class="flex flex-col items-center justify-center max-lg:px-5 px-10">
-        <Coupon />
-        <Totalizer
-          currencyCode={currencyCode as string}
-          label="Subtotal"
-          locale={locale as string}
-          value={subTotal}
-        />
-        <Totalizer
-          currencyCode={currencyCode as string}
-          label="Descontos"
-          locale={locale as string}
-          value={discounts as number}
-        />
-
-        {total && (
-          <div class="flex flex-col justify-end items-end gap-2 py-3 mx-5 border-solid border-b-[1px] border-base-200 lg:mx-10 w-full">
-            <div class="flex justify-between items-center w-full font-bold text-xs text-base-content lg:text-sm">
-              <span class="text-primary max-md:text-xs">
-                Total
-              </span>
-              <span class="text-primary max-md:text-xs">
-                {formatPrice(total / 100, currencyCode!, locale)}
-              </span>
-            </div>
+      <div class="shadow-[0_-0.1875rem_1.25rem_rgba(0,0,0,0.16)]">
+        <div class="pt-5 pb-3 px-7 !lg:py-5 lg:px-6 font-quicksand">
+          {!isCartEmpty
+            ? (
+              <>
+                <Totalizer
+                  currencyCode={currencyCode as string}
+                  label="Subtotal"
+                  locale={locale as string}
+                  value={subTotal}
+                />
+                {deliveryPrice
+                  ? (
+                    <Totalizer
+                      currencyCode={currencyCode as string}
+                      label="Entrega"
+                      locale={locale as string}
+                      value={deliveryPrice}
+                    />
+                  )
+                  : null}
+              </>
+            )
+            : null}
+          <div class="flex justify-between items-center border-t border-[rbg(266,266,266)] py-3 px-0">
+            <p class="text-secondary text-base font-extrabold leading-snug capitalize">
+              Total
+            </p>
+            <p class="text-secondary text-base font-extrabold leading-snug capitalize">
+              {total
+                ? `${formatPrice(total / 100, currencyCode!, locale)}`
+                : "R$ 0,00"}
+            </p>
           </div>
-        )}
-        <div class="p-4 flex justify-between mx-10 px-0 w-full gap-2 flex-col">
-          <Button
+          <a
+            class="bg-primary rounded-[0.3125rem] text-white font-quicksand text-base font-semibold h-12 tracking-normal leading-5 mb-4 flex items-center justify-center relative px-8 appearance-none"
+            title={goToCartLabel || "Finalizar compra"}
+            href="/checkout"
             data-deco="buy-button"
-            class="h-10 btn-outline text-xs lg:text-sm font-medium transition-all lg:h-12 whitespace-nowrap px-6"
-            disabled={loading.value || cart.value.items.length === 0}
+            onClick={() => {
+              sendEvent({
+                name: "begin_checkout",
+                params: {
+                  currency: cart.value ? currencyCode! : "",
+                  value: total ? (total - (discounts ?? 0)) / 100 : 0,
+                  coupon: cart.value?.marketingData?.coupon ?? undefined,
+
+                  items: cart.value ? mapItemsToAnalyticsItems(cart.value) : [],
+                },
+              });
+            }}
+          >
+            {goToCartLabel || "Finalizar compra"}
+          </a>
+          <button
+            title="Continuar comprando"
+            class="font-quicksand text-secondary underline flex font-semibold leading-snug relative capitalize m-auto tracking-normal"
             onClick={() => {
               displayCart.value = false;
             }}
           >
             Continue comprando
-          </Button>
-          <a class="w-full flex justify-center" href="/checkout">
-            <Button
-              data-deco="buy-button"
-              class={`h-10 btn-${
-                BUTTON_VARIANTS[buttonMode as string]
-              } font-medium text-xs w-full text-base-100 lg:text-sm lg:h-12`}
-              disabled={loading.value || cart.value.items.length === 0}
-              onClick={() => {
-                sendEvent({
-                  name: "begin_checkout",
-                  params: {
-                    currency: cart.value ? currencyCode! : "",
-                    value: total ? (total - (discounts ?? 0)) / 100 : 0,
-                    coupon: cart.value?.marketingData?.coupon ?? undefined,
-
-                    items: cart.value
-                      ? mapItemsToAnalyticsItems(cart.value)
-                      : [],
-                  },
-                });
-              }}
-            >
-              {goToCartLabel}
-            </Button>
-          </a>
+          </button>
         </div>
-      </footer>
+      </div>
     </>
   );
 }

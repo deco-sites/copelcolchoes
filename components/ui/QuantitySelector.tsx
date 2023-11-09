@@ -27,7 +27,7 @@ input[type="number"] {
 `;
 
 function QuantitySelector(
-  { onChange, quantity, disabled, loading, inputHeight, inputWidth }: Props,
+  { onChange, quantity, disabled, inputHeight, inputWidth }: Props,
 ) {
   const decrement = () => onChange?.(Math.max(0, quantity - 1));
 
@@ -35,47 +35,34 @@ function QuantitySelector(
     onChange?.(Math.min(quantity + 1, QUANTITY_MAX_VALUE));
 
   return (
-    <div class="form-control h-full">
-      <div class="input-group items-center h-full">
-        <Button
-          class="max-lg:bg-gray-300 !rounded-full bg-transparent border-0 w-6 h-6 p-0 border-none"
-          onClick={decrement}
-          disabled={disabled}
-          loading={loading}
-        >
-          <Icon
-            class="lg:btn-accent max-lg:m-auto transition-all rounded-full"
-            id="Minus"
-            width={16}
-            height={16}
-          />
-        </Button>
-        <input
-          class={`text-center rounded-lg border-base-200 w-12 h-12 border-2 mx-2.5 text-sm font-bold text-base-content`}
-          style={`width: ${inputWidth}px; height: ${inputHeight}px`}
-          type="number"
-          inputMode="numeric"
-          pattern="[0-9]*"
-          max={QUANTITY_MAX_VALUE}
-          min={1}
-          value={quantity}
-          disabled={disabled}
-          onBlur={(e) => onChange?.(e.currentTarget.valueAsNumber)}
-        />
-        <Button
-          class="max-lg:bg-gray-300 !rounded-full bg-transparent border-0 w-6 h-6 p-0 border-none"
-          onClick={increment}
-          disabled={disabled}
-          loading={loading}
-        >
-          <Icon
-            class="lg:btn-accent max-lg:m-auto transition-all rounded-full"
-            id="Plus"
-            width={16}
-            height={16}
-          />
-        </Button>
-      </div>
+    <div class="font-bold w-fit flex items-center justify-center font-quicksand">
+      <button
+        class="pb-[0.9375rem] border border-[#e3e3e3] rounded-[0.25rem] shadow-[0_0.1875rem_0.375rem_rgba(0,0,0,0.16)] text-primary text-lg h-8 w-8 flex items-center justify-center disabled:pointer-events-none disabled:opacity-[0.35] disabled:cursor-not-allowed"
+        title="Diminuir quantidade"
+        onClick={decrement}
+        disabled={disabled || quantity <= 1}
+      >
+        _
+      </button>
+      <input
+        class={`border-none appearance-none pointer-events-none text-base leading-snug text-[#333333] font-extrabold mx-0 px-0 opacity-1 text-center max-lg:text-xs max-lg:leading-4`}
+        type="number"
+        inputMode="numeric"
+        pattern="[0-9]*"
+        max={QUANTITY_MAX_VALUE}
+        min={1}
+        value={quantity >= 10 ? quantity : `0${quantity}`}
+        disabled={true}
+        onBlur={(e) => onChange?.(e.currentTarget.valueAsNumber)}
+      />
+      <button
+        class="border border-[#e3e3e3] rounded-[0.25rem] shadow-[0_0.1875rem_0.375rem_rgba(0,0,0,0.16)] text-primary text-lg h-8 w-8"
+        title="Aumentar quantidade"
+        onClick={increment}
+        disabled={disabled}
+      >
+        +
+      </button>
     </div>
   );
 }

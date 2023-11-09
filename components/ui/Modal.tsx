@@ -38,7 +38,8 @@ const sectionStyles = {
 };
 
 const containerStyles = {
-  "sidebar-right": "h-full w-full sm:max-w-lg overflow-hidden",
+  "sidebar-right":
+    "h-full w-full sm:max-w-[25rem] sm:min-w-[25rem] overflow-hidden",
   "sidebar-left": "h-full w-full sm:max-w-lg scrollbar-list",
   center: "",
 };
@@ -77,7 +78,7 @@ const Modal = ({
     <dialog
       {...props}
       ref={ref}
-      class={`backdrop:bg-black backdrop:opacity-80 bg-transparent p-0 m-0 max-w-full w-full max-h-full h-full backdrop-opacity-50 lg:max-w-[33%] ${
+      class={`backdrop:bg-black backdrop:opacity-80 bg-transparent p-0 m-0 max-w-full w-full max-h-full h-full backdrop-opacity-50 ${
         dialogStyles[mode]
       } ${props.class ?? ""}`}
       onClick={(e) =>

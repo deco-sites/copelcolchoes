@@ -52,6 +52,7 @@ export type AvailableIcons =
   | "Discord"
   | "Email"
   | "Trash"
+  | "TrashCart"
   | "FilterList"
   | "ArrowsPointingOut"
   | "WhatsApp"

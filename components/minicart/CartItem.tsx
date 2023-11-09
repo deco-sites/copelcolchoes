@@ -18,77 +18,52 @@ function CartItem({ index, currency }: Props) {
     cart,
     updateItems,
     mapItemsToAnalyticsItems,
+    loading,
   } = useCart();
-  const loading = useSignal(false);
   const item = cart.value!.items[index];
   const locale = cart.value?.clientPreferencesData.locale;
   const currencyCode = cart.value?.storePreferencesData.currencyCode;
-  const { imageUrl, skuName, sellingPrice, listPrice, name, quantity } = item;
-
-  const isGift = sellingPrice < 0.01;
-
-  const installmentOptions = cart.value?.paymentData?.installmentOptions
-    ?.reduce((highest, current) => {
-      const highestLength = highest?.installments?.length ?? 0;
-      const currentLength = current?.installments?.length ?? 0;
-
-      return currentLength > highestLength ? current : highest;
-    });
-
-  const highestInstallment = installmentOptions?.installments?.slice(-1);
-
-  const highestNumberInstallments = highestInstallment?.[0]?.count ?? 0;
-  const interestRatePercent =
-    ((highestInstallment?.[0]?.interestRate ?? 0) / 10000) + 1;
+  const {
+    imageUrl,
+    skuName,
+    sellingPrice,
+    listPrice,
+    name,
+    quantity,
+    detailUrl,
+  } = item;
 
   return (
-    <div class="pb-3 flex flex-row justify-between items-start gap-4 border-solid border-b-[1px] border-[#F7F7F7]">
-      <div class="rounded-md min-w-[25%] max-w-[25%]">
-        <Image
-          src={imageUrl.replace("55-55", "200-200")}
-          alt={skuName}
-          width={100}
-          height={100}
-          class="object-cover object-center lg:w-[107px] lg:h-[107px] mix-blend-multiply"
-        />
+    <>
+      <div class="w-20 flex-shrink-0">
+        <a href={detailUrl} title={name} class="block cursor-pointer">
+          <Image
+            src={imageUrl.replace("55-55", "80-80")}
+            alt={skuName}
+            width={80}
+            height={80}
+            class="w-full h-auto inline-block align-middle"
+          />
+        </a>
       </div>
-      <div class="flex-grow overflow-hidden">
-        <span class="text-xs text-[#4A4B51] lg:text-xs overflow-hidden block text-ellipsis whitespace-nowrap">
-          {name}
-        </span>
-        <div class="flex items-center gap-2">
-          {listPrice > sellingPrice && (
-            <span class="line-through text-base-300 text-xs">
-              {formatPrice(listPrice / 100, currencyCode!, locale)}
-            </span>
-          )}
-          <span class="text-xs text-primary">
-            {isGift
-              ? "Grátis"
-              : formatPrice(sellingPrice / 100, currency, locale)}
-          </span>
+      <div class="flex flex-col gap-3 w-full">
+        <div class="flex flex-row justify-between gap-2 max-lg:mb-5">
+          <a
+            href={detailUrl}
+            title={name}
+            class="block cursor-pointer text-[#333333] font-quicksand text-sm leading-snug max-h-[2.625rem] overflow-y-hidden"
+          >
+            {name}
+          </a>
+          <div class="flex justify-center items-end flex-col min-w-fit">
+            <ins class="text-base max-lg:text-sm leading-snug max-lg:leading-4 font-black font-quicksand text-secondary no-underline">
+              {formatPrice(sellingPrice / 100, currencyCode!, locale)}
+            </ins>
+          </div>
         </div>
-        {installmentOptions?.installments.length &&
-            highestNumberInstallments > 1
-          ? (
-            <div>
-              <span class="text-xs text-[#4A4B51]">
-                ou em até {highestNumberInstallments}x de {""}
-                {highestNumberInstallments
-                  ? formatPrice(
-                    Math.ceil(listPrice * interestRatePercent) /
-                      highestNumberInstallments / 100,
-                  )
-                  : ""}
-              </span>
-            </div>
-          )
-          : (
-            ""
-          )}
-        <div class="flex justify-between mt-2.5 items-center">
+        <div class="flex items-center justify-between">
           <QuantitySelector
-            disabled={loading.value || isGift}
+            disabled={loading.value}
             quantity={quantity}
             inputWidth={42}
             inputHeight={35}
@@ -116,7 +91,7 @@ function CartItem({ index, currency }: Props) {
               });
             }}
           />
-          <Button
+          <button
             onClick={() => {
               updateItems({ orderItems: [{ index, quantity: 0 }] });
               if (!cart.value) {
@@ -132,15 +107,13 @@ function CartItem({ index, currency }: Props) {
                 },
               });
             }}
-            disabled={loading.value || isGift}
-            loading={loading.value}
-            class="btn btn-ghost"
+            disabled={loading.value}
           >
-            <Icon class="text-primary" id="Trash" width={20} height={20} />
-          </Button>
+            <Icon id="TrashCart" size={18} />
+          </button>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 

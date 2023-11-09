@@ -50,7 +50,6 @@ function Modals({ menu, minicart }: Props) {
           class="ml-auto"
           title="Minha sacola"
           mode="sidebar-right"
-          showHeader
           id="minicart-modal"
           loading="lazy"
           open={displayCart.value}
