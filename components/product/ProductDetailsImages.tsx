@@ -21,8 +21,8 @@ function ProductDetailsImages(
   return (
     <>
       <div class="lg:w-1/2 relative">
-        <div class="flex flex-col relative">
-          <div class="mx-8 mix-blend-multiply w-full" id={id}>
+        <div class="flex flex-col relative" id={id}>
+          <div class="mx-8 mix-blend-multiply w-full">
             <Slider class="carousel carousel-center gap-6 box-border lg:box-content w-full">
               {images.map((img, index) => (
                 <Slider.Item
@@ -49,27 +49,29 @@ function ProductDetailsImages(
           </div>
           <div class="py-4 flex- basis-[5.8125rem] h-[7.5rem] mix-blend-multiply">
             <div class="w-full h-full mx-auto relative overflow-hidden">
-              {images.map((img, index) => (
-                <Slider.Dot index={index}>
-                  <Image
-                    style={{ aspectRatio: aspect }}
-                    class="border-neutral hover:border-secondary-focus group-disabled:border-secondary-focus border-2 rounded-[10px]"
-                    width={width / 5}
-                    height={height / 5}
-                    src={img.url!}
-                    alt={img.alternateName}
-                  />
-                </Slider.Dot>
-              ))}
-              <Slider.PrevButton class="btn btn-circle btn-primary bg-white hover:bg-white border-none absolute left-4">
+              <div class="w-auto h-auto relative z-1 flex box-content justify-center">
+                {images.map((img, index) => (
+                  <Slider.Dot index={index}>
+                    <Image
+                      style={{ aspectRatio: aspect }}
+                      class="border-neutral group-disabled:border-secondary border w-[4.375rem] mr-[10px] rounded-[10px]"
+                      width={70}
+                      height={70}
+                      sizes="(max-width: 480px) 70px, 70px"
+                      src={img.url!}
+                      alt={img.alternateName}
+                    />
+                  </Slider.Dot>
+                ))}
+              </div>
+              <Slider.PrevButton class="btn btn-circle btn-primary bg-white hover:bg-white border-none absolute left-4 min-w-[2.625rem] max-w-[2.625rem] min-h-[2.625rem] max-h-[2.625rem] top-1/2 -translate-y-1/2 active:focus:-translate-y-1/2 active:hover:-translate-y-1/2 no-animation">
                 <Icon size={42} id="PrevProductImage" strokeWidth={1} />
               </Slider.PrevButton>
-              <Slider.NextButton class="btn btn-circle btn-primary bg-white hover:bg-white absolute border-none right-4">
+              <Slider.NextButton class="btn btn-circle btn-primary bg-white hover:bg-white absolute border-none right-4 min-w-[2.625rem] max-w-[2.625rem] min-h-[2.625rem] max-h-[2.625rem] top-1/2 -translate-y-1/2 active:focus:-translate-y-1/2 active:hover:-translate-y-1/2 no-animation">
                 <Icon size={42} id="NextProductImage" strokeWidth={1} />
               </Slider.NextButton>
             </div>
           </div>
-          <SliderJS rootId={id}></SliderJS>
         </div>
         <div class="group items-center cursor-pointer flex flex-col gap-2 h-auto justify-center absolute right-0 top-5">
           <div class="group-hover:bg-primary flex items-center rounded-full border border-[#f6f6f6] shadow-[0_0.1875rem_0.375rem_rgba(0,0,0,0.16)] h-10 justify-center transition-all duration-300 ease-out w-10">
@@ -98,6 +100,7 @@ function ProductDetailsImages(
             </div>
           </div>
         </div>
+        <SliderJS rootId={id}></SliderJS>
       </div>
     </>
   );

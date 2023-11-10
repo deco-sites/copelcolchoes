@@ -51,9 +51,8 @@ function NotFound() {
 }
 
 function ProductInfo(
-  { page, shareableNetworks }: {
+  { page }: {
     page: ProductDetailsPage;
-    shareableNetworks?: Props["shareableNetworks"];
   },
 ) {
   const {
@@ -71,26 +70,26 @@ function ProductInfo(
   const { price, listPrice, seller, availability, installment } = useOffer(
     offers,
   );
+  console.log(product);
+  const inStock = availability === "https://schema.org/InStock";
 
   return (
     <>
       {/* Code and name */}
-      <div class="mt-4 sm:mt-0">
-        <h1>
-          <span class="text-[#4A4B51] text-2xl tracking-[1px]">
-            {isVariantOf?.name}
-          </span>
-        </h1>
-        {name && name?.length > 0 && (
-          <div>
-            <span class="text-sm text-base-300">
-              Referência: {name}
-            </span>
-          </div>
-        )}
+      <div class="font-quicksand mt-5 relative">
+        <span class="text-[#828282] text-sm leading-[1.125rem] mb-6">Cód.: {isVariantOf?.model}</span>
+        <h1 class="text-primary text-[1.75rem] leading-8 font-semibold pt-2 capitalize">{isVariantOf?.name}</h1>
+      </div>
+      {/* YourViews Box */}
+      <div class="text-primary font-quicksand text-[0.875rem] font-medium leading-8 py-4 underline">
+        <button class="flex items-center gap-4" title="0 avaliações">
+          <div class="yv-review-quickreview "></div>
+          <span class="underline">Seja o primeiro a avaliar</span>
+        </button>
+
       </div>
       {/* Prices */}
-      {availability === "https://schema.org/InStock"
+      {inStock
         ? (
           <div class="mt-5">
             <div class="flex flex-row gap-2 items-center">
@@ -169,29 +168,6 @@ function ProductInfo(
         </div>
       </details>
       {/* Share Product on Social Networks */}
-      {shareableNetworks && (
-        <div class="flex items-center gap-5 my-5">
-          <span class="text-xs text-base-300">Compartilhar</span>
-          <ul class="gap-2 flex items-center justify-between">
-            {shareableNetworks.map((network) => (
-              <li class="bg-secondary w-8 h-8 rounded-full hover:bg-primary group transition-all">
-                <a
-                  href={getShareLink({
-                    network,
-                    productName: isVariantOf?.name ?? name ?? "",
-                    url: url ?? "",
-                  })}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  class="flex items-center justify-center w-full h-full group-hover:text-white text-primary"
-                >
-                  <Icon id={network} width={20} height={20} />
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
 
       {/* Analytics Event */}
       <SendEventOnLoad
@@ -258,22 +234,23 @@ function Details({
         <Breadcrumb
           itemListElement={filteredBreadcrumbList}
         />
-        {/* Product Images */}
-        <ProductDetailsImages
-          images={images}
-          width={WIDTH}
-          height={HEIGHT}
-          aspect={ASPECT_RATIO}
-          url={product.url!}
-        />
-
-        {/* Product Info */}
-        <div class="w-full lg:pr-0 lg:pl-6">
-          <ProductInfo
-            page={page}
-            shareableNetworks={shareableNetworks}
+        <section class="lg:flex lg:gap-10">
+          {/* Product Images */}
+          <ProductDetailsImages
+            images={images}
+            width={WIDTH}
+            height={HEIGHT}
+            aspect={ASPECT_RATIO}
+            url={product.url!}
           />
-        </div>
+
+          {/* Product Info */}
+          <div class="lg:w-1/2 lg:z-50 lg:sticky lg:h-fit lg:top-5 lg:mb-[2.125rem]">
+            <ProductInfo
+              page={page}
+            />
+          </div>
+        </section>
       </>
     );
   }
