@@ -4,16 +4,18 @@ import Icon from "$store/components/ui/Icon.tsx";
 import Image from "deco-sites/std/components/Image.tsx";
 import SliderJS from "$store/islands/SliderJS.tsx";
 import { useId } from "preact/hooks";
+import ShareButton from "$store/islands/ShareButton.tsx";
 
 interface Props {
   images: ImageObject[];
   width: number;
   height: number;
   aspect: string;
+  url: string;
 }
 
 function ProductDetailsImages(
-  { images, width, height, aspect }: Props,
+  { images, width, height, aspect, url }: Props,
 ) {
   const id = `product-image-gallery:${useId()}`;
   return (
@@ -69,50 +71,32 @@ function ProductDetailsImages(
           </div>
           <SliderJS rootId={id}></SliderJS>
         </div>
-        <div class="flex group items-center justify-center absolute gap-2 h-auto r-0 top-5">
+        <div class="group items-center cursor-pointer flex flex-col gap-2 h-auto justify-center absolute right-0 top-5">
           <div class="group-hover:bg-primary flex items-center rounded-full border border-[#f6f6f6] shadow-[0_0.1875rem_0.375rem_rgba(0,0,0,0.16)] h-10 justify-center transition-all duration-300 ease-out w-10">
-            <Icon id="ShareCopel" size={20} />
+            <Icon
+              id="ShareCopel"
+              size={20}
+              class="group-hover:text-white text-primary"
+            />
           </div>
-          <div></div>
-        </div>
-      </div>
-
-      <div class="flex flex-col xl:flex-row-reverse relative lg:items-start gap-4">
-        {/* Image Slider */}
-        <div class="relative xl:pl-32">
-          {
-            /* Discount tag
-          {price && listPrice && price !== listPrice
-            ? (
-              <DiscountBadge
-                price={price}
-                listPrice={listPrice}
+          <div class="group-hover:max-h-6 group-hover:opacity-100 flex max-h-0 opacity-0 transition-all duration-300">
+            <div class="flex h-auto">
+              <ShareButton
+                network={"Facebook"}
+                link={`https://www.facebook.com/sharer/sharer.php?u=${url}`}
               />
-            )
-            : null} */
-          }
-        </div>
-
-        {/* Dots */}
-        <div class="lg:max-w-[500px] lg:self-start xl:self-start xl:left-0 xl:absolute xl:max-h-full xl:overflow-y-scroll xl:scrollbar-none max-lg:hidden">
-          <ul
-            class={`flex gap-4 overflow-auto lg:max-h-min lg:flex-1 lg:justify-start xl:flex-col`}
-          >
-            {images.map((img, index) => (
-              <li class="min-w-[75px] lg:h-fit lg:min-w-[130px]">
-                <Slider.Dot index={index}>
-                  <Image
-                    style={{ aspectRatio: aspect }}
-                    class="border-neutral hover:border-secondary-focus group-disabled:border-secondary-focus border-2 rounded-[10px]"
-                    width={width / 5}
-                    height={height / 5}
-                    src={img.url!}
-                    alt={img.alternateName}
-                  />
-                </Slider.Dot>
-              </li>
-            ))}
-          </ul>
+              <ShareButton
+                network={"Twitter"}
+                link={`https://twitter.com/share?url=${url}`}
+              />
+              <ShareButton
+                network={"Pinterest"}
+                link={`https://pinterest.com/pin/create/button/?media=${images[
+                  0
+                ].url!}`}
+              />
+            </div>
+          </div>
         </div>
       </div>
     </>

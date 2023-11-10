@@ -76,6 +76,7 @@ export type AvailableIcons =
   | "PrevProductImage"
   | "BlackFriday"
   | "ShareCopel"
+  | `ShareProduct${string}`
   | "BackToTop";
 
 interface Props extends JSX.SVGAttributes<SVGSVGElement> {

@@ -264,6 +264,7 @@ function Details({
           width={WIDTH}
           height={HEIGHT}
           aspect={ASPECT_RATIO}
+          url={product.url!}
         />
 
         {/* Product Info */}
