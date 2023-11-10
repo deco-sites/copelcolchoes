@@ -72,7 +72,10 @@ export type AvailableIcons =
   | "AllCategories"
   | "DeleteFilter"
   | "CheckFilter"
+  | "NextProductImage"
+  | "PrevProductImage"
   | "BlackFriday"
+  | "ShareCopel"
   | "BackToTop";
 
 interface Props extends JSX.SVGAttributes<SVGSVGElement> {

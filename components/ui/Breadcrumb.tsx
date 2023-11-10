@@ -21,7 +21,7 @@ function Breadcrumb({ class: _class, itemListElement = [] }: Props) {
           .filter(({ name, item }) => name && item)
           .map(({ name, item }, index) => {
             if (
-              (index > 1 && index != items.length - 1) || items.length <= 1
+              (index > 2 && index === items.length - 1) || items.length <= 1
             ) return;
             return (
               <li

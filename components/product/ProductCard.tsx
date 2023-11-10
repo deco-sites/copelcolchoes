@@ -111,6 +111,7 @@ function ProductCard(
   const { listPrice, price, installment, availability } = useOffer(
     offers,
   );
+  const inStock = availability === "https://schema.org/InStock";
   const clickEvent = {
     name: "select_item" as const,
     params: {
@@ -137,19 +138,33 @@ function ProductCard(
     >
       <div class="relative overflow-hidden px-7 pt-[1.375rem] max-lg:py-7 max-lg:px-6">
         <div class="relative">
-          <a
-            href={url && relative(url)}
-            aria-label="view product"
-            class="block"
-          >
-            <Image
-              src={front.url!}
-              alt={front.alternateName}
-              width={WIDTH}
-              height={HEIGHT}
-              class="aspect-square object-cover block w-full h-auto"
-            />
-          </a>
+          {inStock
+            ? (
+              <a
+                href={url && relative(url)}
+                aria-label="view product"
+                class="block"
+              >
+                <Image
+                  src={front.url!}
+                  alt={front.alternateName}
+                  width={WIDTH}
+                  height={HEIGHT}
+                  class="aspect-square object-cover block w-full h-auto"
+                />
+              </a>
+            )
+            : (
+              <div class="relative block h-0 w-full pb-[100%]">
+                <Image
+                  src={front.url!}
+                  alt={front.alternateName}
+                  width={WIDTH}
+                  height={HEIGHT}
+                  class="absolute top-0 left-0 w-full block object-cover h-auto font-['blur-up:_auto','object-fit:_cover']"
+                />
+              </div>
+            )}
         </div>
         {listPrice2 !== price2 && (
           <DiscountBadge
@@ -161,15 +176,23 @@ function ProductCard(
 
       {/* Prices & Name */}
       <div class="lg:py-6 lg:px-5 relative overflow-hidden max-lg:pt-0 max-lg:px-5 max-lg:pb-7">
-        <a
-          href={url && relative(url)}
-          aria-label="view product"
-          class="block"
-        >
-          <h2 class="lg:text-base lg:leading-[1.375rem] text-[#828282] font-medium mb-[1.125rem]">
-            {isVariantOf?.name || name}
-          </h2>
-        </a>
+        {inStock
+          ? (
+            <a
+              href={url && relative(url)}
+              aria-label="view product"
+              class="block"
+            >
+              <h2 class="lg:text-base lg:leading-[1.375rem] text-[#828282] font-medium mb-[1.125rem]">
+                {isVariantOf?.name || name}
+              </h2>
+            </a>
+          )
+          : (
+            <h2 class="lg:text-base lg:leading-[1.375rem] text-[#828282] font-medium mb-[1.125rem]">
+              {isVariantOf?.name || name}
+            </h2>
+          )}
         <div>
           {(medidas.length > 0 || para.length > 0) &&
             (
@@ -207,33 +230,31 @@ function ProductCard(
         </div>
 
         <div class="flex flex-col">
-          <div class="flex flex-col max-lg:contents">
-            {availability === "https://schema.org/InStock"
-              ? (
-                <>
-                  {(listPrice && price) && listPrice > price && (
-                    <del class="mb-[0.3125rem] text-[#464646] font-light text-[0.875rem] leading-[1.125rem] font-quicksand">
-                      De {formatPrice(listPrice, offers!.priceCurrency!)}
-                    </del>
+          {inStock
+            ? (
+              <div class="flex flex-col max-lg:contents">
+                {(listPrice && price) && listPrice > price && (
+                  <del class="mb-[0.3125rem] text-[#464646] font-light text-[0.875rem] leading-[1.125rem] font-quicksand">
+                    De {formatPrice(listPrice, offers!.priceCurrency!)}
+                  </del>
+                )}
+                <ins class="font-bold no-underline text-secondary text-xl leading-[1.5625rem] mb-[0.3125rem] font-quicksand">
+                  POR: {installment?.billingDuration}x ${formatPrice(
+                    installment?.billingIncrement,
+                    offers!.priceCurrency!,
                   )}
-                  <ins class="font-bold no-underline text-secondary text-xl leading-[1.5625rem] mb-[0.3125rem] font-quicksand">
-                    POR: {installment?.billingDuration}x ${formatPrice(
-                      installment?.billingIncrement,
-                      offers!.priceCurrency!,
-                    )}
-                  </ins>
-                  <span class="text-[#828282] text-[0.8125rem] font-medium font-quicksand">
-                    À vista: {formatPrice(price, offers!.priceCurrency!)}
-                  </span>
-                  <span class="text-[#828282] text-[0.8125rem] font-medium font-quicksand">
-                    10% de desconto no Pix ou Boleto
-                  </span>
-                </>
-              )
-              : null}
-          </div>
+                </ins>
+                <span class="text-[#828282] text-[0.8125rem] font-medium font-quicksand">
+                  À vista: {formatPrice(price, offers!.priceCurrency!)}
+                </span>
+                <span class="text-[#828282] text-[0.8125rem] font-medium font-quicksand">
+                  10% de desconto no Pix ou Boleto
+                </span>
+              </div>
+            )
+            : <h4 class="text-lg mt-2 font-black">Produto esgotado</h4>}
         </div>
-        {availability === "https://schema.org/InStock"
+        {inStock
           ? (
             <a
               href={url && relative(url)}
@@ -251,7 +272,17 @@ function ProductCard(
               </div>
             </a>
           )
-          : null}
+          : (
+            <div>
+              <button
+                class="bg-black w-full tracking-normal capitalize mt-[1.875rem] text-base leading-5 rounded-[0.3125rem] p-0 disabled:opacity-30 disabled:cursor-not-allowed hover:opacity-100 flex justify-center items-center text-white transition-all duration-250 h-[2.625rem] relative font-bold border border-transparent"
+                disabled
+                title="Saiba mais"
+              >
+                Esgotado
+              </button>
+            </div>
+          )}
       </div>
     </article>
   );

@@ -1,10 +1,7 @@
-import { useSignal } from "@preact/signals";
-import { useId } from "preact/hooks";
 import ShippingSimulation from "$store/islands/ShippingSimulation.tsx";
 import Breadcrumb from "$store/components/ui/Breadcrumb.tsx";
 import Button from "$store/components/ui/Button.tsx";
 import Image from "deco-sites/std/components/Image.tsx";
-import SliderJS from "$store/islands/SliderJS.tsx";
 import OutOfStock from "$store/islands/OutOfStock.tsx";
 import { useOffer } from "$store/sdk/useOffer.ts";
 import { formatPrice } from "$store/sdk/format.ts";
@@ -30,16 +27,12 @@ export interface Props {
    * @description Ask for the developer to remove this option since this is here to help development only and should not be used in production
    */
   variant?: Variant;
-  shipmentPolitics?: {
-    label: string;
-    link: string;
-  };
   shareableNetworks?: ShareableNetwork[];
 }
 
-const WIDTH = 500;
-const HEIGHT = 500;
-const ASPECT_RATIO = `${WIDTH} / ${HEIGHT}`;
+const WIDTH = 576;
+const HEIGHT = 576;
+const ASPECT_RATIO = "1";
 
 /**
  * Rendered when a not found is returned by any of the loaders run on this page
@@ -58,9 +51,8 @@ function NotFound() {
 }
 
 function ProductInfo(
-  { page, shipmentPolitics, shareableNetworks }: {
+  { page, shareableNetworks }: {
     page: ProductDetailsPage;
-    shipmentPolitics?: Props["shipmentPolitics"];
     shareableNetworks?: Props["shareableNetworks"];
   },
 ) {
@@ -220,47 +212,6 @@ function ProductInfo(
     </>
   );
 }
-
-/**
- * Here be dragons
- *
- * bravtexfashionstore (VTEX default fashion account) has the same images for different skus. However,
- * VTEX api does not return the same link for the same image. This causes the image to blink when
- * the user changes the selected SKU. To prevent this blink from happening, I created this function
- * bellow to use the same link for all skus. Example:
- *
- * {
-    skus: [
-      {
-        id: 1
-        image: [
-          "https://bravtexfashionstore.vtexassets.com/arquivos/ids/123/a.jpg",
-          "https://bravtexfashionstore.vtexassets.com/arquivos/ids/124/b.jpg",
-          "https://bravtexfashionstore.vtexassets.com/arquivos/ids/125/c.jpg"
-        ]
-      },
-      {
-        id: 2
-        image: [
-          "https://bravtexfashionstore.vtexassets.com/arquivos/ids/321/a.jpg",
-          "https://bravtexfashionstore.vtexassets.com/arquivos/ids/322/b.jpg",
-          "https://bravtexfashionstore.vtexassets.com/arquivos/ids/323/c.jpg"
-        ]
-      }
-    ]
-  }
-
-  for both skus 1 and 2, we have the same images a.jpg, b.jpg and c.jpg, but
-  they have different urls. This function returns, for both skus:
-
-  [
-    "https://bravtexfashionstore.vtexassets.com/arquivos/ids/321/a.jpg",
-    "https://bravtexfashionstore.vtexassets.com/arquivos/ids/322/b.jpg",
-    "https://bravtexfashionstore.vtexassets.com/arquivos/ids/323/c.jpg"
-  ]
-
-  This is a very catalog dependent function. Feel free to change this as you wish
- */
 const useStableImages = (product: ProductDetailsPage["product"]) => {
   const imageNameFromURL = (url = "") => {
     const segments = new URL(url).pathname.split("/");
@@ -286,26 +237,17 @@ const useStableImages = (product: ProductDetailsPage["product"]) => {
 function Details({
   page,
   variant,
-  shipmentPolitics,
   shareableNetworks,
 }: {
   page: ProductDetailsPage;
   variant: Variant;
-  shipmentPolitics?: Props["shipmentPolitics"];
   shareableNetworks?: Props["shareableNetworks"];
 }) {
   const { product, breadcrumbList } = page;
   const filteredBreadcrumbList = breadcrumbList.itemListElement.filter((item) =>
     item.name!.length > 1
   );
-  const id = `product-image-gallery:${useId()}`;
   const images = useStableImages(product);
-
-  const open = useSignal(false);
-  const zoomImage = useSignal(images[0].url);
-  const zoomX = useSignal(0);
-  const zoomY = useSignal(0);
-
   /**
    * Product slider variant
    */
@@ -316,29 +258,21 @@ function Details({
         <Breadcrumb
           itemListElement={filteredBreadcrumbList}
         />
-        <div
-          id={id}
-          class="flex flex-col lg:flex-row gap-4 lg:justify-center"
-        >
-          {/* Product Images */}
-          <ProductDetailsImages
-            images={images}
-            width={WIDTH}
-            height={HEIGHT}
-            aspect={ASPECT_RATIO}
-            product={product}
-          />
+        {/* Product Images */}
+        <ProductDetailsImages
+          images={images}
+          width={WIDTH}
+          height={HEIGHT}
+          aspect={ASPECT_RATIO}
+        />
 
-          {/* Product Info */}
-          <div class="w-full lg:pr-0 lg:pl-6">
-            <ProductInfo
-              page={page}
-              shipmentPolitics={shipmentPolitics}
-              shareableNetworks={shareableNetworks}
-            />
-          </div>
+        {/* Product Info */}
+        <div class="w-full lg:pr-0 lg:pl-6">
+          <ProductInfo
+            page={page}
+            shareableNetworks={shareableNetworks}
+          />
         </div>
-        <SliderJS rootId={id}></SliderJS>
       </>
     );
   }
@@ -379,8 +313,7 @@ function Details({
 }
 
 function ProductDetails(
-  { page, variant: maybeVar = "auto", shipmentPolitics, shareableNetworks }:
-    Props,
+  { page, variant: maybeVar = "auto", shareableNetworks }: Props,
 ) {
   /**
    * Showcase the different product views we have on this template. In case there are less
@@ -400,7 +333,6 @@ function ProductDetails(
           <Details
             page={page}
             variant={variant}
-            shipmentPolitics={shipmentPolitics}
             shareableNetworks={shareableNetworks}
           />
         )
