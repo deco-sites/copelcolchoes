@@ -13,6 +13,11 @@ import ProductDetailsImages from "$store/islands/ProductDetailsImages.tsx";
 import Icon from "$store/components/ui/Icon.tsx";
 import type { Product } from "apps/commerce/types.ts";
 import BuyTogether from "$store/islands/BuyTogether.tsx";
+import Image from "deco-sites/std/components/Image.tsx";
+import type { ComponentChildren } from "preact";
+import ProductReviews from "$store/islands/ProductReviews.tsx";
+import QuickReview from "$store/islands/QuickReview.tsx";
+import { useQuickReview } from "$store/sdk/useQuickReview.ts";
 
 export type ShareableNetwork = "Facebook" | "Twitter" | "Email" | "WhatsApp";
 
@@ -47,17 +52,16 @@ function ProductInfo(
     page: ProductDetailsPage;
   },
 ) {
+  const { loadingReviews, reviews, totalReview } = useQuickReview();
   const {
     breadcrumbList,
     product,
   } = page;
   const {
-    description,
     productID,
     offers,
     name,
     isVariantOf,
-    url,
   } = product;
   const { price, listPrice, seller, availability, installment } = useOffer(
     offers,
@@ -79,34 +83,11 @@ function ProductInfo(
         </h1>
       </div>
       {/* YourViews Box */}
-      <div class="text-primary font-quicksand text-[0.875rem] font-medium leading-8 py-4 underline">
-        <button class="flex items-center gap-4" title="0 avaliações">
-          <div class="yv-review-quickreview">
-            <div
-              type="exhibition"
-              class="flex items-center justify-start pointer-events-none"
-            >
-              <div class="relative box-border flex">
-                <div className="relative align-middle pr-[2px] cursor-pointer flex items-center justify-center">
-                  <Icon id="Star" class="text-[#d8d8d8]" size={18} />
-                </div>
-                <div className="relative align-middle pr-[2px] cursor-pointer flex items-center justify-center">
-                  <Icon id="Star" class="text-[#d8d8d8]" size={18} />
-                </div>
-                <div className="relative align-middle pr-[2px] cursor-pointer flex items-center justify-center">
-                  <Icon id="Star" class="text-[#d8d8d8]" size={18} />
-                </div>
-                <div className="relative align-middle pr-[2px] cursor-pointer flex items-center justify-center">
-                  <Icon id="Star" class="text-[#d8d8d8]" size={18} />
-                </div>
-                <div className="relative align-middle pr-[2px] cursor-pointer flex items-center justify-center">
-                  <Icon id="Star" class="text-[#d8d8d8]" size={18} />
-                </div>
-              </div>
-            </div>
-          </div>
-          <span class="underline">Seja o primeiro a avaliar</span>
-        </button>
+      <div
+        class="text-primary font-quicksand text-[0.875rem] font-medium leading-8 py-4 underline"
+        id="yv-quickreview"
+      >
+        <QuickReview totalRate={totalReview.value} rates={reviews.value} />
       </div>
       {/* Prices */}
       {inStock
@@ -264,6 +245,88 @@ const useStableImages = (product: ProductDetailsPage["product"]) => {
   });
 };
 
+function ProductAccordion(
+  { title, children }: { title: string; children: ComponentChildren },
+) {
+  return (
+    <details class="collapse collapse-arrow border-b border-[#eaeaea] outline-none overflow-visible">
+      <summary class="collapse-title border border-[#e0dddc] rounded-[0.3125rem] shadow-[0_0.125rem_0.125rem_rgba(0,0,0,0.16)] h-auto p-5 text-left flex justify-between items-center w-full relative after:!h-4 after:!w-4 text-lg font-medium text-primary">
+        {title}
+      </summary>
+      <div class="collapse-content flex items-center border border-[#eaeaea] rounded-[0.3125rem] shadow-[0_0.125rem_0.125rem_rgba(0,0,0,0.16)] gap-12 h-auto p-6">
+        {children}
+      </div>
+    </details>
+  );
+}
+
+function ProductAccordions({ product }: {
+  product: Product;
+}) {
+  const { description, isVariantOf } = product;
+  const { additionalProperty } = isVariantOf as unknown as Product;
+  const cuidados = additionalProperty
+    ? additionalProperty.find((prop) =>
+      prop.name = "Cuidados e manutenção do produto"
+    )
+    : undefined;
+  const [image] = useStableImages(product);
+  return (
+    <section class="lg:py-10 bg-transparent relative w-full font-quicksand">
+      <div class="flex flex-col gap-4 justify-between">
+        <ProductAccordion title="Descrição do produto">
+          {description
+            ? (
+              <>
+                <div class="w-1/2 max-w-[27.125rem]">
+                  <div class="flex items-center justify-center mx-auto w-full bg-transparent">
+                    <Image
+                      src={image!.url}
+                      alt={image.alternateName}
+                      width={400}
+                    />
+                  </div>
+                </div>
+                <div class="w-1/2">
+                  <div
+                    class="font-quicksand text-base leading-6 text-[#828282]"
+                    dangerouslySetInnerHTML={{ __html: description }}
+                  >
+                  </div>
+                </div>
+              </>
+            )
+            : <></>}
+        </ProductAccordion>
+        <ProductAccordion title="Informações técnicas">
+          {additionalProperty && (
+            <div class="bg-[#f6f7f9] py-6 px-8 w-full">
+              {additionalProperty.filter((prop) =>
+                prop.name != "sellerId" && prop.name != "Medidas"
+              ).map((prop) => (
+                <div class="border-b border-b-[#dbdbdb] last:border-b-0 items-center flex font-quicksand text-sm font-medium leading-6 justify-between py-3">
+                  <div class="w-1/2 text-[#403c3c]">{prop.name}</div>
+                  <div class="w-1/2 text-primary">{prop.value}</div>
+                </div>
+              ))}
+            </div>
+          )}
+        </ProductAccordion>
+        <ProductAccordion title="Cuidados e manutenção do produto">
+          {(additionalProperty && cuidados) && (
+            <div>
+              <div class="text-base leading-6 font-quicksand whitespace-pre-wrap text-[#828282]">
+                {cuidados.value}
+              </div>
+            </div>
+          )}
+        </ProductAccordion>
+        <ProductReviews product={product} />
+      </div>
+    </section>
+  );
+}
+
 function Details({
   page,
   buyTogether,
@@ -273,7 +336,6 @@ function Details({
 }) {
   const { product, breadcrumbList } = page;
   const accessory = buyTogether ? buyTogether[0] : undefined;
-  console.log(accessory);
   const filteredBreadcrumbList = breadcrumbList.itemListElement.filter((item) =>
     item.name!.length > 1
   );
@@ -306,31 +368,7 @@ function Details({
       <div></div>
       {accessory &&
         <BuyTogether product={product} accessory={accessory} />}
-    </>
-  );
-}
-
-function ProductAccordions({ product }: {
-  product: Product;
-}) {
-  return (
-    <>
-      {/* Description card */}
-      {
-        /* <details className="collapse collapse-plus mt-[30px]">
-        <summary className="collapse-title border border-base-200 rounded-full py-3 px-[30px] !min-h-0 font-medium">
-          Descrição
-        </summary>
-        <div className="readmore !flex-col text-xs px-0 pl-[30px] mt-3 leading-tight collapse-content text-base-300">
-          <input type="checkbox" id="readmore" className="readmore-toggle" />
-          <p
-            className="readmore-content whitespace-break-spaces !line-clamp-none"
-            dangerouslySetInnerHTML={{ __html: description ? description : "" }}
-          >
-          </p>
-        </div>
-      </details> */
-      }
+      <ProductAccordions product={product} />
     </>
   );
 }
@@ -347,7 +385,6 @@ function ProductDetails(
               page={page}
               buyTogether={buyTogetherLoader}
             />
-            <ProductAccordions product={page.product} />
           </>
         )
         : <NotFound />}

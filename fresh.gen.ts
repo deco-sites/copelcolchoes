@@ -21,14 +21,16 @@ import * as $$13 from "./islands/OutOfStock.tsx";
 import * as $$14 from "./islands/ProductDetailsImages.tsx";
 import * as $$15 from "./islands/ProductGallery.tsx";
 import * as $$16 from "./islands/ProductImageZoom.tsx";
-import * as $$17 from "./islands/SearchControls.tsx";
-import * as $$18 from "./islands/SearchResultsGridChoice.tsx";
-import * as $$19 from "./islands/ShareButton.tsx";
-import * as $$20 from "./islands/ShippingSimulation.tsx";
-import * as $$21 from "./islands/SliderJS.tsx";
-import * as $$22 from "./islands/Sort.tsx";
-import * as $$23 from "./islands/TopBar.tsx";
-import * as $$24 from "./islands/WishlistButton.tsx";
+import * as $$17 from "./islands/ProductReviews.tsx";
+import * as $$18 from "./islands/QuickReview.tsx";
+import * as $$19 from "./islands/SearchControls.tsx";
+import * as $$20 from "./islands/SearchResultsGridChoice.tsx";
+import * as $$21 from "./islands/ShareButton.tsx";
+import * as $$22 from "./islands/ShippingSimulation.tsx";
+import * as $$23 from "./islands/SliderJS.tsx";
+import * as $$24 from "./islands/Sort.tsx";
+import * as $$25 from "./islands/TopBar.tsx";
+import * as $$26 from "./islands/WishlistButton.tsx";
 
 const manifest = {
   routes: {
@@ -53,14 +55,16 @@ const manifest = {
     "./islands/ProductDetailsImages.tsx": $$14,
     "./islands/ProductGallery.tsx": $$15,
     "./islands/ProductImageZoom.tsx": $$16,
-    "./islands/SearchControls.tsx": $$17,
-    "./islands/SearchResultsGridChoice.tsx": $$18,
-    "./islands/ShareButton.tsx": $$19,
-    "./islands/ShippingSimulation.tsx": $$20,
-    "./islands/SliderJS.tsx": $$21,
-    "./islands/Sort.tsx": $$22,
-    "./islands/TopBar.tsx": $$23,
-    "./islands/WishlistButton.tsx": $$24,
+    "./islands/ProductReviews.tsx": $$17,
+    "./islands/QuickReview.tsx": $$18,
+    "./islands/SearchControls.tsx": $$19,
+    "./islands/SearchResultsGridChoice.tsx": $$20,
+    "./islands/ShareButton.tsx": $$21,
+    "./islands/ShippingSimulation.tsx": $$22,
+    "./islands/SliderJS.tsx": $$23,
+    "./islands/Sort.tsx": $$24,
+    "./islands/TopBar.tsx": $$25,
+    "./islands/WishlistButton.tsx": $$26,
   },
   baseUrl: import.meta.url,
 };

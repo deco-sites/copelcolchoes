@@ -45,7 +45,6 @@ function Form() {
       products.value = json;
     } finally {
       loading.value = false;
-      console.log(products.value);
     }
   };
   return (

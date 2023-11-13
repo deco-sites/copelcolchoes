@@ -18,7 +18,6 @@ function ProductCard(
   const { commertialOffer: { Price: price, ListPrice: listPrice } } =
     sellers[0];
   const [front] = images ?? [];
-  console.log(name);
 
   const price2: number = price as number;
   const listPrice2: number = listPrice as number;
