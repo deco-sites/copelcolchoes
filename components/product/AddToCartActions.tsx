@@ -9,21 +9,34 @@ type Props = {
   listPrice?: number;
   productName: string;
   productGroupID: string;
+  showQtSelector?: boolean;
 };
 
 export default function AddToCartActions(
-  { productID, seller, price, listPrice, productName, productGroupID }: Props,
+  {
+    productID,
+    seller,
+    price,
+    listPrice,
+    productName,
+    productGroupID,
+    showQtSelector = false,
+  }: Props,
 ) {
   const [quantity, setQuantity] = useState(1);
 
   return (
-    <div class="flex w-full gap-[30px] px-">
-      <QuantitySelector
-        quantity={quantity}
-        onChange={(_quantity) => {
-          setQuantity(_quantity);
-        }}
-      />
+    <>
+      {showQtSelector
+        ? (
+          <QuantitySelector
+            quantity={quantity}
+            onChange={(_quantity) => {
+              setQuantity(_quantity);
+            }}
+          />
+        )
+        : null}
       <AddToCartButton
         skuId={productID}
         sellerId={seller}
@@ -32,9 +45,8 @@ export default function AddToCartActions(
         name={productName}
         productGroupId={productGroupID}
         quantity={quantity}
-        label="Comprar agora"
-        classes="btn-primary btn-block transition-all font-bold text-sm tracking-[1px] py-[12px] px-10"
+        label="Adicionar ao carrinho"
       />
-    </div>
+    </>
   );
 }

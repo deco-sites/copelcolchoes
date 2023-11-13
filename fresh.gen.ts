@@ -7,27 +7,28 @@ import * as $1 from "./routes/styles.css.ts";
 import * as $$0 from "./islands/AddToCartActions.tsx";
 import * as $$1 from "./islands/AddToCartButton.tsx";
 import * as $$2 from "./islands/BackToTopButton.tsx";
-import * as $$3 from "./islands/BuyWarning.tsx";
-import * as $$4 from "./islands/CloseButton.tsx";
-import * as $$5 from "./islands/Debug.tsx";
-import * as $$6 from "./islands/HeaderButton.tsx";
-import * as $$7 from "./islands/HeaderModals.tsx";
-import * as $$8 from "./islands/HeaderSearchbar.tsx";
-import * as $$9 from "./islands/HomeSearch.tsx";
-import * as $$10 from "./islands/Newsletter.tsx";
-import * as $$11 from "./islands/NewsletterModal.tsx";
-import * as $$12 from "./islands/OutOfStock.tsx";
-import * as $$13 from "./islands/ProductDetailsImages.tsx";
-import * as $$14 from "./islands/ProductGallery.tsx";
-import * as $$15 from "./islands/ProductImageZoom.tsx";
-import * as $$16 from "./islands/SearchControls.tsx";
-import * as $$17 from "./islands/SearchResultsGridChoice.tsx";
-import * as $$18 from "./islands/ShareButton.tsx";
-import * as $$19 from "./islands/ShippingSimulation.tsx";
-import * as $$20 from "./islands/SliderJS.tsx";
-import * as $$21 from "./islands/Sort.tsx";
-import * as $$22 from "./islands/TopBar.tsx";
-import * as $$23 from "./islands/WishlistButton.tsx";
+import * as $$3 from "./islands/BuyTogether.tsx";
+import * as $$4 from "./islands/BuyWarning.tsx";
+import * as $$5 from "./islands/CloseButton.tsx";
+import * as $$6 from "./islands/Debug.tsx";
+import * as $$7 from "./islands/HeaderButton.tsx";
+import * as $$8 from "./islands/HeaderModals.tsx";
+import * as $$9 from "./islands/HeaderSearchbar.tsx";
+import * as $$10 from "./islands/HomeSearch.tsx";
+import * as $$11 from "./islands/Newsletter.tsx";
+import * as $$12 from "./islands/NewsletterModal.tsx";
+import * as $$13 from "./islands/OutOfStock.tsx";
+import * as $$14 from "./islands/ProductDetailsImages.tsx";
+import * as $$15 from "./islands/ProductGallery.tsx";
+import * as $$16 from "./islands/ProductImageZoom.tsx";
+import * as $$17 from "./islands/SearchControls.tsx";
+import * as $$18 from "./islands/SearchResultsGridChoice.tsx";
+import * as $$19 from "./islands/ShareButton.tsx";
+import * as $$20 from "./islands/ShippingSimulation.tsx";
+import * as $$21 from "./islands/SliderJS.tsx";
+import * as $$22 from "./islands/Sort.tsx";
+import * as $$23 from "./islands/TopBar.tsx";
+import * as $$24 from "./islands/WishlistButton.tsx";
 
 const manifest = {
   routes: {
@@ -38,27 +39,28 @@ const manifest = {
     "./islands/AddToCartActions.tsx": $$0,
     "./islands/AddToCartButton.tsx": $$1,
     "./islands/BackToTopButton.tsx": $$2,
-    "./islands/BuyWarning.tsx": $$3,
-    "./islands/CloseButton.tsx": $$4,
-    "./islands/Debug.tsx": $$5,
-    "./islands/HeaderButton.tsx": $$6,
-    "./islands/HeaderModals.tsx": $$7,
-    "./islands/HeaderSearchbar.tsx": $$8,
-    "./islands/HomeSearch.tsx": $$9,
-    "./islands/Newsletter.tsx": $$10,
-    "./islands/NewsletterModal.tsx": $$11,
-    "./islands/OutOfStock.tsx": $$12,
-    "./islands/ProductDetailsImages.tsx": $$13,
-    "./islands/ProductGallery.tsx": $$14,
-    "./islands/ProductImageZoom.tsx": $$15,
-    "./islands/SearchControls.tsx": $$16,
-    "./islands/SearchResultsGridChoice.tsx": $$17,
-    "./islands/ShareButton.tsx": $$18,
-    "./islands/ShippingSimulation.tsx": $$19,
-    "./islands/SliderJS.tsx": $$20,
-    "./islands/Sort.tsx": $$21,
-    "./islands/TopBar.tsx": $$22,
-    "./islands/WishlistButton.tsx": $$23,
+    "./islands/BuyTogether.tsx": $$3,
+    "./islands/BuyWarning.tsx": $$4,
+    "./islands/CloseButton.tsx": $$5,
+    "./islands/Debug.tsx": $$6,
+    "./islands/HeaderButton.tsx": $$7,
+    "./islands/HeaderModals.tsx": $$8,
+    "./islands/HeaderSearchbar.tsx": $$9,
+    "./islands/HomeSearch.tsx": $$10,
+    "./islands/Newsletter.tsx": $$11,
+    "./islands/NewsletterModal.tsx": $$12,
+    "./islands/OutOfStock.tsx": $$13,
+    "./islands/ProductDetailsImages.tsx": $$14,
+    "./islands/ProductGallery.tsx": $$15,
+    "./islands/ProductImageZoom.tsx": $$16,
+    "./islands/SearchControls.tsx": $$17,
+    "./islands/SearchResultsGridChoice.tsx": $$18,
+    "./islands/ShareButton.tsx": $$19,
+    "./islands/ShippingSimulation.tsx": $$20,
+    "./islands/SliderJS.tsx": $$21,
+    "./islands/Sort.tsx": $$22,
+    "./islands/TopBar.tsx": $$23,
+    "./islands/WishlistButton.tsx": $$24,
   },
   baseUrl: import.meta.url,
 };

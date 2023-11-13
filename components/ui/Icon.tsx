@@ -76,6 +76,8 @@ export type AvailableIcons =
   | "PrevProductImage"
   | "BlackFriday"
   | "ShareCopel"
+  | "Star"
+  | "HalfStar"
   | `ShareProduct${string}`
   | "BackToTop";
 

@@ -18,7 +18,7 @@ export interface Options {
 }
 
 export const useAddToCart = (
-  { skuId, sellerId, price, discount, name, productGroupId, quantity }: Options,
+  { items }: { items: Options[] },
 ) => {
   const isAddingToCart = useSignal(false);
   const { displayCart } = useUI();
@@ -28,35 +28,40 @@ export const useAddToCart = (
     e.preventDefault();
     e.stopPropagation();
 
-    if (!sellerId) {
-      return;
-    }
-
     try {
       isAddingToCart.value = true;
-      await addItems({
-        orderItems: [{ id: skuId, seller: sellerId, quantity }],
-      });
+      const orderItems = items.map(({ skuId, sellerId, quantity }) => ({
+        id: skuId,
+        seller: sellerId!,
+        quantity,
+      }));
+      await addItems({ orderItems });
 
-      sendEvent({
-        name: "add_to_cart",
-        params: {
-          items: [{
-            item_id: productGroupId,
-            quantity,
-            price,
-            discount,
-            item_name: name,
-            item_variant: skuId,
-          }],
+      items.forEach(
+        ({ productGroupId, quantity, price, discount, name, skuId }) => {
+          sendEvent({
+            name: "add_to_cart",
+            params: {
+              items: [
+                {
+                  item_id: productGroupId,
+                  quantity,
+                  price,
+                  discount,
+                  item_name: name,
+                  item_variant: skuId,
+                },
+              ],
+            },
+          });
         },
-      });
+      );
 
       displayCart.value = true;
     } finally {
       isAddingToCart.value = false;
     }
-  }, [skuId, sellerId, quantity]);
+  }, [items]);
 
   return { onClick, loading: isAddingToCart.value };
 };

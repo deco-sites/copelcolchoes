@@ -47,25 +47,51 @@ function ShippingContent({ simulation }: {
   }
 
   return (
-    <ul class="flex flex-col text-sm rounded-[10px]">
-      {methods.map((method) => (
-        <li class="flex text-[#4A4B51] px-[10px] sm:px-[20px] py-[10px] odd:bg-[#F3F3F4] justify-between items-center rounded-[10px]">
-          <span class="text-left font-medium break-words w-[35%] max-lg:w-[25%]">
-            {method.name.includes("Retire")
-              ? method.name.split("(")[0]
-              : method.name}
-          </span>
-          <span class="text-button w-[35%] max-lg:w-[45%]">
-            Em até {formatShippingEstimate(method.shippingEstimate)}
-          </span>
-          <span class="font-medium text-right w-[20%]">
-            {method.price === 0 ? "Grátis" : (
-              formatPrice(method.price / 100, currencyCode, locale)
-            )}
-          </span>
-        </li>
-      ))}
-    </ul>
+    <div class="py-4">
+      <table class="w-full border-collapse">
+        <thead size={12} class="uppercase text-xs">
+          <tr>
+            <th class="border-t-none py-2 text-center">Entrega</th>
+            <th class="border-t-none py-2 text-center">Frete</th>
+            <th class="border-t-none py-2 text-center">Prazo</th>
+          </tr>
+        </thead>
+        <tbody size={12} class="uppercase text-xs">
+          {methods.map((method) => (
+            <tr class="bg-white hover:bg-[rgba(0,0,0,0.075)] transition-all duration-150">
+              <td class="py-2 text-center">{method.name}</td>
+              <td class="py-2 text-center">
+                {method.price === 0 ? "Grátis" : (
+                  formatPrice(method.price / 100, currencyCode, locale)
+                )}
+              </td>
+              <td class="py-2 text-center">
+                Até {formatShippingEstimate(method.shippingEstimate)}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    // <ul class="flex flex-col text-sm rounded-[10px]">
+    //   {methods.map((method) => (
+    //     <li class="flex text-[#4A4B51] px-[10px] sm:px-[20px] py-[10px] odd:bg-[#F3F3F4] justify-between items-center rounded-[10px]">
+    //       <span class="text-left font-medium break-words w-[35%] max-lg:w-[25%]">
+    //         {method.name.includes("Retire")
+    //           ? method.name.split("(")[0]
+    //           : method.name}
+    //       </span>
+    //       <span class="text-button w-[35%] max-lg:w-[45%]">
+    //         Em até {formatShippingEstimate(method.shippingEstimate)}
+    //       </span>
+    //       <span class="font-medium text-right w-[20%]">
+    //         {method.price === 0 ? "Grátis" : (
+    //           formatPrice(method.price / 100, currencyCode, locale)
+    //         )}
+    //       </span>
+    //     </li>
+    //   ))}
+    // </ul>
   );
 }
 
@@ -93,52 +119,57 @@ function ShippingSimulation({ items }: Props) {
   }, []);
 
   return (
-    <div class="flex flex-col mt-[30px] gap-5 p-[20px] sm:p-[30px] rounded-2xl border border-base-200 text-base-300">
-      <p class="text-justify text-primary font-medium">
-        Calcular o frete
-      </p>
-      <div class="flex flex-col gap-[10px]">
-        <form
-          class="flex gap-2 max-lg:flex-col"
-          onSubmit={(e) => {
-            e.preventDefault();
-            handleSimulation();
-          }}
-        >
-          <input
-            as="input"
-            type="text"
-            inputMode="numeric"
-            pattern="[0-9]*"
-            class="input input-bordered input-sm text-xs border focus:outline-none w-full max-w-[300px] !py-4 hover:border-base-300 focus:text-black focus:hover:border-base-200"
-            placeholder="00000-000"
-            value={postalCode.value}
-            maxLength={8}
-            onChange={(e: { currentTarget: { value: string } }) => {
-              postalCode.value = e.currentTarget.value;
-            }}
-          />
-          <div class="flex gap-[10px] items-center lg:justify-center w-full">
-            <Button
-              type="submit"
-              loading={loading.value}
-              class="btn-outline transition-all !border h-[2.25rem] px-[26px] text-xs tracking-[1px] font-bold"
+    <div class="font-quicksand py-5">
+      <h4 class="text-primary text-lg font-semibold leading-8">
+        Calcule as opções de entrega
+      </h4>
+      {!simulateResult.value
+        ? (
+          <div class="py-3">
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleSimulation();
+              }}
             >
-              Calcular
-            </Button>
-            <a
-              href="https://buscacepinter.correios.com.br/app/endereco/index.php"
-              class="uppercase text-primary text-xs hover:underline max-lg:underline transition-all duration-500 whitespace-nowrap"
-              target="_blank"
-            >
-              Não sei meu CEP
-            </a>
+              <div class="flex justify-between items-end">
+                <div class="flex-1 mr-3 text-[0.8125rem] relative">
+                  <label for="shippingPostalCode"></label>
+                  <input
+                    as="input"
+                    type="text"
+                    inputMode="numeric"
+                    pattern="[0-9]*"
+                    class="input !rounded-none border h-[2.625rem] w-[16.25rem] border-[#dcdcdc] px-4 text-xs focus:outline-none outline-none"
+                    placeholder="Insira seu cep"
+                    value={postalCode.value}
+                    maxLength={8}
+                    onChange={(e: { currentTarget: { value: string } }) => {
+                      postalCode.value = e.currentTarget.value;
+                    }}
+                  />
+                </div>
+                <Button
+                  type="submit"
+                  loading={loading.value}
+                  class="bg-white !border border-primary !rounded-[0.3125rem] h-[2.625rem] transition-all duration-300 w-[9.5rem] flex items-center justify-center text-[0.9375rem] font-bold relative px-8 appearance-none hover:bg-primary hover:text-white"
+                >
+                  Calcular
+                </Button>
+              </div>
+            </form>
           </div>
-        </form>
-      </div>
-      {simulateResult.value
-        ? <ShippingContent simulation={simulateResult} />
-        : null}
+        )
+        : <ShippingContent simulation={simulateResult} />}
+      <a
+        href="https://buscacepinter.correios.com.br/app/endereco/index.php"
+        target="_blank"
+        title="Não sei meu cep"
+        rel="noopener noreferer"
+        class="text-primary text-[0.875rem] font-normal leading-8 underline block cursor-pointer"
+      >
+        Não sei o meu cep
+      </a>
     </div>
   );
 }

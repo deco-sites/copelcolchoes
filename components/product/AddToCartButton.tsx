@@ -3,7 +3,6 @@ import {
   Options as UseAddToCartProps,
   useAddToCart,
 } from "$store/sdk/useAddToCart.ts";
-import Icon from "$store/components/ui/Icon.tsx";
 
 interface Props extends UseAddToCartProps {
   /**
@@ -11,7 +10,6 @@ interface Props extends UseAddToCartProps {
    */
   sellerId: string;
   label?: string;
-  classes?: string;
 }
 
 function AddToCartButton(
@@ -23,11 +21,10 @@ function AddToCartButton(
     productGroupId,
     name,
     label,
-    classes,
     quantity,
   }: Props,
 ) {
-  const props = useAddToCart({
+  const items = [{
     skuId,
     sellerId,
     discount,
@@ -35,16 +32,22 @@ function AddToCartButton(
     productGroupId,
     name,
     quantity,
-  });
+  }];
+  const props = useAddToCart({ items });
 
   return (
-    <Button data-deco="add-to-cart" {...props} class={classes}>
-      <p class="flex gap-2 items-center justify-center">
-        <Icon id="ShoppingCart" width={24} height={20} />
-        <span class="lg:hidden">{"Comprar"}</span>
-        <span class="hidden lg:inline">{label ?? "Adicionar ao carrinho"}</span>
-      </p>
-    </Button>
+    <div class="py-[0.3125rem] text-[#464646] max-w-[17.5rem] w-[70%]">
+      <div>
+        <Button
+          title={label || "Adicionar ao carrinho"}
+          class="bg-black border-transparent !rounded-[0.3125rem] font-quicksand text-base font-semibold h-12 leading-5 min-w-[13.25rem] transition-all duration-300 hover:bg-[#00224d] w-full flex items-center justify-center relative px-8 text-white appearance-none"
+          data-deco="add-to-cart"
+          {...props}
+        >
+          {label || "Adicionar ao carrinho"}
+        </Button>
+      </div>
+    </div>
   );
 }
 
