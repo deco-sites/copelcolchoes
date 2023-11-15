@@ -19,6 +19,7 @@
   "deno.inlayHints.parameterTypes.enabled": false,
   "deno.inlayHints.variableTypes.enabled": false,
   "cSpell.words": [
-    "skus"
+    "skus",
+    "YOURVIEWS"
   ]
 }

@@ -10,7 +10,6 @@ import type { ProductDetailsPage } from "apps/commerce/types.ts";
 import type { LoaderReturnType } from "$live/types.ts";
 import AddToCartActions from "$store/islands/AddToCartActions.tsx";
 import ProductDetailsImages from "$store/islands/ProductDetailsImages.tsx";
-import Icon from "$store/components/ui/Icon.tsx";
 import type { Product } from "apps/commerce/types.ts";
 import BuyTogether from "$store/islands/BuyTogether.tsx";
 import Image from "deco-sites/std/components/Image.tsx";
@@ -23,8 +22,17 @@ export type ShareableNetwork = "Facebook" | "Twitter" | "Email" | "WhatsApp";
 
 export interface Props {
   page: LoaderReturnType<ProductDetailsPage | null>;
-  // buyTogether: Section;
   buyTogetherLoader: LoaderReturnType<Product[] | null>;
+  yourViews: {
+    /**
+     * @title YOURVIEWS_KEY
+     */
+    key: string;
+    /**
+     * @title YOURVIEWS_AUTH
+     */
+    auth: string;
+  };
 }
 
 const WIDTH = 576;
@@ -267,7 +275,7 @@ function ProductAccordions({ product }: {
   const { additionalProperty } = isVariantOf as unknown as Product;
   const cuidados = additionalProperty
     ? additionalProperty.find((prop) =>
-      prop.name = "Cuidados e manutenção do produto"
+      prop.name === "Cuidados e manutenção do produto"
     )
     : undefined;
   const [image] = useStableImages(product);
@@ -302,7 +310,8 @@ function ProductAccordions({ product }: {
           {additionalProperty && (
             <div class="bg-[#f6f7f9] py-6 px-8 w-full">
               {additionalProperty.filter((prop) =>
-                prop.name != "sellerId" && prop.name != "Medidas"
+                prop.name != "sellerId" && prop.name != "Medidas" &&
+                prop.name != "Video"
               ).map((prop) => (
                 <div class="border-b border-b-[#dbdbdb] last:border-b-0 items-center flex font-quicksand text-sm font-medium leading-6 justify-between py-3">
                   <div class="w-1/2 text-[#403c3c]">{prop.name}</div>
@@ -321,7 +330,6 @@ function ProductAccordions({ product }: {
             </div>
           )}
         </ProductAccordion>
-        <ProductReviews product={product} />
       </div>
     </section>
   );
@@ -330,9 +338,11 @@ function ProductAccordions({ product }: {
 function Details({
   page,
   buyTogether,
+  yourViews,
 }: {
   page: ProductDetailsPage;
   buyTogether: Product[] | null;
+  yourViews: Props["yourViews"];
 }) {
   const { product, breadcrumbList } = page;
   const accessory = buyTogether ? buyTogether[0] : undefined;
@@ -340,6 +350,7 @@ function Details({
     item.name!.length > 1
   );
   const images = useStableImages(product);
+  console.log(product)
 
   return (
     <>
@@ -369,12 +380,17 @@ function Details({
       {accessory &&
         <BuyTogether product={product} accessory={accessory} />}
       <ProductAccordions product={product} />
+      <ProductReviews
+        product={product}
+        key={yourViews.key}
+        auth={yourViews.auth}
+      />
     </>
   );
 }
 
 function ProductDetails(
-  { page, buyTogetherLoader }: Props,
+  { page, buyTogetherLoader, yourViews }: Props,
 ) {
   return (
     <div class="py-0">
@@ -384,6 +400,7 @@ function ProductDetails(
             <Details
               page={page}
               buyTogether={buyTogetherLoader}
+              yourViews={yourViews}
             />
           </>
         )
