@@ -314,7 +314,7 @@ function QuestionForm() {
         </button>
       </form>
     </article>
-  )
+  );
 }
 
 interface Props {

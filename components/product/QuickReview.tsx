@@ -38,7 +38,9 @@ function QuickReview(
         </div>
       </div>
       <span class="underline">
-        {rates > 0 ? `${rates} avaliaç${rates > 1 ? "ões" : "ão"}` : "Seja o primeiro a avaliar"}
+        {rates > 0
+          ? `${rates} avaliaç${rates > 1 ? "ões" : "ão"}`
+          : "Seja o primeiro a avaliar"}
       </span>
     </button>
   );

@@ -350,7 +350,7 @@ function Details({
     item.name!.length > 1
   );
   const images = useStableImages(product);
-  console.log(product)
+  console.log(product);
 
   return (
     <>
