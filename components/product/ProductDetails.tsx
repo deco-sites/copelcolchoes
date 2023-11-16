@@ -86,7 +86,7 @@ function ProductInfo(
         <span class="text-[#828282] text-sm leading-[1.125rem] mb-6">
           Cód.: {isVariantOf?.model}
         </span>
-        <h1 class="text-primary text-[1.75rem] leading-8 font-semibold pt-2 capitalize">
+        <h1 class="text-primary text-[1.75rem] max-lg:text-[1.5rem] leading-8 font-semibold pt-2 capitalize">
           {(isVariantOf?.name || name || "").toLowerCase()}
         </h1>
       </div>
@@ -112,7 +112,7 @@ function ProductInfo(
                 </div>
               </div>
             )}
-            <div class="py-[1.375rem]">
+            <div class="py-[1.375rem] max-lg:pb-0">
               <div class="flex flex-col font-quicksand">
                 {discount && (
                   <del class="text-[#828282] text-base leading-[1.125rem] line-through">
@@ -136,7 +136,7 @@ function ProductInfo(
                 </p>
               </div>
               <div>
-                <p class="text-secondary text-base font-extrabold leading-[1.125rem] mt-[10px]">
+                <p class="text-secondary text-base font-quicksand font-extrabold leading-[1.125rem] mt-[10px]">
                   {price &&
                     formatPrice(price - (price * 0.1), offers!.priceCurrency!)}
                   {" "}
@@ -280,7 +280,7 @@ function ProductAccordions({ product }: {
     : undefined;
   const [image] = useStableImages(product);
   return (
-    <section class="lg:py-10 bg-transparent relative w-full font-quicksand">
+    <section class="lg:py-10 bg-transparent relative w-full font-quicksand max-lg:py-6">
       <div class="flex flex-col gap-4 justify-between">
         <ProductAccordion title="Descrição do produto">
           {description

@@ -131,7 +131,7 @@ function ProductCard(
 
   return (
     <article
-      class="h-full font-quicksand shadow-md rounded-[5px] border border-[#dbdbdb] flex flex-col justify-between hover:border-primary"
+      class="h-full font-quicksand shadow-md rounded-[5px] border border-[#dbdbdb] flex flex-col justify-between hover:border-primary max-lg:max-w-[80%]"
       data-deco="view-product"
       id={`product-card-${productID}`}
       {...sendEventOnClick(clickEvent)}

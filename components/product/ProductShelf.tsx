@@ -27,10 +27,6 @@ export interface Props {
     headerAlignment?: "center" | "left";
     headerfontSize?: "Normal" | "Large";
     color?: "primary" | "secondary";
-    itemsPerPage?: {
-      screenWidth?: number;
-      itemsQuantity?: number;
-    }[];
   };
   showPaginationArrows?: ResponsiveConditionals;
   cardLayout?: CardLayout;
@@ -99,11 +95,11 @@ function ProductShelf({
         id={id}
         class="grid grid-cols-[42px_1fr_42px] max-lg:grid-cols-[30px_1fr_30px] px-0 grid-rows-[1fr_42px_1fr] max-lg:grid-rows-[1fr_30px_1fr]"
       >
-        <Slider class="carousel carousel-start gap-6 col-span-full row-span-full py-2 lg:mx-8 my-5">
+        <Slider class="carousel carousel-center gap-6 col-span-full row-span-full py-2 lg:mx-8 my-5">
           {products?.map((product, index) => (
             <Slider.Item
               index={index}
-              class="carousel-item h-auto w-[264px]"
+              class="carousel-item h-auto w-[264px] justify-center"
             >
               <ProductCard
                 product={product}
@@ -176,13 +172,7 @@ function ProductShelf({
         <SliderJS
           rootId={id}
           infinite
-          itemsPerPage={layout?.itemsPerPage?.reduce(
-            (initial, { screenWidth, itemsQuantity }) => ({
-              ...initial,
-              [screenWidth?.toString() ?? "0"]: itemsQuantity ?? 1,
-            }),
-            {},
-          )}
+          itemsPerPage={{ [720]: 4, [0]: 1 }}
         />
       </div>
       {seeMore && seeMore.label

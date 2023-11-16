@@ -132,15 +132,15 @@ function ShippingSimulation({ items }: Props) {
                 handleSimulation();
               }}
             >
-              <div class="flex justify-between items-end">
-                <div class="flex-1 mr-3 text-[0.8125rem] relative">
+              <div class="flex justify-between items-end max-lg:items-start max-lg:flex-col max-lg:gap-5">
+                <div class="flex-1 mr-3 text-[0.8125rem] relative max-lg:w-full">
                   <label for="shippingPostalCode"></label>
                   <input
                     as="input"
                     type="text"
                     inputMode="numeric"
                     pattern="[0-9]*"
-                    class="input !rounded-none border h-[2.625rem] w-[16.25rem] border-[#dcdcdc] px-4 text-xs focus:outline-none outline-none"
+                    class="input !rounded-none border h-[2.625rem] w-[16.25rem] border-[#dcdcdc] px-4 text-xs focus:outline-none outline-none max-lg:w-full"
                     placeholder="Insira seu cep"
                     value={postalCode.value}
                     maxLength={8}
