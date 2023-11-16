@@ -22,12 +22,12 @@ function ProductDetailsImages(
     <>
       <div class="lg:w-1/2 relative">
         <div class="flex flex-col relative" id={id}>
-          <div class="mx-8 mix-blend-multiply w-full">
-            <Slider class="carousel carousel-center gap-6 box-border lg:box-content w-full">
+          <div class="mix-blend-multiply w-full">
+            <Slider class="carousel carousel-start box-border lg:box-content w-full">
               {images.map((img, index) => (
                 <Slider.Item
                   index={index}
-                  class="carousel-item w-full"
+                  class="carousel-item w-full last:mr-6"
                 >
                   <div class="relative block h-0 w-full pb-[100%] ">
                     <Image
@@ -74,7 +74,7 @@ function ProductDetailsImages(
           </div>
         </div>
         <div class="group items-center cursor-pointer flex flex-col gap-2 h-auto justify-center absolute right-0 top-5">
-          <div class="group-hover:bg-primary flex items-center rounded-full border border-[#f6f6f6] shadow-[0_0.1875rem_0.375rem_rgba(0,0,0,0.16)] h-10 justify-center transition-all duration-300 ease-out w-10">
+          <div class="group-hover:bg-primary bg-white flex items-center rounded-full border border-[#f6f6f6] shadow-[0_0.1875rem_0.375rem_rgba(0,0,0,0.16)] h-10 justify-center transition-all duration-300 ease-out w-10">
             <Icon
               id="ShareCopel"
               size={20}
