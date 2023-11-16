@@ -38,7 +38,7 @@ function CartItem({ index, currency }: Props) {
       <div class="w-20 flex-shrink-0">
         <a href={detailUrl} title={name} class="block cursor-pointer">
           <Image
-            src={imageUrl.replace("55-55", "80-80")}
+            src={imageUrl.replace("60-40", "100-100")}
             alt={skuName}
             width={80}
             height={80}
