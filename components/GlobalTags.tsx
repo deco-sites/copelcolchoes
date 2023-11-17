@@ -5,7 +5,7 @@ function GlobalTags() {
     <Head>
       <meta
         name="google-site-verification"
-        content="KjKLOj9ZORFR8rAXjPzFmpCyz9h7ivARJzL_EKj3Udc"
+        content="-GMr8JjI5XktV_ji4KN-Cp2xm_3e8JK0lgv81JmSsiE"
       />
       {/* Enable View Transitions API */}
       <meta name="view-transition" content="same-origin" />
