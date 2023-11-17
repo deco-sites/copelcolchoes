@@ -282,7 +282,7 @@ function ProductReviews({ reviews }: SectionProps<typeof loader>) {
   const { reviews: rates, totalReview: totalRate } = useQuickReview();
   const { Element } = reviews;
   rates.value = !Element ? 0 : Element.TotalRatings;
-  totalRate.value = !Element ? 0 : Element.Ratings;
+  totalRate.value = !Element ? 0 : Element.Rating;
   console.log(reviews);
   const displayQuestionForm = useSignal(false);
   const displayReviewForm = useSignal(false);
