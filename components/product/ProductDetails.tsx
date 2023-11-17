@@ -14,25 +14,14 @@ import type { Product } from "apps/commerce/types.ts";
 import BuyTogether from "$store/islands/BuyTogether.tsx";
 import Image from "deco-sites/std/components/Image.tsx";
 import type { ComponentChildren } from "preact";
-import ProductReviews from "$store/islands/ProductReviews.tsx";
+// import ProductReviews, { loader } from "$store/islands/ProductReviews.tsx";
 import QuickReview from "$store/islands/QuickReview.tsx";
-import { useQuickReview } from "$store/sdk/useQuickReview.ts";
 
 export type ShareableNetwork = "Facebook" | "Twitter" | "Email" | "WhatsApp";
 
 export interface Props {
   page: LoaderReturnType<ProductDetailsPage | null>;
   buyTogetherLoader: LoaderReturnType<Product[] | null>;
-  yourViews: {
-    /**
-     * @title YOURVIEWS_KEY
-     */
-    key: string;
-    /**
-     * @title YOURVIEWS_AUTH
-     */
-    auth: string;
-  };
 }
 
 const WIDTH = 576;
@@ -60,7 +49,6 @@ function ProductInfo(
     page: ProductDetailsPage;
   },
 ) {
-  const { loadingReviews, reviews, totalReview } = useQuickReview();
   const {
     breadcrumbList,
     product,
@@ -95,7 +83,7 @@ function ProductInfo(
         class="text-primary font-quicksand text-[0.875rem] font-medium leading-8 py-4 underline"
         id="yv-quickreview"
       >
-        <QuickReview totalRate={totalReview.value} rates={reviews.value} />
+        <QuickReview />
       </div>
       {/* Prices */}
       {inStock
@@ -338,11 +326,9 @@ function ProductAccordions({ product }: {
 function Details({
   page,
   buyTogether,
-  yourViews,
 }: {
   page: ProductDetailsPage;
   buyTogether: Product[] | null;
-  yourViews: Props["yourViews"];
 }) {
   const { product, breadcrumbList } = page;
   const accessory = buyTogether ? buyTogether[0] : undefined;
@@ -350,7 +336,7 @@ function Details({
     item.name!.length > 1
   );
   const images = useStableImages(product);
-  console.log(product);
+  // console.log(product);
 
   return (
     <>
@@ -380,17 +366,12 @@ function Details({
       {accessory &&
         <BuyTogether product={product} accessory={accessory} />}
       <ProductAccordions product={product} />
-      <ProductReviews
-        product={product}
-        key={yourViews.key}
-        auth={yourViews.auth}
-      />
     </>
   );
 }
 
 function ProductDetails(
-  { page, buyTogetherLoader, yourViews }: Props,
+  { page, buyTogetherLoader }: Props,
 ) {
   return (
     <div class="py-0">
@@ -400,7 +381,6 @@ function ProductDetails(
             <Details
               page={page}
               buyTogether={buyTogetherLoader}
-              yourViews={yourViews}
             />
           </>
         )

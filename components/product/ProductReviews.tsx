@@ -1,14 +1,15 @@
-import type { Product } from "apps/commerce/types.ts";
 import { useSignal } from "@preact/signals";
 import type { JSX } from "preact";
-import { useEffect } from "preact/compat";
+import type { SectionProps } from "deco/mod.ts";
+import type { LoaderReturnType } from "$live/types.ts";
+import type { ProductDetailsPage } from "apps/commerce/types.ts";
+import { useQuickReview } from "$store/sdk/useQuickReview.ts";
 
 const ratings = [1, 2, 3, 4, 5];
 
 function ReviewForm() {
   const handleReview: JSX.GenericEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
-    console.log(e);
     if (e.target === null) return;
     const formData = new FormData(e.target as HTMLFormElement);
     const formProps = Object.fromEntries(formData);
@@ -164,7 +165,6 @@ function ReviewForm() {
 function QuestionForm() {
   const handleReview: JSX.GenericEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
-    console.log(e);
     if (e.target === null) return;
     const formData = new FormData(e.target as HTMLFormElement);
     const formProps = Object.fromEntries(formData);
@@ -247,12 +247,43 @@ function QuestionForm() {
 }
 
 interface Props {
-  product: Product;
-  key: string;
-  auth: string;
+  yourViews: {
+    /**
+     * @title YOURVIEWS_KEY
+     */
+    key: string;
+    /**
+     * @title YOURVIEWS_AUTH
+     */
+    auth: string;
+  };
+  page: LoaderReturnType<ProductDetailsPage | null>;
 }
 
-function ProductReviews({ product, key, auth }: Props) {
+export async function loader(
+  { yourViews, page }: Props,
+  _req: Request,
+) {
+  const options = {
+    headers: {
+      YVStoreKey: yourViews.key,
+    },
+  };
+  const { product } = page!;
+  const { inProductGroupWithID } = product;
+  const reviews = await fetch(
+    `https://service.yourviews.com.br/api/v2/pub/review/${inProductGroupWithID}?page=1&count=10`,
+    options,
+  ).then((r) => r.json());
+  return { reviews };
+}
+
+function ProductReviews({ reviews }: SectionProps<typeof loader>) {
+  const { reviews: rates, totalReview: totalRate } = useQuickReview();
+  const { Element } = reviews;
+  rates.value = !Element ? 0 : Element.Rating;
+  totalRate.value = !Element ? 0 : Element.TotalRatings;
+  console.log(reviews);
   const displayQuestionForm = useSignal(false);
   const displayReviewForm = useSignal(false);
 

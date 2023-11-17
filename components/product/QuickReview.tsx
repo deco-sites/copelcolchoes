@@ -1,4 +1,6 @@
 import Icon from "$store/components/ui/Icon.tsx";
+import { useQuickReview } from "$store/sdk/useQuickReview.ts";
+
 const ratings = [1, 2, 3, 4, 5];
 
 const handleClick = () => {
@@ -6,9 +8,10 @@ const handleClick = () => {
   element?.scrollIntoView({ behavior: "smooth", block: "center" });
 };
 
-function QuickReview(
-  { totalRate, rates }: { totalRate: number; rates: number },
-) {
+function QuickReview() {
+  const { reviews, totalReview } = useQuickReview();
+  const rates = reviews.value;
+  const totalRate = totalReview.value;
   return (
     <button
       class="flex items-center gap-4"
