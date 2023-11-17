@@ -281,8 +281,8 @@ export async function loader(
 function ProductReviews({ reviews }: SectionProps<typeof loader>) {
   const { reviews: rates, totalReview: totalRate } = useQuickReview();
   const { Element } = reviews;
-  rates.value = !Element ? 0 : Element.Rating;
-  totalRate.value = !Element ? 0 : Element.TotalRatings;
+  rates.value = !Element ? 0 : Element.TotalRatings;
+  totalRate.value = !Element ? 0 : Element.Ratings;
   console.log(reviews);
   const displayQuestionForm = useSignal(false);
   const displayReviewForm = useSignal(false);
