@@ -8,8 +8,30 @@ import { useState } from "preact/hooks";
 import StarRatings from "$store/components/product/StarsRatings.tsx";
 import Icon from "$store/components/ui/Icon.tsx";
 import { formatData } from "$store/sdk/format.ts";
+import Loading from "$store/components/ui/Loading.tsx";
+import type { Product } from "apps/commerce/types.ts";
 
 const ratings = [1, 2, 3, 4, 5];
+
+function SuccessMessage({ variant }: { variant: string }) {
+  return (
+    <div class="max-lg:py-6 lg:my-8 text-center w-[calc(50%-10px)]">
+      <div class="font-bold text-xl leading-6">
+        {variant === "Avaliação" ? "Avaliação enviada com sucesso :)" : (
+          <>
+            Dúvida enviada com sucesso :) <br />
+            Responderemos em breve.
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
+interface FormProps {
+  key: string;
+  product: Product;
+}
 
 function ReviewForm() {
   const handleReview: JSX.GenericEventHandler<HTMLFormElement> = (e) => {
@@ -166,86 +188,136 @@ function ReviewForm() {
   );
 }
 
-function QuestionForm() {
-  const handleReview: JSX.GenericEventHandler<HTMLFormElement> = (e) => {
+function QuestionForm({ key, product }: FormProps) {
+  const loading = useSignal(false);
+  const success = useSignal(false);
+  const handleReview: JSX.GenericEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     if (e.target === null) return;
     const formData = new FormData(e.target as HTMLFormElement);
     const formProps = Object.fromEntries(formData);
-    console.log(formProps);
+    const { reviewUserEmail, reviewUserName, userQuestion } = formProps;
+    const { inProductGroupWithID, image, isVariantOf } = product;
+    const { name, url } = isVariantOf!;
+    const date = new Date().toISOString();
+    const data = {
+      Date: date,
+      Product: {
+        productId: inProductGroupWithID,
+        Image: image ? image[0].url : null,
+        Name: name || null,
+        Url: url || null,
+      },
+      Question: userQuestion,
+      QuestionId: 0,
+      User: {
+        Email: reviewUserEmail,
+        ExhibitionName: reviewUserName,
+        Name: reviewUserName,
+      },
+    };
+
+    const fetchUrl = "https://service.yourviews.com.br/api/v2/pub/qna";
+    const options = {
+      headers: {
+        YVStoreKey: key,
+        "Content-Type": "application/json; charset=utf-8",
+      },
+      method: "POST",
+      body: JSON.stringify(data),
+    };
+    try {
+      loading.value = true;
+      const data = await fetch(fetchUrl, options);
+      console.log(data);
+    } finally {
+      loading.value = false;
+      success.value = true;
+      setTimeout(() => {
+        success.value = false;
+      }, 5000);
+    }
   };
   return (
     <article id="questionForm" class="font-quicksand block">
-      <form onSubmit={handleReview}>
-        <section class="py-6">
-          <h3 class="text-primary text-2xl leading-6 font-medium mb-6">
-            Sua dúvida
-          </h3>
-          <div class="flex justify-between items-end mb-5">
-            <div class="border-0 p-0 text-xs relative w-full mb-3 text-[#111111]">
-              <label
-                for="userQuestion"
-                class="pb-5 block text-base leading-3 font-bold "
-              >
-                O que você quer saber sobre este produto?
-              </label>
-              <textarea
-                id="userQuestion"
-                required
-                name="userQuestion"
-                rows={4}
-                placeholder="Pergunte sobre as características do produto, como utilizá-lo ou peça alguma dica"
-                class="border border-[#707070] p-4 overflow-auto resize-y w-full text-sm"
-              />
-            </div>
-          </div>
-          <h3 class="text-primary text-2xl leading-6 font-medium mb-6">
-            Seus Dados
-          </h3>
-          <div class="mb-5 flex justify-between items-end">
-            <div class="border-0 p-0 text-sm relative">
-              <label
-                class="pb-5 block text-base font-bold leading-3 text-[#111111]"
-                for="reviewUserName"
-              >
-                Seu nome (como será exibido no site)
-              </label>
-              <input
-                required
-                id="reviewUserName"
-                type="text"
-                name="reviewUserName"
-                placeholder="Seu nome"
-                class="border border-[#707070] text-sm p-4 h-8 w-full"
-              />
-            </div>
-          </div>
-          <div class="flex justify-between items-end">
-            <div class="border-0 p-0 text-sm relative">
-              <label
-                class="pb-5 block text-base font-bold leading-3 text-[#111111]"
-                for="reviewUserEmail"
-              >
-                Seu email
-              </label>
-              <input
-                required
-                id="reviewUserEmail"
-                type="email"
-                name="reviewUserEmail"
-                placeholder="Seu e-mail"
-                class="border border-[#707070] text-sm p-4 h-8 w-full"
-              />
-            </div>
-          </div>
-        </section>
-        <button
-          type="submit"
-          class="rounded-[0.3125rem] text-base font-semibold h-12 my-4 w-[16.25rem] transition-all duration-300 flex justify-center items-center border border-transparent relative px-8 bg-primary hover:bg-primary-focus text-white appearance-none max-lg:mx-auto"
-        >
-          Enviar pergunta
-        </button>
-      </form>
+      {loading.value ? <Loading /> : (
+        <>
+          {success.value
+            ? <SuccessMessage variant="Pergunta" />
+            : (
+              <form onSubmit={handleReview}>
+                <section class="py-6">
+                  <h3 class="text-primary text-2xl leading-6 font-medium mb-6">
+                    Sua dúvida
+                  </h3>
+                  <div class="flex justify-between items-end mb-5">
+                    <div class="border-0 p-0 text-xs relative w-full mb-3 text-[#111111]">
+                      <label
+                        for="userQuestion"
+                        class="pb-5 block text-base leading-3 font-bold "
+                      >
+                        O que você quer saber sobre este produto?
+                      </label>
+                      <textarea
+                        id="userQuestion"
+                        required
+                        name="userQuestion"
+                        rows={4}
+                        placeholder="Pergunte sobre as características do produto, como utilizá-lo ou peça alguma dica"
+                        class="border border-[#707070] p-4 overflow-auto resize-y w-full text-sm"
+                      />
+                    </div>
+                  </div>
+                  <h3 class="text-primary text-2xl leading-6 font-medium mb-6">
+                    Seus Dados
+                  </h3>
+                  <div class="mb-5 flex justify-between items-end">
+                    <div class="border-0 p-0 text-sm relative">
+                      <label
+                        class="pb-5 block text-base font-bold leading-3 text-[#111111]"
+                        for="reviewUserName"
+                      >
+                        Seu nome (como será exibido no site)
+                      </label>
+                      <input
+                        required
+                        id="reviewUserName"
+                        type="text"
+                        name="reviewUserName"
+                        placeholder="Seu nome"
+                        class="border border-[#707070] text-sm p-4 h-8 w-full"
+                      />
+                    </div>
+                  </div>
+                  <div class="flex justify-between items-end">
+                    <div class="border-0 p-0 text-sm relative">
+                      <label
+                        class="pb-5 block text-base font-bold leading-3 text-[#111111]"
+                        for="reviewUserEmail"
+                      >
+                        Seu email
+                      </label>
+                      <input
+                        required
+                        id="reviewUserEmail"
+                        type="email"
+                        name="reviewUserEmail"
+                        placeholder="Seu e-mail"
+                        class="border border-[#707070] text-sm p-4 h-8 w-full"
+                      />
+                    </div>
+                  </div>
+                </section>
+                <button
+                  type="submit"
+                  class="rounded-[0.3125rem] text-base font-semibold h-12 my-4 w-[16.25rem] transition-all duration-300 flex justify-center items-center border border-transparent relative px-8 bg-primary hover:bg-primary-focus text-white appearance-none max-lg:mx-auto"
+                >
+                  Enviar pergunta
+                </button>
+              </form>
+            )}
+        </>
+      )}
     </article>
   );
 }
@@ -287,7 +359,7 @@ export async function loader(
     `https://service.yourviews.com.br/api/v2/pub/review/${inProductGroupWithID}?page=1&count=3&orderBy=1`,
     options,
   ).then((r) => r.json());
-  return { reviews, inProductGroupWithID, yourViews };
+  return { reviews, product, yourViews };
 }
 
 interface CustomFields {
@@ -334,8 +406,9 @@ const getPages = (page: number, lastPage: number) => {
 };
 
 function ProductReviews(
-  { reviews, inProductGroupWithID, yourViews }: SectionProps<typeof loader>,
+  { reviews, product, yourViews }: SectionProps<typeof loader>,
 ) {
+  const { inProductGroupWithID } = product;
   const { reviews: rates, totalReview: totalRate } = useQuickReview();
   const { Element, Pagination } = reviews;
   rates.value = !Element ? 0 : Element.TotalRatings;
@@ -346,11 +419,8 @@ function ProductReviews(
   const [pagination, setPagination] = useState(
     Pagination ? Pagination : {},
   );
-
-  console.log(currentReviews);
   const { IsFirstPage, IsLastPage, PageCount, PageNumber } = pagination;
   const [pages, setPages] = useState(getPages(PageNumber, PageCount));
-
   const handlePageChange = async (page: number) => {
     const options = {
       headers: {
@@ -563,7 +633,9 @@ function ProductReviews(
         </div>
       </div>
       {displayReviewForm.value && <ReviewForm />}
-      {displayQuestionForm.value && <QuestionForm />}
+      {displayQuestionForm.value && (
+        <QuestionForm key={yourViews.key} product={product} />
+      )}
     </div>
   );
 }
