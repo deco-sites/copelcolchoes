@@ -357,7 +357,7 @@ function ProductReviews(
         YVStoreKey: yourViews.key,
       },
     };
-    const newReviews = await fetch(
+    const newReviews = page === 1 ? reviews : await fetch(
       `https://service.yourviews.com.br/api/v2/pub/review/${inProductGroupWithID}?page=${page}&count=3&orderBy=1`,
       options,
     ).then((r) => r.json());
