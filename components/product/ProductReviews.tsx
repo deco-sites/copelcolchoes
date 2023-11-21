@@ -29,17 +29,73 @@ function SuccessMessage({ variant }: { variant: string }) {
 }
 
 interface FormProps {
-  key: string;
+  yvkey: string;
   product: Product;
 }
 
-function ReviewForm() {
-  const handleReview: JSX.GenericEventHandler<HTMLFormElement> = (e) => {
+function ReviewForm({ yvkey, product }: FormProps) {
+  const loading = useSignal(false);
+  const success = useSignal(false);
+  const handleReview: JSX.GenericEventHandler<HTMLFormElement> = async (e) => {
     e.preventDefault();
     if (e.target === null) return;
     const formData = new FormData(e.target as HTMLFormElement);
     const formProps = Object.fromEntries(formData);
-    console.log(formProps);
+    const { inProductGroupWithID, image, isVariantOf } = product;
+    const {
+      reviewRecommends,
+      reviewRating,
+      reviewComment,
+      reviewUserEmail,
+      reviewUserName,
+    } = formProps;
+    const { name, url } = isVariantOf!;
+    const date = new Date().toISOString();
+    const fetchUrl = "https://service.yourviews.com.br/api/v2/pub/review";
+    const data = {
+      ReviewId: 0,
+      Rating: reviewRating,
+      Review: reviewComment,
+      Date: date,
+      CustomFields: [
+        {
+          Name: "Você recomenda esse produto?",
+          Values: [`${reviewRecommends}`],
+        },
+      ],
+      User: {
+        Name: reviewUserName,
+        Email: reviewUserEmail,
+        ExhibitionName: reviewUserName,
+      },
+      Product: {
+        productId: inProductGroupWithID,
+        Image: image ? image[0].url : null,
+        Name: name || null,
+        Url: url || null,
+      },
+    };
+    const options = {
+      headers: {
+        YVStoreKey: yvkey,
+        "Content-Type": "application/json; charset=utf-8",
+      },
+      method: "POST",
+      body: JSON.stringify(data),
+    };
+    try {
+      loading.value = true;
+      const data = await fetch(fetchUrl, options);
+      console.log(data);
+    } catch (err) {
+      throw new Error("Failed to get Yourviews Data", err);
+    } finally {
+      loading.value = false;
+      success.value = true;
+      setTimeout(() => {
+        success.value = false;
+      }, 5000);
+    }
   };
   return (
     <article id="formReview" class="font-quicksand block">
@@ -58,7 +114,7 @@ function ReviewForm() {
                   <input
                     type="radio"
                     required
-                    name="product-rating"
+                    name="reviewRating"
                     value={0}
                     class="rating-hidden !w-0 !h-0"
                     disabled
@@ -68,8 +124,8 @@ function ReviewForm() {
                     <input
                       type="radio"
                       required
-                      id="product-rating"
-                      name="product-rating"
+                      id="reviewRating"
+                      name="reviewRating"
                       value={rating}
                       class="mask mask-star bg-secondary w-5 h-5"
                     />
@@ -106,7 +162,7 @@ function ReviewForm() {
                   type="radio"
                   required
                   class="opacity-0 w-[13px] h-[13px] cursor-pointer absolute -z-10 overflow-hidden -m-[1px] p-0 border-0 peer"
-                  name="Você recomenda esse produto?"
+                  name="reviewRecommends"
                   id="Sim"
                   value="Sim"
                 />
@@ -122,7 +178,7 @@ function ReviewForm() {
                   type="radio"
                   required
                   class="opacity-0 w-[13px] h-[13px] cursor-pointer absolute -z-10 overflow-hidden -m-[1px] p-0 border-0 peer"
-                  name="Você recomenda esse produto?"
+                  name="reviewRecommends"
                   id="Não"
                   value="Não"
                 />
@@ -188,7 +244,7 @@ function ReviewForm() {
   );
 }
 
-function QuestionForm({ key, product }: FormProps) {
+function QuestionForm({ yvkey, product }: FormProps) {
   const loading = useSignal(false);
   const success = useSignal(false);
   const handleReview: JSX.GenericEventHandler<HTMLFormElement> = async (e) => {
@@ -220,7 +276,7 @@ function QuestionForm({ key, product }: FormProps) {
     const fetchUrl = "https://service.yourviews.com.br/api/v2/pub/qna";
     const options = {
       headers: {
-        YVStoreKey: key,
+        YVStoreKey: yvkey,
         "Content-Type": "application/json; charset=utf-8",
       },
       method: "POST",
@@ -230,6 +286,8 @@ function QuestionForm({ key, product }: FormProps) {
       loading.value = true;
       const data = await fetch(fetchUrl, options);
       console.log(data);
+    } catch (err) {
+      throw new Error("Failed to get Yourviews Data", err);
     } finally {
       loading.value = false;
       success.value = true;
@@ -632,9 +690,14 @@ function ProductReviews(
           </button>
         </div>
       </div>
-      {displayReviewForm.value && <ReviewForm />}
+      {displayReviewForm.value && (
+        <ReviewForm
+          yvkey={yourViews.key}
+          product={product}
+        />
+      )}
       {displayQuestionForm.value && (
-        <QuestionForm key={yourViews.key} product={product} />
+        <QuestionForm yvkey={yourViews.key} product={product} />
       )}
     </div>
   );
