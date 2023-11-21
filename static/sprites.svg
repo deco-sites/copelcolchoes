@@ -189,6 +189,13 @@
             d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z"
             stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
     </symbol>
+    <symbol id="ReviewUser" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="icon">
+        <path fill="none" d="M0 0h24v24H0V0z"></path>
+        <path d="M12 5.9a2.1 2.1 0 1 1 0 4.2 2.1 2.1 0 0 1 0-4.2m0 9c2.97 0 6.1 1.46 6.1 2.1v1.1H5.9V17c0-.64 3.13-2.1 6.1-2.1M12 4C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 4v2c0 .55.45 1 1 1h14c.55 0 1-.45 1-1v-2c0-2.66-5.33-4-8-4z" fill="#002b62"></path>
+    </symbol>
+    <symbol id="ReviewCheck" xmlns="http://www.w3.org/2000/svg" viewBox="0,0,256,256">
+        <path d="M230.233 51.117a8.534 8.534 0 0 0-5.866 2.583l-130.5 130.5-53.7-53.7A8.534 8.534 0 1 0 28.1 142.567L87.833 202.3a8.534 8.534 0 0 0 12.067 0L236.433 65.767a8.534 8.534 0 0 0-6.2-14.65z" fill="#002b62" stroke-width="2" stroke-miterlimit="10" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal;"></path>
+    </symbol>
     <symbol id="Twitter" viewBox="0 0 20 20" fill="none"
         xmlns="http://www.w3.org/2000/svg">
         <g id="Frame">

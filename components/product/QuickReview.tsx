@@ -1,7 +1,5 @@
-import Icon from "$store/components/ui/Icon.tsx";
 import { useQuickReview } from "$store/sdk/useQuickReview.ts";
-
-const ratings = [1, 2, 3, 4, 5];
+import StarRatings from "$store/components/product/StarsRatings.tsx";
 
 const handleClick = () => {
   const element = document.getElementById("reviews-container");
@@ -18,28 +16,7 @@ function QuickReview() {
       title={`${rates} avaliaç${rates != 1 ? "ões" : "ão"}`}
       onClick={handleClick}
     >
-      <div class="yv-review-quickreview">
-        <div
-          type="exhibition"
-          class="flex items-center justify-start pointer-events-none"
-        >
-          <div class="relative box-border flex">
-            {ratings.map((rating, index) => (
-              <div className="relative align-middle pr-[2px] cursor-pointer flex items-center justify-center">
-                <Icon
-                  id={rating > totalRate && totalRate - index > 0
-                    ? "HalfStar"
-                    : "Star"}
-                  class={rating <= totalRate
-                    ? "text-secondary"
-                    : "text-[#d8d8d8]"}
-                  size={18}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
+      <StarRatings totalRate={totalRate} />
       <span class="underline">
         {rates > 0
           ? `${rates} avaliaç${rates > 1 ? "ões" : "ão"}`

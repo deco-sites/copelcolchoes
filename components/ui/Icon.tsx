@@ -79,6 +79,8 @@ export type AvailableIcons =
   | "Star"
   | "HalfStar"
   | `ShareProduct${string}`
+  | "ReviewUser"
+  | "ReviewCheck"
   | "BackToTop";
 
 interface Props extends JSX.SVGAttributes<SVGSVGElement> {
