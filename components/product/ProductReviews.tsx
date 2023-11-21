@@ -287,7 +287,7 @@ export async function loader(
     `https://service.yourviews.com.br/api/v2/pub/review/${inProductGroupWithID}?page=1&count=3&orderBy=1`,
     options,
   ).then((r) => r.json());
-  return { reviews };
+  return { reviews, inProductGroupWithID, yourViews };
 }
 
 interface CustomFields {
@@ -319,15 +319,54 @@ interface Review {
   };
 }
 
-function ProductReviews({ reviews }: SectionProps<typeof loader>) {
+const getPages = (page: number, lastPage: number) => {
+  const pages = [];
+  const firstPage = page < 3
+    ? 1
+    : page + 2 >= lastPage
+    ? lastPage - 4
+    : page - 2;
+  for (let i = firstPage; i <= lastPage; i++) {
+    if (pages.length === 5 || pages.length === lastPage) return pages;
+    pages.push(i);
+  }
+  return pages;
+};
+
+function ProductReviews(
+  { reviews, inProductGroupWithID, yourViews }: SectionProps<typeof loader>,
+) {
   const { reviews: rates, totalReview: totalRate } = useQuickReview();
-  const { Element } = reviews;
+  const { Element, Pagination } = reviews;
   rates.value = !Element ? 0 : Element.TotalRatings;
   totalRate.value = !Element ? 0 : Element.Rating;
   const [currentReviews, setCurrentReviews] = useState(
     Element ? Element.Reviews : [],
   );
+  const [pagination, setPagination] = useState(
+    Pagination ? Pagination : {},
+  );
+
   console.log(currentReviews);
+  const { IsFirstPage, IsLastPage, PageCount, PageNumber } = pagination;
+  const [pages, setPages] = useState(getPages(PageNumber, PageCount));
+
+  const handlePageChange = async (page: number) => {
+    const options = {
+      headers: {
+        YVStoreKey: yourViews.key,
+      },
+    };
+    const newReviews = await fetch(
+      `https://service.yourviews.com.br/api/v2/pub/review/${inProductGroupWithID}?page=${page}&count=3&orderBy=1`,
+      options,
+    ).then((r) => r.json());
+    const { Element, Pagination } = newReviews;
+    setCurrentReviews(Element ? Element.Reviews : []);
+    setPagination(Pagination ? Pagination : {});
+    setPages(getPages(Pagination.PageNumber, Pagination.PageCount));
+  };
+
   const displayQuestionForm = useSignal(false);
   const displayReviewForm = useSignal(false);
   const hasRatings = rates.value > 0;
@@ -341,6 +380,7 @@ function ProductReviews({ reviews }: SectionProps<typeof loader>) {
     displayQuestionForm.value = false;
     displayReviewForm.value = true;
   };
+
   return (
     <div id="reviews-container" class="font-quicksand">
       <h3 class="lg:text-[1.75rem] lg:leading-[2.1875rem] max-lg:text-[1.5rem] max-lg:leading-[1.875rem] text-primary font-semibold tracking-normal my-5 text-left">
@@ -348,7 +388,7 @@ function ProductReviews({ reviews }: SectionProps<typeof loader>) {
       </h3>
       <div class="lg:bg-white lg:flex lg:flex-col lg:justify-start">
         {hasRatings && (
-          <div class="w-fit font-quicksand">
+          <div class="w-full font-quicksand">
             <div class="flex flex-col items-start gap-5 max-lg:gap-[0.625rem]">
               <p class="text-primary text-2xl leading-6 capitalize font-medium max-lg:text-base max-lg:font-semibold max-lg:leading-6">
                 Comentários
@@ -357,76 +397,142 @@ function ProductReviews({ reviews }: SectionProps<typeof loader>) {
             </div>
             <div class="py-8 w-full">
               <ul class="flex flex-col gap-4">
-                {currentReviews.map((review: Review) => (
-                  <li class="py-6 px-4 flex rounded-[0.3125rem] border border-[#dbdbdb] lg:flex-row max-lg:flex-col">
-                    <div class="lg:w-[15%] max-lg:w-full">
-                      <div class="flex justify-between items-center">
-                        <div class="items-center flex gap-2 justify-start w-full">
-                          <Icon id="ReviewUser" size={24} />
-                          <h3 class="text-primary text-sm font-semibold leading-snug">
-                            {review.User.ExhibitionName}
-                          </h3>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="flex flex-col items-start lg:w-[55%] lg:m-0 max-lg:w-full max-lg:my-5">
-                      <div class="flex gap-6 mb-4 items-center">
-                        <StarRatings totalRate={review.Rating} />
+                {currentReviews.map((review: Review) => {
+                  const qualidade = review.CustomFields.find((customField) =>
+                    customField.Name === "Qualidade"
+                  );
+                  const qualidadeValue = qualidade
+                    ? customFieldsValue[
+                      qualidade.Values[0] as keyof typeof customFieldsValue
+                    ]
+                    : review.Rating;
+                  const design = review.CustomFields.find((customField) =>
+                    customField.Name === "Design"
+                  );
+                  const designValue = design
+                    ? customFieldsValue[
+                      design.Values[0] as keyof typeof customFieldsValue
+                    ]
+                    : review.Rating;
+                  return (
+                    <li class="py-6 px-4 flex rounded-[0.3125rem] border border-[#dbdbdb] lg:flex-row max-lg:flex-col">
+                      <div class="lg:w-[15%] max-lg:w-full">
                         <div class="flex justify-between items-center">
-                          <div class="text-[#828282] text-sm leading-snug font-medium">
-                            {formatData(review.Date)}
+                          <div class="items-center flex gap-2 justify-start w-full">
+                            <Icon id="ReviewUser" size={24} />
+                            <h3 class="text-primary text-sm font-semibold leading-snug">
+                              {review.User.ExhibitionName}
+                            </h3>
                           </div>
                         </div>
                       </div>
-                      <div class="flex justify-between w-full">
-                        <div class="text-secondary text-sm font-semibold leading-5 overflow-hidden line-clamp-3 pr-6">
-                          {review.Review}
+                      <div class="flex flex-col items-start lg:w-[55%] lg:m-0 max-lg:w-full max-lg:my-5">
+                        <div class="flex gap-6 mb-4 items-center">
+                          <StarRatings totalRate={review.Rating} />
+                          <div class="flex justify-between items-center">
+                            <div class="text-[#828282] text-sm leading-snug font-medium">
+                              {formatData(review.Date)}
+                            </div>
+                          </div>
+                        </div>
+                        <div class="flex justify-between w-full">
+                          <div class="text-secondary text-sm font-semibold leading-5 overflow-hidden line-clamp-3 pr-6">
+                            {review.Review}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="lg:w-[40%] max-lg:w-full">
-                      <div class="text-primary">
-                        <div class="gap-2 mt-0 lg:font-base lg:leading-8 items-center text-primar flex font-semibold my-2 max-lg:text-sm leading-5">
-                          {review.CustomFields.find((customField) =>
-                              customField.Name ===
-                                "Você recomenda esse produto?"
-                            )!.Values[0] === "Sim"
-                            ? (
-                              <>
-                                <Icon id="ReviewCheck" size={30} />
-                                Sim, recomendaria este produto a um amigo
-                              </>
-                            )
-                            : "Não recomendaria este produto a um amigo"}
-                        </div>
-                        <div class="w-[12.5rem] justify-between lg:font-base lg:leading-8 items-center text-primar flex font-semibold my-2 max-lg:hidden">
-                          Design
-                          <StarRatings
-                            totalRate={customFieldsValue[
-                              (review.CustomFields.find((customField) =>
-                                customField.Name === "Design"
-                              )!.Values[0]) as keyof typeof customFieldsValue
-                            ]}
-                          />
-                        </div>
-                        <div class="w-[12.5rem] justify-between lg:font-base lg:leading-8 items-center text-primar flex font-semibold my-2 max-lg:hidden">
-                          Qualidade
-                          <StarRatings
-                            totalRate={customFieldsValue[
-                              (review.CustomFields.find((customField) =>
-                                customField.Name === "Qualidade"
-                              )!.Values[0]) as keyof typeof customFieldsValue
-                            ]}
-                          />
+                      <div class="lg:w-[40%] max-lg:w-full">
+                        <div class="text-primary">
+                          <div class="gap-2 mt-0 lg:font-base lg:leading-8 items-center text-primar flex font-semibold my-2 max-lg:text-sm leading-5">
+                            {review.CustomFields.find((customField) =>
+                                customField.Name ===
+                                  "Você recomenda esse produto?"
+                              )!.Values[0] === "Sim"
+                              ? (
+                                <>
+                                  <Icon id="ReviewCheck" size={30} />
+                                  Sim, recomendaria este produto a um amigo
+                                </>
+                              )
+                              : "Não recomendaria este produto a um amigo"}
+                          </div>
+                          <div class="w-[12.5rem] justify-between lg:font-base lg:leading-8 items-center text-primar flex font-semibold my-2 max-lg:hidden">
+                            Design
+                            <StarRatings
+                              totalRate={designValue}
+                            />
+                          </div>
+                          <div class="w-[12.5rem] justify-between lg:font-base lg:leading-8 items-center text-primar flex font-semibold my-2 max-lg:hidden">
+                            Qualidade
+                            <StarRatings
+                              totalRate={qualidadeValue}
+                            />
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </li>
-                ))}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
           </div>
         )}
+      </div>
+      <div class="flex justify-center items-center">
+        <nav class="my-4">
+          <ul class="flex justify-center items-center p-0 m-0">
+            <li class="flex justify-center items-center border-none bg-transparent text-primary">
+              <button
+                class="text-lg font-semibold px-[0.3125rem] h-6 min-w-[1.5rem] flex overflow-visible m-0 border-0 bg-transparent justify-center items-center appearance-none disabled:opacity-30 disabled:cursor-not-allowed"
+                onClick={() => handlePageChange(PageNumber - 1)}
+                title={`Ir para a página anterior`}
+                type="button"
+                disabled={IsFirstPage}
+              >
+                <div class="rotate-90 relative inline-block h-[0.625rem] w-[0.625rem]">
+                  <span class="left-0 rotate-45 top-[0.3125rem] absolute w-[0.384375rem] h-[0.05rem] bg-primary inline-block transition-all">
+                  </span>
+                  <span class="right-0 -rotate-45 top-[0.3125rem] absolute w-[0.384375rem] h-[0.05rem] bg-primary inline-block transition-all">
+                  </span>
+                </div>
+              </button>
+            </li>
+            {pages.map((page) => (
+              <li
+                class={`flex justify-center items-center border-none bg-transparent ${
+                  page === PageNumber
+                    ? "text-secondary underline"
+                    : "text-primary"
+                }`}
+              >
+                <button
+                  class="text-lg font-semibold px-[0.3125rem] h-6 min-w-[1.5rem] flex overflow-visible m-0 border-0 bg-transparent justify-center items-center appearance-none"
+                  onClick={() => handlePageChange(page)}
+                  title={`Ir para a página ${page}`}
+                  type="button"
+                >
+                  {page}
+                </button>
+              </li>
+            ))}
+            <li class="flex justify-center items-center border-none bg-transparent text-primary">
+              <button
+                class="text-lg font-semibold px-[0.3125rem] h-6 min-w-[1.5rem] flex overflow-visible m-0 border-0 bg-transparent justify-center items-center appearance-none disabled:opacity-30 disabled:cursor-not-allowed"
+                onClick={() => handlePageChange(PageNumber + 1)}
+                title={`Ir para a próxima página`}
+                type="button"
+                disabled={IsLastPage}
+              >
+                <div class="-rotate-90 relative inline-block h-[0.625rem] w-[0.625rem]">
+                  <span class="left-0 rotate-45 top-[0.3125rem] absolute w-[0.384375rem] h-[0.05rem] bg-primary inline-block transition-all">
+                  </span>
+                  <span class="right-0 -rotate-45 top-[0.3125rem] absolute w-[0.384375rem] h-[0.05rem] bg-primary inline-block transition-all">
+                  </span>
+                </div>
+              </button>
+            </li>
+          </ul>
+        </nav>
       </div>
       <p class="text-[#707070] text-xl font-medium leading-[1.5625rem] py-5">
         {`Possui esse produto? ${
