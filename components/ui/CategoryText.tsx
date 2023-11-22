@@ -4,6 +4,8 @@ import type { LoaderReturnType } from "$live/types.ts";
 import type { ProductListingPage } from "apps/commerce/types.ts";
 
 export interface Category {
+  /** @description O nome que aparecerá no admin. Não impacta o front da página */
+  label: string;
   /** @description RegExp to enable this text category on the current URL. Use /feminino/* to display this text category on feminino category  */
   matcher: string;
   page: LoaderReturnType<ProductListingPage | null>;
