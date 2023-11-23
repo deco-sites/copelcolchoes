@@ -50,7 +50,8 @@ import * as $$$$$$44 from "./sections/Product/Wishlist.tsx";
 import * as $$$$$$45 from "./sections/Social/InstagramPosts.tsx";
 import * as $$$$$$46 from "./sections/Social/WhatsApp.tsx";
 import * as $$$$$$47 from "./sections/Theme/Theme.tsx";
-import * as $$$$$$$$$$$0 from "./apps/site.ts";
+import * as $$$$$$$$$$$0 from "./apps/decohub.ts";
+import * as $$$$$$$$$$$1 from "./apps/site.ts";
 
 const manifest = {
   "sections": {
@@ -113,7 +114,8 @@ const manifest = {
     "deco-sites/copelcolchoes/sections/Theme/Theme.tsx": $$$$$$47,
   },
   "apps": {
-    "deco-sites/copelcolchoes/apps/site.ts": $$$$$$$$$$$0,
+    "deco-sites/copelcolchoes/apps/decohub.ts": $$$$$$$$$$$0,
+    "deco-sites/copelcolchoes/apps/site.ts": $$$$$$$$$$$1,
   },
   "name": "deco-sites/copelcolchoes",
   "baseUrl": import.meta.url,
