@@ -323,6 +323,56 @@ function ProductAccordions({ product }: {
   );
 }
 
+function Selos({ product }: { product: Product }) {
+  const { isVariantOf, category: fullCategory } = product;
+  const { additionalProperty } = isVariantOf as unknown as Product;
+  const category = fullCategory ? fullCategory.split(">")[0] : "";
+  const activeSelos = {
+    "Colchões": 3,
+    "Cama Box": 3,
+    "Cama Box mais Colchão": 7,
+    "Travesseiros": 6,
+    "Acessórios": 0,
+    "Móveis": 0,
+  };
+  console.log(category, additionalProperty);
+  return (
+    <div class="w-fit bg-transparent">
+      {activeSelos[category as keyof typeof activeSelos] > 0 && (
+        <>
+          <div class="text-primary text-lg leading-8 font-semibold my-6">
+            <p>Informações do seu produto:</p>
+          </div>
+          <div class="flex items-center flex-row gap-8 justify-between">
+            {additionalProperty && additionalProperty.map((prop, index) => {
+              const { value } = prop;
+              const url = value
+                ? value.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+                  .replaceAll(" ", "_").toLowerCase()
+                : "";
+              if (
+                index >= activeSelos[category as keyof typeof activeSelos]
+              ) return;
+              return (
+                <div class="flex items-center flex-col font-quicksand text-sm font-medium leading-6 justify-between py-3">
+                  <div class="max-w-[3.125rem]">
+                    <img
+                      class="w-full h-auto inline-block align-middle"
+                      src={`/arquivos/icone_${url}.svg`}
+                      alt={value}
+                    />
+                  </div>
+                  <div class="text-primary text-sm leading-8">{value}</div>
+                </div>
+              );
+            })}
+          </div>
+        </>
+      )}
+    </div>
+  );
+}
+
 function Details({
   page,
   buyTogether,
@@ -354,7 +404,6 @@ function Details({
           aspect={ASPECT_RATIO}
           url={product.url!}
         />
-
         {/* Product Info */}
         <div class="lg:w-1/2 lg:z-50 lg:sticky lg:h-fit lg:top-5 lg:mb-[2.125rem]">
           <ProductInfo
@@ -362,7 +411,7 @@ function Details({
           />
         </div>
       </section>
-      <div></div>
+      <Selos product={product} />
       {accessory &&
         <BuyTogether product={product} accessory={accessory} />}
       <ProductAccordions product={product} />
