@@ -347,7 +347,7 @@ function Selos({ product }: { product: Product }) {
             {additionalProperty && additionalProperty.map((prop, index) => {
               const { value } = prop;
               const url = value
-                ? value.normalize("NFD").replaceAll("/", "").replace(
+                ? value.normalize("NFD").replaceAll("/ ", "").replace(
                   /[\u0300-\u036f]/g,
                   "",
                 )
