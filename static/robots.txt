@@ -1,2 +1,19 @@
-User-agent: *
-Allow: *
+# Disallow all crawlers access to certain pages. 
+ User-agent: * 
+
+ Disallow: /login*
+ Disallow: /account*
+ Disallow: /checkout*
+ Disallow: /Sistema*
+ Disallow: /sistema*
+ Disallow: /busca*
+ Disallow: /*OrderBy
+ Disallow: /*orderby
+ Disallow: /*?utm*
+ Disallow: /*?ft=*
+ Disallow: /*?fq=*
+ Disallow: /*?O=*
+ Disallow: /*?PS=*
+ Disallow: /*?Mode=*
+
+ Sitemap: https://www.copelcolchoes.com.br/sitemap.xml
