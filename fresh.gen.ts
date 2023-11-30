@@ -3,7 +3,8 @@
 // This file is automatically updated during development when running `dev.ts`.
 
 import * as $0 from "./routes/_app.tsx";
-import * as $1 from "./routes/styles.css.ts";
+import * as $1 from "./routes/api/storeLocator.tsx";
+import * as $2 from "./routes/styles.css.ts";
 import * as $$0 from "./islands/AddToCartActions.tsx";
 import * as $$1 from "./islands/AddToCartButton.tsx";
 import * as $$2 from "./islands/BackToTopButton.tsx";
@@ -29,13 +30,15 @@ import * as $$21 from "./islands/ShareButton.tsx";
 import * as $$22 from "./islands/ShippingSimulation.tsx";
 import * as $$23 from "./islands/SliderJS.tsx";
 import * as $$24 from "./islands/Sort.tsx";
-import * as $$25 from "./islands/TopBar.tsx";
-import * as $$26 from "./islands/WishlistButton.tsx";
+import * as $$25 from "./islands/StoreLocator.tsx";
+import * as $$26 from "./islands/TopBar.tsx";
+import * as $$27 from "./islands/WishlistButton.tsx";
 
 const manifest = {
   routes: {
     "./routes/_app.tsx": $0,
-    "./routes/styles.css.ts": $1,
+    "./routes/api/storeLocator.tsx": $1,
+    "./routes/styles.css.ts": $2,
   },
   islands: {
     "./islands/AddToCartActions.tsx": $$0,
@@ -63,8 +66,9 @@ const manifest = {
     "./islands/ShippingSimulation.tsx": $$22,
     "./islands/SliderJS.tsx": $$23,
     "./islands/Sort.tsx": $$24,
-    "./islands/TopBar.tsx": $$25,
-    "./islands/WishlistButton.tsx": $$26,
+    "./islands/StoreLocator.tsx": $$25,
+    "./islands/TopBar.tsx": $$26,
+    "./islands/WishlistButton.tsx": $$27,
   },
   baseUrl: import.meta.url,
 };
