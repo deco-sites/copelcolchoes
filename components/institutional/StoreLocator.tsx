@@ -196,7 +196,7 @@ export default function InstitucionalStoreLocator() {
           </div>
           {!loading && (
             <div class="mx-0 my-[25px] border border-[#e8e8e8] p-[30px] md:px-[30px] md:py-[50px] grid grid-cols-3 relative gap-5 max-lg:grid-cols-1">
-              <span class="hidden md:block absolute text-primary w-full text-[20px] -top-4 left-[30px]">
+              <span class="hidden md:block absolute text-primary w-full text-[20px] top-3 left-[30px]">
                 Lojas
               </span>
               {lojas.map((loja: Lojas) => (
