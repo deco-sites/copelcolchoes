@@ -83,12 +83,17 @@ export default function InstitucionalStoreLocator() {
     const regex = new RegExp("^[0-9]{5}(?:-[0-9]{3})?$");
     return regex.test(cep) && cep.length === 9;
   };
+  const orderStores = (lojas: Lojas[]) => {
+    return lojas.sort((a, b) => (
+      a.cidade.localeCompare(b.cidade) || a.bairro.localeCompare(b.bairro)
+    ));
+  }
   useEffect(() => {
     fetch("/api/storeLocator")
       .then((r) =>
         r.json()
           .then((stores) => {
-            setLojas(stores);
+            setLojas(orderStores(stores) as typeof stores);
           })
           .then(() => {
             setLoading(false);
@@ -190,13 +195,13 @@ export default function InstitucionalStoreLocator() {
             <div id="map" class="w-full h-[500px!important]"></div>
           </div>
           {!loading && (
-            <div class="mx-0 my-[25px] border border-[#e8e8e8] p-[30px] md:!(px-[30px] py-[50px]) justify-between relative flex gap-5 flex-wrap">
-              <span class="hidden md:block text-primary w-full text-[20px] top-0 left-[30px]">
+            <div class="mx-0 my-[25px] border border-[#e8e8e8] p-[30px] md:px-[30px] md:py-[50px] grid grid-cols-3 relative gap-5 max-lg:grid-cols-1">
+              <span class="hidden md:block absolute text-primary w-full text-[20px] -top-4 left-[30px]">
                 Lojas
               </span>
               {lojas.map((loja: Lojas) => (
                 <div
-                  class="flex-[100%] md:flex-[30%] md:max-w-[30%] mb-[15px] pb-[15px] border-b-1 border-[#e8e8e8] cursor-pointer"
+                  class="mb-[15px] pb-[15px] border-b-1 border-[#e8e8e8] cursor-pointer"
                   data-list-store="store"
                   data-store-id={loja.id}
                   data-store-city={loja.cidade}
@@ -208,7 +213,7 @@ export default function InstitucionalStoreLocator() {
                     )}
                 >
                   <div class="font-quicksand text-[18px] font-semibold pb-[15px] text-black">
-                    {loja.nome}
+                    {loja.bairro.replace(regex, "$1 $2")} - {loja.nome}
                   </div>
 
                   <div class="font-quicksand text-[14px] pb-[5px]">

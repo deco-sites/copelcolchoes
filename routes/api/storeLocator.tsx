@@ -4,7 +4,7 @@ export const handler: Handlers = {
   GET: async () => {
     const SUBDOMAIN = "https://secure.copelcolchoes.com.br";
     const QUERY =
-      "?_fields=antedimento%2Cbairro%2Ccidade%2Ccomplemento%2Cestado%2Clatitude%2Clongitude%2Cnome%2Crua%2Ctelefone%2Cid%2Cnumero";
+      "?_fields=antedimento%2Cbairro%2Ccidade%2Ccomplemento%2Cestado%2Clatitude%2Clongitude%2Cnome%2Crua%2Ctelefone%2Cid%2Cnumero&_sort=cidade%20ASC";
 
     const response = await fetch(
       SUBDOMAIN + "/api/dataentities/LJ/search/" + QUERY,
