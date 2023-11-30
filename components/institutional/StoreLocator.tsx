@@ -87,7 +87,7 @@ export default function InstitucionalStoreLocator() {
     return lojas.sort((a, b) => (
       a.cidade.localeCompare(b.cidade) || a.bairro.localeCompare(b.bairro)
     ));
-  }
+  };
   useEffect(() => {
     fetch("/api/storeLocator")
       .then((r) =>
@@ -227,7 +227,7 @@ export default function InstitucionalStoreLocator() {
                     </p>
                   </div>
                   <div class="font-quicksand text-[14px] pb-[5px]">
-                    <p>{loja.antedimento}</p>
+                    <p class="whitespace-break-spaces" dangerouslySetInnerHTML={{__html: loja.antedimento.replaceAll(";", "\n")}}></p>
                     <br />
                     <p>Tel.: {loja.telefone}</p>
                   </div>
