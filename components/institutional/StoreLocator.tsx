@@ -227,7 +227,13 @@ export default function InstitucionalStoreLocator() {
                     </p>
                   </div>
                   <div class="font-quicksand text-[14px] pb-[5px]">
-                    <p class="whitespace-break-spaces" dangerouslySetInnerHTML={{__html: loja.antedimento.replaceAll(";", "\n")}}></p>
+                    <p
+                      class="whitespace-break-spaces"
+                      dangerouslySetInnerHTML={{
+                        __html: loja.antedimento.replaceAll(";", "\n"),
+                      }}
+                    >
+                    </p>
                     <br />
                     <p>Tel.: {loja.telefone}</p>
                   </div>

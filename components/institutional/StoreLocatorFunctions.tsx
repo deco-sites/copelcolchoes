@@ -77,15 +77,21 @@ const addMarkers = (map: GoogleMaps, lojas: Array<Lojas>) => {
         content: `
             <div>
               <div data-marker-index="${index}" data-store-id="${loja.id}">
-                  <div class="font-nunito-sans text-[18px] font-semibold pb-[15px] text-black">${loja.bairro.replace(regex, "$1 $2")} - ${loja.nome}</div>
+                  <div class="font-nunito-sans text-[18px] font-semibold pb-[15px] text-black">${
+          loja.bairro.replace(regex, "$1 $2")
+        } - ${loja.nome}</div>
                   <div class="font-nunito-sans text-[14px] pb-[5px]">
                       <p>${loja.rua}, ${loja.numero}${
-                        loja.complemento ? ` - ${loja.complemento}` : ""
-                      }</p>
-                      <p>${loja.cidade.replace(regex, "$1 $2")} - ${loja.estado},</p>
+          loja.complemento ? ` - ${loja.complemento}` : ""
+        }</p>
+                      <p>${
+          loja.cidade.replace(regex, "$1 $2")
+        } - ${loja.estado},</p>
                   </div>
                   <div class="font-nunito-sans text-[14px] pb-[5px]">
-                      <p class="whitespace-break-spaces">${loja.antedimento.replaceAll(";", "\n")}</p>
+                      <p class="whitespace-break-spaces">${
+          loja.antedimento.replaceAll(";", "\n")
+        }</p>
                       <br />
                       <p>Tel.: ${loja.telefone}</p>
                   </div>
