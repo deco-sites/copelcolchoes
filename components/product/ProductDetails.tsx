@@ -335,7 +335,6 @@ function Selos({ product }: { product: Product }) {
     "Acessórios": 0,
     "Móveis": 0,
   };
-  console.log(category, additionalProperty);
   return (
     <div class="w-fit bg-transparent">
       {activeSelos[category as keyof typeof activeSelos] > 0 && (
@@ -385,11 +384,11 @@ function Details({
 }) {
   const { product, breadcrumbList } = page;
   const accessory = buyTogether ? buyTogether[0] : undefined;
+  const accessoryAlternative = buyTogether ? buyTogether[1] : undefined;
   const filteredBreadcrumbList = breadcrumbList.itemListElement.filter((item) =>
     item.name!.length > 1
   );
   const images = useStableImages(product);
-  // console.log(product);
 
   return (
     <>
@@ -416,7 +415,7 @@ function Details({
       </section>
       <Selos product={product} />
       {accessory &&
-        <BuyTogether product={product} accessory={accessory} />}
+        <BuyTogether product={accessoryAlternative} accessory={accessory} />}
       <ProductAccordions product={product} />
     </>
   );
