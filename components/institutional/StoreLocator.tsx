@@ -213,7 +213,10 @@ export default function InstitucionalStoreLocator() {
                     )}
                 >
                   <div class="font-quicksand text-[18px] font-semibold pb-[15px] text-black">
-                    {loja.bairro.replace(regex, "$1 $2")} - {loja.nome}
+                    {loja.cidade.replace(regex, "$1 $2")}-{loja.estado} |{" "}
+                    {loja.bairro.replace(regex, "$1 $2")}
+                    <br />
+                    {loja.nome}
                   </div>
 
                   <div class="font-quicksand text-[14px] pb-[5px]">
@@ -221,9 +224,6 @@ export default function InstitucionalStoreLocator() {
                       {`${loja.rua}, ${loja.numero}${
                         loja.complemento ? ` - ${loja.complemento}` : ""
                       }`}
-                    </p>
-                    <p>
-                      {loja.cidade.replace(regex, "$1 $2")} - {loja.estado},
                     </p>
                   </div>
                   <div class="font-quicksand text-[14px] pb-[5px]">
