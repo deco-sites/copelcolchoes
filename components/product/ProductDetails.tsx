@@ -382,30 +382,30 @@ function Details({
   page: ProductDetailsPage;
   buyTogether: Product[] | null;
 }) {
-  const { product, breadcrumbList } = page;
-  const accessoryLength = buyTogether ? ( buyTogether.length > 2 ? buyTogether.length -1 : buyTogether.length ) : 1;
-  const lengthMax = accessoryLength ? accessoryLength : 1;
-  const lengthMin = lengthMax && lengthMax >= 3 ? 3 : 1;
-  const validateAcessoryLength = accessoryLength >= lengthMin ? accessoryLength : 1;  
-  const randomValidate = validateAcessoryLength ?  Math.floor( Math.random() * ( validateAcessoryLength - lengthMin + 1) + lengthMin) : 1;
-  const randomNumber =  randomValidate ? randomValidate : 1;
+  const { product, breadcrumbList } = page; 
+  const accessoryLength = buyTogether ? ( buyTogether.length > 2 ? buyTogether.length -1 : buyTogether.length ) : 1; 
+  const lengthMax = accessoryLength ? accessoryLength : 1; 
+  const lengthMin = lengthMax && lengthMax >= 3 ? 3 : 1; 
+  const validateAcessoryLength = accessoryLength >= lengthMin ? accessoryLength : 1;   
+  const randomValidate = validateAcessoryLength ?  Math.floor( Math.random() * ( validateAcessoryLength - lengthMin + 1) + lengthMin) : 1; 
+  const randomNumber =  randomValidate ? randomValidate : 1; 
   
-  let acessoryOne;
-  let acessoryTwo;
+  let acessoryOne; 
+  let acessoryTwo; 
 
-  if( product && buyTogether && randomNumber ){
-    if( buyTogether[0].productID === product.productID ){
-      acessoryOne = buyTogether[randomNumber];
-    } else {
-      acessoryOne = buyTogether[randomNumber];
-    }   
+  if( product && buyTogether && randomNumber ){ 
+    if( buyTogether[0].productID === product.productID ){ 
+      acessoryOne = buyTogether[randomNumber]; 
+    } else { 
+      acessoryOne = buyTogether[randomNumber]; 
+    }    
 
-    if( acessoryOne && buyTogether[0].productID === acessoryOne.productID && buyTogether[0].productID === product.productID ){
-      acessoryTwo = buyTogether[1];
-    } else {
-      acessoryTwo =  buyTogether[0];
-    }     
-  }
+    if( acessoryOne && buyTogether[0].productID === acessoryOne.productID && buyTogether[0].productID === product.productID ){ 
+      acessoryTwo = buyTogether[1]; 
+    } else { 
+      acessoryTwo =  buyTogether[0]; 
+    }      
+  } 
   
   const filteredBreadcrumbList = breadcrumbList.itemListElement.filter((item) =>
     item.name!.length > 1
