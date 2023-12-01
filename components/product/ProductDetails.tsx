@@ -383,23 +383,28 @@ function Details({
   buyTogether: Product[] | null;
 }) {
   const { product, breadcrumbList } = page;
+  const accessoryLength = buyTogether ? ( buyTogether.length > 2 ? buyTogether.length -1 : buyTogether.length ) : 1;
+  const lengthMax = accessoryLength ? accessoryLength : 1;
+  const lengthMin = lengthMax && lengthMax >= 3 ? 3 : 1;
+  const validateAcessoryLength = accessoryLength >= lengthMin ? accessoryLength : 1;  
+  const randomValidate = validateAcessoryLength ?  Math.floor( Math.random() * ( validateAcessoryLength - lengthMin + 1) + lengthMin) : 1;
+  const randomNumber =  randomValidate ? randomValidate : 1;
+  
   let acessoryOne;
   let acessoryTwo;
-  const accessoryLength = buyTogether ? buyTogether.length : 0;  
-  const randomOne = Number(Math.floor(Math.random() * (accessoryLength - 1) + 1));
-  const randomTwo = Number(Math.floor(Math.random() * (accessoryLength - 1) + 1));
 
-  if( product &&  buyTogether){
-    if( accessoryLength < 10 && buyTogether[0].productID === product.productID ){
-      acessoryOne = buyTogether[randomOne-1];
+  if( product && buyTogether && randomNumber ){
+    if( buyTogether[0].productID === product.productID ){
+      acessoryOne = buyTogether[randomNumber];
     } else {
-      acessoryOne = buyTogether[randomOne-1];
+      acessoryOne = buyTogether[randomNumber];
+    }   
+
+    if( acessoryOne && buyTogether[0].productID === acessoryOne.productID && buyTogether[0].productID === product.productID ){
+      acessoryTwo = buyTogether[1];
+    } else {
+      acessoryTwo =  buyTogether[0];
     }    
-    if( acessoryOne && accessoryLength < 10 && buyTogether[1].productID === acessoryOne.productID ){
-      acessoryTwo = buyTogether[randomTwo-1];
-    } else {
-      acessoryTwo =  buyTogether[randomTwo-1];
-    }
   }
   
   const filteredBreadcrumbList = breadcrumbList.itemListElement.filter((item) =>
