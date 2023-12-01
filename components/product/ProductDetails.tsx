@@ -404,7 +404,7 @@ function Details({
       acessoryTwo = buyTogether[1];
     } else {
       acessoryTwo =  buyTogether[0];
-    }    
+    }     
   }
   
   const filteredBreadcrumbList = breadcrumbList.itemListElement.filter((item) =>
