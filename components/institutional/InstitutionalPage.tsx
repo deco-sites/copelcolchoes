@@ -1,29 +1,10 @@
 import { Head } from "$fresh/runtime.ts";
 import { Section } from "$live/blocks/section.ts";
-import type { BlockInstance } from "$live/engine/block.ts";
-import type { Manifest } from "deco-sites/copelcolchoes/manifest.gen.ts";
-import Icon from "$store/components/ui/Icon.tsx";
 
 export interface Props {
   title: string;
   asideMenu: Section;
-  content:
-    | BlockInstance<
-      "deco-sites/copelcolchoes/sections/Institutional/TextContent.tsx",
-      Manifest
-    >
-    | BlockInstance<
-      "deco-sites/copelcolchoes/sections/Institutional/AccordionsContent.tsx",
-      Manifest
-    >
-    | BlockInstance<
-      "deco-sites/copelcolchoes/sections/Institutional/CardsContent.tsx",
-      Manifest
-    >
-    | BlockInstance<
-      "deco-sites/copelcolchoes/sections/Institutional/ContactForm.tsx",
-      Manifest
-    >;
+  content: Section;
 }
 
 function InstitutionalPage({
@@ -55,41 +36,38 @@ function InstitutionalPage({
             .markdown-body p:last-child {
               margin-bottom: 20px;
             }
-            .markdown-body p, .markdown-body li {
-              color: #8E8E9F;
+            .markdown-body p, .markdown-body li, .markdown-body strong {
+              color: #000000;
               font-size: 14px;
               font-weight: 400;
               line-height: 20px;
               list-style: circle inside !important;
             }
+            .markdown-body p {
+              padding: 10px 0;
+            }
             .markdown-body a {
               text-decoration: underline;
             }
             .markdown-body td {
-              border: 1px solid #8E8E9F;
+              border: 1px solid #000000;
             }
           `,
           }}
         />
       </Head>
-      <div>
-        {/* Banner Institucional | Suporte */}
-      </div>
-      <div class="flex flex-col md:flex-row justify-between mt-[15px]">
-        <AsideComponent {...asideProps} />
-        <article class="md:pl-[30px] w-full">
-          <h3 class="max-md:flex max-md:justify-between text-primary text-[19px] lg:text-[28px] font-normal lg:font-medium leading-[130%] lg:leading-[36.4px] mb-5 border-b border-neutral-100 pb-[10px]">
+      <div class="lg:w-[960px] mx-auto relative flex justify-between my-5">
+        <div class="pt-[5px] w-[170px] max-lg:hidden font-quicksand">
+          <h2 class="text-black">
             {title}
-            <a
-              href="/i"
-              class="md:hidden w-[50%] text-xs font-bold flex items-center justify-end"
-            >
-              <Icon id="ChevronLeft" size={20} /> voltar
-            </a>
-          </h3>
+          </h2>
+          <AsideComponent {...asideProps} />
+        </div>
+        <div class="max-w-[720px] w-full relative">
+          <h2 class="lg:hidden text-black">{title}</h2>
           {/* @ts-ignore opting for a ignore here so we can use a union type for the content section prop, and display it nicely in the admin panel */}
           <ContentComponent {...contentProps} />
-        </article>
+        </div>
       </div>
     </>
   );

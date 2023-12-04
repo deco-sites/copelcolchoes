@@ -1,6 +1,3 @@
-import type { SectionProps } from "$live/mod.ts";
-import Icon from "$store/components/ui/Icon.tsx";
-
 export interface Props {
   menuItems: {
     label: string;
@@ -8,52 +5,21 @@ export interface Props {
   }[];
 }
 
-export function loader(ctx: Props, req: Request) {
-  const url = new URL(req.url);
-  const { pathname } = url;
-
-  return {
-    ...ctx,
-    pathname,
-  };
-}
-
 function AsideMenu(
-  { menuItems, pathname: currentUrl }: SectionProps<typeof loader>,
+  { menuItems }: Props,
 ) {
-  const currentRoute = menuItems.find((item) => item.href === currentUrl);
-
   return (
-    <aside class="md:min-w-[20%] font-medium text-secondary-focus flex md:justify-end">
-      <ul
-        class={`md:join join-vertical gap-[10px] w-full ${
-          currentUrl === "/i" ? "" : "hidden"
-        }`}
-      >
-        {menuItems.map(
-          (item, index) => (
-            <li key={index}>
-              <a
-                class={`
-                  ${
-                  currentUrl === item.href ||
-                    (!currentRoute && item.label === "Saiba Mais" &&
-                      currentUrl.includes("/i/"))
-                    ? "bg-primary text-white hover:bg-primary"
-                    : "hover:bg-white hover:border hover:border-opacity-100"
-                }
-                  btn btn-ghost btn-block justify-between text-primary border-opacity-0 border-base-300
-                `}
-                href={item.href}
-              >
-                {item.label}
-                <Icon id="ChevronRight" size={20} />
-              </a>
-            </li>
-          ),
-        )}
-      </ul>
-    </aside>
+    <ul class="pt-[10px]">
+      {menuItems.map((item) => (
+        <li class="leading-[1.35em]">
+          <h3 class="font-bold pt-5 pb-[5px] text-black text-sm border-b border-[#bed4f0]">
+            <a href={item.href} class="text-black text-sm" title={item.label}>
+              {item.label}
+            </a>
+          </h3>
+        </li>
+      ))}
+    </ul>
   );
 }
 
