@@ -18,12 +18,12 @@ function Accordion({ item }: { item: AccordionContent }) {
   return (
     <div tabIndex={0} class="collapse">
       <input type="checkbox" class="hidden" />
-      <div class="collapse-title p-0 before:inline-block before:align-middle before:mr-[10px] before:w-0 before:h-0 before:border-t-[4px] before:border-t-transparent before:border-b-[4px] before:border-b-transparent before:border-l-[4px] before:border-l-primary text-primary pt-[5px] cursor-pointer font-bold text-sm min-h-fit">
+      <div class="collapse-title p-0 before:inline-block before:align-middle before:mr-[10px] before:w-0 before:h-0 before:border-t-[4px] before:border-t-transparent before:border-b-[4px] before:border-b-transparent before:border-l-[4px] before:border-l-primary text-[#002b62] pt-[5px] cursor-pointer font-bold text-sm min-h-fit">
         {item.title}
       </div>
       <div class="collapse-content !p-0 !pb-0">
         <Markdown
-          text={item.text.replace(/<p>|<\/p>/g, "\n")}
+          text={item.text}
         />
       </div>
     </div>
@@ -41,7 +41,7 @@ export default function AccordionItem(
       open={activeItem === id}
       onClick={() => window.location.hash = id}
     >
-      <summary class="collapse-title lg:text-[20px] text-primary pl-[38px] py-[18px] pb-[18px] relative">
+      <summary class="collapse-title lg:text-[20px] text-[#002b62] font-bold pl-[38px] py-[18px] pb-[18px] relative">
         {title}
       </summary>
       <div class="collapse-content font-quicksand p-[0_10px_25px_20px]">
@@ -49,7 +49,7 @@ export default function AccordionItem(
           if (item.title) return <Accordion item={item} />;
           return (
             <Markdown
-              text={item.text.replace(/<p>|<\/p>/g, "\n")}
+              text={item.text}
             />
           );
         })}

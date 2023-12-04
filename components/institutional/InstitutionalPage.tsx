@@ -25,10 +25,11 @@ function InstitutionalPage({
               margin: 20px 0;
             }
             .markdown-body h3 {
-              font-size: 18px;
+              font-size: 20px;
+              color: rgb(0 43 98);
+              padding: 18px 18px 18px 38px;
               font-weight: 700;
-              line-height: 1.4;
-              margin: 20px 0;
+              font-family: 'Comfortaa';
             }
             .markdown-body p:empty {
               display: none;
@@ -36,7 +37,7 @@ function InstitutionalPage({
             .markdown-body p:last-child {
               margin-bottom: 20px;
             }
-            .markdown-body p, .markdown-body li, .markdown-body strong {
+            .markdown-body p, .markdown-body li, .markdown-body h4 {
               color: #000000;
               font-size: 14px;
               font-weight: 400;
