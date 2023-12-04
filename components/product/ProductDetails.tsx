@@ -383,27 +383,27 @@ function Details({
   buyTogether: Product[] | null;
 }) {
   const { product, breadcrumbList } = page; 
-  const accessoryLength = buyTogether ? ( buyTogether.length > 2 ? buyTogether.length -1 : buyTogether.length ) : 1; 
-  const lengthMax = accessoryLength ? accessoryLength : 1; 
+  const buyTogetherLength = buyTogether ? ( buyTogether.length > 2 ? buyTogether.length -1 : buyTogether.length ) : 1; 
+  const lengthMax = buyTogetherLength ? buyTogetherLength : 1; 
   const lengthMin = lengthMax && lengthMax >= 3 ? 3 : 1; 
-  const validateAcessoryLength = accessoryLength >= lengthMin ? accessoryLength : 1;   
-  const randomValidate = validateAcessoryLength ?  Math.floor( Math.random() * ( validateAcessoryLength - lengthMin + 1) + lengthMin) : 1; 
-  const randomNumber =  randomValidate ? randomValidate : 1; 
+  const validateBuyTogetherLength = buyTogetherLength >= lengthMin ? buyTogetherLength : 1;   
+  const randomNumberValidate = validateBuyTogetherLength ?  Math.floor( Math.random() * ( validateBuyTogetherLength - lengthMin + 1) + lengthMin) : 1; 
+  const randomNumber =  randomNumberValidate ? randomNumberValidate : 1; 
   
-  let acessoryOne; 
-  let acessoryTwo; 
+  let productAleatory; 
+  let acessory; 
 
   if( product && buyTogether && randomNumber ){ 
     if( buyTogether[0].productID === product.productID ){ 
-      acessoryOne = buyTogether[randomNumber]; 
+      productAleatory = buyTogether[randomNumber]; 
     } else { 
-      acessoryOne = buyTogether[randomNumber]; 
+      productAleatory = buyTogether[randomNumber]; 
     }    
 
-    if( acessoryOne && buyTogether[0].productID === acessoryOne.productID && buyTogether[0].productID === product.productID ){ 
-      acessoryTwo = buyTogether[1]; 
+    if( productAleatory && buyTogether[0].productID === productAleatory.productID && buyTogether[0].productID === product.productID ){ 
+      acessory = buyTogether[1]; 
     } else { 
-      acessoryTwo =  buyTogether[0]; 
+      acessory =  buyTogether[0]; 
     }      
   } 
   
@@ -436,8 +436,8 @@ function Details({
         </div>
       </section>
       <Selos product={product} />
-      {acessoryOne && acessoryTwo &&
-        <BuyTogether product={acessoryOne} accessory={acessoryTwo} />}
+      {productAleatory && acessory &&
+        <BuyTogether product={productAleatory} accessory={acessory} />}
       <ProductAccordions product={product} />
     </>
   );
