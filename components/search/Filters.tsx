@@ -173,7 +173,7 @@ function Filters({ filters, category = "" }: Props) {
                 {selectedFilters.map((filter) => (
                   <a
                     href={filter.url}
-                    class="block text-sm bg-black max-lg:bg-secondary text-white py-2 px-3 rounded-[5px] mr-[0.375rem] mb-6 cursor-pointer appearance-none"
+                    class="block text-sm bg-primary max-lg:bg-secondary text-white py-2 px-3 rounded-[5px] mr-[0.375rem] mb-6 cursor-pointer appearance-none"
                   >
                     {filter.label}
                     <Icon

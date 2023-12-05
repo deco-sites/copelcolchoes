@@ -700,7 +700,7 @@ function ProductReviews(
       <div class="flex justify-start lg:flex-row flex-col lg:gap-6">
         <div id="formReviewButton" class="max-lg:py-4 max-lg:mx-auto">
           <button
-            class="hover:bg-primary-focus bg-black text-white rounded-[0.3125rem] text-base font-medium h-12 w-[17.5rem] transition-all duration-300 max-lg:mx-auto"
+            class="hover:bg-primary-focus bg-primary text-white rounded-[0.3125rem] text-base font-medium h-12 w-[17.5rem] transition-all duration-300 max-lg:mx-auto"
             onClick={openReviewForm}
           >
             Fazer avaliação
@@ -708,7 +708,7 @@ function ProductReviews(
         </div>
         <div id="questionFormButton" class="max-lg:py-4 max-lg:mx-auto">
           <button
-            class="hover:bg-primary-focus bg-black text-white rounded-[0.3125rem] text-base font-medium h-12 w-[17.5rem] transition-all duration-300 max-lg:mx-auto"
+            class="hover:bg-primary-focus bg-primary text-white rounded-[0.3125rem] text-base font-medium h-12 w-[17.5rem] transition-all duration-300 max-lg:mx-auto"
             onClick={openQuestionForm}
           >
             Escrever dúvida

@@ -215,14 +215,14 @@ function ProductCard(
             )}
           {bestOferta && (
             <div class="mb-[0.625rem]">
-              <div class="bg-black rounded-[5px] flex items-center justify-center py-[0.6875rem] px-[0.625rem] w-fit uppercase">
+              <div class="bg-secondary rounded-[5px] flex items-center justify-center py-[0.6875rem] px-[0.625rem] w-fit uppercase">
                 <Icon
                   id="BlackFriday"
                   size={16}
                   class="w-[0.9375rem] mr-[0.3125rem]"
                 />
                 <p class="flex text-center font-quicksand text-white text-[0.75rem] leading-4 font-bold">
-                  Black Friday
+                  Promoção da semana
                 </p>
               </div>
             </div>
@@ -265,7 +265,7 @@ function ProductCard(
                 <button
                   title="Saiba mais"
                   type="button"
-                  class="bg-black w-full text-white tracking-normal capitalize mt-[1.875rem] leading-5 rounded-[0.3125rem] p-0 flex justify-center items-center border border-transparent font-bold relative h-[2.625rem]"
+                  class="bg-primary w-full text-white tracking-normal capitalize mt-[1.875rem] leading-5 rounded-[0.3125rem] p-0 flex justify-center items-center border border-transparent font-bold relative h-[2.625rem]"
                 >
                   Saiba mais
                 </button>
@@ -275,7 +275,7 @@ function ProductCard(
           : (
             <div>
               <button
-                class="bg-black w-full tracking-normal capitalize mt-[1.875rem] text-base leading-5 rounded-[0.3125rem] p-0 disabled:opacity-30 disabled:cursor-not-allowed hover:opacity-100 flex justify-center items-center text-white transition-all duration-250 h-[2.625rem] relative font-bold border border-transparent"
+                class="bg-primary w-full tracking-normal capitalize mt-[1.875rem] text-base leading-5 rounded-[0.3125rem] p-0 disabled:opacity-30 disabled:cursor-not-allowed hover:opacity-100 flex justify-center items-center text-white transition-all duration-250 h-[2.625rem] relative font-bold border border-transparent"
                 disabled
                 title="Saiba mais"
               >

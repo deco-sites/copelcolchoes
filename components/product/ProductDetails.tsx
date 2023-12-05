@@ -91,7 +91,7 @@ function ProductInfo(
           <>
             {discount && (
               <div>
-                <div class="bg-black rounded-[16px] py-1 px-4 pointer-events-none relative text-left top-[unset] w-fit z-1">
+                <div class="bg-primary rounded-[16px] py-1 px-4 pointer-events-none relative text-left top-[unset] w-fit z-1">
                   <div class="flex justify-center items-center flex-col text-white h-full">
                     <p class="text-sm font-normal leading-4 whitespace-nowrap font-quicksand">
                       - {discount}%

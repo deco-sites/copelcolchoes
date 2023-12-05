@@ -86,7 +86,7 @@ function Form(props: Props) {
   };
 
   return (
-    <section class="bg-black font-quicksand rounded-[12px] flex w-full lg:h-[8.5625rem] lg:justify-between lg:items-center lg:mb-[2.625rem] lg:px-[2.625rem] max-lg:flex-col max-lg:py-8 max-lg:px-[1.125rem]">
+    <section class="bg-primary font-quicksand rounded-[12px] flex w-full lg:h-[8.5625rem] lg:justify-between lg:items-center lg:mb-[2.625rem] lg:px-[2.625rem] max-lg:flex-col max-lg:py-8 max-lg:px-[1.125rem]">
       <div class="relative lg:mr-[3.75rem]">
         <div class="text-white max-lg:w-full">
           <h2 class="font-medium lg:text-[1.75rem] lg:leading-[2.1875rem] max-lg:text-2xl">

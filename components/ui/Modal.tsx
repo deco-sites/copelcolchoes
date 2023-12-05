@@ -78,7 +78,7 @@ const Modal = ({
     <dialog
       {...props}
       ref={ref}
-      class={`backdrop:bg-black backdrop:opacity-80 bg-transparent p-0 m-0 max-w-full w-full max-h-full h-full backdrop-opacity-50 ${
+      class={`backdrop:bg-primary backdrop:opacity-80 bg-transparent p-0 m-0 max-w-full w-full max-h-full h-full backdrop-opacity-50 ${
         dialogStyles[mode]
       } ${props.class ?? ""}`}
       onClick={(e) =>
