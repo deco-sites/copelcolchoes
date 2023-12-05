@@ -56,7 +56,10 @@ function Form() {
         <form onSubmit={handleSubmit}>
           <div class="flex justify-center items-center max-lg:flex-col">
             <span class="w-min mr-[48px] max-lg:mt-[32px] max-lg:mx-auto">
-              <label for="size" class="font-semibold inline-block max-lg:block max-lg:text-center">
+              <label
+                for="size"
+                class="font-semibold inline-block max-lg:block max-lg:text-center"
+              >
                 Escolha o tamanho
               </label>
               <select
