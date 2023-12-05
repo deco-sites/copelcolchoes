@@ -91,7 +91,8 @@ function CartButton() {
   return (
     <Button
       class="btn-square btn-ghost relative flex justify-center items-center hover:bg-white"
-      aria-label="open cart"
+      aria-label={totalItems > 9 ? "9+" : `${totalItems}`}
+      name="open cart"
       data-deco={displayCart.value && "open-cart"}
       loading={loading.value}
       onClick={onClick}

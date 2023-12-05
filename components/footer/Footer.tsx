@@ -128,7 +128,10 @@ function Footer(
             >
               {sections.map((section) => (
                 <div class="collapse collapse-arrow w-full rounded-none">
-                  <label for="my-accordion-mobile--footer" class="hidden">
+                  <label
+                    for="my-accordion-mobile--footer"
+                    class="h-0 opacity-0"
+                  >
                     Abrir opções
                   </label>
                   <input
@@ -177,11 +180,11 @@ function Footer(
                   ))}
               </ul>
             </div>
-            <ul class="max-lg:my-6">
+            <div class="max-lg:my-6">
               <div class="text-base font-medium text-primary mb-4">
                 Certificados e Segurança
               </div>
-              <div class="flex gap-5 max-lg:mx-auto">
+              <ul class="flex gap-5 max-lg:mx-auto">
                 <li class="w-[3.8125rem]"></li>
                 {securities &&
                   securities.map((item) => (
@@ -199,8 +202,8 @@ function Footer(
                       </span>
                     </li>
                   ))}
-              </div>
-            </ul>
+              </ul>
+            </div>
             <div class="max-lg:mt-[1.4375rem]">
               <div class="flex flex-col max-lg:my-8">
                 <span class="block text-base mb-4 font-medium text-primary">

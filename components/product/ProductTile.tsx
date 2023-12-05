@@ -19,7 +19,7 @@ export default function ProductTile(
     <div class="flex items-center justify-start gap-4">
       <a
         href={url && relative(url)}
-        aria-label="view product"
+        aria-label={name}
         name="view product"
         class="w-full h-full flex items-center gap-2 hover:text-emphasis"
       >

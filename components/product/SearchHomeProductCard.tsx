@@ -32,7 +32,7 @@ function ProductCard(
         <div class="relative">
           <a
             href={url}
-            aria-label="view product"
+            aria-label={nameComplete}
             name="view product"
             class="block"
           >
@@ -58,7 +58,7 @@ function ProductCard(
       <div class="lg:py-6 lg:px-5 relative overflow-hidden max-lg:pt-0 max-lg:px-5 max-lg:pb-7">
         <a
           href={url}
-          aria-label="view product"
+          aria-label={nameComplete}
           name="view product"
           class="block"
         >
@@ -85,7 +85,7 @@ function ProductCard(
         </div>
         <a
           href={url}
-          aria-label="view product"
+          aria-label="Comprar"
           name="view product"
           class="block"
         >

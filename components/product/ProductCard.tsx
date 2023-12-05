@@ -181,7 +181,7 @@ function ProductCard(
           ? (
             <a
               href={url && relative(url)}
-              aria-label="view product"
+              aria-label={isVariantOf?.name || name}
               name="view product"
               class="block"
             >
@@ -260,7 +260,7 @@ function ProductCard(
           ? (
             <a
               href={url && relative(url)}
-              aria-label="view product"
+              aria-label="Saiba mais"
               name="view product"
               class="block"
             >
