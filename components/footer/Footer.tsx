@@ -130,7 +130,7 @@ function Footer(
                 <div class="collapse collapse-arrow w-full rounded-none">
                   <label
                     for="my-accordion-mobile--footer"
-                    class="h-0 opacity-0"
+                    class="h-0 opacity-0 w-0"
                   >
                     Abrir opções
                   </label>
