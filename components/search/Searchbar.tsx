@@ -80,7 +80,6 @@ function Searchbar({
       >
         <input
           ref={searchInputRef}
-          id="search-input"
           class="flex w-full outline-none placeholder:text-primary placeholder:font-normal text-sm placeholder:text-sm text-[#8c9aad]"
           name={name}
           defaultValue={query}
