@@ -48,7 +48,7 @@ function Form() {
     }
   };
   return (
-    <div class="max-w-[1170px] my-[82px] mx-auto bg-black text-white rounded-[12px] py-[29px] px-[42px] w-full max-lg:w-[90%]">
+    <div class="max-w-[1170px] my-[82px] mx-auto bg-primary text-white rounded-[12px] py-[29px] px-[42px] w-full max-lg:w-[90%]">
       <div class="flex justify-center items-center max-lg:flex-col">
         <h2 class="w-[192px] text-[28px] font-semibold mr-[30px] font-quicksand max-lg:m-0 max-lg:text-center">
           Encontre o colchão ideal

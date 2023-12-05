@@ -200,7 +200,7 @@ function BuyTogether({
                 <div class="w-full">
                   <Button
                     title={"Comprar juntos"}
-                    class="bg-black border-transparent !rounded-[0.3125rem] font-quicksand text-base font-semibold h-12 leading-5 min-w-[15.5rem] max-w-[17.5rem] transition-all duration-300 w-[90%] hover:bg-[#00224d] flex items-center justify-center relative px-8 text-white appearance-none"
+                    class="bg-primary border-transparent !rounded-[0.3125rem] font-quicksand text-base font-semibold h-12 leading-5 min-w-[15.5rem] max-w-[17.5rem] transition-all duration-300 w-[90%] hover:bg-[#00224d] flex items-center justify-center relative px-8 text-white appearance-none"
                     data-deco="add-to-cart"
                     {...props}
                   >
@@ -224,7 +224,7 @@ function BuyTogether({
                 <div class="w-full">
                   <Button
                     title={"Comprar juntos"}
-                    class="bg-black border-transparent !rounded-[0.3125rem] font-quicksand text-base font-semibold h-12 leading-5 min-w-[15.5rem] max-w-[17.5rem] transition-all duration-300 w-[90%] hover:bg-[#00224d] flex items-center justify-center relative px-8 text-white appearance-none max-lg:my-0 max-lg:mx-auto"
+                    class="bg-primary border-transparent !rounded-[0.3125rem] font-quicksand text-base font-semibold h-12 leading-5 min-w-[15.5rem] max-w-[17.5rem] transition-all duration-300 w-[90%] hover:bg-[#00224d] flex items-center justify-center relative px-8 text-white appearance-none max-lg:my-0 max-lg:mx-auto"
                     data-deco="add-to-cart"
                     {...props}
                   >
