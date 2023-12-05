@@ -24,8 +24,8 @@ function WhatsApp({ phone, whatsappImage }: Props) {
           src={whatsappImage}
           alt="Whatsapp"
           class="w-[65%]"
-          width={36}
-          height={36}
+          width={35}
+          height={35}
         />
       </a>
       <BackToTop />

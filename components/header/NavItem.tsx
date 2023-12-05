@@ -73,6 +73,7 @@ function NavItemDropDown(
           {image && (
             <div class="w-full">
               <img
+                loading="lazy"
                 src={image.src}
                 alt={image.alt || "Banner vertical do menu"}
                 class={`right-[-200px] absolute max-w-[200px] w-full h-auto inline-block align-middle ${

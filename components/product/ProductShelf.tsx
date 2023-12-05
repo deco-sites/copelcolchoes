@@ -45,23 +45,25 @@ function Dots({ images, interval = 0 }: DotsProps) {
         class={`carousel justify-center col-span-full gap-2 z-10 row-start-4`}
       >
         {images?.map((_, index) => (
-          <Slider.Dot
-            index={index}
-            classes={`${
-              ((index === 0) || (index % 4 === 0)) ? "" : "lg:hidden lg:w-0"
-            }`}
-          >
-            <div
-              class={`${
+          <li class="carousel-item block">
+            <Slider.Dot
+              index={index}
+              classes={`${
                 ((index === 0) || (index % 4 === 0)) ? "" : "lg:hidden lg:w-0"
               }`}
             >
               <div
-                class="w-2 h-2 group-disabled:scale-100 group-disabled:opacity-100 opacity-50 scale-[0.33] rounded-full bg-primary"
-                style={{ animationDuration: `${interval}s` }}
-              />
-            </div>
-          </Slider.Dot>
+                class={`${
+                  ((index === 0) || (index % 4 === 0)) ? "" : "lg:hidden lg:w-0"
+                }`}
+              >
+                <div
+                  class="w-2 h-2 group-disabled:scale-100 group-disabled:opacity-100 opacity-50 scale-[0.33] rounded-full bg-primary"
+                  style={{ animationDuration: `${interval}s` }}
+                />
+              </div>
+            </Slider.Dot>
+          </li>
         ))}
       </ul>
     </>

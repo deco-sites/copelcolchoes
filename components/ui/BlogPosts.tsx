@@ -1,4 +1,5 @@
 import type { Image as LiveImage } from "deco-sites/std/components/types.ts";
+import Image from "deco-sites/std/components/Image.tsx";
 
 export interface Post {
   /** @description Banners do post */
@@ -35,13 +36,13 @@ export default function BlogPosts({
                 class="h-full w-full block"
               >
                 <div class="h-full w-full">
-                  <img
+                  <Image
                     loading="lazy"
                     src={post.banner}
                     alt={post.alt || "Banner da postagem do blog"}
                     class="object-cover h-full w-full inline-block"
                     width={374}
-                    height={249}
+                    height={248}
                   />
                 </div>
               </a>

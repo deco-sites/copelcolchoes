@@ -128,6 +128,7 @@ function Footer(
             >
               {sections.map((section) => (
                 <div class="collapse collapse-arrow w-full rounded-none">
+                  <label for="my-accordion-mobile--footer" class="hidden">Abrir opções</label>
                   <input
                     type="checkbox"
                     name="my-accordion-mobile--footer"
@@ -152,28 +153,28 @@ function Footer(
         </div>
         <div class="bg-white">
           <div class="lg:flex lg:w-full lg:justify-between lg:py-8 container lg:max-w-[80rem] w-full m-auto lg:px-[4rem] px-[1.375rem] max-lg:py-5">
-            <ul class="max-lg:my-[2.8125rem]">
-              <div class="text-base font-medium text-primary mb-4">
-                Pagamento
-              </div>
-              <div class="mb-[3.125rem] w-[359px] flex max-lg:w-full max-lg:grid max-lg:grid-cols-7 max-lg:my-0 max-lg:mx-auto max-lg:gap-y-[0.3125rem] max-lg:gap-x-[0.9375rem]">
-                {payments &&
-                  payments.map((item) => (
-                    <li class="lg:w-[3.125rem] mr-[0.3125rem] mb-4">
-                      <span>
-                        <img
-                          loading="lazy"
-                          src={item.image}
-                          width={34}
-                          height={25}
-                          alt={item.alt || "footer image"}
-                          class="h-auto w-full inline-block align-middle mix-blend-multiply"
-                        />
-                      </span>
-                    </li>
-                  ))}
-              </div>
-            </ul>
+            <div class="max-lg:my-[2.8125rem]">
+                <div class="text-base font-medium text-primary mb-4">
+                  Pagamento
+                </div>
+                <ul class="mb-[3.125rem] w-[359px] flex max-lg:w-full max-lg:grid max-lg:grid-cols-7 max-lg:my-0 max-lg:mx-auto max-lg:gap-y-[0.3125rem] max-lg:gap-x-[0.9375rem]">
+                  {payments &&
+                    payments.map((item) => (
+                      <li class="lg:w-[3.125rem] mr-[0.3125rem] mb-4">
+                        <span>
+                          <img
+                            loading="lazy"
+                            src={item.image}
+                            width={34}
+                            height={25}
+                            alt={item.alt || "footer image"}
+                            class="h-auto w-full inline-block align-middle mix-blend-multiply"
+                          />
+                        </span>
+                      </li>
+                    ))}
+                </ul>
+            </div>
             <ul class="max-lg:my-6">
               <div class="text-base font-medium text-primary mb-4">
                 Certificados e Segurança

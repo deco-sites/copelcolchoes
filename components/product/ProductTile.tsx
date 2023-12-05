@@ -20,6 +20,7 @@ export default function ProductTile(
       <a
         href={url && relative(url)}
         aria-label="view product"
+        name="view product"
         class="w-full h-full flex items-center gap-2 hover:text-emphasis"
       >
         <div class="bg-[#f6f6f6] rounded-md">

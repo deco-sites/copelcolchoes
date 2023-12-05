@@ -138,7 +138,7 @@ export default function CategoriesCarroussel(props: Props) {
                       <img
                         loading="lazy"
                         src={svg.image}
-                        alt={svg.alt}
+                        alt={`Imagem de ${svg.alt}`}
                         decoding="async"
                       />
                     ))}

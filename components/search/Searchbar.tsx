@@ -100,6 +100,7 @@ function Searchbar({
           role="combobox"
           aria-controls="search-suggestion"
           autocomplete="off"
+          aria-expanded={valueSearch.length > 0}
         />
         <button
           class="btn-ghost"

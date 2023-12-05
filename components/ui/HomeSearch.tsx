@@ -56,7 +56,7 @@ function Form() {
         <form onSubmit={handleSubmit}>
           <div class="flex justify-center items-center max-lg:flex-col">
             <span class="w-min mr-[48px] max-lg:mt-[32px] max-lg:mx-auto">
-              <label class="font-semibold inline-block max-lg:block max-lg:text-center">
+              <label for="size" class="font-semibold inline-block max-lg:block max-lg:text-center">
                 Escolha o tamanho
               </label>
               <select
@@ -106,6 +106,7 @@ function Form() {
                 <p class="absolute text-xs font-normal bottom-[-19px] left-0">
                   Extra macio
                 </p>
+                <label for="comfort" class="hidden">Conforto</label>
                 <input
                   name="comfort"
                   class="w-[88%] mx-auto appearance-none bg-[#e2e2e2] cursor-pointer h-[10px] outline-none rounded-[10px]"

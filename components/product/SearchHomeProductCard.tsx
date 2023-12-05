@@ -33,6 +33,7 @@ function ProductCard(
           <a
             href={url}
             aria-label="view product"
+            name="view product"
             class="block"
           >
             <Image
@@ -58,6 +59,7 @@ function ProductCard(
         <a
           href={url}
           aria-label="view product"
+          name="view product"
           class="block"
         >
           <h2 class="lg:text-base lg:leading-[1.375rem] text-[#828282] font-medium mb-[1.125rem] font-quicksand">
@@ -84,6 +86,7 @@ function ProductCard(
         <a
           href={url}
           aria-label="view product"
+          name="view product"
           class="block"
         >
           <div>
