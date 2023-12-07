@@ -3,7 +3,6 @@
 // This file is automatically updated during development when running `dev.ts`.
 
 import * as $0 from "./routes/_app.tsx";
-<<<<<<< HEAD
 import * as $1 from "./routes/api/storeLocator.tsx";
 import * as $2 from "./routes/styles.css.ts";
 import * as $$0 from "./islands/AccordionItem.tsx";
@@ -11,55 +10,33 @@ import * as $$1 from "./islands/AccordionsContent.tsx";
 import * as $$2 from "./islands/AddToCartActions.tsx";
 import * as $$3 from "./islands/AddToCartButton.tsx";
 import * as $$4 from "./islands/BackToTopButton.tsx";
-import * as $$5 from "./islands/BuyTogether.tsx";
-import * as $$6 from "./islands/BuyWarning.tsx";
-import * as $$7 from "./islands/CloseButton.tsx";
-import * as $$8 from "./islands/Debug.tsx";
-import * as $$9 from "./islands/HeaderButton.tsx";
-import * as $$10 from "./islands/HeaderModals.tsx";
-import * as $$11 from "./islands/HeaderSearchbar.tsx";
-import * as $$12 from "./islands/HomeSearch.tsx";
-import * as $$13 from "./islands/Newsletter.tsx";
-import * as $$14 from "./islands/NewsletterModal.tsx";
-import * as $$15 from "./islands/OutOfStock.tsx";
-=======
-import * as $1 from "./routes/styles.css.ts";
-import * as $$0 from "./islands/AddToCartActions.tsx";
-import * as $$1 from "./islands/AddToCartButton.tsx";
-import * as $$2 from "./islands/BackToTopButton.tsx";
-import * as $$3 from "./islands/ButtonUpdateBuyTogether.tsx";
-import * as $$4 from "./islands/BuyTogether.tsx";
-import * as $$5 from "./islands/BuyWarning.tsx";
-import * as $$6 from "./islands/CloseButton.tsx";
-import * as $$7 from "./islands/Debug.tsx";
-import * as $$8 from "./islands/HeaderButton.tsx";
-import * as $$9 from "./islands/HeaderModals.tsx";
-import * as $$10 from "./islands/HeaderSearchbar.tsx";
-import * as $$11 from "./islands/HomeSearch.tsx";
-import * as $$12 from "./islands/Newsletter.tsx";
-import * as $$13 from "./islands/NewsletterModal.tsx";
-import * as $$14 from "./islands/OutOfStock.tsx";
-import * as $$15 from "./islands/ProductDetails.tsx";
->>>>>>> bc9eb0e (fix: ajuste para produto principal e acessório com btn para atualizar acessório)
-import * as $$16 from "./islands/ProductDetailsImages.tsx";
-import * as $$17 from "./islands/ProductGallery.tsx";
-import * as $$18 from "./islands/ProductImageZoom.tsx";
-import * as $$19 from "./islands/ProductReviews.tsx";
-import * as $$20 from "./islands/QuickReview.tsx";
-import * as $$21 from "./islands/SearchControls.tsx";
-import * as $$22 from "./islands/SearchResultsGridChoice.tsx";
-import * as $$23 from "./islands/ShareButton.tsx";
-import * as $$24 from "./islands/ShippingSimulation.tsx";
-import * as $$25 from "./islands/SliderJS.tsx";
-import * as $$26 from "./islands/Sort.tsx";
-<<<<<<< HEAD
-import * as $$27 from "./islands/StoreLocator.tsx";
-import * as $$28 from "./islands/TopBar.tsx";
-import * as $$29 from "./islands/WishlistButton.tsx";
-=======
-import * as $$27 from "./islands/TopBar.tsx";
-import * as $$28 from "./islands/WishlistButton.tsx";
->>>>>>> bc9eb0e (fix: ajuste para produto principal e acessório com btn para atualizar acessório)
+import * as $$5 from "./islands/ButtonUpdateBuyTogether.tsx";
+import * as $$6 from "./islands/BuyTogether.tsx";
+import * as $$7 from "./islands/BuyWarning.tsx";
+import * as $$8 from "./islands/CloseButton.tsx";
+import * as $$9 from "./islands/Debug.tsx";
+import * as $$10 from "./islands/HeaderButton.tsx";
+import * as $$11 from "./islands/HeaderModals.tsx";
+import * as $$12 from "./islands/HeaderSearchbar.tsx";
+import * as $$13 from "./islands/HomeSearch.tsx";
+import * as $$14 from "./islands/Newsletter.tsx";
+import * as $$15 from "./islands/NewsletterModal.tsx";
+import * as $$16 from "./islands/OutOfStock.tsx";
+import * as $$17 from "./islands/ProductDetails.tsx";
+import * as $$18 from "./islands/ProductDetailsImages.tsx";
+import * as $$19 from "./islands/ProductGallery.tsx";
+import * as $$20 from "./islands/ProductImageZoom.tsx";
+import * as $$21 from "./islands/ProductReviews.tsx";
+import * as $$22 from "./islands/QuickReview.tsx";
+import * as $$23 from "./islands/SearchControls.tsx";
+import * as $$24 from "./islands/SearchResultsGridChoice.tsx";
+import * as $$25 from "./islands/ShareButton.tsx";
+import * as $$26 from "./islands/ShippingSimulation.tsx";
+import * as $$27 from "./islands/SliderJS.tsx";
+import * as $$28 from "./islands/Sort.tsx";
+import * as $$29 from "./islands/StoreLocator.tsx";
+import * as $$30 from "./islands/TopBar.tsx";
+import * as $$31 from "./islands/WishlistButton.tsx";
 
 const manifest = {
   routes: {
@@ -68,60 +45,38 @@ const manifest = {
     "./routes/styles.css.ts": $2,
   },
   islands: {
-<<<<<<< HEAD
     "./islands/AccordionItem.tsx": $$0,
     "./islands/AccordionsContent.tsx": $$1,
     "./islands/AddToCartActions.tsx": $$2,
     "./islands/AddToCartButton.tsx": $$3,
     "./islands/BackToTopButton.tsx": $$4,
-    "./islands/BuyTogether.tsx": $$5,
-    "./islands/BuyWarning.tsx": $$6,
-    "./islands/CloseButton.tsx": $$7,
-    "./islands/Debug.tsx": $$8,
-    "./islands/HeaderButton.tsx": $$9,
-    "./islands/HeaderModals.tsx": $$10,
-    "./islands/HeaderSearchbar.tsx": $$11,
-    "./islands/HomeSearch.tsx": $$12,
-    "./islands/Newsletter.tsx": $$13,
-    "./islands/NewsletterModal.tsx": $$14,
-    "./islands/OutOfStock.tsx": $$15,
-=======
-    "./islands/AddToCartActions.tsx": $$0,
-    "./islands/AddToCartButton.tsx": $$1,
-    "./islands/BackToTopButton.tsx": $$2,
-    "./islands/ButtonUpdateBuyTogether.tsx": $$3,
-    "./islands/BuyTogether.tsx": $$4,
-    "./islands/BuyWarning.tsx": $$5,
-    "./islands/CloseButton.tsx": $$6,
-    "./islands/Debug.tsx": $$7,
-    "./islands/HeaderButton.tsx": $$8,
-    "./islands/HeaderModals.tsx": $$9,
-    "./islands/HeaderSearchbar.tsx": $$10,
-    "./islands/HomeSearch.tsx": $$11,
-    "./islands/Newsletter.tsx": $$12,
-    "./islands/NewsletterModal.tsx": $$13,
-    "./islands/OutOfStock.tsx": $$14,
-    "./islands/ProductDetails.tsx": $$15,
->>>>>>> bc9eb0e (fix: ajuste para produto principal e acessório com btn para atualizar acessório)
-    "./islands/ProductDetailsImages.tsx": $$16,
-    "./islands/ProductGallery.tsx": $$17,
-    "./islands/ProductImageZoom.tsx": $$18,
-    "./islands/ProductReviews.tsx": $$19,
-    "./islands/QuickReview.tsx": $$20,
-    "./islands/SearchControls.tsx": $$21,
-    "./islands/SearchResultsGridChoice.tsx": $$22,
-    "./islands/ShareButton.tsx": $$23,
-    "./islands/ShippingSimulation.tsx": $$24,
-    "./islands/SliderJS.tsx": $$25,
-    "./islands/Sort.tsx": $$26,
-<<<<<<< HEAD
-    "./islands/StoreLocator.tsx": $$27,
-    "./islands/TopBar.tsx": $$28,
-    "./islands/WishlistButton.tsx": $$29,
-=======
-    "./islands/TopBar.tsx": $$27,
-    "./islands/WishlistButton.tsx": $$28,
->>>>>>> bc9eb0e (fix: ajuste para produto principal e acessório com btn para atualizar acessório)
+    "./islands/ButtonUpdateBuyTogether.tsx": $$5,
+    "./islands/BuyTogether.tsx": $$6,
+    "./islands/BuyWarning.tsx": $$7,
+    "./islands/CloseButton.tsx": $$8,
+    "./islands/Debug.tsx": $$9,
+    "./islands/HeaderButton.tsx": $$10,
+    "./islands/HeaderModals.tsx": $$11,
+    "./islands/HeaderSearchbar.tsx": $$12,
+    "./islands/HomeSearch.tsx": $$13,
+    "./islands/Newsletter.tsx": $$14,
+    "./islands/NewsletterModal.tsx": $$15,
+    "./islands/OutOfStock.tsx": $$16,
+    "./islands/ProductDetails.tsx": $$17,
+    "./islands/ProductDetailsImages.tsx": $$18,
+    "./islands/ProductGallery.tsx": $$19,
+    "./islands/ProductImageZoom.tsx": $$20,
+    "./islands/ProductReviews.tsx": $$21,
+    "./islands/QuickReview.tsx": $$22,
+    "./islands/SearchControls.tsx": $$23,
+    "./islands/SearchResultsGridChoice.tsx": $$24,
+    "./islands/ShareButton.tsx": $$25,
+    "./islands/ShippingSimulation.tsx": $$26,
+    "./islands/SliderJS.tsx": $$27,
+    "./islands/Sort.tsx": $$28,
+    "./islands/StoreLocator.tsx": $$29,
+    "./islands/TopBar.tsx": $$30,
+    "./islands/WishlistButton.tsx": $$31,
   },
   baseUrl: import.meta.url,
 };
