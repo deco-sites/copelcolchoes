@@ -382,31 +382,7 @@ function Details({
   page: ProductDetailsPage;
   buyTogether: Product[] | null;
 }) {
-  const { product, breadcrumbList } = page; 
-  const buyTogetherLength = buyTogether ? ( buyTogether.length > 2 ? buyTogether.length -1 : buyTogether.length ) : 1; 
-  const lengthMax = buyTogetherLength ? buyTogetherLength : 1; 
-  const lengthMin = lengthMax && lengthMax >= 3 ? 3 : 1; 
-  const validateBuyTogetherLength = buyTogetherLength >= lengthMin ? buyTogetherLength : 1;   
-  const randomNumberValidate = validateBuyTogetherLength ?  Math.floor( Math.random() * ( validateBuyTogetherLength - lengthMin + 1) + lengthMin) : 1; 
-  const randomNumber =  randomNumberValidate ? randomNumberValidate : 1; 
-  
-  let productAleatory; 
-  let acessory; 
-
-  if( product && buyTogether && randomNumber ){ 
-    if( buyTogether[0].productID === product.productID ){ 
-      productAleatory = buyTogether[randomNumber]; 
-    } else { 
-      productAleatory = buyTogether[randomNumber]; 
-    }    
-
-    if( productAleatory && buyTogether[0].productID === productAleatory.productID && buyTogether[0].productID === product.productID ){ 
-      acessory = buyTogether[1]; 
-    } else { 
-      acessory =  buyTogether[0]; 
-    }      
-  } 
-  
+  const { product, breadcrumbList } = page;   
   const filteredBreadcrumbList = breadcrumbList.itemListElement.filter((item) =>
     item.name!.length > 1
   );
@@ -436,8 +412,8 @@ function Details({
         </div>
       </section>
       <Selos product={product} />
-      {productAleatory && acessory &&
-        <BuyTogether product={productAleatory} accessory={acessory} />}
+      { buyTogether &&
+        <BuyTogether product={product} buyTogether={buyTogether} />}
       <ProductAccordions product={product} />
     </>
   );

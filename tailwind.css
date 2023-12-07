@@ -29,6 +29,41 @@
     overflow: hidden;
     height: 100vh;
   }
+
+  .btn-update-buytogether.is-active{
+    @apply rotate-[360deg] ease-linear duration-150;
+  }
+
+  .buyTogether-total.is-active:before,
+  .card-accessory.is-active:before{
+    content: "";
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 6px dotted gray;
+    border-right-color: #ccc;
+    animation: loadingUpdateBuyTogether 1s infinite;
+    position: absolute;
+    top: 37%;
+    left: 43%;
+    z-index: 999999; 
+  }
+
+  @keyframes loadingUpdateBuyTogether{
+    to {
+      transform: rotate(360deg);
+    }    
+  }
+
+  .buyTogether-total.is-active:after,
+  .card-accessory.is-active:after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, .7);
+    top: 0;    
+  }
 }
 
 
