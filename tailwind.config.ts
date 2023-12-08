@@ -46,7 +46,7 @@ export default {
         },
       },
       backgroundImage: {
-        'arrow_update': `url('data:image/svg+xml,<svg height="15px" width="15px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28" xml:space="preserve" fill="%23fff" stroke="%23fff"><path style="fill:%23fff" d="M22 16c0 4.41-3.586 8-8 8s-8-3.59-8-8 3.586-8 8-8l2.359.027-1.164 1.164 2.828 2.828L24.035 6l-6.012-6-2.828 2.828L16.375 4H14C7.375 4 2 9.371 2 16s5.375 12 12 12 12-5.371 12-12h-4z"/></svg>')`,
+        'arrow_update': `url('data:image/svg+xml,<svg height="10px" width="10px" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28" xml:space="preserve" fill="%23fff" stroke="%23fff"><path style="fill:%23fff" d="M22 16c0 4.41-3.586 8-8 8s-8-3.59-8-8 3.586-8 8-8l2.359.027-1.164 1.164 2.828 2.828L24.035 6l-6.012-6-2.828 2.828L16.375 4H14C7.375 4 2 9.371 2 16s5.375 12 12 12 12-5.371 12-12h-4z"/></svg>')`,
       },
       rotate:{
         '360': '360deg'

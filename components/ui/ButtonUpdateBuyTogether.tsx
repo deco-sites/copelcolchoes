@@ -34,7 +34,7 @@ function ButtonUpdateBuyTogether( { buyTogether, type }: { buyTogether: Product[
 
     return(
         <a onClick={handleClick} class="btn-update-buytogether absolute z-10 right-1 top-1 bg-[#002b62] p-1.5 rounded-full cursor-pointer">
-            <div class="btn-update-buytogether bg-arrow_update w-4 h-4 bg-no-repeat"></div>
+            <div class="btn-update-buytogether bg-arrow_update w-2.5 h-2.5 bg-no-repeat"></div>
         </a>
     )
 }
