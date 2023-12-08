@@ -179,9 +179,6 @@ function BuyTogether({
                 </span>
               </div>
               <div class="relative card-accessory">
-                {/* <a onClick={handleClick} class="absolute z-10 right-1 top-1 bg-[#002b62] p-1.5 rounded-full cursor-pointer">
-                    <div class="btn-update-buytogether bg-arrow_update w-4 h-4 bg-no-repeat"></div>
-                  </a>  */}
                 <ButtonUpdateBuyTogether buyTogether={buyTogether} type={true} />
                 {buyTogether &&
                   <ProductBuyTogetherCard product={buyTogether} type={true} />
