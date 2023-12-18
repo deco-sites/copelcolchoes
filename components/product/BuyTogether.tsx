@@ -94,7 +94,7 @@ function BuyTogether({
   buyTogether,
 }: Props) {
   const { count } = useCountBuyTogether();
-  if( !buyTogether ) return (<></>);
+  if( !buyTogether || buyTogether.length == 0 ) return (<></>);
   const {
     productID,
     offers,
@@ -108,7 +108,7 @@ function BuyTogether({
     offers: offers2,
     name: name2,
     isVariantOf: isVariantOf2
-  } = buyTogether[count.value] ;
+  } = buyTogether[count.value];
   const { price: price2, listPrice: listPrice2, seller: seller2 } = useOffer(
     offers2,
   );
@@ -136,32 +136,7 @@ function BuyTogether({
   const props = useAddToCart({ items });
   const totalListPrice = (listPrice && listPrice2) ? listPrice + listPrice2 : 0;
   const totalPrice = (price && price2) ? price + price2 : 0;
-
-  // function handleClick( { target }: Event ){  
-  //   const { count } = useCountBuyTogether();
-  //   const cardAccessory = document.querySelector<HTMLElement>('.card-accessory');
-  //   const buyTogetherLength = buyTogether ? ( buyTogether.length > 2 ? buyTogether.length -1 : (buyTogether.length == 0 ? buyTogether.length -1 : buyTogether.length) ) : 0; 
-  //   const lengthMin = 0;    
-
-  //   setTimeout(()=>{
-  //     count.value = buyTogetherLength ?  Math.floor( Math.random() * ( buyTogetherLength - lengthMin + 1) + lengthMin) : 0;
-  //   }, 300)
-
-  //   if( target instanceof Element ){
-  //     target.classList.add('is-active');  
-  //     setTimeout(()=>{
-  //       target.classList.remove('is-active');
-  //     }, 500)    
-  //   }
-
-  //   if( cardAccessory ){
-  //     cardAccessory.classList.add('is-active')
-
-  //     setTimeout(()=>{
-  //       cardAccessory.classList.remove('is-active');
-  //     }, 500) 
-  //   }
-  // }    
+ 
 
   return (
     <section class="py-6">
