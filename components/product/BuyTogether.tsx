@@ -9,7 +9,7 @@ import { useCountBuyTogether } from "$store/sdk/useCountBuyTogether.ts";
 
 export interface Props {
   product: Product;
-  buyTogether: Product[] | null
+  buyTogether: Product[] | null;
 }
 
 const useStableImages = (product: Product) => {
@@ -33,23 +33,25 @@ const useStableImages = (product: Product) => {
     return { ...img, url: allImages[name] ?? img.url };
   });
 };
-function ProductBuyTogetherCard({ product, type }: { product: Product[], type:boolean }) {
-  const {count} = useCountBuyTogether(); 
+function ProductBuyTogetherCard(
+  { product, type }: { product: Product[]; type: boolean },
+) {
+  const { count } = useCountBuyTogether();
   const {
     offers,
     name,
     isVariantOf,
-  } = type ? product[count.value] : product[0] ;
+  } = type ? product[count.value] : product[0];
   const { price, listPrice } = useOffer(
     offers,
   );
   const discount = ((listPrice && price) && listPrice !== price)
     ? Math.round(((listPrice - price) / listPrice) * 100)
     : undefined;
-  const [image] = useStableImages(type ? product[count.value] : product[0] );
+  const [image] = useStableImages(type ? product[count.value] : product[0]);
 
   return (
-    <div class="lg:p-3 lg:w-[23rem] font-quicksand flex gap-3 rounded-[0.625rem] border border-[#e5e5e5] shadow-[0_0.125rem_0.125rem_rgba(0,0,0,0.16)] items-center max-lg:flex-col max-lg:p-4 max-lg:min-w-[15.25rem]">   
+    <div class="lg:p-3 lg:w-[23rem] font-quicksand flex gap-3 rounded-[0.625rem] border border-[#e5e5e5] shadow-[0_0.125rem_0.125rem_rgba(0,0,0,0.16)] items-center max-lg:flex-col max-lg:p-4 max-lg:min-w-[15.25rem]">
       <div class="lg:w-[35%] max-lg:w-full">
         <div class="relative block h-0 w-full pb-[100%]">
           <Image
@@ -94,7 +96,7 @@ function BuyTogether({
   buyTogether,
 }: Props) {
   const { count } = useCountBuyTogether();
-  if( !buyTogether || buyTogether.length == 0 ) return (<></>);
+  if (!buyTogether || buyTogether.length == 0) return <></>;
   const {
     productID,
     offers,
@@ -107,7 +109,7 @@ function BuyTogether({
     productID: productID2,
     offers: offers2,
     name: name2,
-    isVariantOf: isVariantOf2
+    isVariantOf: isVariantOf2,
   } = buyTogether[count.value];
   const { price: price2, listPrice: listPrice2, seller: seller2 } = useOffer(
     offers2,
@@ -136,7 +138,6 @@ function BuyTogether({
   const props = useAddToCart({ items });
   const totalListPrice = (listPrice && listPrice2) ? listPrice + listPrice2 : 0;
   const totalPrice = (price && price2) ? price + price2 : 0;
- 
 
   return (
     <section class="py-6">
@@ -154,10 +155,12 @@ function BuyTogether({
                 </span>
               </div>
               <div class="relative card-accessory">
-                <ButtonUpdateBuyTogether buyTogether={buyTogether} type={true} />
+                <ButtonUpdateBuyTogether
+                  buyTogether={buyTogether}
+                  type={true}
+                />
                 {buyTogether &&
-                  <ProductBuyTogetherCard product={buyTogether} type={true} />
-                }           
+                  <ProductBuyTogetherCard product={buyTogether} type={true} />}
               </div>
               <div class="bg-white flex flex-col gap-1 px-8 relative max-lg:hidden">
                 <span class="bg-primary h-[0.125rem] w-[1.125rem]"></span>

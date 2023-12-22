@@ -247,7 +247,7 @@ function ProductCard(
                   )}
                 </ins>
                 <span class="text-[#828282] text-[0.8125rem] font-medium font-quicksand">
-                  À vista: {formatPrice(price, offers!.priceCurrency!)}
+                  Total: {formatPrice(price, offers!.priceCurrency!)}
                 </span>
                 <span class="text-[#828282] text-[0.8125rem] font-medium font-quicksand">
                   10% de desconto no Pix ou Boleto

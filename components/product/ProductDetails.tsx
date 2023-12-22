@@ -382,7 +382,7 @@ function Details({
   page: ProductDetailsPage;
   buyTogether: Product[] | null;
 }) {
-  const { product, breadcrumbList } = page;   
+  const { product, breadcrumbList } = page;
   const filteredBreadcrumbList = breadcrumbList.itemListElement.filter((item) =>
     item.name!.length > 1
   );
@@ -412,7 +412,7 @@ function Details({
         </div>
       </section>
       <Selos product={product} />
-      { buyTogether &&
+      {buyTogether &&
         <BuyTogether product={product} buyTogether={buyTogether} />}
       <ProductAccordions product={product} />
     </>
