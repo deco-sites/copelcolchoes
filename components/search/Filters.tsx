@@ -20,6 +20,7 @@ function ValueItem({ url, selected, label, quantity }: FilterToggleValue) {
       <a href={`${url}&page=1`} class="flex items-center mb-[0.625rem]">
         <div
           aria-checked={selected}
+          rel="nofollow"
           class="checkbox border-secondary aria-checked:border-[#707070] h-5 w-5 shadow-md mr-3 aria-checked:bg-none aria-checked:bg-secondary rounded-[2px] flex justify-center items-center"
         >
           {selected && (
@@ -161,6 +162,7 @@ function Filters({ filters, category = "" }: Props) {
               </p>
               <a
                 href={cleanFilters(selectedFilters[0].url)}
+                rel="nofollow"
                 class="hover:opacity-80 underline text-normal max-lg:text-sm font-medium transition-opacity duration-200"
                 aria-label="limpar filtros"
                 title="limpar-filtros"
@@ -173,6 +175,7 @@ function Filters({ filters, category = "" }: Props) {
                 {selectedFilters.map((filter) => (
                   <a
                     href={filter.url}
+                    rel="nofollow"
                     class="block text-sm bg-primary max-lg:bg-secondary text-white py-2 px-3 rounded-[5px] mr-[0.375rem] mb-6 cursor-pointer appearance-none"
                   >
                     {filter.label}
