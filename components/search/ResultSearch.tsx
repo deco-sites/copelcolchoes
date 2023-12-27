@@ -13,7 +13,7 @@ export type SuggestionsProps = {
 };
 
 const urlToLabel = (url: string, searchValue: string) => {
-  const entryUrl = new URL(url);
+  const entryUrl = new URL(url); 
   const label = entryUrl.pathname.split("/")[1].replaceAll("-", " ");
   return label.replace(
     searchValue,
@@ -32,6 +32,7 @@ const Suggestions = ({ products, searchValue }: SuggestionsProps) => {
             <a
               class="text-sm leading-[1.125rem] font-[#444444] "
               href={product.url}
+              rel="nofollow"
             >
               <p
                 dangerouslySetInnerHTML={{
