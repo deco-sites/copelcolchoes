@@ -415,7 +415,9 @@ export async function loader(
       YVStoreKey: yourViews.key,
     },
   };
-  const { product } = page!;
+
+  if(!page) return;
+  const { product } = page;
   const { inProductGroupWithID } = product;
   const reviews = await fetch(
     `https://service.yourviews.com.br/api/v2/pub/review/${inProductGroupWithID}?page=1&count=3&orderBy=1`,
@@ -470,6 +472,7 @@ const getPages = (page: number, lastPage: number) => {
 function ProductReviews(
   { reviews, product, yourViews }: SectionProps<typeof loader>,
 ) {
+  if (!product) return null
   const { inProductGroupWithID } = product;
   const { reviews: rates, totalReview: totalRate } = useQuickReview();
   const { Element, Pagination } = reviews;
