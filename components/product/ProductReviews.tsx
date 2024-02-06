@@ -79,7 +79,6 @@ function ReviewForm({ yvkey, yvauth, product }: FormProps) {
     try {
       loading.value = true;
       const data = await fetch(fetchUrl, options);
-      console.log(data);
     } catch (err) {
       throw new Error("Failed to get Yourviews Data", err);
     } finally {
@@ -289,7 +288,6 @@ function QuestionForm({ yvkey, product }: FormProps) {
     try {
       loading.value = true;
       const data = await fetch(fetchUrl, options);
-      console.log(data);
     } catch (err) {
       throw new Error("Failed to get Yourviews Data", err);
     } finally {
@@ -416,7 +414,7 @@ export async function loader(
     },
   };
 
-  if(!page) return;
+  if (!page) return;
   const { product } = page;
   const { inProductGroupWithID } = product;
   const reviews = await fetch(
@@ -472,7 +470,7 @@ const getPages = (page: number, lastPage: number) => {
 function ProductReviews(
   { reviews, product, yourViews }: SectionProps<typeof loader>,
 ) {
-  if (!product) return null
+  if (!product) return null;
   const { inProductGroupWithID } = product;
   const { reviews: rates, totalReview: totalRate } = useQuickReview();
   const { Element, Pagination } = reviews;

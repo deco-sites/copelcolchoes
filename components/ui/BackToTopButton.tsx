@@ -4,7 +4,7 @@ export default function BackToTopButton() {
   return (
     <button
       onClick={() => {
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        globalThis.window.scrollTo({ top: 0, behavior: "smooth" });
       }}
       class="fixed bottom-[6px] right-[25px] z-40 w-[50px] block"
       name="Voltar ao topo"

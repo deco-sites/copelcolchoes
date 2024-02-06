@@ -3,7 +3,7 @@ interface Props {
 }
 
 const runOnMount = () => {
-  window.onload = () => {
+  globalThis.window.onload = () => {
     const iFrame = document.getElementById(
       "proxy-loader",
     ) as HTMLIFrameElement;

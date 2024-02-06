@@ -20,16 +20,15 @@ export interface Props {
 
 const useHash = () =>
   useMemo(() => {
-    const hash = window.location.hash;
+    const hash = globalThis.window.location.hash;
     return hash;
   }, []);
 
 function AccordionsContent({ accordions }: Props) {
   const hash = useHash();
   const [activeItem, setActiveItem] = useState(hash && hash.replace("#", ""));
-  // deno-lint-ignore no-window-prefix
-  window.addEventListener("hashchange", () => {
-    setActiveItem(window.location.hash.replace("#", ""));
+  globalThis.window.addEventListener("hashchange", () => {
+    setActiveItem(globalThis.window.location.hash.replace("#", ""));
   });
   return (
     <>

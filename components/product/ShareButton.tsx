@@ -1,11 +1,11 @@
 import Icon from "$store/components/ui/Icon.tsx";
 
 function windowOpen(url: string, width = 650, height = 450) {
-  const left = window.outerWidth / 2 +
-    (window.screenX || window.screenLeft || 0) -
+  const left = globalThis.window.outerWidth / 2 +
+    (globalThis.window.screenX || globalThis.window.screenLeft || 0) -
     width / 2;
-  const top = window.outerHeight / 2 +
-    (window.screenY || window.screenTop || 0) -
+  const top = globalThis.window.outerHeight / 2 +
+    (globalThis.window.screenY || globalThis.window.screenTop || 0) -
     height / 2;
 
   const config = {
@@ -24,7 +24,7 @@ function windowOpen(url: string, width = 650, height = 450) {
     chrome: "yes",
   };
 
-  const shareDialog = window.open(
+  const shareDialog = globalThis.window.open(
     url,
     "share",
     Object.keys(config)

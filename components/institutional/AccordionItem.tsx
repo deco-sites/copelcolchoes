@@ -39,7 +39,7 @@ export default function AccordionItem(
       class="collapse focus-visible:outline-none my-5 bg-[#e8ebf2] border border-[#bed4f0] rounded-[25px]"
       id={id}
       open={activeItem === id}
-      onClick={() => window.location.hash = id}
+      onClick={() => globalThis.window.location.hash = id}
     >
       <summary class="collapse-title lg:text-[20px] text-[#002b62] font-bold pl-[38px] py-[18px] pb-[18px] relative">
         {title}
