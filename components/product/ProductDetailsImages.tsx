@@ -19,8 +19,10 @@ interface Props {
 function ProductDetailsImages(
   { images, width, height, aspect, url, product }: Props) {
   const id = `product-image-gallery:${useId()}`; 
-  const video = product && product.video ? product.video[0] : '';  
-  const midia = [...images, {...video}];
+  const video = product && product.video || [];
+  const midia = [...images, ...video];
+
+  console.log('---> ', midia)
 
   return (
     <>
