@@ -54,8 +54,6 @@ function ProductDetailsImages(
 
                       { img["@type"] === 'VideoObject'  && 
                         (
-                          <>
-                          <input type="text" value={img.contentUrl!} />
                           <iframe 
                             class='slide-dot-custom'
                             width={width} 
@@ -64,7 +62,6 @@ function ProductDetailsImages(
                             src={img.contentUrl!}
                             frameborder={0}                           
                           ></iframe> 
-                          </>
                         )
                       }
                     </div>
