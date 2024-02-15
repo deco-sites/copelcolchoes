@@ -54,7 +54,7 @@ function ProductDetailsImages(
 
                       { img["@type"] === 'VideoObject'  && 
                         (
-                          <embed type="video/webm" 
+                          <iframe
                             class='slide-dot-custom'
                             width={width} 
                             height={height}
@@ -62,7 +62,7 @@ function ProductDetailsImages(
                             src={img.contentUrl!}
                             frameborder={0} 
                             loading={'lazy'}                          
-                          ></embed> 
+                          ></iframe> 
                         )
                       }
                     </div>
@@ -92,15 +92,15 @@ function ProductDetailsImages(
                       }
                       { img["@type"] === 'VideoObject' && 
                         (
-                          <embed type="video/webm" class={'pointer-events-none rounded-[10px]'}
+                          <iframe class={'pointer-events-none rounded-[10px]'}
                             width={70} 
                             height={70} 
                             src={img.contentUrl + '?controls=0'} 
                             title={img?.name}
                             frameborder={0}
                             allow="picture-in-picture"
-                            loading={'lazy'}                                             
-                          ></embed>                            
+                            loading={'lazy'}
+                          ></iframe>                            
                         )
                       }
                     </Slider.Dot>
