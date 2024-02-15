@@ -22,8 +22,6 @@ function ProductDetailsImages(
   const video = product && product.video || [];
   const midia = [...images, ...video];
 
-  console.log('---> ', midia)
-
   return (
     <>
       <div class="lg:w-1/2 relative">
@@ -56,14 +54,15 @@ function ProductDetailsImages(
 
                       { img["@type"] === 'VideoObject'  && 
                         (
-                          <iframe 
+                          <embed type="video/webm" 
                             class='slide-dot-custom'
                             width={width} 
                             height={height}
                             title={img?.name}
                             src={img.contentUrl!}
-                            frameborder={0}                           
-                          ></iframe> 
+                            frameborder={0} 
+                            loading={'lazy'}                          
+                          ></embed> 
                         )
                       }
                     </div>
@@ -93,14 +92,15 @@ function ProductDetailsImages(
                       }
                       { img["@type"] === 'VideoObject' && 
                         (
-                          <iframe class={'pointer-events-none rounded-[10px]'}
+                          <embed type="video/webm" class={'pointer-events-none rounded-[10px]'}
                             width={70} 
                             height={70} 
                             src={img.contentUrl + '?controls=0'} 
                             title={img?.name}
                             frameborder={0}
-                            allow="picture-in-picture"                                              
-                          ></iframe>                            
+                            allow="picture-in-picture"
+                            loading={'lazy'}                                             
+                          ></embed>                            
                         )
                       }
                     </Slider.Dot>
