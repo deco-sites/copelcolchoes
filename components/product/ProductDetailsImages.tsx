@@ -35,13 +35,13 @@ function ProductDetailsImages(
                     class="carousel-item w-full last:mr-6"
                   >
                     <div class="relative block h-0 w-full pb-[100%] ">
-                      { img.encodingFormat === 'image' && 
+                      { img["@type"] === 'ImageObject' && 
                         (
                           <Image
                             class="absolute top-0 left-0 w-full block object-cover font-['blur-up:_auto','object-fit:_cover'] h-auto align-middle"
                             sizes="(max-width: 480px) 576px, 576px"
                             style={{ aspectRatio: aspect }}
-                            src={img.url!}
+                            src={img?.url!}
                             alt={img.alternateName}
                             width={width}
                             height={height}
@@ -52,7 +52,7 @@ function ProductDetailsImages(
                         ) 
                       }
 
-                      { img.encodingFormat === 'video' && 
+                      { img["@type"] === 'VideoObject'  && 
                         (
                           <>
                           <input type="text" value={img.contentUrl!} />
@@ -79,7 +79,7 @@ function ProductDetailsImages(
                 {midia.map((img, index) => {
                   return(
                     <Slider.Dot index={index}>
-                      { img.encodingFormat === 'image' && 
+                      { img["@type"] === 'ImageObject' && 
                         (
                           <Image
                             style={{ aspectRatio: aspect }}
@@ -87,12 +87,12 @@ function ProductDetailsImages(
                             width={70}
                             height={70}
                             sizes="(max-width: 480px) 70px, 70px"
-                            src={img.url!}
+                            src={img?.url!}
                             alt={img.alternateName}
                           />
                         )
                       }
-                      { img.encodingFormat === 'video' && 
+                      { img["@type"] === 'VideoObject' && 
                         (
                           <iframe class={'pointer-events-none rounded-[10px]'}
                             width={70} 
