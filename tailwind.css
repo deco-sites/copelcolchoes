@@ -64,6 +64,13 @@
     background: rgba(255, 255, 255, .7);
     top: 0;    
   }
+
+  @media (max-width: 767px){
+    .slide-dot-custom{
+      width: 320px !important;
+      height: 300px !important;
+    }
+  }
 }
 
 
