@@ -328,12 +328,12 @@ function Selos({ product }: { product: Product }) {
   const { additionalProperty } = isVariantOf as unknown as Product;
   const category = fullCategory ? fullCategory.split(">")[0] : "";
   const activeSelos = {
-    "Colchões": 3,
-    "Cama Box": 3,
+    "Colchões": 7,
+    "Cama Box": 7,
     "Cama Box mais Colchão": 7,
-    "Travesseiros": 6,
-    "Acessórios": 0,
-    "Móveis": 0,
+    "Travesseiros": 7,
+    "Acessórios": 7,
+    "Móveis": 7,
   };
   return (
     <div class="w-fit bg-transparent">
