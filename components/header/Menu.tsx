@@ -20,8 +20,11 @@ function MenuItem({ item }: { item: INavItem }) {
             </div>
             <div class="collapse-content px-0">
               <ul class="border-t border-base-content border-solid pt-0 px-0 pl-5">
-                {item.children?.map((node) => (
-                  <li class="">
+                {item.children?.map((node) => {
+                  let url_all = node.children[0].href.split("/");
+
+                  return(
+                    <li class="">
                     <div class="collapse collapse-plus relative items-start">
                       <input
                         type="checkbox"
@@ -45,7 +48,7 @@ function MenuItem({ item }: { item: INavItem }) {
                           ))}
                           <li class="">
                             <a
-                              href={node.href}
+                              href={`/${url_all[1]}`}
                               title={node.label}
                               class={`w-full block pt-5 font-dm-sans font-normal text-base-300 text-sm`}
                             >
@@ -56,7 +59,8 @@ function MenuItem({ item }: { item: INavItem }) {
                       </div>
                     </div>
                   </li>
-                ))}
+                  );
+                })}
               </ul>
             </div>
           </div>
