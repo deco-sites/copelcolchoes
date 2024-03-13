@@ -357,7 +357,7 @@ function ImageComponent(
             alt={value}
           />
         </div>
-        <div class="text-primary text-sm leading-8">{value}</div>
+        <div class="text-primary text-sm text-center max-w-[75px]">{value}</div>
       </div>
     )
     : <></>;
@@ -383,7 +383,7 @@ function Selos({ product }: { product: Product }) {
           <div class="text-primary text-lg leading-8 font-semibold my-6">
             <p>Informações do seu produto:</p>
           </div>
-          <div class="flex items-center flex-row gap-8 justify-between">
+          <div class="flex items-start flex-row gap-4 justify-between">
             {additionalProperty && additionalProperty.map((prop, index) => {
               const { value } = prop;
               const url = value
