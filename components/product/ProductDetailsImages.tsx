@@ -5,6 +5,7 @@ import Image from "deco-sites/std/components/Image.tsx";
 import SliderJS from "$store/islands/SliderJS.tsx";
 import { useId } from "preact/hooks";
 import ShareButton from "$store/islands/ShareButton.tsx";
+import { Product } from "apps/commerce/types.ts";
 
 interface Props {
   images: ImageObject[];
@@ -12,57 +13,99 @@ interface Props {
   height: number;
   aspect: string;
   url: string;
+  product: Product;
 }
 
 function ProductDetailsImages(
-  { images, width, height, aspect, url }: Props,
-) {
-  const id = `product-image-gallery:${useId()}`;
+  { images, width, height, aspect, url, product }: Props) {
+  const id = `product-image-gallery:${useId()}`; 
+  const video = product && product.video || [];
+  const midia = [...images, ...video];
+
   return (
     <>
       <div class="lg:w-1/2 relative">
         <div class="flex flex-col relative" id={id}>
           <div class="mix-blend-multiply w-full">
             <Slider class="carousel carousel-start box-border lg:box-content w-full">
-              {images.map((img, index) => (
-                <Slider.Item
-                  index={index}
-                  class="carousel-item w-full last:mr-6"
-                >
-                  <div class="relative block h-0 w-full pb-[100%] ">
-                    <Image
-                      class="absolute top-0 left-0 w-full block object-cover font-['blur-up:_auto','object-fit:_cover'] h-auto align-middle"
-                      sizes="(max-width: 480px) 576px, 576px"
-                      style={{ aspectRatio: aspect }}
-                      src={img.url!}
-                      alt={img.alternateName}
-                      width={width}
-                      height={height}
-                      // Preload LCP image for better web vitals
-                      preload={index === 0}
-                      loading={index === 0 ? "eager" : "lazy"}
-                    />
-                  </div>
-                </Slider.Item>
-              ))}
+              {midia.map((img, index) => {
+                return(
+                  <Slider.Item
+                    index={index}
+                    class="carousel-item w-full last:mr-6"
+                  >
+                    <div class="relative block h-0 w-full pb-[100%] ">
+                      { img["@type"] === 'ImageObject' && 
+                        (
+                          <Image
+                            class="absolute top-0 left-0 w-full block object-cover font-['blur-up:_auto','object-fit:_cover'] h-auto align-middle"
+                            sizes="(max-width: 480px) 576px, 576px"
+                            style={{ aspectRatio: aspect }}
+                            src={img?.url!}
+                            alt={img.alternateName}
+                            width={width}
+                            height={height}
+                            // Preload LCP image for better web vitals
+                            preload={index === 0}
+                            loading={index === 0 ? "eager" : "lazy"}
+                          />
+                        ) 
+                      }
+
+                      { img["@type"] === 'VideoObject'  && 
+                        (
+                          <iframe
+                            class='slide-dot-custom'
+                            width={width} 
+                            height={height}
+                            title={img?.name}
+                            src={img.contentUrl!}
+                            frameborder={0} 
+                            loading={'lazy'}                          
+                          ></iframe> 
+                        )
+                      }
+                    </div>
+                  </Slider.Item>
+                )
+              })}
             </Slider>
           </div>
           <div class="py-4 flex- basis-[5.8125rem] h-[7.5rem] mix-blend-multiply">
             <div class="w-full h-full mx-auto relative overflow-hidden">
               <div class="w-auto h-auto relative z-1 flex box-content justify-center">
-                {images.map((img, index) => (
-                  <Slider.Dot index={index}>
-                    <Image
-                      style={{ aspectRatio: aspect }}
-                      class="border-neutral group-disabled:border-secondary border w-[4.375rem] mr-[10px] rounded-[10px]"
-                      width={70}
-                      height={70}
-                      sizes="(max-width: 480px) 70px, 70px"
-                      src={img.url!}
-                      alt={img.alternateName}
-                    />
-                  </Slider.Dot>
-                ))}
+                {midia.map((img, index) => {
+                  return(
+                    <Slider.Dot index={index}>
+                      { img["@type"] === 'ImageObject' && 
+                        (
+                          <Image
+                            style={{ aspectRatio: aspect }}
+                            class="border-neutral group-disabled:border-secondary border w-[4.375rem] mr-[10px] rounded-[10px]"
+                            width={70}
+                            height={70}
+                            sizes="(max-width: 480px) 70px, 70px"
+                            src={img?.url!}
+                            alt={img.alternateName}
+                          />
+                        )
+                      }
+                      { img["@type"] === 'VideoObject' && 
+                        (
+                          <iframe class={'pointer-events-none rounded-[10px]'}
+                            width={70} 
+                            height={70} 
+                            src={img.contentUrl + '?controls=0'} 
+                            title={img?.name}
+                            frameborder={0}
+                            allow="picture-in-picture"
+                            loading={'lazy'}
+                          ></iframe>                            
+                        )
+                      }
+                    </Slider.Dot>
+                  )
+                })}
               </div>
               <Slider.PrevButton class="btn btn-circle btn-primary bg-white hover:bg-white border-none absolute left-4 min-w-[2.625rem] max-w-[2.625rem] min-h-[2.625rem] max-h-[2.625rem] top-1/2 -translate-y-1/2 active:focus:-translate-y-1/2 active:hover:-translate-y-1/2 no-animation">
                 <Icon size={42} id="PrevProductImage" strokeWidth={1} />

@@ -403,6 +403,7 @@ function Details({
           height={HEIGHT}
           aspect={ASPECT_RATIO}
           url={product.url!}
+          product={product}
         />
         {/* Product Info */}
         <div class="lg:w-1/2 lg:z-50 lg:sticky lg:h-fit lg:top-5 lg:mb-[2.125rem]">
