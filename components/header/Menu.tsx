@@ -142,14 +142,14 @@ function Menu({ items }: Props) {
         href="/account"
       >
         <Icon id="User" width={24} height={24} />
-        <span class="tracking-[1px] text-sm">Minha conta</span>
+        <span class="tracking-[1px] text-sm font-bold">Minha conta</span>
       </a>
       <a
         class="flex btn btn-outline gap-2 mx-4 mt-3"
         href="/central-de-atendimento"
       >
         <Icon id="Chat" width={24} height={24} />
-        <span class="tracking-[1px] text-sm md:text-xs">fale conosco</span>
+        <span class="tracking-[1px] text-sm md:text-xs font-bold">fale conosco</span>
       </a>
     </div>
   );
