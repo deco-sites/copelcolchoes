@@ -141,15 +141,15 @@ function Menu({ items }: Props) {
         class="flex btn btn-outline gap-2 mx-4 mt-10"
         href="/account"
       >
-        <Icon id="User" width={18} height={18} />
-        <span class="tracking-[1px] text-xs">Minha conta</span>
+        <Icon id="User" width={24} height={24} />
+        <span class="tracking-[1px] text-sm">Minha conta</span>
       </a>
       <a
         class="flex btn btn-outline gap-2 mx-4 mt-3"
         href="/central-de-atendimento"
       >
-        <Icon id="Chat" width={18} height={18} />
-        <span class="tracking-[1px] text-xs">fale conosco</span>
+        <Icon id="Chat" width={24} height={24} />
+        <span class="tracking-[1px] text-sm md:text-xs">fale conosco</span>
       </a>
     </div>
   );
