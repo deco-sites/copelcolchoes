@@ -42,11 +42,12 @@ function HeaderLayout(
             <Icon id="Logo" width={105} height={52.16} />
           </a>
         </div>
-        <div class="flex justify-end">
-          <div class="flex justify-end">
-            <div class="max-lg:hidden ml-10 lg:flex lg:items-center">
+        <div class="flex justify-end w-[40%] md:w-auto ml-[8%] md:ml-0">
+          <div class="flex justify-end w-full md:w-auto  ">
+            <div class=" m-0 md:ml-10 flex lg:items-center w-[107px] md:w-auto
+             ">
               <a
-                class="lg:flex lg:items-center lg:justify-center"
+                class="flex items-center justify-center w-full md:w-auto"
                 href="/nossas-lojas"
               >
                 <Icon
