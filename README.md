@@ -1,4 +1,4 @@
-# Fashion starter by deco.cx
+# Copel Colchões
 
 A fully featured starter to help you customize and deploy an ecommerce website
 in minutes
