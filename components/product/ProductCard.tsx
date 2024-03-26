@@ -185,7 +185,7 @@ function ProductCard(
               name="view product"
               class="block"
             >
-              <h2 class="lg:text-base max-lg:line-clamp-1 lg:leading-[1.375rem] text-[#828282] font-medium mb-[1.125rem]">
+              <h2 class="lg:text-base max-lg:line-clamp-2 lg:leading-[1.375rem] text-[#828282] font-medium mb-[1.125rem]">
                 {isVariantOf?.name || name}
               </h2>
             </a>
