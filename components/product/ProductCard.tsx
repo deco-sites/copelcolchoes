@@ -176,7 +176,7 @@ function ProductCard(
       </div>
 
       {/* Prices & Name */}
-      <div class="lg:py-6 lg:px-5 relative overflow-hidden max-lg:pt-0 max-lg:px-5 max-lg:pb-7">
+      <div class="lg:py-6 lg:px-5 relative overflow-hidden max-lg:pt-0 max-lg:px-2.5 max-lg:pb-7 max-lg:w-full">
         {inStock
           ? (
             <a
@@ -223,7 +223,7 @@ function ProductCard(
                   size={16}
                   class="w-[0.9375rem] mr-[0.3125rem]"
                 />
-                <p class="flex text-center font-quicksand text-[#134276] text-[0.75rem] leading-4 font-bold">
+                <p class="flex text-center font-quicksand text-[#134276] text-[0.75rem] max-lg:text-[0.563rem] leading-4 font-bold">
                   Promoção da semana
                 </p>
               </div>
