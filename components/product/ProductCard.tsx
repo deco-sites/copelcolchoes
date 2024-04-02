@@ -131,7 +131,7 @@ function ProductCard(
 
   return (
     <article
-      class="h-full font-quicksand shadow-md rounded-[5px] border border-[#dbdbdb] flex flex-col justify-between hover:border-primary"
+      class="h-full font-quicksand shadow-md rounded-[5px] border border-[#dbdbdb] justify-between flex flex-col  hover:border-primary"
       data-deco="view-product"
       id={`product-card-${productID}`}
       {...sendEventOnClick(clickEvent)}
@@ -185,7 +185,7 @@ function ProductCard(
               name="view product"
               class="block"
             >
-              <h2 class="lg:text-base lg:leading-[1.375rem] text-[#828282] font-medium mb-[1.125rem]">
+              <h2 class="lg:text-base max-lg:line-clamp-2 lg:leading-[1.375rem] text-[#828282] font-medium mb-[1.125rem]">
                 {isVariantOf?.name || name}
               </h2>
             </a>
@@ -240,6 +240,7 @@ function ProductCard(
                     De {formatPrice(listPrice, offers!.priceCurrency!)}
                   </del>
                 )}
+
                 <ins class="font-bold no-underline text-secondary text-xl leading-[1.5625rem] mb-[0.3125rem] max-lg:text-[1.25rem] font-quicksand">
                   {installment?.billingDuration}x ${formatPrice(
                     installment?.billingIncrement,

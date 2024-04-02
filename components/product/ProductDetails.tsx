@@ -14,6 +14,7 @@ import type { Product } from "apps/commerce/types.ts";
 import BuyTogether from "$store/islands/BuyTogether.tsx";
 import Image from "deco-sites/std/components/Image.tsx";
 import type { ComponentChildren } from "preact";
+import { useEffect, useState } from "preact/hooks";
 // import ProductReviews, { loader } from "$store/islands/ProductReviews.tsx";
 import QuickReview from "$store/islands/QuickReview.tsx";
 
@@ -323,18 +324,58 @@ function ProductAccordions({ product }: {
   );
 }
 
+function ImageComponent(
+  { imageUrl, value }: { imageUrl: string; value: string | undefined },
+) {
+  const [imageExists, setImageExists] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    fetch(imageUrl)
+      .then((response) => {
+        if (response.ok) {
+          setImageExists(true);
+        } else {
+          setImageExists(false);
+        }
+      })
+      .catch(() => {
+        setImageExists(false);
+      });
+  }, [imageUrl]);
+
+  if (imageExists === null) {
+    return <></>;
+  }
+
+  return imageExists
+    ? (
+      <div class="flex items-center flex-col font-quicksand text-sm font-medium leading-6 justify-between py-3">
+        <div class="max-w-[3.125rem]">
+          <img
+            class="w-full h-auto inline-block align-middle"
+            src={imageUrl}
+            alt={value}
+          />
+        </div>
+        <div class="text-primary text-sm text-center max-w-[75px]">{value}</div>
+      </div>
+    )
+    : <></>;
+}
+
 function Selos({ product }: { product: Product }) {
   const { isVariantOf, category: fullCategory } = product;
   const { additionalProperty } = isVariantOf as unknown as Product;
   const category = fullCategory ? fullCategory.split(">")[0] : "";
   const activeSelos = {
-    "Colchões": 3,
-    "Cama Box": 3,
+    "Colchões": 7,
+    "Cama Box": 7,
     "Cama Box mais Colchão": 7,
-    "Travesseiros": 6,
-    "Acessórios": 0,
-    "Móveis": 0,
+    "Travesseiros": 7,
+    "Acessórios": 7,
+    "Móveis": 7,
   };
+
   return (
     <div class="w-fit bg-transparent">
       {activeSelos[category as keyof typeof activeSelos] > 0 && (
@@ -342,7 +383,7 @@ function Selos({ product }: { product: Product }) {
           <div class="text-primary text-lg leading-8 font-semibold my-6">
             <p>Informações do seu produto:</p>
           </div>
-          <div class="flex items-center flex-row gap-8 justify-between">
+          <div class="flex items-start flex-row gap-4 justify-between">
             {additionalProperty && additionalProperty.map((prop, index) => {
               const { value } = prop;
               const url = value
@@ -356,16 +397,7 @@ function Selos({ product }: { product: Product }) {
                 index >= activeSelos[category as keyof typeof activeSelos]
               ) return;
               return (
-                <div class="flex items-center flex-col font-quicksand text-sm font-medium leading-6 justify-between py-3">
-                  <div class="max-w-[3.125rem]">
-                    <img
-                      class="w-full h-auto inline-block align-middle"
-                      src={`/arquivos/icone_${url}.svg`}
-                      alt={value}
-                    />
-                  </div>
-                  <div class="text-primary text-sm leading-8">{value}</div>
-                </div>
+                <ImageComponent imageUrl={`/arquivos/icone_${url}.svg`} value={value} />
               );
             })}
           </div>
