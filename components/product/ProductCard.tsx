@@ -242,7 +242,7 @@ function ProductCard(
                 )}
 
                 <ins class="font-bold no-underline text-secondary text-xl leading-[1.5625rem] mb-[0.3125rem] max-lg:text-[1.25rem] font-quicksand">
-                  {installment?.billingDuration}x ${formatPrice(
+                  {installment?.billingDuration}x {formatPrice(
                     installment?.billingIncrement,
                     offers!.priceCurrency!,
                   )}
