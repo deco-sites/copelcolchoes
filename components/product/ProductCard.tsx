@@ -236,12 +236,12 @@ function ProductCard(
             ? (
               <div class="flex flex-col max-lg:contents">
                 {(listPrice && price) && listPrice > price && (
-                  <del class="mb-[0.3125rem] text-[#464646] font-light text-[0.875rem] leading-[1.125rem] font-quicksand">
+                  <del class="mb-[0.3125rem] text-[#464646] font-light text-[0.875rem] leading-[1.125rem] max-lg:text-[0.875rem] font-quicksand">
                     De {formatPrice(listPrice, offers!.priceCurrency!)}
                   </del>
                 )}
-                <ins class="font-bold no-underline text-secondary text-xl leading-[1.5625rem] mb-[0.3125rem] font-quicksand">
-                  POR: {installment?.billingDuration}x ${formatPrice(
+                <ins class="font-bold no-underline text-secondary text-xl leading-[1.5625rem] mb-[0.3125rem] max-lg:text-[1.25rem] font-quicksand">
+                  {installment?.billingDuration}x ${formatPrice(
                     installment?.billingIncrement,
                     offers!.priceCurrency!,
                   )}
