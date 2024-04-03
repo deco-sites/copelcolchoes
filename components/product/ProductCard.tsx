@@ -176,7 +176,7 @@ function ProductCard(
       </div>
 
       {/* Prices & Name */}
-      <div class="lg:py-6 lg:px-5 relative overflow-hidden max-lg:pt-0 max-lg:px-5 max-lg:pb-7">
+      <div class="lg:py-6 lg:px-5 relative overflow-hidden max-lg:pt-0 max-lg:px-2.5 max-lg:pb-7 max-lg:w-full">
         {inStock
           ? (
             <a
@@ -217,13 +217,13 @@ function ProductCard(
             )}
           {bestOferta && (
             <div class="mb-[0.625rem]">
-              <div class="bg-secondary rounded-[5px] flex items-center justify-center py-[0.6875rem] px-[0.625rem] w-fit uppercase">
+              <div class="bg-white border border-[#134276] rounded-[15px] flex items-center justify-center py-[0.313rem] px-[0.5rem] w-fit uppercase">
                 <Icon
                   id="BlackFriday"
                   size={16}
                   class="w-[0.9375rem] mr-[0.3125rem]"
                 />
-                <p class="flex text-center font-quicksand text-white text-[0.75rem] leading-4 font-bold">
+                <p class="flex text-center font-quicksand text-[#134276] text-[0.75rem] max-lg:text-[0.563rem] leading-4 font-bold">
                   Promoção da semana
                 </p>
               </div>
@@ -236,12 +236,13 @@ function ProductCard(
             ? (
               <div class="flex flex-col max-lg:contents">
                 {(listPrice && price) && listPrice > price && (
-                  <del class="mb-[0.3125rem] text-[#464646] font-light text-[0.875rem] leading-[1.125rem] font-quicksand">
+                  <del class="mb-[0.3125rem] text-[#464646] font-light text-[0.875rem] leading-[1.125rem] max-lg:text-[0.875rem] font-quicksand">
                     De {formatPrice(listPrice, offers!.priceCurrency!)}
                   </del>
                 )}
-                <ins class="font-bold no-underline text-secondary text-xl leading-[1.5625rem] mb-[0.3125rem] font-quicksand">
-                  POR: {installment?.billingDuration}x {formatPrice(
+
+                <ins class="font-bold no-underline text-secondary text-xl leading-[1.5625rem] mb-[0.3125rem] max-lg:text-[1.25rem] font-quicksand">
+                  {installment?.billingDuration}x {formatPrice(
                     installment?.billingIncrement,
                     offers!.priceCurrency!,
                   )}
