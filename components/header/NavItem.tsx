@@ -122,6 +122,8 @@ function NavItem({ item }: { item: INavItem }) {
         label={label}
         href={href || ""}
       />
+      <div class="fixed hidden w-full h-[74.5%] left-0 bottom-0 bg-[rgba(0,0,0,0.29)] group-hover:flex">
+      </div>
     </li>
   );
 }
