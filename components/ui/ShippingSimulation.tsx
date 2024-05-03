@@ -132,8 +132,8 @@ function ShippingSimulation({ items }: Props) {
                 handleSimulation();
               }}
             >
-              <div class="flex justify-between items-end max-lg:items-start max-lg:flex-col max-lg:gap-5">
-                <div class="flex-1 mr-3 text-[0.8125rem] relative max-lg:w-full">
+              <div class="flex items-end max-lg:items-start max-lg:flex-col max-lg:gap-5">
+                <div class="mr-3 text-[0.8125rem] relative w-full lg:w-auto">
                   <label for="shippingPostalCode"></label>
                   <input
                     as="input"

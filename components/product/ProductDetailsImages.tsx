@@ -6,6 +6,7 @@ import SliderJS from "$store/islands/SliderJS.tsx";
 import { useId } from "preact/hooks";
 import ShareButton from "$store/islands/ShareButton.tsx";
 import { Product } from "apps/commerce/types.ts";
+import useMobileDetect from "$store/sdk/useMobileDetect.ts";
 
 interface Props {
   images: ImageObject[];
@@ -17,8 +18,9 @@ interface Props {
 }
 
 function ProductDetailsImages(
-  { images, width, height, aspect, url, product }: Props) {
-  const id = `product-image-gallery:${useId()}`; 
+  { images, width, height, aspect, url, product }: Props,
+) {
+  const id = `product-image-gallery:${useId()}`;
   const video = product && product.video || [];
   const midia = [...images, ...video];
 
@@ -29,45 +31,36 @@ function ProductDetailsImages(
           <div class="mix-blend-multiply w-full">
             <Slider class="carousel carousel-start box-border lg:box-content w-full">
               {midia.map((img, index) => {
-                return(
+                return (
                   <Slider.Item
                     index={index}
                     class="carousel-item w-full last:mr-6"
                   >
                     <div class="relative block h-0 w-full pb-[100%] ">
-                      { img["@type"] === 'ImageObject' && 
-                        (
-                          <Image
-                            class="absolute top-0 left-0 w-full block object-cover font-['blur-up:_auto','object-fit:_cover'] h-auto align-middle"
-                            sizes="(max-width: 480px) 576px, 576px"
-                            style={{ aspectRatio: aspect }}
-                            src={img?.url!}
-                            alt={img.alternateName}
-                            width={width}
-                            height={height}
-                            // Preload LCP image for better web vitals
-                            preload={index === 0}
-                            loading={index === 0 ? "eager" : "lazy"}
-                          />
-                        ) 
-                      }
-
-                      { img["@type"] === 'VideoObject'  && 
+                      {img["@type"] === "ImageObject" &&
+                        renderImage({
+                          img,
+                          index,
+                          aspect,
+                          width,
+                          height,
+                        })}
+                      {img["@type"] === "VideoObject" &&
                         (
                           <iframe
-                            class='slide-dot-custom'
-                            width={width} 
+                            class="slide-dot-custom"
+                            width={width}
                             height={height}
                             title={img?.name}
                             src={img.contentUrl!}
-                            frameborder={0} 
-                            loading={'lazy'}                          
-                          ></iframe> 
-                        )
-                      }
+                            frameborder={0}
+                            loading={"lazy"}
+                          >
+                          </iframe>
+                        )}
                     </div>
                   </Slider.Item>
-                )
+                );
               })}
             </Slider>
           </div>
@@ -75,9 +68,9 @@ function ProductDetailsImages(
             <div class="w-full h-full mx-auto relative overflow-hidden">
               <div class="w-auto h-auto relative z-1 flex box-content justify-center">
                 {midia.map((img, index) => {
-                  return(
+                  return (
                     <Slider.Dot index={index}>
-                      { img["@type"] === 'ImageObject' && 
+                      {img["@type"] === "ImageObject" &&
                         (
                           <Image
                             style={{ aspectRatio: aspect }}
@@ -88,23 +81,23 @@ function ProductDetailsImages(
                             src={img?.url!}
                             alt={img.alternateName}
                           />
-                        )
-                      }
-                      { img["@type"] === 'VideoObject' && 
+                        )}
+                      {img["@type"] === "VideoObject" &&
                         (
-                          <iframe class={'pointer-events-none rounded-[10px]'}
-                            width={70} 
-                            height={70} 
-                            src={img.contentUrl + '?controls=0'} 
+                          <iframe
+                            class={"pointer-events-none rounded-[10px]"}
+                            width={70}
+                            height={70}
+                            src={img.contentUrl + "?controls=0"}
                             title={img?.name}
                             frameborder={0}
                             allow="picture-in-picture"
-                            loading={'lazy'}
-                          ></iframe>                            
-                        )
-                      }
+                            loading={"lazy"}
+                          >
+                          </iframe>
+                        )}
                     </Slider.Dot>
-                  )
+                  );
                 })}
               </div>
               <Slider.PrevButton class="btn btn-circle btn-primary bg-white hover:bg-white border-none absolute left-4 min-w-[2.625rem] max-w-[2.625rem] min-h-[2.625rem] max-h-[2.625rem] top-1/2 -translate-y-1/2 active:focus:-translate-y-1/2 active:hover:-translate-y-1/2 no-animation">
@@ -146,6 +139,53 @@ function ProductDetailsImages(
         <SliderJS rootId={id}></SliderJS>
       </div>
     </>
+  );
+}
+
+function renderImage({ img, index, aspect, width, height }: {
+  img: ImageObject;
+  index: number;
+  aspect: string;
+  width: number;
+  height: number;
+}) {
+  const isMobile = useMobileDetect();
+
+  const image = (
+    <Image
+      class={isMobile.value
+        ? "absolute top-0 left-0 w-full block object-cover font-['blur-up:_auto','object-fit:_cover'] h-auto align-middle"
+        : "transition duration-150 opacity-100  lg:hover:opacity-0 hover:duration-300"}
+      sizes="(max-width: 480px) 576px, 576px"
+      style={{ aspectRatio: aspect }}
+      src={img?.url!}
+      alt={img.alternateName}
+      width={width}
+      height={height}
+      // Preload LCP image for better web vitals
+      preload={index === 0}
+      loading={index === 0 ? "eager" : "lazy"}
+    />
+  );
+
+  return isMobile.value ? image : (
+    <figure
+      style={`background-image: url(${img
+        ?.url!}); background-size: 250%;`}
+      onMouseMove={(e: MouseEvent) => {
+        const zoomer = e.currentTarget as HTMLElement;
+        const offsetX = e.offsetX;
+        const offsetY = e.offsetY;
+        const x = offsetX / (zoomer.offsetWidth) * 100;
+        const y = offsetY / (zoomer.offsetHeight) * 100;
+
+        zoomer!.style.backgroundPosition = x + "% " + y +
+          "%";
+      }}
+      class="overflow-hidden cursor-zoom-in relative"
+    >
+      {image}
+    </figure>
   );
 }
 
