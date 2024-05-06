@@ -150,7 +150,7 @@ export default function CategoriesCarroussel(props: Props) {
               </Slider.Item>
             ))}
           </Slider>
-          <Buttons className="lg:flex max-lg:hidden" />
+          {/* <Buttons className="lg:flex max-lg:hidden" /> */}
           <Dots
             images={images}
             interval={0}
