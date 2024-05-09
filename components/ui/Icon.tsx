@@ -36,6 +36,7 @@ export type AvailableIcons =
   | "Bars3"
   | "Heart"
   | "MagnifyingGlass"
+  | "MagnifyingGlassPlus"
   | "XMark"
   | "XMarkModal"
   | "Plus"

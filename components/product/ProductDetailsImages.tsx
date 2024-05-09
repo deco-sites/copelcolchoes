@@ -182,9 +182,15 @@ function renderImage({ img, index, aspect, width, height }: {
         zoomer!.style.backgroundPosition = x + "% " + y +
           "%";
       }}
-      class="overflow-hidden cursor-zoom-in relative"
+      class="overflow-hidden cursor-zoom-in relative group/zoomer"
     >
       {image}
+      <div class="absolute bottom-1 right-1 flex items-center gap-1 group-hover/zoomer:hidden">
+        <Icon id="MagnifyingGlassPlus" size={15} />
+        <span class="text-xs font-bold">
+          Passe o mouse sob a imagem para dar zoom
+        </span>
+      </div>
     </figure>
   );
 }
