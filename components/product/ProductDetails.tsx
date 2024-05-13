@@ -397,7 +397,10 @@ function Selos({ product }: { product: Product }) {
                 index >= activeSelos[category as keyof typeof activeSelos]
               ) return;
               return (
-                <ImageComponent imageUrl={`/arquivos/icone_${url}.svg`} value={value} />
+                <ImageComponent
+                  imageUrl={`/arquivos/icone_${url}.svg`}
+                  value={value}
+                />
               );
             })}
           </div>
