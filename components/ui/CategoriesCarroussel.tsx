@@ -116,24 +116,22 @@ export default function CategoriesCarroussel(props: Props) {
       <h2 class="font-quicksand text-primary text-[28px] mb-10 font-semibold text-center max-md:text-[26px] max-lg:mt-[54px]">
         Encontre nos Departamentos
       </h2>
-      <section
-        class={`w-full h-full gap-5 my-12 max-md:my-8`}
-      >
+      <section class="w-full h-full gap-5 my-12 max-md:my-8">
         <div
           id={id}
-          class="m-auto grid grid-cols-[23.88px_1fr_23.88px] sm:grid-cols-[23.88px_1fr_23.88px] grid-rows-[1fr_23.88px_1fr]"
+          class="m-auto grid grid-cols-[10px_1fr_10px] sm:grid-cols-[23.88px_1fr_23.88px] grid-rows-[1fr_23.88px_1fr]"
         >
-          <Slider class="carousel carousel-start col-span-full row-span-full scrollbar-none gap-6 w-full lg:justify-around">
+          <Slider class="carousel carousel-start scrollbar-none col-span-full m-auto max-w-[330px] md:max-w-[400px] lg:max-w-none gap-1 row-span-full w-full lg:flex justify-around">
             {images.map((item, index) => (
               <Slider.Item
                 index={index}
-                class="carousel-item flex items-center justify-center"
+                class="carousel-item flex justify-center lg:max-w-[160px] xl:max-w-[190px]"
               >
                 <a
                   href={item.href}
-                  class="flex w-fit flex-col items-center m-auto"
+                  class="text-center mx-auto"
                 >
-                  <div class="w-[150px] h-[150px] flex items-center justify-center rounded-3xl shadow-md hover:border hover:border-primary">
+                  <div class="w-[150px] h-[150px] lg:h-[160px] lg:w-[160px] xl:h-[190px] xl:w-[190px] flex items-center justify-center rounded-3xl shadow-md hover:border hover:border-primary">
                     {item.svgs.map((svg) => (
                       <img
                         loading="lazy"
@@ -143,14 +141,13 @@ export default function CategoriesCarroussel(props: Props) {
                       />
                     ))}
                   </div>
-                  <p class="text-primary text-base mt-6 font-medium">
+                  <p class="text-primary text-base font-bold mt-4 max-w-[150px] lg:max-w-none">
                     {item.title}
                   </p>
                 </a>
               </Slider.Item>
             ))}
           </Slider>
-          <Buttons className="lg:flex max-lg:hidden" />
           <Dots
             images={images}
             interval={0}
