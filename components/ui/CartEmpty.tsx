@@ -59,15 +59,16 @@ function CartEmpty(){
                             width={imageHeader.desktop.width}
                             height={imageHeader.desktop.height}
                         />
-                        
-                        <img
-                            src={imageHeader.desktop.src}
-                            width={imageHeader.desktop.width}
-                            height={imageHeader.desktop.height}
-                            alt={'image header!'}
-                            class=""
-                            loading="lazy"
-                        />
+                        <div>
+                            <img
+                                src={imageHeader.desktop.src}
+                                width={imageHeader.desktop.width}
+                                height={imageHeader.desktop.height}
+                                alt={'image header!'}
+                                class=""
+                                loading="lazy"
+                            />
+                        </div>
                         
                     </Picture>
                     <p 

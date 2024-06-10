@@ -91,7 +91,8 @@ function Cart(props: ICartProps) {
     0,
   );
 
-  const logisticsInfo = cart.value?.shippingData.logisticsInfo[0];
+  const shippingData = cart.value?.shippingData;
+  const logisticsInfo = shippingData && shippingData.logisticsInfo[0];
   const deliveryPrice = logisticsInfo && logisticsInfo.slas.length > 0
     ? logisticsInfo.slas[0].price
     : undefined;
