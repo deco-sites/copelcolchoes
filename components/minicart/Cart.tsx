@@ -1,11 +1,10 @@
-import Button from "$store/components/ui/Button.tsx";
 import Icon from "$store/components/ui/Icon.tsx";
 import { sendEvent } from "$store/sdk/analytics.tsx";
 import { formatPrice } from "$store/sdk/format.ts";
 import { useCart } from "deco-sites/std/packs/vtex/hooks/useCart.ts";
 import CartItem from "./CartItem.tsx";
-import Coupon from "./Coupon.tsx";
 import { useUI } from "$store/sdk/useUI.ts";
+import CartEmpty from "deco-sites/copelcolchoes/components/ui/CartEmpty.tsx";
 
 export type ButtonVariant =
   | "primary"
@@ -96,6 +95,7 @@ function Cart(props: ICartProps) {
   const deliveryPrice = logisticsInfo && logisticsInfo.slas.length > 0
     ? logisticsInfo.slas[0].price
     : undefined;
+
   return (
     <>
       <div class="py-3 lg:py-[0.78125rem] lg:px-0 bg-primary font-quicksand relative">
@@ -124,87 +124,89 @@ function Cart(props: ICartProps) {
         </div>
       </div>
       <div class="h-full max-h-[calc(100%-17.5625rem] border-t border-[#f2f3f8] pr-[0.625rem] pl-5">
-        <div class="h-full overflow-y-auto pr-[0.625rem]">
-          <ul role="list">
-            {cart.value.items.map((_, index) => (
-              <li
-                class={`py-6 relative border-b border-[#e6e6e6] flex gap-4 ${
-                  loading.value ? "opacity-50" : ""
-                } transition-opacity duration-150 ease-in-out`}
-                key={index}
-              >
-                <CartItem index={index} currency={currencyCode!} />
-              </li>
-            ))}
-          </ul>
-        </div>
+          <div class={`h-full overflow-y-auto ${!isCartEmpty ? 'pr-[0.625rem]' : '' } `}>
+            {!isCartEmpty 
+              ? (
+                  <ul role="list">
+                    {cart.value.items.map((_, index) => (
+                      <li
+                        class={`py-6 relative border-b border-[#e6e6e6] flex gap-4 ${
+                          loading.value ? "opacity-50" : ""
+                        } transition-opacity duration-150 ease-in-out`}
+                        key={index}
+                      >
+                        <CartItem index={index} currency={currencyCode!} />
+                      </li>
+                    ))}
+                  </ul>
+                )
+              : <CartEmpty />
+            }
+          </div>
       </div>
 
-      <div class="shadow-[0_-0.1875rem_1.25rem_rgba(0,0,0,0.16)]">
-        <div class="pt-5 pb-3 px-7 !lg:py-5 lg:px-6 font-quicksand">
-          {!isCartEmpty
-            ? (
-              <>
+      {!isCartEmpty && (
+        <div class="shadow-[0_-0.1875rem_1.25rem_rgba(0,0,0,0.16)]">
+          <div class="pt-5 pb-3 px-7 !lg:py-5 lg:px-6 font-quicksand">
+            <Totalizer
+              currencyCode={currencyCode as string}
+              label="Subtotal"
+              locale={locale as string}
+              value={subTotal}
+            />
+            {deliveryPrice
+              ? (
                 <Totalizer
                   currencyCode={currencyCode as string}
-                  label="Subtotal"
+                  label="Entrega"
                   locale={locale as string}
-                  value={subTotal}
+                  value={deliveryPrice}
                 />
-                {deliveryPrice
-                  ? (
-                    <Totalizer
-                      currencyCode={currencyCode as string}
-                      label="Entrega"
-                      locale={locale as string}
-                      value={deliveryPrice}
-                    />
-                  )
-                  : null}
-              </>
-            )
-            : null}
-          <div class="flex justify-between items-center border-t border-[rbg(266,266,266)] py-3 px-0">
-            <p class="text-secondary text-base font-extrabold leading-snug capitalize">
-              Total
-            </p>
-            <p class="text-secondary text-base font-extrabold leading-snug capitalize">
-              {total
-                ? `${formatPrice(total / 100, currencyCode!, locale)}`
-                : "R$ 0,00"}
-            </p>
-          </div>
-          <a
-            class="bg-primary rounded-[0.3125rem] text-white font-quicksand text-base font-semibold h-12 tracking-normal leading-5 mb-4 flex items-center justify-center relative px-8 appearance-none"
-            title={goToCartLabel || "Finalizar compra"}
-            href="/checkout"
-            data-deco="buy-button"
-            onClick={() => {
-              sendEvent({
-                name: "begin_checkout",
-                params: {
-                  currency: cart.value ? currencyCode! : "",
-                  value: total ? (total - (discounts ?? 0)) / 100 : 0,
-                  coupon: cart.value?.marketingData?.coupon ?? undefined,
+              )
+              : null 
+            }
+            <div class="flex justify-between items-center border-t border-[rbg(266,266,266)] py-3 px-0">
+              <p class="text-secondary text-base font-extrabold leading-snug capitalize">
+                Total
+              </p>
+              <p class="text-secondary text-base font-extrabold leading-snug capitalize">
+                {total
+                  ? `${formatPrice(total / 100, currencyCode!, locale)}`
+                  : "R$ 0,00"}
+              </p>
+            </div>
+            <a
+              class="bg-primary rounded-[0.3125rem] text-white font-quicksand text-base font-semibold h-12 tracking-normal leading-5 mb-4 flex items-center justify-center relative px-8 appearance-none"
+              title={goToCartLabel || "Finalizar compra"}
+              href="/checkout"
+              data-deco="buy-button"
+              onClick={() => {
+                sendEvent({
+                  name: "begin_checkout",
+                  params: {
+                    currency: cart.value ? currencyCode! : "",
+                    value: total ? (total - (discounts ?? 0)) / 100 : 0,
+                    coupon: cart.value?.marketingData?.coupon ?? undefined,
 
-                  items: cart.value ? mapItemsToAnalyticsItems(cart.value) : [],
-                },
-              });
-            }}
-          >
-            {goToCartLabel || "Finalizar compra"}
-          </a>
-          <button
-            title="Continuar comprando"
-            class="font-quicksand text-secondary underline flex font-semibold leading-snug relative capitalize m-auto tracking-normal"
-            onClick={() => {
-              displayCart.value = false;
-            }}
-          >
-            Continue comprando
-          </button>
+                    items: cart.value ? mapItemsToAnalyticsItems(cart.value) : [],
+                  },
+                });
+              }}
+            >
+              {goToCartLabel || "Finalizar compra"}
+            </a>
+            <button
+              title="Continuar comprando"
+              class="font-quicksand text-secondary underline flex font-semibold leading-snug relative capitalize m-auto tracking-normal"
+              onClick={() => {
+                displayCart.value = false;
+              }}
+            >
+              Continue comprando
+            </button>
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 }
