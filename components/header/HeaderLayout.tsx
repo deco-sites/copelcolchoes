@@ -4,7 +4,6 @@ import Icon from "$store/components/ui/Icon.tsx";
 import Buttons from "$store/islands/HeaderButton.tsx";
 import Modals from "$store/islands/HeaderModals.tsx";
 import SearchBarComponent from "$store/islands/HeaderSearchbar.tsx";
-import WhatsApp from "$store/components/ui/WhatsApp.tsx";
 
 export interface Props {
   /**
