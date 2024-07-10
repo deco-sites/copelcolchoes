@@ -1,4 +1,50 @@
-import type { Image as LiveImage } from "deco-sites/std/components/types.ts";
+import Image from "apps/website/components/Image.tsx";
+import Icon from "$store/components/ui/Icon.tsx";
+import { clx } from "$store/sdk/clx.ts";
+import type { ImageWidget } from "apps/admin/widgets.ts";
+
+interface ImageGeneric{
+  /**@title Imagem */
+  src?: ImageWidget;
+  /** 
+   * @title Largura da imagem
+   * @description (ex: 200)
+   */
+  width?: number;
+  /** 
+   * @title Altura da imagem
+   * @description (ex: 400)
+   */  
+  height?: number;
+  /** 
+   * @title Link da imagem
+   * @description (ex: /colchoes)
+   */    
+  href?: string;
+}
+
+/**@titleBy title */
+interface TextBanner {
+    /** @title Título */  
+  title?: string;
+    /** @title Texto do botão */
+  textButton?: string;
+  /**
+   * @title Cor do texto do Título
+   * @format color
+   */
+  colorTitle?: string;
+  /**
+   * @title Cor do texto do botão
+   * @format color
+   */
+  colorTextButton?: string;
+  /**
+   * @title Cor de fundo do botão
+   * @format color
+   */
+  bgButton?: string;
+}
 
 export interface INavItem {
   label: string;
@@ -6,124 +52,150 @@ export interface INavItem {
   highlighted?: boolean;
   children?: INavItem[];
   variant?: "CommonChild" | "AllCategories" | "WithBrands" | "Other";
-  image?: Image;
-}
-
-export interface Image {
-  src?: LiveImage;
-  alt?: string;
-  href?: string;
+  /**@title Banner menu */
+  image?: ImageGeneric;
+  /**@title Texto para Banner do menu */
+  textBanner?: TextBanner;
+  /**@title ATIVAR SOMENTE PARA VISUALIZAR EDIÇÕES FEITA NO ADMIN */
+  activeMenu?: boolean;
 }
 
 function NavItemDropDown(
-  { elements, image, label, href }: {
+  { elements, image, textBanner, activeMenu, label }: {
     elements?: INavItem[];
-    image?: Image;
+    image?: ImageGeneric;
+    textBanner?: TextBanner;
+    activeMenu?: boolean;
     label: string;
-    href: string;
   },
 ) {
   if (!elements || !elements?.length) {
     return <span />;
   }
+
   const navStyle = {
-    "Colchões": "!left-0 !translate-x-0 !pr-[12.5rem]",
+    "Colchões": "!left-0 !translate-x-0",
     "Cama Box": "!left-0 !translate-x-0",
-    "Cama Box Colchão": "!pr-[12.5rem]",
-    "Acessórios": "!pr-[12.5rem]",
   };
-  const imgStyle = {
-    "Colchões": "!right-[-299px] !max-w-[232px]",
-    "Cama Box": "!right-[-150px] !max-w-[232px]",
-    "Cama Box Colchão": "!right-[-300px] !max-w-[232px]",
-    "Travesseiros": "!right-[-180px] !max-w-[232px] !bottom-[-29px]",
-    "Acessórios": "!right-[-330px]",
-    "Móveis": "!right-[-156px] !top-[-33px]",
-  };
+
   return (
     <div
-      class={`left-[50%] translate-x-[-50%] shadow-md rounded-b-[20px] absolute pt-9 pb-[3.875rem] px-6 top-[100%] z-20 hidden hover:flex group-hover:flex flex-col items-center bg-white ${
-        navStyle[label as keyof typeof navStyle] || ""
-      }`}
+      class={clx(`shadow-md rounded-b-[20px] w-full left-[0] fixed top-[218px] pt-[30px] pb-[50px] px-6 z-20 ${activeMenu ? 'flex' : 'hidden'} hover:flex 
+        group-hover:flex flex-col items-center bg-white border-t-[4px] border-[#002A61] ${navStyle[label as keyof typeof navStyle] || ""}`)}
     >
-      <div class="flex justify-center">
-        <ul class="flex gap-[64px] items-start relative w-full">
-          {elements.map((element) => {
-            return (
-              <li class="relative">
-                <span class="text-primary inline-block w-full font-quicksand font-bold leading-5 mb-4">
-                  {element.label}
-                </span>
-                <ul class="relative w-full max-h-[15.6875rem] mt-[0.9375rem] flex flex-col flex-wrap">
-                  {element.children &&
-                    element.children.map((child) => (
-                      <li class="w-[12.5rem]">
-                        <a
-                          class="font-quicksand text-[#828282] leading-5 inline-block w-full mb-4 whitespace-break-spaces font-light"
-                          href={child.href || ""}
-                        >
-                          {child.label}
-                        </a>
-                      </li>
-                    ))}
-                </ul>
-              </li>
-            );
-          })}
-          {image && (
-            <div class="w-full">
-              <img
-                loading="lazy"
-                src={image.src}
-                alt={image.alt || "Banner vertical do menu"}
-                class={`right-[-200px] absolute max-w-[200px] w-full h-auto inline-block align-middle ${
-                  imgStyle[label as keyof typeof imgStyle]
-                }`}
-              />
+      <div class={clx(`md:w-[1440px] mx-[auto] my-[0] lg:pl-[80px] md:pl-[100px] 2xl:pl-[50px] flex items-center justify-start menu-container`)}>
+        <div class="flex justify-between xl:w-[85%] xl:pr-[70px] 2xl:w-[95%]">
+          <ul class="flex gap-[40px] items-start relative w-full">
+            {elements.map((element) => {
+              return (
+                <li class="relative">
+                  <span class="text-primary inline-block w-full font-quicksand text-[16px] tracking-[1px] font-bold leading-[20.8px] mb-[14px]">
+                    {element.label}
+                  </span>
+                  <ul class="relative w-full max-h-[15.6875rem] flex flex-col flex-wrap gap-y-[14px]">
+                    {element.children &&
+                      element.children.map((child) => (
+                        <li class="w-[12.5rem]">
+                          <a
+                            class="font-quicksand text-[#041F33] text-[14px] leading-[19.6px] inline-block w-full whitespace-break-spaces font-normal"
+                            href={child.href || ""}
+                          >
+                            {child.label}
+                          </a>
+                        </li>
+                      ))}
+                  </ul>
+                </li>
+              );
+            })}
+          </ul>
+          {image?.src && image?.width && image.height && (
+            <div class="w-full flex justify-end">
+              <a
+                class="relative"
+                href={`${image.href ? image.href : "javascript:void(0)"}`}
+                style={{
+                  pointerEvents: `${image.href ? "all" : "none"}`,
+                }}              
+              >
+                <div class={clx(`absolute w-full h-full flex flex-col items-center`)}>
+                  {textBanner && (
+                    <div class={clx(`mt-[36px] flex flex-col gap-y-[8px]`)}>
+                      <span class={clx(`text-[#fff] text-center`)}
+                        style={{ color : textBanner.colorTitle ? textBanner.colorTitle : "initial" }}>
+                         {textBanner.title} 
+                         </span>
+                      <button class={clx(`px-[20px] py-[5px] rounded-[20px]`)} 
+                        style={{ 
+                          backgroundColor : textBanner.bgButton ? textBanner.bgButton : "initial" 
+                        }}>
+                        <span 
+                          style={{ 
+                            color : textBanner?.colorTextButton ? textBanner.colorTextButton : "initial" 
+                          }}>
+                          {textBanner.textButton}
+                        </span>
+                      </button>
+                    </div>
+                  )}
+                </div>
+                <div class={clx(`rounded-[10px] overflow-hidden`)}>
+                  <Image 
+                    loading="lazy"
+                    src={image.src}
+                    width={image.width}
+                    height={image.height}
+                    alt={"Banner vertical do menu"}               
+                  />
+                </div>
+              </a>
             </div>
           )}
-        </ul>
-      </div>
-      <div class="flex items-end pb-[1.375rem] min-w-[12.5rem]">
-        <a
-          href={href}
-          class="leading-5 font-bold absolute bottom-[-20px] bg-primary py-[10px] px-[18px] text-white rounded-md left-[50%] translate-x-[-50%] w-auto text-center whitespace-break-spaces"
-        >
-          Ver tudo de {label}
-        </a>
+        </div>
       </div>
     </div>
   );
 }
 
 function NavItem({ item }: { item: INavItem }) {
-  const { href, label, children, highlighted, variant, image } = item;
+  const { href, label, children, highlighted, image, textBanner, activeMenu } = item;
+
   return (
     <li
-      class={`group flex items-center justify-center relative`}
+      class={clx(`group flex items-center md:px-[30px] md:py-[1px] rounded-[30px] justify-center relative 
+        duration-150 ${highlighted ? 'rounded-[30px] bg-[#fff]' : 'hover:bg-primary-focus'}`)}
     >
       <a
         href={href}
-        class={`py-3 text-center relative after:absolute after:transition-all after:duration-150 after:-bottom-1 after:left-0 after:z-30 group-hover:after:opacity-100 after:w-full after:opacity-0 after:h-1 after:bg-secondary`}
+        class={`py-[9px] text-center relative`}
       >
-        <span
-          class={`relative transition-all font-bold duration-300 leading-[0.03125rem] ${
-            highlighted
-              ? "text-secondary group-hover:text-primary"
-              : "text-primary group-hover:text-primary-focus"
-          }`}
-        >
-          {label}
-        </span>
+        <div class={`flex items-center`}>
+          {highlighted && (
+            <Icon
+              class="text-primary"
+              id="IconMenuOutlet"
+              size={18}
+            />
+          )}
+
+          <span
+            class={clx(`relative transition-all font-bold duration-300 leading-[18.2px] text-[14px] 
+              ${highlighted ?  'text-primary mt-[3px] ml-[8px]' : 'text-[#fff]'} `)}>
+            {label}
+          </span>
+        </div>
       </a>
       <NavItemDropDown
         elements={children}
         image={image}
         label={label}
-        href={href || ""}
+        textBanner={textBanner}
+        activeMenu={activeMenu}
       />
-      <div class="fixed w-full h-[74.5%] left-0 bottom-0 bg-[rgba(0,0,0,0.29)] hidden hover:!hidden group-hover:flex">
-      </div>
+
+      {children && Object.entries(children).length > 0 && (
+        <div class={clx(`fixed w-full h-[calc(100%-225px)] left-0 bottom-0 bg-[rgba(13,79,129,.6)] hidden hover:!hidden group-hover:flex`)}></div>
+      ) }
     </li>
   );
 }

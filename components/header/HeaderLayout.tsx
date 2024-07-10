@@ -4,6 +4,8 @@ import Icon from "$store/components/ui/Icon.tsx";
 import Buttons from "$store/islands/HeaderButton.tsx";
 import Modals from "$store/islands/HeaderModals.tsx";
 import SearchBarComponent from "$store/islands/HeaderSearchbar.tsx";
+import { clx } from "$store/sdk/clx.ts";
+import { FnContext, SectionProps } from "deco/mod.ts";
 
 export interface Props {
   /**
@@ -16,67 +18,95 @@ export interface Props {
   searchbar: SearchbarProps;
 }
 
-function HeaderLayout(
-  {
-    minicart,
-    searchbar,
-  }: Props,
-) {
+const WIDTH_LOGO = 159;
+
+function HeaderLayout( props: SectionProps<ReturnType<typeof loader>>) {
+  const { minicart, searchbar, device } = props;
+  
   return (
-    <header class="z-50 pb-6 lg:mt-9 border-b border-[rgba(219,219,219,0.36)]">
-      <div class="flex justify-between items-center lg:p-0 max-md:h-[4.875rem]">
-        <div class="flex items-center gap-5">
+    <header class="z-50 pb-6 lg:mt-9 mt-[15px]">
+      <div class={clx(`flex md:grid 2xl:grid-cols-[minmax(auto,_159px)_minmax(_542px,_1fr)_auto] max-lg:px-[20px]
+        md:grid-cols-[minmax(auto,_159px)_minmax(auto,_542px)_auto] items-center md:max-w-[95%] mx-[auto] my-[0] header-container`)}>
+        <div class="flex items-center justify-center gap-5">
           <Buttons variant="menu" />
           <a href="/" class="" aria-label="Store logo">
-            <Icon id="Logo" class="max-sm:hidden" width={159} height={79} />
+            <Icon id="Logo" class="max-lg:hidden" width={WIDTH_LOGO} height={79} />
           </a>
         </div>
-        <div className="hidden md:flex flex-1 w-full">
+        <div className="hidden md:flex md:ml-[32px] flex-1 w-full">
           <SearchBarComponent
-            searchbar={{ variant: "desktop", ...searchbar }}
+            searchbar={{ variant: "desktop", ...searchbar, device }}
           />
         </div>
-        <div class="md:hidden">
+        <div class="lg:hidden logo-mobile">
           <a href="/" class="" aria-label="Store logo">
             <Icon id="Logo" width={105} height={52.16} />
           </a>
         </div>
-        <div class="flex justify-end w-[40%] md:w-auto ml-[8%] md:ml-0">
-          <div class="flex justify-end w-full md:w-auto  ">
-            <div class=" m-0 md:ml-10 flex lg:items-center w-[107px] md:w-auto
-             ">
-              <a
-                class="flex items-center justify-center w-full md:w-auto"
-                href="/nossas-lojas"
-              >
-                <Icon
-                  class="mr-[0.625rem]"
-                  id="Lojas"
-                  width={21.253}
-                  height={28.661}
-                  strokeWidth={1}
-                />
-                <span class="font-medium text-primary">Lojas</span>
-              </a>
-            </div>
-            <div class="max-lg:hidden ml-10 flex items-center text-primary">
+        <div class="flex w-full md:w-auto justify-start md:justify-end 2xl:mr-[50px] 2xl:ml-0 ml-[8%] ">
+          <div class="flex justify-end w-full md:w-auto md:gap-x-[20px] gap-x-[10px]">
+            <div class="flex items-center text-primary">
               <div class="relative flex items-center justify-center">
                 <a
                   class="relative font-medium text-primary text-[0.8125rem] leading-[1.125rem] w-full flex items-center justify-center appearance-none"
                   href="/account"
                 >
-                  <Icon
-                    class="mr-[0.625rem]"
-                    id="User"
-                    size={28.661}
-                    strokeWidth={1}
-                  />
-                  <p>Minha Conta</p>
+                  {device === 'desktop' 
+                  ? (
+                      <Icon
+                        class="mr-[0.625rem]"
+                        id="User"
+                        size={36}
+                        strokeWidth={1}
+                      />
+                    )
+                  : (
+                      <Icon
+                        class=""
+                        id="UserMobile"
+                        size={28}
+                        strokeWidth={1}
+                      />                    
+                    )
+                  }
+                  
+                  <p class={`max-lg:hidden text-[14px] leading-[21px] text-[#656565] font-black`}>
+                    Bem vindo! <br /> <span class={`text-primary underline`}>Entre</span>  ou <span class={`text-primary underline`}>cadastre-se</span>
+                  </p>
                 </a>
               </div>
             </div>
-            <div class="lg:ml-10">
-              <Buttons variant="cart" />
+            <div class="m-0 flex lg:items-center lg:w-[107px]">
+              <a
+                class="flex items-center justify-center w-full md:w-auto"
+                href="/nossas-lojas"
+              >
+                {device === 'desktop' 
+                ? (
+                  <Icon
+                    class="mr-[0.625rem]"
+                    id="Lojas"
+                    width={36}
+                    height={36}
+                    strokeWidth={1}
+                  />                  
+                )
+                : (
+                  <Icon
+                    class=""
+                    id="LojasMobile"
+                    width={28}
+                    height={28}
+                    strokeWidth={1}
+                  />                  
+                )
+                }
+
+                <span class={`max-lg:hidden text-[14px] leading-[21px] text-[#656565] font-black`}>Lojas <br /> Copel</span>
+              </a>
+            </div>            
+            <div class="[&>button]:w-full">
+              <Buttons variant="cart" device={device} />
             </div>
           </div>
         </div>
@@ -90,5 +120,12 @@ function HeaderLayout(
     </header>
   );
 }
+
+export const loader = (props: Props, _req: Request, ctx: FnContext) => {
+  return {
+    ...props,
+    device: ctx.device,
+  };
+};
 
 export default HeaderLayout;

@@ -19,40 +19,41 @@ import * as $$$$$$11 from "./sections/Content/Logos.tsx";
 import * as $$$$$$12 from "./sections/Content/Testimonials.tsx";
 import * as $$$$$$13 from "./sections/DesignSystem/DesignSystem.tsx";
 import * as $$$$$$14 from "./sections/Footer/Footer.tsx";
-import * as $$$$$$15 from "./sections/Header/HeaderLayout.tsx";
-import * as $$$$$$16 from "./sections/Header/HeaderNavMenu.tsx";
-import * as $$$$$$17 from "./sections/Header/TopNavBar.tsx";
-import * as $$$$$$18 from "./sections/Images/BannerGrid.tsx";
-import * as $$$$$$19 from "./sections/Images/Carousel.tsx";
-import * as $$$$$$20 from "./sections/Images/ImageGallery.tsx";
-import * as $$$$$$21 from "./sections/Images/ShoppableBanner.tsx";
-import * as $$$$$$22 from "./sections/Institutional/AccordionsContent.tsx";
-import * as $$$$$$23 from "./sections/Institutional/AsideMenu.tsx";
-import * as $$$$$$24 from "./sections/Institutional/CardsContent.tsx";
-import * as $$$$$$25 from "./sections/Institutional/ContactForm.tsx";
-import * as $$$$$$26 from "./sections/Institutional/InstitutionalPage.tsx";
-import * as $$$$$$27 from "./sections/Institutional/StoreLocator.tsx";
-import * as $$$$$$28 from "./sections/Institutional/TextContent.tsx";
-import * as $$$$$$29 from "./sections/Integrations/JivoChat.tsx";
-import * as $$$$$$30 from "./sections/Links/LinkTree.tsx";
-import * as $$$$$$31 from "./sections/Links/Shortcuts.tsx";
-import * as $$$$$$32 from "./sections/Miscellaneous/BannerMarcas.tsx";
-import * as $$$$$$33 from "./sections/Miscellaneous/BlogPosts.tsx";
-import * as $$$$$$34 from "./sections/Miscellaneous/CampaignTimer.tsx";
-import * as $$$$$$35 from "./sections/Miscellaneous/CookieConsent.tsx";
-import * as $$$$$$36 from "./sections/Miscellaneous/NotFound.tsx";
-import * as $$$$$$37 from "./sections/Miscellaneous/ProxyIframe.tsx";
-import * as $$$$$$38 from "./sections/Newsletter/Newsletter.tsx";
-import * as $$$$$$39 from "./sections/Newsletter/NewsletterModal.tsx";
-import * as $$$$$$40 from "./sections/Product/HomeSearch.tsx";
-import * as $$$$$$41 from "./sections/Product/ProductDetails.tsx";
-import * as $$$$$$42 from "./sections/Product/ProductReview.tsx";
-import * as $$$$$$43 from "./sections/Product/ProductShelf.tsx";
-import * as $$$$$$44 from "./sections/Product/SearchResult.tsx";
-import * as $$$$$$45 from "./sections/Product/Wishlist.tsx";
-import * as $$$$$$46 from "./sections/Social/InstagramPosts.tsx";
-import * as $$$$$$47 from "./sections/Social/WhatsApp.tsx";
-import * as $$$$$$48 from "./sections/Theme/Theme.tsx";
+import * as $$$$$$15 from "./sections/Header/Buttons.tsx";
+import * as $$$$$$16 from "./sections/Header/HeaderLayout.tsx";
+import * as $$$$$$17 from "./sections/Header/HeaderNavMenu.tsx";
+import * as $$$$$$18 from "./sections/Header/TopNavBar.tsx";
+import * as $$$$$$19 from "./sections/Images/BannerGrid.tsx";
+import * as $$$$$$20 from "./sections/Images/Carousel.tsx";
+import * as $$$$$$21 from "./sections/Images/ImageGallery.tsx";
+import * as $$$$$$22 from "./sections/Images/ShoppableBanner.tsx";
+import * as $$$$$$23 from "./sections/Institutional/AccordionsContent.tsx";
+import * as $$$$$$24 from "./sections/Institutional/AsideMenu.tsx";
+import * as $$$$$$25 from "./sections/Institutional/CardsContent.tsx";
+import * as $$$$$$26 from "./sections/Institutional/ContactForm.tsx";
+import * as $$$$$$27 from "./sections/Institutional/InstitutionalPage.tsx";
+import * as $$$$$$28 from "./sections/Institutional/StoreLocator.tsx";
+import * as $$$$$$29 from "./sections/Institutional/TextContent.tsx";
+import * as $$$$$$30 from "./sections/Integrations/JivoChat.tsx";
+import * as $$$$$$31 from "./sections/Links/LinkTree.tsx";
+import * as $$$$$$32 from "./sections/Links/Shortcuts.tsx";
+import * as $$$$$$33 from "./sections/Miscellaneous/BannerMarcas.tsx";
+import * as $$$$$$34 from "./sections/Miscellaneous/BlogPosts.tsx";
+import * as $$$$$$35 from "./sections/Miscellaneous/CampaignTimer.tsx";
+import * as $$$$$$36 from "./sections/Miscellaneous/CookieConsent.tsx";
+import * as $$$$$$37 from "./sections/Miscellaneous/NotFound.tsx";
+import * as $$$$$$38 from "./sections/Miscellaneous/ProxyIframe.tsx";
+import * as $$$$$$39 from "./sections/Newsletter/Newsletter.tsx";
+import * as $$$$$$40 from "./sections/Newsletter/NewsletterModal.tsx";
+import * as $$$$$$41 from "./sections/Product/HomeSearch.tsx";
+import * as $$$$$$42 from "./sections/Product/ProductDetails.tsx";
+import * as $$$$$$43 from "./sections/Product/ProductReview.tsx";
+import * as $$$$$$44 from "./sections/Product/ProductShelf.tsx";
+import * as $$$$$$45 from "./sections/Product/SearchResult.tsx";
+import * as $$$$$$46 from "./sections/Product/Wishlist.tsx";
+import * as $$$$$$47 from "./sections/Social/InstagramPosts.tsx";
+import * as $$$$$$48 from "./sections/Social/WhatsApp.tsx";
+import * as $$$$$$49 from "./sections/Theme/Theme.tsx";
 
 const manifest = {
   "sections": {
@@ -73,48 +74,49 @@ const manifest = {
     "deco-sites/copelcolchoes/sections/Content/Testimonials.tsx": $$$$$$12,
     "deco-sites/copelcolchoes/sections/DesignSystem/DesignSystem.tsx": $$$$$$13,
     "deco-sites/copelcolchoes/sections/Footer/Footer.tsx": $$$$$$14,
-    "deco-sites/copelcolchoes/sections/Header/HeaderLayout.tsx": $$$$$$15,
-    "deco-sites/copelcolchoes/sections/Header/HeaderNavMenu.tsx": $$$$$$16,
-    "deco-sites/copelcolchoes/sections/Header/TopNavBar.tsx": $$$$$$17,
-    "deco-sites/copelcolchoes/sections/Images/BannerGrid.tsx": $$$$$$18,
-    "deco-sites/copelcolchoes/sections/Images/Carousel.tsx": $$$$$$19,
-    "deco-sites/copelcolchoes/sections/Images/ImageGallery.tsx": $$$$$$20,
-    "deco-sites/copelcolchoes/sections/Images/ShoppableBanner.tsx": $$$$$$21,
+    "deco-sites/copelcolchoes/sections/Header/Buttons.tsx": $$$$$$15,
+    "deco-sites/copelcolchoes/sections/Header/HeaderLayout.tsx": $$$$$$16,
+    "deco-sites/copelcolchoes/sections/Header/HeaderNavMenu.tsx": $$$$$$17,
+    "deco-sites/copelcolchoes/sections/Header/TopNavBar.tsx": $$$$$$18,
+    "deco-sites/copelcolchoes/sections/Images/BannerGrid.tsx": $$$$$$19,
+    "deco-sites/copelcolchoes/sections/Images/Carousel.tsx": $$$$$$20,
+    "deco-sites/copelcolchoes/sections/Images/ImageGallery.tsx": $$$$$$21,
+    "deco-sites/copelcolchoes/sections/Images/ShoppableBanner.tsx": $$$$$$22,
     "deco-sites/copelcolchoes/sections/Institutional/AccordionsContent.tsx":
-      $$$$$$22,
-    "deco-sites/copelcolchoes/sections/Institutional/AsideMenu.tsx": $$$$$$23,
+      $$$$$$23,
+    "deco-sites/copelcolchoes/sections/Institutional/AsideMenu.tsx": $$$$$$24,
     "deco-sites/copelcolchoes/sections/Institutional/CardsContent.tsx":
-      $$$$$$24,
-    "deco-sites/copelcolchoes/sections/Institutional/ContactForm.tsx": $$$$$$25,
+      $$$$$$25,
+    "deco-sites/copelcolchoes/sections/Institutional/ContactForm.tsx": $$$$$$26,
     "deco-sites/copelcolchoes/sections/Institutional/InstitutionalPage.tsx":
-      $$$$$$26,
-    "deco-sites/copelcolchoes/sections/Institutional/StoreLocator.tsx":
       $$$$$$27,
-    "deco-sites/copelcolchoes/sections/Institutional/TextContent.tsx": $$$$$$28,
-    "deco-sites/copelcolchoes/sections/Integrations/JivoChat.tsx": $$$$$$29,
-    "deco-sites/copelcolchoes/sections/Links/LinkTree.tsx": $$$$$$30,
-    "deco-sites/copelcolchoes/sections/Links/Shortcuts.tsx": $$$$$$31,
+    "deco-sites/copelcolchoes/sections/Institutional/StoreLocator.tsx":
+      $$$$$$28,
+    "deco-sites/copelcolchoes/sections/Institutional/TextContent.tsx": $$$$$$29,
+    "deco-sites/copelcolchoes/sections/Integrations/JivoChat.tsx": $$$$$$30,
+    "deco-sites/copelcolchoes/sections/Links/LinkTree.tsx": $$$$$$31,
+    "deco-sites/copelcolchoes/sections/Links/Shortcuts.tsx": $$$$$$32,
     "deco-sites/copelcolchoes/sections/Miscellaneous/BannerMarcas.tsx":
-      $$$$$$32,
-    "deco-sites/copelcolchoes/sections/Miscellaneous/BlogPosts.tsx": $$$$$$33,
+      $$$$$$33,
+    "deco-sites/copelcolchoes/sections/Miscellaneous/BlogPosts.tsx": $$$$$$34,
     "deco-sites/copelcolchoes/sections/Miscellaneous/CampaignTimer.tsx":
-      $$$$$$34,
-    "deco-sites/copelcolchoes/sections/Miscellaneous/CookieConsent.tsx":
       $$$$$$35,
-    "deco-sites/copelcolchoes/sections/Miscellaneous/NotFound.tsx": $$$$$$36,
-    "deco-sites/copelcolchoes/sections/Miscellaneous/ProxyIframe.tsx": $$$$$$37,
-    "deco-sites/copelcolchoes/sections/Newsletter/Newsletter.tsx": $$$$$$38,
+    "deco-sites/copelcolchoes/sections/Miscellaneous/CookieConsent.tsx":
+      $$$$$$36,
+    "deco-sites/copelcolchoes/sections/Miscellaneous/NotFound.tsx": $$$$$$37,
+    "deco-sites/copelcolchoes/sections/Miscellaneous/ProxyIframe.tsx": $$$$$$38,
+    "deco-sites/copelcolchoes/sections/Newsletter/Newsletter.tsx": $$$$$$39,
     "deco-sites/copelcolchoes/sections/Newsletter/NewsletterModal.tsx":
-      $$$$$$39,
-    "deco-sites/copelcolchoes/sections/Product/HomeSearch.tsx": $$$$$$40,
-    "deco-sites/copelcolchoes/sections/Product/ProductDetails.tsx": $$$$$$41,
-    "deco-sites/copelcolchoes/sections/Product/ProductReview.tsx": $$$$$$42,
-    "deco-sites/copelcolchoes/sections/Product/ProductShelf.tsx": $$$$$$43,
-    "deco-sites/copelcolchoes/sections/Product/SearchResult.tsx": $$$$$$44,
-    "deco-sites/copelcolchoes/sections/Product/Wishlist.tsx": $$$$$$45,
-    "deco-sites/copelcolchoes/sections/Social/InstagramPosts.tsx": $$$$$$46,
-    "deco-sites/copelcolchoes/sections/Social/WhatsApp.tsx": $$$$$$47,
-    "deco-sites/copelcolchoes/sections/Theme/Theme.tsx": $$$$$$48,
+      $$$$$$40,
+    "deco-sites/copelcolchoes/sections/Product/HomeSearch.tsx": $$$$$$41,
+    "deco-sites/copelcolchoes/sections/Product/ProductDetails.tsx": $$$$$$42,
+    "deco-sites/copelcolchoes/sections/Product/ProductReview.tsx": $$$$$$43,
+    "deco-sites/copelcolchoes/sections/Product/ProductShelf.tsx": $$$$$$44,
+    "deco-sites/copelcolchoes/sections/Product/SearchResult.tsx": $$$$$$45,
+    "deco-sites/copelcolchoes/sections/Product/Wishlist.tsx": $$$$$$46,
+    "deco-sites/copelcolchoes/sections/Social/InstagramPosts.tsx": $$$$$$47,
+    "deco-sites/copelcolchoes/sections/Social/WhatsApp.tsx": $$$$$$48,
+    "deco-sites/copelcolchoes/sections/Theme/Theme.tsx": $$$$$$49,
   },
   "apps": {
     "deco-sites/copelcolchoes/apps/decohub.ts": $$$$$$$$$$$0,

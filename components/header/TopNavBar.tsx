@@ -13,7 +13,7 @@ export interface Alert {
 
 function TopNavBar({ alert }: Props) {
   return (
-    <div class="py-4 px-[1.875rem] lg:py-2">
+    <div class="py-4 px-[1.875rem] lg:py-2 topnavbar">
       <div class="flex items-center justify-center">
         <span
           class="text-sm ml-3 text-center leading-[1.125rem]"

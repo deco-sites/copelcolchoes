@@ -113,10 +113,10 @@ export default function CategoriesCarroussel(props: Props) {
   const id = useId();
   return (
     <>
-      <h2 class="font-quicksand text-primary text-[28px] mb-10 font-semibold text-center max-md:text-[26px] max-lg:mt-[54px]">
+      <h2 class="font-quicksand text-primary text-[28px] mb-10 font-semibold text-center max-lg:text-[26px] max-lg:mt-[54px]">
         Encontre nos Departamentos
       </h2>
-      <section class="w-full h-full gap-5 my-12 max-md:my-8">
+      <section class="w-full h-full gap-5 my-12 max-lg:my-8">
         <div
           id={id}
           class="m-auto grid grid-cols-[10px_1fr_10px] sm:grid-cols-[23.88px_1fr_23.88px] grid-rows-[1fr_23.88px_1fr]"
