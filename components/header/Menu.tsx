@@ -128,7 +128,7 @@ function Menu({ items }: Props) {
   return (
     <div class="flex flex-col justify-center pb-3 h-full">
       <div class="w-full flex items-center justify-between py-4 pb-2 px-4">
-        <a href="/account" class={clx(`flex items-center justify-start gap-1 uppercase text-base-content leading-[18.2px] text-[14px] font-bold tracking-[1px]`)}>
+        <a href="https://www.copelcolchoes.com.br/_secure/account" class={clx(`flex items-center justify-start gap-1 uppercase text-base-content leading-[18.2px] text-[14px] font-bold tracking-[1px]`)}>
           <Icon id="XMarkMobile" width={28} height={28} strokeWidth={2} />
           <span>Entrar</span>
         </a>      

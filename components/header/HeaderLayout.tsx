@@ -49,7 +49,7 @@ function HeaderLayout( props: SectionProps<ReturnType<typeof loader>>) {
               <div class="relative flex items-center justify-center">
                 <a
                   class="relative font-medium text-primary text-[0.8125rem] leading-[1.125rem] w-full flex items-center justify-center appearance-none"
-                  href="/account"
+                  href="https://www.copelcolchoes.com.br/_secure/account"
                 >
                   {device === 'desktop' 
                   ? (
