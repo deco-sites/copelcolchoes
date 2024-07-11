@@ -27,11 +27,9 @@ const urlToLabel = (url: string, searchValue: string) => {
   );
 };
 
-const Suggestions = ({ products, searchValue, device }: SuggestionsProps) => {
+const Suggestions = ({ products, searchValue, device }: SuggestionsProps ) => {
   if (!products) return <></>;
-
-  const qtdItems = device === 'desktop' ? 3 : products.length;
-
+ 
   return (
     <>
       <p class={`text-primary text-[16px] leading-[19.2px] font-black mb-[12px] max-lg:mt-[20px] md:mb-[20px]`}>
@@ -40,12 +38,12 @@ const Suggestions = ({ products, searchValue, device }: SuggestionsProps) => {
           : 'Produtos simulares'
         }        
       </p>
-      <div class={clx(`max-lg:overflow-y-scroll max-lg:max-h-[35vh]`)}>
+      <div class={clx(`max-lg:overflow-y-scroll max-lg:max-h-[52%]`)}>
         <ul class="flex flex-col md:flex-row gap-x-[30px]">
-          {products.slice(0, qtdItems ? qtdItems : 3).map((product: Product) => {
+          {products.slice(0, 3).map((product: Product) => {
             if (!product.url) return;
 
-            const {installment, price } = useOffer(product.offers);
+            const {installment, price } = useOffer(product.offers);   
 
             return (
               <li 
@@ -119,10 +117,9 @@ const Suggestions = ({ products, searchValue, device }: SuggestionsProps) => {
                           <p class={`text-[#D7194C] text-[14px] md:text-[20px] leading-[18px] md:leading-[25px] font-black`}>
                             {installment?.billingDuration}x {formatPrice(installment?.billingIncrement)}
                           </p>
-                        )}                    
+                        )} 
 
                       </div>
-
                   </div>
                 </a>
               </li>
@@ -137,15 +134,18 @@ const Suggestions = ({ products, searchValue, device }: SuggestionsProps) => {
 const ResultSearch = (
   { valueSearch, notFound, suggestions, device }: ResultSearch,
 ) => {
-
-  if (valueSearch !== "" && suggestions?.value != null) {    
+  if (valueSearch !== "" && suggestions?.value != null) {  
+    console.log('device --> ', device)
     return (
       <>
         <div 
-          className={clx(`${valueSearch == 'click' ? 'is-active' : ''} fixed w-full max-lg:top-[190px] md:top-[177px] left-0 bg-[#fff] z-50 
+          className={clx(`fixed w-full max-lg:top-[190px] md:top-[177px] left-0 bg-[#fff] z-50 
+          ${notFound || !(suggestions.value!.products?.length) || valueSearch === 'click' ? '' : 'max-lg:h-[calc(100%_-_190px)] [border-radius:initial]' } 
           border-t rounded-br-[30px] max-lg:px-[20px] rounded-bl-[30px] lg:p-[40px] max-lg:py-[20px] max-lg:bg-white search-result-content`)}>
 
-          <div class={`flex max-lg:flex-col pl-[10px] md:px-[130px] py-[0] gap-x-[30px]`}>
+          <div 
+            class={`flex max-lg:flex-col pl-[10px] md:px-[130px] py-[0] gap-x-[30px]
+            ${notFound || !(suggestions.value!.products?.length) || valueSearch === 'click' ? '' : 'max-lg:h-[calc(100%_-_42px)]' }`}>
 
             {
               suggestions.value!.searches?.length 
@@ -166,7 +166,7 @@ const ResultSearch = (
                         }
                       </span>
                     </div>
-                    <ul id="search-suggestion" class="flex flex-col gap-[8.5px]">
+                    <ul id="search-suggestion" class="flex flex-col gap-[8.5px] lg:h-full">
                       {suggestions && 
                         suggestions.value && 
                         suggestions.value.searches && 
@@ -195,6 +195,13 @@ const ResultSearch = (
                         </li>
                       ))}
                     </ul>
+                    {device === 'desktop' && valueSearch !== 'click' && suggestions.value!.products?.length !== 0 && !notFound && (
+                      <a 
+                        class={clx(`px-[20px] py-[10px] border border-primary rounded-[5px] text-sm text-primary font-bold`)} 
+                        href={`/busca?q=${valueSearch}`}>
+                          Confira todos os produtos
+                      </a>
+                    )}
                   </section>  
                 )              
               : null
@@ -217,9 +224,18 @@ const ResultSearch = (
                     device={device}
                   />
                 )}
-            </section>
-
+            </section>            
           </div>
+          {valueSearch !== 'click' && 
+            suggestions && suggestions.value && 
+            suggestions.value?.products && 
+            Object.entries(suggestions.value!.products).length > 0 &&  (
+              <a 
+                class={clx(`lg:hidden max-lg:flex justify-center px-[20px] py-[10px] bg-primary rounded-[5px] text-sm text-[#fff] font-bold`)} 
+                href={`/busca?q=${valueSearch}`}>
+                  Ver todos os produtos
+              </a>
+          )}     
         </div>
         
         {notFound || suggestions.value!.searches?.length ? <div class={`is-overlay-search-results__suggestions`}></div> : null}
