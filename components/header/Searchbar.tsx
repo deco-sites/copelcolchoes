@@ -7,7 +7,7 @@ interface Props {
 
 function Searchbar({ searchbar }: Props) {
   return (
-    <div className="flex md:flex-col items-end justify-end 2xl:w-[90%] max-lg:px-[20px] max-lg:mt-[10px]">
+    <div className="flex md:flex-col items-end justify-end 2xl:w-[90%] max-lg:px-[20px] max-lg:mt-[10px] max-md:px-0">
       <Suspense fallback={<span class="loading loading-ring" />}>
         <SearchBar {...searchbar} variant="desktop" />
       </Suspense>

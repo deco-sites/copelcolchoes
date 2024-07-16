@@ -113,6 +113,13 @@
     }
   }
 
+  @media(min-width:768px) {
+    .header .container{
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+  }
+
   @media(min-width:768px) and (max-width: 1023px){
     .search-result-content{
       top: calc(232px / 1.7) !important;

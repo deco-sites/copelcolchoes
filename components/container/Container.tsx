@@ -59,7 +59,7 @@ function Container({ sections, isHeader = false }: Props) {
             {withContainer
               ? (
                 // <div class="container w-full m-auto lg:px-[4rem] px-[1.375rem] relative">
-                <div class="container w-full m-auto px-0 relative">
+                <div class="container w-full m-auto relative lg:px-[4rem] px-[1.375rem]">
                   <Component {...props} />
                 </div>
               )

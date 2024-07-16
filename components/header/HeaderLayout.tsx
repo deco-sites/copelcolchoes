@@ -25,7 +25,7 @@ function HeaderLayout( props: SectionProps<ReturnType<typeof loader>>) {
   
   return (
     <header class="z-50 pb-6 lg:mt-9 mt-[15px]">
-      <div class={clx(`flex md:grid 2xl:grid-cols-[minmax(auto,_159px)_minmax(_542px,_1fr)_auto] max-lg:px-[20px]
+      <div class={clx(`flex md:grid 2xl:grid-cols-[minmax(auto,_159px)_minmax(_542px,_1fr)_auto] max-md:px-0 max-lg:px-[20px]
         md:grid-cols-[minmax(auto,_159px)_minmax(auto,_542px)_auto] items-center lg:max-w-[95%] mx-[auto] my-[0] header-container`)}>
         <div class="flex items-center justify-center gap-5">
           <Buttons variant="menu" />
