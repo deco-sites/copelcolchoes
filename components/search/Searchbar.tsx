@@ -137,7 +137,7 @@ function Searchbar({
             }}
           >
           <Icon
-            class="text-primary"
+            class="text-primary mb-[3px]"
             id="searchResultsClose"
             size={18}
           />
@@ -159,8 +159,8 @@ function Searchbar({
         )}
         <input
           ref={searchInputRef}
-          class={clx(`md:text-[14px] md:h-[20px] flex w-full outline-none placeholder:text-primary 
-            placeholder:font-normal text-sm placeholder:text-sm text-[#8c9aad] input-searchbar`)}
+          class={clx(`md:text-[14px] md:h-[20px] flex w-full outline-none placeholder:text-[#6B6B6B] 
+            placeholder:font-normal text-sm placeholder:text-sm text-[#6B6B6B] input-searchbar`)}
           name={name}
           defaultValue={query}
           onInput={(e) => {
@@ -184,7 +184,11 @@ function Searchbar({
                 params: { search_term: value },
               });
             }
-            valueSearchSignal.value = 'click';
+            if(value == ""){
+              valueSearchSignal.value = 'click';
+            } else {
+              valueSearchSignal.value =value;
+            }
 
             setSearch(value);
           }}
@@ -201,7 +205,7 @@ function Searchbar({
   if (noContainer) return Searchbar;
 
   return (
-    <div class={clx(`xl:w-[510px] 2xl:w-[90%] w-full border rounded-md border-[#dbdbdb]`)}>
+    <div class={clx(`lg:w-[510px] 2xl:w-[90%] w-full border rounded-md border-[#dbdbdb]`)}>
       {Searchbar}
       {hide.results ? null
        : (

@@ -4,8 +4,6 @@ import { megaMenuDefaultItems } from "./constants.ts";
 import { clx } from "$store/sdk/clx.ts";
 import { useScroll } from "$store/sdk/useScroll.ts";
 import { headerHeight } from "$store/components/header/constants.ts";
-import { IS_BROWSER } from "$fresh/runtime.ts";
-import { effect } from "@preact/signals";
 
 export interface Props {
   /**
@@ -14,20 +12,20 @@ export interface Props {
    */
   navItems?: INavItem[];
 }
+const scroll = useScroll();
 
-function hiddenMenuScroll(){
-  if( IS_BROWSER ){
-    const scroll = useScroll();
-    const _header = document.querySelector<HTMLElement>('.header');
-    if(!_header) return;
+// function hiddenMenuScroll(){
+//   if( IS_BROWSER ){
+//     const _header = document.querySelector<HTMLElement>('.header');
+//     if(!_header) return;
     
-    if( scroll.value > Number(headerHeight.replaceAll(/\D/g,'')) ){
-      _header.classList.add('hidden');
-    } else {
-      _header.classList.remove('hidden');
-    }
-  }
-}
+//     if( scroll.value > Number(headerHeight.replaceAll(/\D/g,'')) ){
+//       _header.classList.add('hidden');
+//     } else {
+//       _header.classList.remove('hidden');
+//     }
+//   }
+// }
 
 function HeaderNavMenu(
   {
@@ -35,12 +33,12 @@ function HeaderNavMenu(
   }: Props,
 ) {
   
-  effect(()=>{
-    hiddenMenuScroll();
-  })
+  // effect(()=>{
+  //   hiddenMenuScroll();
+  // })
 
   return (
-    <div class={`z-50`}>
+    <div class={`z-50 ${scroll.value > Number(headerHeight.replaceAll(/\D/g,'')) ? 'hidden' : ''}`}>
       <div class="flex justify-between items-center lg:p-0 bg-primary">
         <div class="max-lg:hidden flex justify-between flex-1 whitespace-nowrap sm:p-0 lg:px-16 header-nav-menu">
           <ul 

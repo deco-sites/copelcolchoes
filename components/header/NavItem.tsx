@@ -84,20 +84,20 @@ function NavItemDropDown(
         group-hover:flex flex-col items-center bg-white border-t-[4px] border-[#002A61] ${navStyle[label as keyof typeof navStyle] || ""}`)}
     >
       <div class={clx(`md:w-[1440px] mx-[auto] my-[0] lg:pl-[80px] md:pl-[100px] 2xl:pl-[50px] flex items-center justify-start menu-container`)}>
-        <div class="flex justify-between xl:w-[85%] xl:pr-[70px] 2xl:w-[95%]">
+        <div class="flex justify-between xl:w-[85%] xl:pr-[70px] 2xl:w-[95%] container-menu">
           <ul class="flex gap-[40px] items-start relative w-full">
             {elements.map((element) => {
               return (
                 <li class="relative">
-                  <span class="text-primary inline-block w-full font-quicksand text-[16px] tracking-[1px] font-bold leading-[20.8px] mb-[14px]">
+                  <span class="text-primary inline-block w-full font-comfortaa text-[16px] tracking-[1px] font-bold leading-[20.8px] mb-[14px]">
                     {element.label}
                   </span>
                   <ul class="relative w-full max-h-[15.6875rem] flex flex-col flex-wrap gap-y-[14px]">
                     {element.children &&
                       element.children.map((child) => (
-                        <li class="w-[12.5rem]">
+                        <li class="lg:w-[5.5rem] xl:w-[12.5rem]">
                           <a
-                            class="font-quicksand text-[#041F33] text-[14px] leading-[19.6px] inline-block w-full whitespace-break-spaces font-normal"
+                            class="font-comfortaa text-[#041F33] lg:text-[12px] xl:text-[14px] leading-[19.6px] inline-block w-full whitespace-break-spaces font-normal"
                             href={child.href || ""}
                           >
                             {child.label}
@@ -139,7 +139,11 @@ function NavItemDropDown(
                     </div>
                   )}
                 </div>
-                <div class={clx(`rounded-[10px] overflow-hidden`)}>
+                <div class={clx(`rounded-[10px] overflow-hidden container-menu__image`)}
+                  style={{
+                    width: image.width ? image.width + 'px' : '',
+                    height: image.height ? image.height + 'px' : ''
+                  }}>
                   <Image 
                     loading="lazy"
                     src={image.src}
@@ -179,7 +183,7 @@ function NavItem({ item }: { item: INavItem }) {
           )}
 
           <span
-            class={clx(`relative transition-all font-bold duration-300 leading-[18.2px] text-[14px] 
+            class={clx(`relative transition-all font-bold duration-300 leading-[18.2px] text-[14px] font-comfortaa
               ${highlighted ?  'text-primary mt-[3px] ml-[8px]' : 'text-[#fff]'} `)}>
             {label}
           </span>

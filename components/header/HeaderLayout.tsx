@@ -26,7 +26,7 @@ function HeaderLayout( props: SectionProps<ReturnType<typeof loader>>) {
   return (
     <header class="z-50 pb-6 lg:mt-9 mt-[15px]">
       <div class={clx(`flex md:grid 2xl:grid-cols-[minmax(auto,_159px)_minmax(_542px,_1fr)_auto] max-lg:px-[20px]
-        md:grid-cols-[minmax(auto,_159px)_minmax(auto,_542px)_auto] items-center md:max-w-[95%] mx-[auto] my-[0] header-container`)}>
+        md:grid-cols-[minmax(auto,_159px)_minmax(auto,_542px)_auto] items-center lg:max-w-[95%] mx-[auto] my-[0] header-container`)}>
         <div class="flex items-center justify-center gap-5">
           <Buttons variant="menu" />
           <a href="/" class="" aria-label="Store logo">
@@ -43,10 +43,10 @@ function HeaderLayout( props: SectionProps<ReturnType<typeof loader>>) {
             <Icon id="Logo" width={105} height={52.16} />
           </a>
         </div>
-        <div class="flex w-full md:w-auto justify-start md:justify-end 2xl:mr-[50px] 2xl:ml-0 ml-[8%] ">
-          <div class="flex justify-end w-full md:w-auto md:gap-x-[20px] gap-x-[10px]">
+        <div class="flex w-full md:w-auto justify-start md:justify-end 2xl:mr-[50px] 2xl:ml-0">
+          <div class="flex justify-end w-full md:w-auto md:gap-x-[20px] gap-x-[15px]">
             <div class="flex items-center text-primary">
-              <div class="relative flex items-center justify-center">
+              <div class="hidden relative items-center justify-center">
                 <a
                   class="relative font-medium text-primary text-[0.8125rem] leading-[1.125rem] w-full flex items-center justify-center appearance-none"
                   href="https://www.copelcolchoes.com.br/_secure/account"
@@ -102,7 +102,7 @@ function HeaderLayout( props: SectionProps<ReturnType<typeof loader>>) {
                 )
                 }
 
-                <span class={`max-lg:hidden text-[14px] leading-[21px] text-[#656565] font-black`}>Lojas <br /> Copel</span>
+                <span class={`max-md:ml-[5px] text-[12px] md:text-[14px] leading-[21px] text-[#656565] font-black`}>Lojas <br /> Copel</span>
               </a>
             </div>            
             <div class="[&>button]:w-full">
