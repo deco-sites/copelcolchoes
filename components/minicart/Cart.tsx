@@ -4,7 +4,7 @@ import { formatPrice } from "$store/sdk/format.ts";
 import { useCart } from "deco-sites/std/packs/vtex/hooks/useCart.ts";
 import CartItem from "./CartItem.tsx";
 import { useUI } from "$store/sdk/useUI.ts";
-import CartEmpty from "deco-sites/copelcolchoes/components/ui/CartEmpty.tsx";
+import CartEmpty from "site/components/ui/CartEmpty.tsx";
 
 export type ButtonVariant =
   | "primary"

@@ -14,7 +14,7 @@ import Icon from "$store/components/ui/Icon.tsx";
 import { sendEvent } from "$store/sdk/analytics.tsx";
 import { useAutocomplete } from "apps/vtex/hooks/useAutocomplete.ts";
 import { useRef } from "preact/compat";
-import ResultSearch from "deco-sites/copelcolchoes/components/search/ResultSearch.tsx";
+import ResultSearch from "site/components/search/ResultSearch.tsx";
 import { useSignal } from "@preact/signals";
 
 // Editable props

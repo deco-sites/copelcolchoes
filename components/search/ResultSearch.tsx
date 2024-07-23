@@ -1,4 +1,4 @@
-import { EditableProps } from "deco-sites/copelcolchoes/components/search/Searchbar.tsx";
+import { EditableProps } from "site/components/search/Searchbar.tsx";
 import type { Product, Suggestion } from "apps/commerce/types.ts";
 
 export type ResultSearch = EditableProps & {
