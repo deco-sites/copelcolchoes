@@ -124,7 +124,7 @@ function ProductShelf({
               style={{
                 minHeight: "28px",
               }}
-              class="btn btn-circle border-none bg-primary text-white hover:bg-primary w-[42px] h-[42px] max-lg:w-[30px] max-lg:h-[30px] max-lg:ml-[-30px]"
+              class="btn btn-circle border-none bg-primary text-white hover:bg-primary w-[42px] h-[42px] max-lg:w-[30px] max-lg:h-[30px] max-lg:ml-[20px]"
             >
               <Icon
                 size={17}
@@ -143,7 +143,7 @@ function ProductShelf({
               style={{
                 minHeight: "28px",
               }}
-              class="btn btn-circle border-none bg-primary text-white hover:bg-primary w-[42px] h-[42px] max-lg:w-[30px] max-lg:h-[30px]  max-lg:mr-[-30px]"
+              class="btn btn-circle border-none bg-primary text-white hover:bg-primary w-[42px] h-[42px] max-lg:w-[30px] max-lg:h-[30px]  max-lg:mr-[20px]"
             >
               <Icon
                 size={17}

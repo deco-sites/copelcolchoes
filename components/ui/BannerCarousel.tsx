@@ -164,13 +164,13 @@ function BannerItem({ image, lcp }: { image: Banner; lcp?: boolean }) {
             : null}
 
           <BannerTitle
-            class={action?.mobileTitle ? "max-md:hidden" : "flex"}
+            class={action?.mobileTitle ? "max-lg:hidden" : "flex"}
             color={action.color}
             title={action.title}
           />
 
           <Button
-            class={`max-md:text-sm m-auto btn border-none text-white capitalize font-medium text-base w-fit px-16 btn-${
+            class={`max-lg:text-sm m-auto btn border-none text-white capitalize font-medium text-base w-fit px-16 btn-${
               action.variant
                 ? BUTTON_VARIANTS[action.variant]
                 : BUTTON_VARIANTS["primary"]

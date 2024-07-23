@@ -72,7 +72,7 @@ export default function BannerMarcas(props: Props) {
   const id = useId();
   return (
     <>
-      <h2 class="font-quicksand text-primary text-[28px] font-semibold text-center max-md:text-[24px]">
+      <h2 class="font-quicksand text-primary text-[28px] font-semibold text-center max-lg:text-[24px]">
         As melhores marcas do mercado estão aqui
       </h2>
       <section

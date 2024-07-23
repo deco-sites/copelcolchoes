@@ -16,6 +16,7 @@ import * as $CloseButton from "./islands/CloseButton.tsx";
 import * as $Debug from "./islands/Debug.tsx";
 import * as $HeaderButton from "./islands/HeaderButton.tsx";
 import * as $HeaderModals from "./islands/HeaderModals.tsx";
+import * as $HeaderNavMenu from "./islands/HeaderNavMenu.tsx";
 import * as $HeaderSearchbar from "./islands/HeaderSearchbar.tsx";
 import * as $HomeSearch from "./islands/HomeSearch.tsx";
 import * as $Newsletter from "./islands/Newsletter.tsx";
@@ -56,6 +57,7 @@ const manifest = {
     "./islands/Debug.tsx": $Debug,
     "./islands/HeaderButton.tsx": $HeaderButton,
     "./islands/HeaderModals.tsx": $HeaderModals,
+    "./islands/HeaderNavMenu.tsx": $HeaderNavMenu,
     "./islands/HeaderSearchbar.tsx": $HeaderSearchbar,
     "./islands/HomeSearch.tsx": $HomeSearch,
     "./islands/Newsletter.tsx": $Newsletter,

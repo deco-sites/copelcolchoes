@@ -1,5 +1,6 @@
 import { Section } from "$live/blocks/section.ts";
 import { headerHeight } from "$store/components/header/constants.ts";
+import { clx } from "$store/sdk/clx.ts";
 
 export type VerticalSpacing = "top" | "bottom" | "both" | "none";
 export type ShadowSize =
@@ -37,7 +38,7 @@ export interface Props {
 function Container({ sections, isHeader = false }: Props) {
   return (
     <>
-      <div class={isHeader ? "fixed top-0 w-full bg-white z-[5000]" : ""}>
+      <div class={isHeader ? "fixed top-0 w-full bg-white z-[5000] header" : ""}>
         {sections?.map((
           {
             section: { Component, props },
@@ -49,15 +50,16 @@ function Container({ sections, isHeader = false }: Props) {
           },
         ) => (
           <div
-            class={`w-full
+            class={clx(`w-full
             ${VERTICAL_SPACING[verticalSpacing]} 
             ${SPACING[spacing]}
-            ${SHADOW_SIZE[shadow]}`}
+            ${SHADOW_SIZE[shadow]}`)}
             style={backgroundColor && { background: `${backgroundColor}` }}
           >
             {withContainer
               ? (
-                <div class="container lg:max-w-[80rem] w-full m-auto lg:px-[4rem] px-[1.375rem]">
+                // <div class="container w-full m-auto lg:px-[4rem] px-[1.375rem] relative">
+                <div class="container w-full m-auto relative lg:px-[4rem] px-[1.375rem]">
                   <Component {...props} />
                 </div>
               )
