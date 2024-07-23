@@ -1,5 +1,5 @@
-import MinicartHeader from "deco-sites/copelcolchoes/components/ui/MinicartHeader.tsx";
-import MinicartBody from "deco-sites/copelcolchoes/components/ui/MinicartBody.tsx";
+import MinicartHeader from "site/components/ui/MinicartHeader.tsx";
+import MinicartBody from "site/components/ui/MinicartBody.tsx";
 
 function CartEmpty(){
     return(
