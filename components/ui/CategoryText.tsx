@@ -12,7 +12,7 @@ export interface Category {
 
   /**
    * @title Description
-   * @format html
+   * @format rich-text
    */
   html?: string;
 }
