@@ -3,6 +3,7 @@ import Icon from "$store/components/ui/Icon.tsx";
 import { sendEvent } from "$store/sdk/analytics.tsx";
 import { useUI } from "$store/sdk/useUI.ts";
 import { useCart } from "deco-sites/std/packs/vtex/hooks/useCart.ts";
+import { clx } from "$store/sdk/clx.ts";
 
 function SearchButton() {
   const { displaySearchbar } = useUI();
@@ -63,7 +64,10 @@ function ChatButton() {
   );
 }
 
-function CartButton() {
+
+
+function CartButton( { device }: {device?: string} ) {
+
   const { displayCart } = useUI();
   const { loading, cart, mapItemsToAnalyticsItems } = useCart();
   const totalItems = cart.value?.items.length || 0;
@@ -98,24 +102,39 @@ function CartButton() {
       onClick={onClick}
     >
       <div class="flex relative">
-        <span class="flex justify-center items-center text-white bg-[#d81a4d] text-xs rounded-full font-bold w-[17px] h-[17px] absolute top-[-0.3125rem] right-[-0.625rem]">
+        <span 
+          class={clx(`flex justify-center items-center text-white bg-[#d81a4d] text-xs font-['Montserrat',_sans-serif] z-[9] rounded-full 
+            font-bold w-[18px] h-[19px] md:w-[20px] md:h-[20px] absolute -top-[2px] md:-right-[8px] right-[3px] text-[12px]`)}>
           {totalItems > 9 ? "9+" : totalItems}
-        </span>
-        <Icon
-          id="ShoppingCart"
-          size={28}
-          strokeWidth={1}
-        />
+        </span>     
+        {device === 'desktop' 
+        ? (
+            <Icon
+              id="ShoppingCart"
+              size={36}
+              strokeWidth={1}
+            />
+          )
+        : (
+            <Icon
+              class={`-translate-x-[10px]`}
+              id="ShoppingCartMobile"
+              size={28}
+              strokeWidth={1}
+            />
+          )
+        }
       </div>
+      <span class={`max-lg:hidden text-[14px] leading-[21px] text-[#656565] font-black text-left md:ml-[12px]`}>Meu <br /> carrinho</span>
     </Button>
   );
 }
 
 function Buttons(
-  { variant }: { variant: "cart" | "search" | "menu" | "chat" },
+  { variant, device }: { variant: "cart" | "search" | "menu" | "chat", device?:string },
 ) {
   if (variant === "cart") {
-    return <CartButton />;
+    return <CartButton device={device} />;
   }
 
   if (variant === "search") {

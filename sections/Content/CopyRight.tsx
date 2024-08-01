@@ -14,7 +14,7 @@ export default function CopryRight(props: Props) {
 
   return (
     <div
-      class="text-center mt-12 py-5 text-base-300 text-xs font-normal max-md:mt-4"
+      class="text-center mt-12 py-5 text-base-300 text-xs font-normal max-lg:mt-4"
       dangerouslySetInnerHTML={{ __html: props.copyRight }}
     />
   );
