@@ -121,21 +121,25 @@ function NavItemDropDown(
                 <div class={clx(`absolute w-full h-full flex flex-col items-center`)}>
                   {textBanner && (
                     <div class={clx(`mt-[36px] flex flex-col gap-y-[8px]`)}>
-                      <span class={clx(`text-[#fff] text-center`)}
-                        style={{ color : textBanner.colorTitle ? textBanner.colorTitle : "initial" }}>
-                         {textBanner.title} 
-                         </span>
-                      <button class={clx(`px-[20px] py-[5px] rounded-[20px]`)} 
-                        style={{ 
-                          backgroundColor : textBanner.bgButton ? textBanner.bgButton : "initial" 
-                        }}>
-                        <span 
-                          style={{ 
-                            color : textBanner?.colorTextButton ? textBanner.colorTextButton : "initial" 
-                          }}>
-                          {textBanner.textButton}
+                      {textBanner.title && (
+                        <span class={clx(`text-[#fff] text-center`)}
+                          style={{ color : textBanner.colorTitle ? textBanner.colorTitle : "initial" }}>
+                          {textBanner.title} 
                         </span>
-                      </button>
+                      )}
+                      {textBanner.textButton && (
+                        <button class={clx(`px-[20px] py-[5px] rounded-[20px]`)} 
+                          style={{ 
+                            backgroundColor : textBanner.bgButton ? textBanner.bgButton : "initial" 
+                          }}>
+                          <span 
+                            style={{ 
+                              color : textBanner?.colorTextButton ? textBanner.colorTextButton : "initial" 
+                            }}>
+                            {textBanner.textButton}
+                          </span>
+                        </button>
+                      )}
                     </div>
                   )}
                 </div>
