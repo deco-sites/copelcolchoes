@@ -177,7 +177,13 @@
               }
             ],
             "activeMenu": false,
-            "textBanner": {}
+            "textBanner": {
+              "textButton": "Irresistíveis",
+              "title": "Produtos",
+              "colorTitle": "#0d4f81",
+              "colorTextButton": "#ffffff",
+              "bgButton": "#0d4f81"
+            }
           },
           {
             "href": "/cama-box",
@@ -268,7 +274,15 @@
                   }
                 ]
               }
-            ]
+            ],
+            "textBanner": {
+              "textButton": "Irresistíveis",
+              "title": "Produtos",
+              "colorTextButton": "#ffffff",
+              "bgButton": "#0d4f81",
+              "colorTitle": "#ffffff"
+            },
+            "activeMenu": false
           },
           {
             "href": "/cama-box-mais-colchao",
@@ -383,7 +397,15 @@
                   }
                 ]
               }
-            ]
+            ],
+            "activeMenu": false,
+            "textBanner": {
+              "textButton": "Irresistíveis",
+              "title": "Produtos",
+              "colorTitle": "#ffffff",
+              "colorTextButton": "#ffffff",
+              "bgButton": "#0d4f81"
+            }
           },
           {
             "href": "/travesseiros",
@@ -456,7 +478,15 @@
                   }
                 ]
               }
-            ]
+            ],
+            "activeMenu": false,
+            "textBanner": {
+              "textButton": "Irresistíveis",
+              "title": "Produtos",
+              "colorTitle": "#ffffff",
+              "colorTextButton": "#ffffff",
+              "bgButton": "#0d4f81"
+            }
           },
           {
             "href": "/acessorios",
@@ -529,7 +559,15 @@
                   }
                 ]
               }
-            ]
+            ],
+            "activeMenu": false,
+            "textBanner": {
+              "textButton": "Irresistíveis",
+              "title": "Produtos",
+              "colorTitle": "#0d4f81",
+              "colorTextButton": "#ffffff",
+              "bgButton": "#0d4f81"
+            }
           },
           {
             "href": "/moveis",
@@ -567,7 +605,15 @@
                 ]
               }
             ],
-            "highlighted": false
+            "highlighted": false,
+            "textBanner": {
+              "textButton": "Irresistíveis",
+              "title": "Produtos",
+              "colorTitle": "#ffffff",
+              "colorTextButton": "#ffffff",
+              "bgButton": "#0d4f81"
+            },
+            "activeMenu": false
           },
           {
             "href": "/promocao",
