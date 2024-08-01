@@ -1,1 +1,588 @@
-{"isHeader":true,"sections":[{"label":"Topbar","shadow":"none","section":{"alert":{"textAlert":"Sleep Test: São 30 dias para se adaptar ao colchão ou trocamos para você","textColor":"#ffffff"},"alerts":[{"textAlert":"Sleep Test: São 30 dias para se adaptar ao colchão ou trocamos para você","textColor":"#ffffff"}],"interval":5000,"__resolveType":"site/sections/Header/TopNavBar.tsx"},"backgroundColor":"#002b62","verticalSpacing":"both"},{"label":"Header","shadow":"md","section":{"minicart":{"mobile":{"buttonMode":"primary"},"desktop":{"buttonMode":"primary"},"buttonMode":"secondary","goToCartLabel":"Finalizar compra","showClearButton":false},"navItems":[],"searchbar":{"cardLayout":{"hide":{"cta":true,"skuSelector":true,"productDescription":true},"basics":{"ctaMode":"Add to Cart","ctaText":"Adicionar ao carrinho","mobileCtaText":"Adicionar ao carrinho","contentAlignment":"Center"},"discount":{"label":"off","variant":"secondary"},"onMouseOver":{"showCta":false},"elementsPositions":{}},"placeholder":"O que você procura?"},"placeholder":"O que esta procurando?","__resolveType":"site/sections/Header/HeaderLayout.tsx","activeMinicart":false},"spacing":0,"withContainer":true,"verticalSpacing":"both"},{"label":"Nav Menu List","shadow":"md","section":{"navItems":[{"href":"/colchoes","image":{"src":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/c5da1410-ee2f-4504-9645-a4abc5fe4c61"},"label":"Colchões","variant":"AllCategories","children":[{"label":"Tamanho","variant":"CommonChild","children":[{"href":"/colchoes/colchao-casal","label":"Colchão Casal","variant":"CommonChild","children":[]},{"href":"/colchoes/colchao-solteiro","label":"Colchão Solteiro","variant":"CommonChild","children":[]},{"href":"/colchoes/colchao-solteirao-viuva","label":"Colchão Solteirão / Viúva","variant":"CommonChild","children":[]},{"href":"/colchoes/colchao-queen-size","label":"Colchão Queen-Size","variant":"CommonChild","children":[]},{"href":"/colchoes/colchao-king-size","label":"Colchão King-Size","variant":"CommonChild","children":[]},{"href":"/colchoes/colchao-infantil","label":"Colchão Infantil","variant":"CommonChild","children":[]}]},{"label":"Material","variant":"CommonChild","children":[{"href":"/colchoes?filter.category-1=colchoes&filter.tipo-colchao=espuma","label":"Espuma","variant":"CommonChild","children":[]},{"href":"/colchoes?filter.category-1=colchoes&filter.composicao=espuma-de-viscoelastico","label":"Viscoelástico","variant":"CommonChild","children":[]},{"href":"/colchoes?filter.category-1=colchoes&filter.composicao=espuma-de-latex","label":"Latex","variant":"CommonChild","children":[]},{"href":"/colchoes?filter.category-1=colchoes&filter.tipo-colchao=mola","label":"Molas","variant":"CommonChild","children":[]},{"href":"/colchoes?filter.category-1=colchoes&filter.molas=molas-ensacadas","label":"Molas Ensacadas","variant":"CommonChild","children":[]},{"href":"/colchoes?filter.category-1=colchoes&filter.molas=molas-superlastic","label":"Molas Superlastic","variant":"CommonChild","children":[]},{"href":"/colchoes?filter.category-1=colchoes&filter.molas=molas-lfk","label":"Molas LFK","variant":"CommonChild","children":[]}]}]},{"href":"/cama-box","image":{"src":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/f9cbed7f-bd2d-4189-ab8d-33378f9bc5fb"},"label":"Cama Box","variant":"AllCategories","children":[{"label":"Tamanho","variant":"CommonChild","children":[{"href":"/cama-box/cama-box-casal","label":"Cama Box Casal","variant":"CommonChild","children":[]},{"href":"/cama-box/cama-box-solteiro","label":"Cama Box Solteiro","variant":"CommonChild","children":[]},{"href":"/cama-box/cama-box-solteirao-viuva","label":"Cama Box Solteirão / Viúva","variant":"CommonChild","children":[]},{"href":"/cama-box/cama-box-queen-size","label":"Cama Box Queen-Size","variant":"CommonChild","children":[]},{"href":"/cama-box/cama-box-king-size","label":"Cama Box King-Size","variant":"CommonChild","children":[]}]},{"label":"Suporte","variant":"CommonChild","children":[{"href":"/cama-box?filter.category-1=cama-box&filter.tipo=universal","label":"Universal","variant":"CommonChild","children":[]},{"href":"/cama-box?filter.category-1=cama-box&filter.tipo=bicama","label":"Bicama","variant":"CommonChild","children":[]},{"href":"/cama-box?filter.category-1=cama-box&filter.tipo=bau","label":"Baú","variant":"CommonChild","children":[]},{"href":"/cama-box?filter.category-1=cama-box&filter.tipo=com-3-em-1","label":"3 em 1","variant":"CommonChild","children":[]},{"href":"/cama-box?filter.category-1=cama-box&filter.tipo=gaveta","label":"Gavetas","variant":"CommonChild","children":[]},{"href":"/cama-box?filter.category-1=cama-box&filter.tipo=ajustavel","label":"Ajustável","variant":"CommonChild","children":[]}]}]},{"href":"/cama-box-mais-colchao","image":{"src":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/a362c61f-017d-433a-99db-7bff47a595f6"},"label":"Cama Box Colchão","variant":"AllCategories","children":[{"label":"Tamanho","variant":"CommonChild","children":[{"href":"/cama-box-mais-colchao/cama-box-casal-mais-colchao","label":"Cama Box Casal Colchão","variant":"CommonChild","children":[]},{"href":"/cama-box-mais-colchao/cama-box-solteiro-mais-colchao","label":"Cama Box Solteiro Colchão","variant":"CommonChild","children":[]},{"href":"/cama-box-mais-colchao/cama-box-solteirao-viuva-mais-colchao","label":"Cama Box Solteirão / Viúva Colchão","variant":"CommonChild","children":[]},{"href":"/cama-box-mais-colchao/cama-box-queen-size-mais-colchao","label":"Cama Box Queen-Size Colchão","variant":"CommonChild","children":[]},{"href":"/cama-box-mais-colchao/cama-box-king-size-mais-colchao","label":"Cama Box King-Size Colchão","variant":"CommonChild","children":[]}]},{"label":"Modelo","variant":"CommonChild","children":[{"href":"/cama-box-mais-colchao?filter.category-1=cama-box-mais-colchao&filter.modelo-box=universal","label":"Universal","variant":"CommonChild","children":[]},{"href":"/cama-box-mais-colchao?filter.category-1=cama-box-mais-colchao&filter.modelo-box=bau","label":"Baú","variant":"CommonChild","children":[]},{"href":"/cama-box-mais-colchao?filter.category-1=cama-box-mais-colchao&filter.modelo-box=bicama","label":"Bicama","variant":"CommonChild","children":[]},{"href":"/cama-box-mais-colchao?filter.category-1=cama-box-mais-colchao&filter.modelo-box=4-em-1","label":"4 em 1","variant":"CommonChild","children":[]},{"href":"/cama-box-mais-colchao?filter.category-1=cama-box-mais-colchao&filter.modelo-box=gaveta","label":"Gavetas","variant":"CommonChild","children":[]},{"href":"/cama-box-mais-colchao?filter.category-1=cama-box-mais-colchao&filter.modelo-box=ajustavel","label":"Ajustável","variant":"CommonChild","children":[]},{"href":"/cama-box-mais-colchao?filter.category-1=cama-box-mais-colchao&filter.tipo-colchao=espuma","label":"Espuma","variant":"CommonChild","children":[]},{"href":"/cama-box-mais-colchao?filter.category-1=cama-box-mais-colchao&filter.tipo-colchao=mola","label":"Molas","variant":"CommonChild","children":[]},{"href":"/cama-box-mais-colchao?filter.category-1=cama-box-mais-colchao&filter.composicao=espuma-de-latex","label":"Latex","variant":"CommonChild","children":[]},{"href":"/cama-box-mais-colchao?filter.category-1=cama-box-mais-colchao&filter.composicao=espuma-de-viscoelastico","label":"Viscoelástico","variant":"CommonChild","children":[]}]}]},{"href":"/travesseiros","image":{"src":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/38262d01-18cd-4c12-a2e2-a86553ea82aa"},"label":"Travesseiros","variant":"AllCategories","children":[{"label":"Tipos","variant":"CommonChild","children":[{"href":"/travesseiros?filter.category-1=travesseiros&filter.tipo=espuma","label":"Espuma","variant":"CommonChild","children":[]},{"href":"/travesseiros?filter.category-1=travesseiros&filter.tipo=fibras","label":"Fibras","variant":"CommonChild","children":[]},{"href":"/travesseiros?filter.category-1=travesseiros&filter.tipo=flocos","label":"Flocos","variant":"CommonChild","children":[]},{"href":"/travesseiros?filter.category-1=travesseiros&filter.tipo=penas-e-plumas","label":"Penas e Plumas","variant":"CommonChild","children":[]}]},{"label":"Material","variant":"CommonChild","children":[{"href":"/travesseiros?filter.category-1=travesseiros&filter.material=viscoelastico","label":"Viscoelástico","variant":"CommonChild","children":[]},{"href":"/travesseiros?filter.category-1=travesseiros&filter.material=latex","label":"Látex","variant":"CommonChild","children":[]},{"href":"/travesseiros?filter.category-1=travesseiros&filter.material=espuma-poliuretano","label":"Espuma de Poliuretano","variant":"CommonChild","children":[]},{"href":"/travesseiros?filter.category-1=travesseiros&filter.material=fibras-de-poliester","label":"Fibras de Poliéster","variant":"CommonChild","children":[]}]}]},{"href":"/acessorios","image":{"src":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/ac9d191a-f3dc-4566-941e-6a9ae4cc21fc"},"label":"Acessórios","variant":"AllCategories","children":[{"label":"Tipos","variant":"CommonChild","children":[{"href":"/acessorios/protetores-e-capas-para-colchao","label":"Protetores e Capas para Colchão","variant":"CommonChild","children":[]},{"href":"/acessorios/protetores-e-capas-para-travesseiro","label":"Protetores e Capas para Travesseiro","variant":"CommonChild","children":[]},{"href":"/acessorios/saias-para-cama-box","label":"Saias para Cama Box","variant":"CommonChild","children":[]},{"href":"/acessorios/encostos","label":"Encostos","variant":"CommonChild","children":[]},{"href":"/acessorios/colchonete","label":"Colchonete e Puff","variant":"CommonChild","children":[]},{"href":"/acessorios/eletronicos","label":"Eletrônicos","variant":"CommonChild","children":[]},{"href":"/acessorios/rolos","label":"Rolos","variant":"CommonChild","children":[]},{"href":"/acessorios/almofadas","label":"Almofadas","variant":"CommonChild","children":[]},{"href":"/acessorios/pes-para-cama-box","label":"Pés para cama box","variant":"CommonChild","children":[]}]}]},{"href":"/moveis","image":{"src":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/9a33ba37-97b7-4ec5-9552-f4a2b5c2e221"},"label":"Móveis","variant":"AllCategories","children":[{"label":"Tipos","variant":"CommonChild","children":[{"href":"/moveis/sofa-cama","label":"Sofá Cama","variant":"CommonChild","children":[]},{"href":"/moveis/poltronas","label":"Poltronas","variant":"CommonChild","children":[]},{"href":"/moveis/cabeceira-e-paineis","label":"Cabeceiras e Painéis","variant":"CommonChild","children":[]}]}],"highlighted":false},{"href":"/promocao","label":"OUTLET","variant":"CommonChild","children":[],"highlighted":true}],"__resolveType":"site/sections/Header/HeaderNavMenu.tsx"},"spacing":0,"withContainer":false,"backgroundColor":"#fff","verticalSpacing":"none"}],"__resolveType":"site/sections/Container.tsx"}
+{
+  "isHeader": true,
+  "sections": [
+    {
+      "label": "Topbar",
+      "shadow": "none",
+      "section": {
+        "alert": {
+          "textAlert": "Sleep Test: São 30 dias para se adaptar ao colchão ou trocamos para você",
+          "textColor": "#ffffff"
+        },
+        "alerts": [
+          {
+            "textAlert": "Sleep Test: São 30 dias para se adaptar ao colchão ou trocamos para você",
+            "textColor": "#ffffff"
+          }
+        ],
+        "interval": 5000,
+        "__resolveType": "site/sections/Header/TopNavBar.tsx"
+      },
+      "backgroundColor": "#002b62",
+      "verticalSpacing": "both"
+    },
+    {
+      "label": "Header",
+      "shadow": "md",
+      "section": {
+        "minicart": {
+          "mobile": {
+            "buttonMode": "primary"
+          },
+          "desktop": {
+            "buttonMode": "primary"
+          },
+          "buttonMode": "secondary",
+          "goToCartLabel": "Finalizar compra",
+          "showClearButton": false
+        },
+        "navItems": [],
+        "searchbar": {
+          "cardLayout": {
+            "hide": {
+              "cta": true,
+              "skuSelector": true,
+              "productDescription": true
+            },
+            "basics": {
+              "ctaMode": "Add to Cart",
+              "ctaText": "Adicionar ao carrinho",
+              "mobileCtaText": "Adicionar ao carrinho",
+              "contentAlignment": "Center"
+            },
+            "discount": {
+              "label": "off",
+              "variant": "secondary"
+            },
+            "onMouseOver": {
+              "showCta": false
+            },
+            "elementsPositions": {}
+          },
+          "placeholder": "O que você procura?"
+        },
+        "placeholder": "O que esta procurando?",
+        "__resolveType": "site/sections/Header/HeaderLayout.tsx",
+        "activeMinicart": false
+      },
+      "spacing": 0,
+      "withContainer": true,
+      "verticalSpacing": "both"
+    },
+    {
+      "label": "Nav Menu List",
+      "shadow": "md",
+      "section": {
+        "navItems": [
+          {
+            "href": "/colchoes",
+            "image": {
+              "src": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/81f92539-cc84-4634-9b80-81b8083d102d",
+              "width": 582,
+              "height": 285,
+              "href": "/colchao"
+            },
+            "label": "Colchões",
+            "variant": "AllCategories",
+            "children": [
+              {
+                "label": "Tamanho",
+                "variant": "CommonChild",
+                "children": [
+                  {
+                    "href": "/colchoes/colchao-casal",
+                    "label": "Colchão Casal",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/colchoes/colchao-solteiro",
+                    "label": "Colchão Solteiro",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/colchoes/colchao-solteirao-viuva",
+                    "label": "Colchão Solteirão / Viúva",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/colchoes/colchao-queen-size",
+                    "label": "Colchão Queen-Size",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/colchoes/colchao-king-size",
+                    "label": "Colchão King-Size",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/colchoes/colchao-infantil",
+                    "label": "Colchão Infantil",
+                    "variant": "CommonChild",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "label": "Material",
+                "variant": "CommonChild",
+                "children": [
+                  {
+                    "href": "/colchoes?filter.category-1=colchoes&filter.tipo-colchao=espuma",
+                    "label": "Espuma",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/colchoes?filter.category-1=colchoes&filter.composicao=espuma-de-viscoelastico",
+                    "label": "Viscoelástico",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/colchoes?filter.category-1=colchoes&filter.composicao=espuma-de-latex",
+                    "label": "Latex",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/colchoes?filter.category-1=colchoes&filter.tipo-colchao=mola",
+                    "label": "Molas",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/colchoes?filter.category-1=colchoes&filter.molas=molas-ensacadas",
+                    "label": "Molas Ensacadas",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/colchoes?filter.category-1=colchoes&filter.molas=molas-superlastic",
+                    "label": "Molas Superlastic",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/colchoes?filter.category-1=colchoes&filter.molas=molas-lfk",
+                    "label": "Molas LFK",
+                    "variant": "CommonChild",
+                    "children": []
+                  }
+                ]
+              }
+            ],
+            "activeMenu": false
+          },
+          {
+            "href": "/cama-box",
+            "image": {
+              "src": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/ca15eac1-a857-421b-950c-a10d3b7f71a4",
+              "width": 582,
+              "height": 285,
+              "href": "/cama-box"
+            },
+            "label": "Cama Box",
+            "variant": "AllCategories",
+            "children": [
+              {
+                "label": "Tamanho",
+                "variant": "CommonChild",
+                "children": [
+                  {
+                    "href": "/cama-box/cama-box-casal",
+                    "label": "Cama Box Casal",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/cama-box/cama-box-solteiro",
+                    "label": "Cama Box Solteiro",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/cama-box/cama-box-solteirao-viuva",
+                    "label": "Cama Box Solteirão / Viúva",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/cama-box/cama-box-queen-size",
+                    "label": "Cama Box Queen-Size",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/cama-box/cama-box-king-size",
+                    "label": "Cama Box King-Size",
+                    "variant": "CommonChild",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "label": "Suporte",
+                "variant": "CommonChild",
+                "children": [
+                  {
+                    "href": "/cama-box?filter.category-1=cama-box&filter.tipo=universal",
+                    "label": "Universal",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/cama-box?filter.category-1=cama-box&filter.tipo=bicama",
+                    "label": "Bicama",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/cama-box?filter.category-1=cama-box&filter.tipo=bau",
+                    "label": "Baú",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/cama-box?filter.category-1=cama-box&filter.tipo=com-3-em-1",
+                    "label": "3 em 1",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/cama-box?filter.category-1=cama-box&filter.tipo=gaveta",
+                    "label": "Gavetas",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/cama-box?filter.category-1=cama-box&filter.tipo=ajustavel",
+                    "label": "Ajustável",
+                    "variant": "CommonChild",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "href": "/cama-box-mais-colchao",
+            "image": {
+              "src": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/b0e1cccb-bf91-49d3-8f7a-aecdf9b93bc2",
+              "href": "/cama-box-mais-colchao",
+              "width": 582,
+              "height": 285
+            },
+            "label": "Cama Box Colchão",
+            "variant": "AllCategories",
+            "children": [
+              {
+                "label": "Tamanho",
+                "variant": "CommonChild",
+                "children": [
+                  {
+                    "href": "/cama-box-mais-colchao/cama-box-casal-mais-colchao",
+                    "label": "Cama Box Casal Colchão",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/cama-box-mais-colchao/cama-box-solteiro-mais-colchao",
+                    "label": "Cama Box Solteiro Colchão",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/cama-box-mais-colchao/cama-box-solteirao-viuva-mais-colchao",
+                    "label": "Cama Box Solteirão / Viúva Colchão",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/cama-box-mais-colchao/cama-box-queen-size-mais-colchao",
+                    "label": "Cama Box Queen-Size Colchão",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/cama-box-mais-colchao/cama-box-king-size-mais-colchao",
+                    "label": "Cama Box King-Size Colchão",
+                    "variant": "CommonChild",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "label": "Modelo",
+                "variant": "CommonChild",
+                "children": [
+                  {
+                    "href": "/cama-box-mais-colchao?filter.category-1=cama-box-mais-colchao&filter.modelo-box=universal",
+                    "label": "Universal",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/cama-box-mais-colchao?filter.category-1=cama-box-mais-colchao&filter.modelo-box=bau",
+                    "label": "Baú",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/cama-box-mais-colchao?filter.category-1=cama-box-mais-colchao&filter.modelo-box=bicama",
+                    "label": "Bicama",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/cama-box-mais-colchao?filter.category-1=cama-box-mais-colchao&filter.modelo-box=4-em-1",
+                    "label": "4 em 1",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/cama-box-mais-colchao?filter.category-1=cama-box-mais-colchao&filter.modelo-box=gaveta",
+                    "label": "Gavetas",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/cama-box-mais-colchao?filter.category-1=cama-box-mais-colchao&filter.modelo-box=ajustavel",
+                    "label": "Ajustável",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/cama-box-mais-colchao?filter.category-1=cama-box-mais-colchao&filter.tipo-colchao=espuma",
+                    "label": "Espuma",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/cama-box-mais-colchao?filter.category-1=cama-box-mais-colchao&filter.tipo-colchao=mola",
+                    "label": "Molas",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/cama-box-mais-colchao?filter.category-1=cama-box-mais-colchao&filter.composicao=espuma-de-latex",
+                    "label": "Latex",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/cama-box-mais-colchao?filter.category-1=cama-box-mais-colchao&filter.composicao=espuma-de-viscoelastico",
+                    "label": "Viscoelástico",
+                    "variant": "CommonChild",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "href": "/travesseiros",
+            "image": {
+              "src": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/60a4ba1b-1042-48bd-a2a8-989bb3a43ae6",
+              "href": "/travesseiros",
+              "width": 582,
+              "height": 285
+            },
+            "label": "Travesseiros",
+            "variant": "AllCategories",
+            "children": [
+              {
+                "label": "Tipos",
+                "variant": "CommonChild",
+                "children": [
+                  {
+                    "href": "/travesseiros?filter.category-1=travesseiros&filter.tipo=espuma",
+                    "label": "Espuma",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/travesseiros?filter.category-1=travesseiros&filter.tipo=fibras",
+                    "label": "Fibras",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/travesseiros?filter.category-1=travesseiros&filter.tipo=flocos",
+                    "label": "Flocos",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/travesseiros?filter.category-1=travesseiros&filter.tipo=penas-e-plumas",
+                    "label": "Penas e Plumas",
+                    "variant": "CommonChild",
+                    "children": []
+                  }
+                ]
+              },
+              {
+                "label": "Material",
+                "variant": "CommonChild",
+                "children": [
+                  {
+                    "href": "/travesseiros?filter.category-1=travesseiros&filter.material=viscoelastico",
+                    "label": "Viscoelástico",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/travesseiros?filter.category-1=travesseiros&filter.material=latex",
+                    "label": "Látex",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/travesseiros?filter.category-1=travesseiros&filter.material=espuma-poliuretano",
+                    "label": "Espuma de Poliuretano",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/travesseiros?filter.category-1=travesseiros&filter.material=fibras-de-poliester",
+                    "label": "Fibras de Poliéster",
+                    "variant": "CommonChild",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "href": "/acessorios",
+            "image": {
+              "src": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/f0c11d72-58cd-41b4-ba26-86051ddead33",
+              "href": "/acessorios",
+              "width": 582,
+              "height": 285
+            },
+            "label": "Acessórios",
+            "variant": "AllCategories",
+            "children": [
+              {
+                "label": "Tipos",
+                "variant": "CommonChild",
+                "children": [
+                  {
+                    "href": "/acessorios/protetores-e-capas-para-colchao",
+                    "label": "Protetores e Capas para Colchão",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/acessorios/protetores-e-capas-para-travesseiro",
+                    "label": "Protetores e Capas para Travesseiro",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/acessorios/saias-para-cama-box",
+                    "label": "Saias para Cama Box",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/acessorios/encostos",
+                    "label": "Encostos",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/acessorios/colchonete",
+                    "label": "Colchonete e Puff",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/acessorios/eletronicos",
+                    "label": "Eletrônicos",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/acessorios/rolos",
+                    "label": "Rolos",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/acessorios/almofadas",
+                    "label": "Almofadas",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/acessorios/pes-para-cama-box",
+                    "label": "Pés para cama box",
+                    "variant": "CommonChild",
+                    "children": []
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "href": "/moveis",
+            "image": {
+              "src": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/3b4933da-8012-4e98-8310-e71e75ec2602",
+              "href": "/moveis",
+              "width": 582,
+              "height": 285
+            },
+            "label": "Móveis",
+            "variant": "AllCategories",
+            "children": [
+              {
+                "label": "Tipos",
+                "variant": "CommonChild",
+                "children": [
+                  {
+                    "href": "/moveis/sofa-cama",
+                    "label": "Sofá Cama",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/moveis/poltronas",
+                    "label": "Poltronas",
+                    "variant": "CommonChild",
+                    "children": []
+                  },
+                  {
+                    "href": "/moveis/cabeceira-e-paineis",
+                    "label": "Cabeceiras e Painéis",
+                    "variant": "CommonChild",
+                    "children": []
+                  }
+                ]
+              }
+            ],
+            "highlighted": false
+          },
+          {
+            "href": "/promocao",
+            "label": "OUTLET",
+            "variant": "CommonChild",
+            "children": [],
+            "highlighted": true
+          }
+        ],
+        "__resolveType": "site/sections/Header/HeaderNavMenu.tsx"
+      },
+      "spacing": 0,
+      "withContainer": false,
+      "backgroundColor": "#fff",
+      "verticalSpacing": "none"
+    }
+  ],
+  "__resolveType": "site/sections/Container.tsx"
+}
