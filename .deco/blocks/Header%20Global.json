@@ -176,7 +176,8 @@
                 ]
               }
             ],
-            "activeMenu": false
+            "activeMenu": false,
+            "textBanner": {}
           },
           {
             "href": "/cama-box",
