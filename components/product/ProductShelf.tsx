@@ -27,6 +27,10 @@ export interface Props {
     headerAlignment?: "center" | "left";
     headerfontSize?: "Normal" | "Large";
     color?: "primary" | "secondary";
+    itemsPerPage?: {
+      screenWidth?: number;
+      itemsQuantity?: number;
+    }[];      
   };
   showPaginationArrows?: ResponsiveConditionals;
   cardLayout?: CardLayout;
@@ -36,6 +40,11 @@ interface DotsProps {
   images?: Product[];
   interval?: number;
   className: string;
+}
+
+interface ButtonsProps {
+  className: string;
+  showPaginationArrows?:ResponsiveConditionals;
 }
 
 function Dots({ images, interval = 0 }: DotsProps) {
@@ -49,14 +58,11 @@ function Dots({ images, interval = 0 }: DotsProps) {
             <Slider.Dot
               index={index}
               classes={`${
-                ((index === 0) || (index % 4 === 0)) ? "" : "lg:hidden lg:w-0"
-              }`}
-            >
+                ((index === 0) || (index % 4 === 0)) ? "" : "lg:hidden lg:w-0"}`}>
               <div
                 class={`${
                   ((index === 0) || (index % 4 === 0)) ? "" : "lg:hidden lg:w-0"
-                }`}
-              >
+                }`}>
                 <div
                   class="w-2 h-2 group-disabled:scale-100 group-disabled:opacity-100 opacity-50 scale-[0.33] rounded-full bg-primary"
                   style={{ animationDuration: `${interval}s` }}
@@ -70,13 +76,50 @@ function Dots({ images, interval = 0 }: DotsProps) {
   );
 }
 
+function Buttons({ className, showPaginationArrows }: ButtonsProps) {
+  return (
+    <>
+      <div
+        class={`flex items-center justify-center z-10 col-start-1 row-start-2 ${className} ${
+          CONDITIONAL_RESPONSIVE_PARAMS[
+            showPaginationArrows ? showPaginationArrows : "Always"
+          ]
+        }`}
+      >
+        <Slider.PrevButton class="btn btn-circle border-none shadow-md bg-primary hover:bg-primary min-h-0 h-[42px] max-lg:h-[30px] w-[42px] max-lg:w-[30px]">
+          <Icon
+            class="text-white"
+            size={17}
+            id="LeftArrowFigma"
+          />
+        </Slider.PrevButton>
+      </div>
+
+      <div
+        class={`flex items-center justify-center z-10 col-start-3 row-start-2 ${className} ${
+          CONDITIONAL_RESPONSIVE_PARAMS[
+            showPaginationArrows ? showPaginationArrows : "Always"
+          ]
+        }`}
+      >
+        <Slider.NextButton class="btn btn-circle border-none shadow-md bg-primary hover:bg-primary min-h-0 h-[42px] max-lg:h-[30px] w-[42px] max-lg:w-[30px]">
+          <Icon
+            class="text-white"
+            size={17}
+            id="RightArrowFigma"
+          />
+        </Slider.NextButton>
+      </div>
+    </>
+  );
+}
+
 function ProductShelf({
   products,
   title,
   layout,
   cardLayout,
   seeMore,
-  showPaginationArrows,
 }: Props) {
   const id = useId();
 
@@ -97,11 +140,11 @@ function ProductShelf({
         id={id}
         class="grid grid-cols-[42px_1fr_42px] max-lg:grid-cols-[30px_1fr_30px] px-0 grid-rows-[1fr_42px_1fr] max-lg:grid-rows-[1fr_30px_1fr]"
       >
-        <Slider class="carousel carousel-center gap-6 col-span-full row-span-full py-2 lg:mx-8 my-5">
+        <Slider class="carousel carousel-start gap-6 col-span-full row-span-full py-2 lg:mx-8 my-5">
           {products?.map((product, index) => (
             <Slider.Item
               index={index}
-              class="carousel-item h-auto w-[264px] justify-center"
+              class="carousel-item h-auto lg:w-[270px] flex justify-center"
             >
               <ProductCard
                 product={product}
@@ -112,46 +155,7 @@ function ProductShelf({
           ))}
         </Slider>
 
-        <>
-          <div
-            class={`flex items-center justify-center z-10 col-start-1 row-start-2  ${
-              CONDITIONAL_RESPONSIVE_PARAMS[
-                showPaginationArrows ? showPaginationArrows : "Always"
-              ]
-            }`}
-          >
-            <Slider.PrevButton
-              style={{
-                minHeight: "28px",
-              }}
-              class="btn btn-circle border-none bg-primary text-white hover:bg-primary w-[42px] h-[42px] max-lg:w-[30px] max-lg:h-[30px] max-lg:ml-[20px]"
-            >
-              <Icon
-                size={17}
-                id="LeftArrowFigma"
-              />
-            </Slider.PrevButton>
-          </div>
-          <div
-            class={`flex items-center justify-center z-10 col-start-3 row-start-2 ${
-              CONDITIONAL_RESPONSIVE_PARAMS[
-                showPaginationArrows ? showPaginationArrows : "Always"
-              ]
-            }`}
-          >
-            <Slider.NextButton
-              style={{
-                minHeight: "28px",
-              }}
-              class="btn btn-circle border-none bg-primary text-white hover:bg-primary w-[42px] h-[42px] max-lg:w-[30px] max-lg:h-[30px]  max-lg:mr-[20px]"
-            >
-              <Icon
-                size={17}
-                id="RightArrowFigma"
-              />
-            </Slider.NextButton>
-          </div>
-        </>
+        <Buttons className="flex" />        
 
         <SendEventOnLoad
           event={{
@@ -167,14 +171,21 @@ function ProductShelf({
             },
           }}
         />
+
         <Dots
           images={products}
           className={CONDITIONAL_RESPONSIVE_PARAMS["Always"]}
         />
-        <SliderJS
+
+        <SliderJS          
           rootId={id}
-          infinite
-          itemsPerPage={{ [720]: 4, [0]: 1 }}
+          itemsPerPage={layout?.itemsPerPage?.reduce(
+            (initial, { screenWidth, itemsQuantity }) => ({
+              ...initial,
+              [screenWidth?.toString() ?? "0"]: itemsQuantity ?? 1,
+            }),
+            {},
+          )}
         />
       </div>
       {seeMore && seeMore.label

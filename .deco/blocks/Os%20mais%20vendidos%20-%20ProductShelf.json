@@ -1,1 +1,144 @@
-{"isHeader":false,"sections":[{"label":"ProductShelf","shadow":"none","section":{"variants":[{"rule":{"mobile":true,"__resolveType":"$live/matchers/MatchDevice.ts"},"value":{"title":"Produtos em destaque","layout":{"color":"primary","itemsPerPage":[{"screenWidth":425,"itemsQuantity":1},{"screenWidth":700,"itemsQuantity":4}],"headerfontSize":"Normal","headerAlignment":"center"},"seeMore":{"url":" /colchoes","label":" Ver mais produtos"},"products":{"sort":"orders:desc","count":4,"props":{"sort":"price:desc","count":13,"collection":"254"},"collection":"254","__resolveType":"vtex/loaders/intelligentSearch/productList.ts"},"cardLayout":{"hide":{"skuSelector":true,"productDescription":true},"basics":{"ctaMode":"Add to Cart","ctaText":"Adicionar ao carrinho","mobileCtaText":"Adicionar ao carrinho","contentAlignment":"Center"},"discount":{"label":" ","variant":"emphasis"},"onMouseOver":{"image":"Zoom image","showCta":true,"showCardShadow":true},"elementsPositions":{}},"__resolveType":"site/sections/Product/ProductShelf.tsx","showPaginationArrows":"Always"}},{"rule":{"__resolveType":"website/matchers/always.ts"},"value":{"title":"Produtos em destaque","layout":{"itemsPerPage":[{"screenWidth":425,"itemsQuantity":1},{"screenWidth":700,"itemsQuantity":4}],"headerfontSize":"Normal","headerAlignment":"left"},"seeMore":{"url":" /colchoes","label":" Ver mais produtos"},"products":{"sort":"orders:desc","count":4,"props":{"sort":"orders:desc","count":12,"collection":"254"},"collection":"254","__resolveType":"vtex/loaders/intelligentSearch/productList.ts"},"cardLayout":{"hide":{"skuSelector":true,"productDescription":true},"basics":{"ctaMode":"Add to Cart","ctaText":"Adicionar ao carrinho","mobileCtaText":"Adicionar ao carrinho","contentAlignment":"Center"},"discount":{"label":" ","variant":"emphasis"},"onMouseOver":{"image":"Zoom image","showCta":true,"showCardShadow":true},"elementsPositions":{}},"__resolveType":"site/sections/Product/ProductShelf.tsx","showPaginationArrows":"Always"}}],"__resolveType":"website/flags/multivariate/section.ts"},"withContainer":true,"verticalSpacing":"none"}],"__resolveType":"site/sections/Container.tsx"}
+{
+  "isHeader": false,
+  "sections": [
+    {
+      "label": "ProductShelf",
+      "shadow": "none",
+      "section": {
+        "variants": [
+          {
+            "rule": {
+              "mobile": true,
+              "__resolveType": "$live/matchers/MatchDevice.ts"
+            },
+            "value": {
+              "title": "Produtos em destaque",
+              "layout": {
+                "color": "primary",
+                "itemsPerPage": [
+                  {
+                    "screenWidth": 425,
+                    "itemsQuantity": 1
+                  },
+                  {
+                    "screenWidth": 700,
+                    "itemsQuantity": 4
+                  }
+                ],
+                "headerfontSize": "Normal",
+                "headerAlignment": "center"
+              },
+              "seeMore": {
+                "url": " /colchoes",
+                "label": " Ver mais produtos"
+              },
+              "products": {
+                "sort": "orders:desc",
+                "count": 4,
+                "props": {
+                  "sort": "price:desc",
+                  "count": 13,
+                  "collection": "254"
+                },
+                "collection": "254",
+                "__resolveType": "vtex/loaders/intelligentSearch/productList.ts"
+              },
+              "cardLayout": {
+                "hide": {
+                  "skuSelector": true,
+                  "productDescription": true
+                },
+                "basics": {
+                  "ctaMode": "Add to Cart",
+                  "ctaText": "Adicionar ao carrinho",
+                  "mobileCtaText": "Adicionar ao carrinho",
+                  "contentAlignment": "Center"
+                },
+                "discount": {
+                  "label": " ",
+                  "variant": "emphasis"
+                },
+                "onMouseOver": {
+                  "image": "Zoom image",
+                  "showCta": true,
+                  "showCardShadow": true
+                },
+                "elementsPositions": {}
+              },
+              "__resolveType": "site/sections/Product/ProductShelf.tsx",
+              "showPaginationArrows": "Always"
+            }
+          },
+          {
+            "rule": {
+              "__resolveType": "website/matchers/always.ts"
+            },
+            "value": {
+              "title": "Produtos em destaque",
+              "layout": {
+                "itemsPerPage": [
+                  {
+                    "screenWidth": 425,
+                    "itemsQuantity": 1
+                  },
+                  {
+                    "screenWidth": 700,
+                    "itemsQuantity": 4
+                  }
+                ],
+                "headerfontSize": "Normal",
+                "headerAlignment": "center"
+              },
+              "seeMore": {
+                "url": " /colchoes",
+                "label": " Ver mais produtos"
+              },
+              "products": {
+                "sort": "orders:desc",
+                "count": 4,
+                "props": {
+                  "sort": "price:desc",
+                  "count": 12,
+                  "collection": "254"
+                },
+                "collection": "254",
+                "__resolveType": "vtex/loaders/intelligentSearch/productList.ts"
+              },
+              "cardLayout": {
+                "hide": {
+                  "skuSelector": true,
+                  "productDescription": true
+                },
+                "basics": {
+                  "ctaMode": "Add to Cart",
+                  "ctaText": "Adicionar ao carrinho",
+                  "mobileCtaText": "Adicionar ao carrinho",
+                  "contentAlignment": "Center"
+                },
+                "discount": {
+                  "label": " off",
+                  "variant": "emphasis"
+                },
+                "onMouseOver": {
+                  "image": "Zoom image",
+                  "showCta": true,
+                  "showCardShadow": true
+                },
+                "elementsPositions": {
+                  "skuSelector": "Top",
+                  "favoriteIcon": "Top right"
+                }
+              },
+              "__resolveType": "site/sections/Product/ProductShelf.tsx",
+              "showPaginationArrows": "Always"
+            }
+          }
+        ],
+        "__resolveType": "website/flags/multivariate/section.ts"
+      },
+      "withContainer": true,
+      "verticalSpacing": "none"
+    }
+  ],
+  "__resolveType": "site/sections/Container.tsx"
+}
