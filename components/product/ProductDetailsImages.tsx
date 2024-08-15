@@ -155,7 +155,7 @@ function renderImage({ img, index, aspect, width, height }: {
     <Image
       class={isMobile.value
         ? "absolute top-0 left-0 w-full block object-cover font-['blur-up:_auto','object-fit:_cover'] h-auto align-middle"
-        : "transition duration-150 opacity-100  lg:hover:opacity-0 hover:duration-300"}
+        : "transition duration-150 opacity-100  lg:hover:opacity-0 hover:duration-300 lg:w-full"}
       sizes="(max-width: 480px) 576px, 576px"
       style={{ aspectRatio: aspect }}
       src={img?.url!}
@@ -170,8 +170,7 @@ function renderImage({ img, index, aspect, width, height }: {
 
   return isMobile.value ? image : (
     <figure
-      style={`background-image: url(${img
-        ?.url!}); background-size: 250%;`}
+      style={`background-image: url(${img?.url!}); background-size: 250%;`}
       onMouseMove={(e: MouseEvent) => {
         const zoomer = e.currentTarget as HTMLElement;
         const offsetX = e.offsetX;
@@ -179,8 +178,12 @@ function renderImage({ img, index, aspect, width, height }: {
         const x = offsetX / (zoomer.offsetWidth) * 100;
         const y = offsetY / (zoomer.offsetHeight) * 100;
 
-        zoomer!.style.backgroundPosition = x + "% " + y +
-          "%";
+        zoomer!.style.backgroundPosition = x + "% " + y +"%";
+        zoomer.style.maxWidth = '100%';
+      }}
+      onMouseLeave={(e: MouseEvent)=>{
+        const zoomer = e.currentTarget as HTMLElement;
+        zoomer.style.maxWidth = width + 'px';
       }}
       class="overflow-hidden cursor-zoom-in relative group/zoomer"
     >
