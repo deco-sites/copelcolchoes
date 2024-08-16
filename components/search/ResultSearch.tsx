@@ -36,7 +36,7 @@ const Suggestions = ({ products, searchValue, device }: SuggestionsProps ) => {
       <p class={`text-primary text-[16px] leading-[19.2px] font-black mb-[12px] max-md:mt-[20px] md:mb-[20px]`}
         style={{ color : device === 'desktop' ? '#0D4F81' : "" }}>
         {device && device === 'desktop'
-          ? 'Sugestão de Produtos'
+          ? 'Sugestões de Produtos'
           : 'Produtos simulares'
         }        
       </p>
