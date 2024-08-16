@@ -122,17 +122,17 @@ function NavItemDropDown(
                   {textBanner && (
                     <div class={clx(`mt-[36px] flex flex-col gap-y-[8px]`)}>
                       {textBanner.title && (
-                        <span class={clx(`text-[#fff] text-center`)}
+                        <span class={clx(`text-[#fff] text-center  font-poppins text-[1.25rem] font-normal leading-[1.125rem]`)}
                           style={{ color : textBanner.colorTitle ? textBanner.colorTitle : "initial" }}>
                           {textBanner.title} 
                         </span>
                       )}
                       {textBanner.textButton && (
-                        <button class={clx(`px-[20px] py-[5px] rounded-[20px]`)} 
+                        <button class={clx(`pt-[7px] pb-[5px] px-5 rounded-[20px]`)} 
                           style={{ 
                             backgroundColor : textBanner.bgButton ? textBanner.bgButton : "initial" 
                           }}>
-                          <span 
+                          <span class="font-bold font-poppins text-[1.25rem] leading-[1.125rem]"
                             style={{ 
                               color : textBanner?.colorTextButton ? textBanner.colorTextButton : "initial" 
                             }}>
