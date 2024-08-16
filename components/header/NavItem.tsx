@@ -132,7 +132,7 @@ function NavItemDropDown(
                           style={{ 
                             backgroundColor : textBanner.bgButton ? textBanner.bgButton : "initial" 
                           }}>
-                          <span 
+                          <span class="font-black"
                             style={{ 
                               color : textBanner?.colorTextButton ? textBanner.colorTextButton : "initial" 
                             }}>
