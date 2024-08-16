@@ -11,7 +11,8 @@ export default {
     fontFamily: {
       "quicksand": ["Quicksand", "Arial", "sans-serif"],
       "comfortaa": ["Comfortaa", "Arial", "sans-serif"],
-      "baloo_2": ["'Baloo 2'", "Arial", "sans-serif"],      
+      "baloo_2": ["'Baloo 2'", "Arial", "sans-serif"], 
+      "poppins": ["'Poppins'", "Arial", "sans-serif;"]     
     },
     extend: {
       colors: {
