@@ -180,9 +180,9 @@
             "textBanner": {
               "textButton": "Irresistíveis",
               "title": "Produtos",
-              "colorTitle": "#0d4f81",
+              "colorTitle": "#134276",
               "colorTextButton": "#ffffff",
-              "bgButton": "#0d4f81"
+              "bgButton": "#134276"
             }
           },
           {
@@ -279,7 +279,7 @@
               "textButton": "Irresistíveis",
               "title": "Produtos",
               "colorTextButton": "#ffffff",
-              "bgButton": "#0d4f81",
+              "bgButton": "#134276",
               "colorTitle": "#ffffff"
             },
             "activeMenu": false
@@ -404,7 +404,7 @@
               "title": "Produtos",
               "colorTitle": "#ffffff",
               "colorTextButton": "#ffffff",
-              "bgButton": "#0d4f81"
+              "bgButton": "#134276"
             }
           },
           {
@@ -485,7 +485,7 @@
               "title": "Produtos",
               "colorTitle": "#ffffff",
               "colorTextButton": "#ffffff",
-              "bgButton": "#0d4f81"
+              "bgButton": "#134276"
             }
           },
           {
@@ -564,9 +564,9 @@
             "textBanner": {
               "textButton": "Irresistíveis",
               "title": "Produtos",
-              "colorTitle": "#0d4f81",
+              "colorTitle": "#134276",
               "colorTextButton": "#ffffff",
-              "bgButton": "#0d4f81"
+              "bgButton": "#134276"
             }
           },
           {
@@ -611,7 +611,7 @@
               "title": "Produtos",
               "colorTitle": "#ffffff",
               "colorTextButton": "#ffffff",
-              "bgButton": "#0d4f81"
+              "bgButton": "#134276"
             },
             "activeMenu": false
           },
