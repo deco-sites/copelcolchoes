@@ -46,7 +46,7 @@ function HeaderLayout( {  minicart, searchbar }: Props ) {
         <div class="flex w-full md:w-auto justify-start md:justify-end 2xl:mr-[50px] 2xl:ml-0 ml-[8%] ">
           <div class="flex justify-end w-full md:w-auto md:gap-x-[20px] gap-x-[15px]">
             <div class="flex items-center text-primary">
-              <div class="hidden relative items-center justify-center">
+              <div class="hidden lg:flex relative items-center justify-center">
                 <a
                   class="relative font-medium text-primary text-[0.8125rem] leading-[1.125rem] w-full flex items-center justify-center appearance-none"
                   href="https://www.copelcolchoes.com.br/_secure/account"
