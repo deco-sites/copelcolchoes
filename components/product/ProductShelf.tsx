@@ -51,7 +51,7 @@ function Dots({ images, interval = 0 }: DotsProps) {
   return (
     <>
       <ul
-        class={`carousel justify-center col-span-full gap-2 z-10 row-start-4`}
+        class={`max-sm:hidden carousel justify-center col-span-full gap-2 z-10 row-start-4`}
       >
         {images?.map((_, index) => (
           <li class="carousel-item block">
@@ -80,7 +80,7 @@ function Buttons({ className, showPaginationArrows }: ButtonsProps) {
   return (
     <>
       <div
-        class={`flex items-center justify-center z-10 col-start-1 row-start-2 ${className} ${
+        class={`max-sm:hidden flex items-center justify-center z-10 col-start-1 row-start-2 ${className} ${
           CONDITIONAL_RESPONSIVE_PARAMS[
             showPaginationArrows ? showPaginationArrows : "Always"
           ]
@@ -96,7 +96,7 @@ function Buttons({ className, showPaginationArrows }: ButtonsProps) {
       </div>
 
       <div
-        class={`flex items-center justify-center z-10 col-start-3 row-start-2 ${className} ${
+        class={`max-sm:hidden flex items-center justify-center z-10 col-start-3 row-start-2 ${className} ${
           CONDITIONAL_RESPONSIVE_PARAMS[
             showPaginationArrows ? showPaginationArrows : "Always"
           ]
@@ -140,10 +140,11 @@ function ProductShelf({
         id={id}
         class="grid grid-cols-[42px_1fr_42px] max-lg:grid-cols-[30px_1fr_30px] px-0 grid-rows-[1fr_42px_1fr] max-lg:grid-rows-[1fr_30px_1fr]"
       >
-        <Slider class="carousel carousel-start gap-6 col-span-full row-span-full py-2 lg:mx-8 my-5">
+        <Slider class="carousel carousel-start md:gap-6 gap-[10px] col-span-full row-span-full py-2 lg:mx-8 my-5">
           {products?.map((product, index) => (
             <Slider.Item
               index={index}
+              // class="carousel-item h-auto lg:w-[270px] flex justify-center max-sm:!w-[calc(100%/2-10px)]"
               class="carousel-item h-auto lg:w-[270px] flex justify-center"
             >
               <ProductCard

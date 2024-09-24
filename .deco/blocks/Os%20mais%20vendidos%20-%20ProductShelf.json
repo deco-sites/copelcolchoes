@@ -41,7 +41,7 @@
                   "collection": "254"
                 },
                 "collection": "254",
-                "__resolveType": "vtex/loaders/intelligentSearch/productList.ts"
+                "__resolveType": "deco-sites/std/loaders/vtex/intelligentSearch/productList.ts"
               },
               "cardLayout": {
                 "hide": {
@@ -95,14 +95,12 @@
               },
               "products": {
                 "sort": "orders:desc",
-                "count": 4,
+                "__resolveType": "vtex/loaders/legacy/productList.ts",
                 "props": {
-                  "sort": "price:desc",
-                  "count": 12,
-                  "collection": "254"
-                },
-                "collection": "254",
-                "__resolveType": "vtex/loaders/intelligentSearch/productList.ts"
+                  "sort": "OrderByPriceDESC",
+                  "collection": "254",
+                  "count": 12
+                }
               },
               "cardLayout": {
                 "hide": {

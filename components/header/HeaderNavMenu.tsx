@@ -21,7 +21,7 @@ function HeaderNavMenu(
 ) {
   
   return (
-    <div class={`z-50 ${scroll.value > Number(headerHeight.replaceAll(/\D/g,'')) ? 'hidden' : ''}`}>
+    <div class={`z-50 menu-custom ${scroll.value > Number(headerHeight.replaceAll(/\D/g,'')) ? 'hidden' : ''}`}>
       <div class="flex justify-between items-center lg:p-0 bg-primary">
         <div class="max-lg:hidden flex justify-between flex-1 whitespace-nowrap sm:p-0 lg:px-16 header-nav-menu">
           <ul 
