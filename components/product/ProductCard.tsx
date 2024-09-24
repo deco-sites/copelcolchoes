@@ -198,7 +198,7 @@ function ProductCard(
         <div>
           {(medidas.length > 0 || para.length > 0) &&
             (
-              <div class="flex mb-[0.625rem] gap-y-[0.625rem]">
+              <div class="flex mb-[0.625rem] gap-y-[0.625rem] max-sm:flex-wrap">
                 {medidas.length > 0 && (
                   <div class="mr-2">
                     <p class="product-card__tag--details flex w-fit text-center text-white bg-[#466fa3] text-[15.378px] md:text-xs leading-4 p-[5px] px-3 md:py-1 md:px-[0.625rem] rounded-[10px]">
