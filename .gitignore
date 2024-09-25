@@ -76,3 +76,8 @@ deno.lock
 .config.json
 # Fresh build directory
 _fresh/
+
+# Files
+blocks.json
+.deco/metadata/blocks.json
+fresh.gen.ts

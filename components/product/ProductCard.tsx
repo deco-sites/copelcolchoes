@@ -7,7 +7,6 @@ import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalytic
 import Image from "deco-sites/std/components/Image.tsx";
 import DiscountBadge from "./DiscountBadge.tsx";
 import Icon from "$store/components/ui/Icon.tsx";
-
 export interface Layout {
   basics?: {
     contentAlignment?: "Left" | "Center";
@@ -111,6 +110,7 @@ function ProductCard(
   const { listPrice, price, installment, availability } = useOffer(
     offers,
   );
+
   const inStock = availability === "https://schema.org/InStock";
   const clickEvent = {
     name: "select_item" as const,
@@ -131,12 +131,12 @@ function ProductCard(
 
   return (
     <article
-      class="h-full font-quicksand shadow-md rounded-[5px] border border-[#dbdbdb] justify-between flex flex-col  hover:border-primary"
+      class="h-max font-quicksand shadow-md rounded-[5px] border border-[#dbdbdb] justify-start flex flex-col  hover:border-primary"
       data-deco="view-product"
       id={`product-card-${productID}`}
       {...sendEventOnClick(clickEvent)}
     >
-      <div class="relative overflow-hidden px-7 pt-[1.375rem] max-lg:py-7 max-lg:px-6">
+      <div class="relative overflow-hidden px-[0.625rem] pt-[1.375rem] max-lg:px-[0.625rem]">
         <div class="relative">
           {inStock
             ? (
@@ -176,7 +176,7 @@ function ProductCard(
       </div>
 
       {/* Prices & Name */}
-      <div class="lg:py-6 lg:px-5 relative overflow-hidden max-lg:pt-0 max-lg:px-2.5 max-lg:pb-7 max-lg:w-full">
+      <div class="lg:pt-[0.625rem] lg:pb-[1.25rem] lg:px-[0.938rem] relative max-lg:pt-0 max-lg-[0.625rem] max-lg:px-2.5 max-lg:pb-7 max-lg:w-full">
         {inStock
           ? (
             <a
@@ -185,7 +185,7 @@ function ProductCard(
               name="view product"
               class="block"
             >
-              <h2 class="lg:text-base max-lg:line-clamp-2 lg:leading-[1.375rem] text-[#828282] font-medium mb-[1.125rem]">
+              <h2 class="product-card__name text-[17.941px] leading-normal lg:text-base max-lg:line-clamp-2 lg:leading-[1.375rem] text-[#828282] font-medium mb-[0.625rem]">
                 {isVariantOf?.name || name}
               </h2>
             </a>
@@ -198,17 +198,17 @@ function ProductCard(
         <div>
           {(medidas.length > 0 || para.length > 0) &&
             (
-              <div class="flex mb-4 flex-wrap gap-y-2">
+              <div class="flex mb-[0.625rem] gap-y-[0.625rem] max-sm:flex-wrap">
                 {medidas.length > 0 && (
                   <div class="mr-2">
-                    <p class="flex w-fit text-center text-white bg-[#466fa3] text-xs leading-4 py-1 px-[0.625rem] rounded-[10px]">
+                    <p class="product-card__tag--details flex w-fit text-center text-white bg-[#466fa3] text-[15.378px] md:text-xs leading-4 p-[5px] px-3 md:py-1 md:px-[0.625rem] rounded-[10px]">
                       {medidas}
                     </p>
                   </div>
                 )}
                 {para.length > 0 && (
                   <div>
-                    <p class="flex w-fit text-center text-white bg-[#466fa3] text-xs leading-4 py-1 px-[0.625rem] rounded-[10px]">
+                    <p class="product-card__tag--details flex w-fit text-center text-white bg-[#466fa3] text-[15.378px] md:text-xs leading-4 p-[5px] md:py-1 px-3 md:px-[0.625rem] rounded-[10px]">
                       {para}
                     </p>
                   </div>
@@ -216,14 +216,14 @@ function ProductCard(
               </div>
             )}
           {bestOferta && (
-            <div class="mb-[0.625rem]">
+            <div class="absolute -top-[55px] md:-top-[1.875rem] tag-promotion">
               <div class="bg-[#D81A4D] border border-[#D81A4D] rounded-[15px] flex items-center justify-center py-[0.313rem] px-[0.5rem] w-fit uppercase">
                 <Icon
                   id="BlackFriday"
                   size={16}
                   class="w-[0.9375rem] mr-[0.3125rem]"
                 />
-                <p class="flex text-center font-quicksand text-white text-[0.75rem] max-lg:text-[0.563rem] leading-4 font-bold">
+                <p class="flex text-center font-quicksand text-white text-[0.75rem] max-lg:text-[15.378px] leading-4 font-bold">
                   Promoção da semana
                 </p>
               </div>
@@ -236,21 +236,21 @@ function ProductCard(
             ? (
               <div class="flex flex-col max-lg:contents">
                 {(listPrice && price) && listPrice > price && (
-                  <del class="mb-[0.3125rem] text-[#464646] font-light text-[0.875rem] leading-[1.125rem] max-lg:text-[0.875rem] font-quicksand">
+                  <del class="product-card__price--de mb-[0.3125rem] text-[#464646] font-light text-[0.875rem] leading-[1.125rem] max-lg:text-[17.941px] max-lg:leading-[23px] font-quicksand">
                     De {formatPrice(listPrice, offers!.priceCurrency!)}
                   </del>
                 )}
 
-                <ins class="font-bold no-underline text-secondary text-xl leading-[1.5625rem] mb-[0.3125rem] max-lg:text-[1.25rem] font-quicksand">
+                <ins class="product-card__price--por font-bold no-underline text-secondary text-xl leading-[1.5625rem] mb-[0.3125rem] max-lg:text-[25.63px] font-quicksand">
                   {installment?.billingDuration}x {formatPrice(
                     installment?.billingIncrement,
                     offers!.priceCurrency!,
                   )}
                 </ins>
-                <span class="text-[#828282] text-[0.8125rem] font-medium font-quicksand">
+                <span class="text-[#828282] text-[0.8125rem] font-medium font-quicksand hidden product-card__price">
                   Total: {formatPrice(price, offers!.priceCurrency!)}
                 </span>
-                <span class="text-[#828282] text-[0.8125rem] font-medium font-quicksand">
+                <span class="text-[#828282] text-[0.8125rem] font-medium font-quicksand hidden product-card__pix">
                   10% de desconto no Pix ou Boleto
                 </span>
               </div>
@@ -269,7 +269,7 @@ function ProductCard(
                 <button
                   title="Saiba mais"
                   type="button"
-                  class="bg-primary w-full text-white tracking-normal capitalize mt-[1.875rem] leading-5 rounded-[0.3125rem] p-0 flex justify-center items-center border border-transparent font-bold relative h-[2.625rem]"
+                  class="bg-primary w-full text-white tracking-normal capitalize mt-[0.625rem] leading-5 rounded-[0.3125rem] p-0 flex justify-center items-center border border-transparent font-bold relative h-[2.625rem]"
                 >
                   Saiba mais
                 </button>
