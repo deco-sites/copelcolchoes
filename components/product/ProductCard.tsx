@@ -247,10 +247,10 @@ function ProductCard(
                     offers!.priceCurrency!,
                   )}
                 </ins>
-                <span class="text-[#828282] text-[0.8125rem] font-medium font-quicksand hidden product-card__price">
+                <span class="text-[#828282] text-[0.8125rem] font-medium font-quicksand product-card__price">
                   Total: {formatPrice(price, offers!.priceCurrency!)}
                 </span>
-                <span class="text-[#828282] text-[0.8125rem] font-medium font-quicksand hidden product-card__pix">
+                <span class="text-[#828282] text-[0.8125rem] font-medium font-quicksand product-card__pix">
                   10% de desconto no Pix ou Boleto
                 </span>
               </div>
