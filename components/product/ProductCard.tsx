@@ -235,22 +235,11 @@ function ProductCard(
           {inStock
             ? (
               <div class="flex flex-col max-lg:contents">
-                {listPrice && price && (
+                {(listPrice && price) && listPrice >= price && (
                   <del class="product-card__price--de mb-[0.3125rem] text-[#464646] font-light text-[0.875rem] leading-[1.125rem] max-lg:text-[17.941px] max-lg:leading-[23px] font-quicksand">
-                    De {formatPrice(listPrice, offers!.priceCurrency!)}
+                     De {formatPrice(listPrice, offers!.priceCurrency!)}
                   </del>
                 )}
-                {/* Backup:
-                  {(listPrice && price) && listPrice > price && (
-                    <del class="product-card__price--de mb-[0.3125rem] text-[#464646] font-light text-[0.875rem] leading-[1.125rem] max-lg:text-[17.941px] max-lg:leading-[23px] font-quicksand">
-                      De {formatPrice(listPrice, offers!.priceCurrency!)}
-                      
-                      Extra:
-                      ListPrice: {formatPrice(listPrice, offers!.priceCurrency!)}<br/>
-                      Price: {formatPrice(price, offers!.priceCurrency!)}
-                    </del>
-                  )} 
-                */}
 
                 <ins class="product-card__price--por font-bold no-underline text-secondary text-xl leading-[1.5625rem] mb-[0.3125rem] max-lg:text-[25.63px] font-quicksand">
                   {installment?.billingDuration}x {formatPrice(
