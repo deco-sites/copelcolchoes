@@ -235,9 +235,9 @@ function ProductCard(
           {inStock
             ? (
               <div class="flex flex-col max-lg:contents">
-                {(listPrice && price) && listPrice > price && (
+                {(listPrice && price) && listPrice >= price && (
                   <del class="product-card__price--de mb-[0.3125rem] text-[#464646] font-light text-[0.875rem] leading-[1.125rem] max-lg:text-[17.941px] max-lg:leading-[23px] font-quicksand">
-                    De {formatPrice(listPrice, offers!.priceCurrency!)}
+                     De {formatPrice(listPrice, offers!.priceCurrency!)}
                   </del>
                 )}
 
@@ -247,10 +247,10 @@ function ProductCard(
                     offers!.priceCurrency!,
                   )}
                 </ins>
-                <span class="text-[#828282] text-[0.8125rem] font-medium font-quicksand hidden product-card__price">
+                <span class="text-[#828282] text-[0.8125rem] font-medium font-quicksand product-card__price">
                   Total: {formatPrice(price, offers!.priceCurrency!)}
                 </span>
-                <span class="text-[#828282] text-[0.8125rem] font-medium font-quicksand hidden product-card__pix">
+                <span class="text-[#828282] text-[0.8125rem] font-medium font-quicksand product-card__pix">
                   10% de desconto no Pix ou Boleto
                 </span>
               </div>
