@@ -30,6 +30,9 @@
 }
 
 .n1-header-selo p {
+    font-family: "Comfortaa";
+    font-size: 14px;
+    font-weight: 700;
     color: white;
     margin-top: 5px;
     width: 140px;
@@ -70,4 +73,18 @@
     text-align: left;
     color: white;
 }
-/*# sourceMappingURL=checkout5-custom.css.map */
+
+@media (max-width: 860px) {
+    
+    .n1-footer-container-checkout-copel {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .n1-footer-subcontainer.selos,
+    .n1-footer-subcontainer.desenvolvido {
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+    }
+}
