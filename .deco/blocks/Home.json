@@ -29,7 +29,6 @@
                 "section": {
                   "images": [
                     {
-                      "alt": "Copel Mes de Aniversario",
                       "action": {
                         "href": "/promocao",
                         "variant": "primary"
@@ -40,13 +39,14 @@
                         "height": 320
                       },
                       "desktop": {
-                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/e83464fa-a4d9-4ac8-bd10-c434bc2b0223/01-SITE.png",
+                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/db1463f9-c91b-4f01-a9f9-0bb1c144e492/banner-home-balck-friday-2024-01.jpg",
                         "width": 1519,
                         "height": 473
-                      }
+                      },
+                      "alt": "Black Friday Copel Colchoes"
                     },
                     {
-                      "alt": "Banner black friday colchões",
+                      "alt": "Black Friday - Colchoes -  Copel Colchoes",
                       "action": {
                         "href": "/colchoes",
                         "variant": "primary"
@@ -57,13 +57,13 @@
                         "height": 320
                       },
                       "desktop": {
-                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/fe805207-c3bd-4e3f-8991-85f68cfe6faa/06-SITE.png",
+                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/827a82d9-d4fd-4450-983c-3d53ec00247e/banner-home-balck-friday-2024-06.jpg",
                         "width": 1519,
                         "height": 473
                       }
                     },
                     {
-                      "alt": "Banner black friday cama box",
+                      "alt": "Black Friday - Cama Box -  Copel Colchoes",
                       "action": {
                         "href": "/cama-box",
                         "variant": "primary"
@@ -74,13 +74,13 @@
                         "height": 320
                       },
                       "desktop": {
-                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/a984f1fd-7fa5-42be-ae91-f33ebf30a51f/07-SITE.png",
+                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/24383435-3137-435b-89cc-6a1656f893a7/banner-home-balck-friday-2024-07.jpg",
                         "width": 1519,
                         "height": 473
                       }
                     },
                     {
-                      "alt": "Banner black friday cama box + colchões",
+                      "alt": "Black Friday - Cama Box + Colchao - Copel Colchoes",
                       "action": {
                         "href": "/cama-box-mais-colchao",
                         "variant": "primary"
@@ -91,13 +91,13 @@
                         "height": 320
                       },
                       "desktop": {
-                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/d19ef364-2c3a-4330-8fa1-0657e2458d3b/02-SITE.png",
+                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/2cad32b0-3435-4854-a340-d92689c7884e/banner-home-balck-friday-2024-02.jpg",
                         "width": 1519,
                         "height": 473
                       }
                     },
                     {
-                      "alt": "Banner black friday travesseiros",
+                      "alt": "Black Friday - Travesseiros -  Copel Colchoes",
                       "action": {
                         "href": "/travesseiros",
                         "variant": "primary"
@@ -108,13 +108,13 @@
                         "height": 320
                       },
                       "desktop": {
-                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/7da33de2-8919-4af8-9d43-ab31a2c89cab/03-SITE.png",
+                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/3df46e27-e153-4c84-904e-0cdd459b6677/banner-home-balck-friday-2024-03.jpg",
                         "width": 1519,
                         "height": 473
                       }
                     },
                     {
-                      "alt": "Banner black friday acessórios",
+                      "alt": "Black Friday - Acessorios -  Copel Colchoes",
                       "action": {
                         "href": "/acessorios",
                         "variant": "primary"
@@ -125,13 +125,13 @@
                         "height": 320
                       },
                       "desktop": {
-                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/17f4b36f-be73-4ead-bdf0-e45f03b5ed29/04-SITE.png",
+                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/733b0374-eaf7-438c-b7d7-418ac2de7457/banner-home-balck-friday-2024-04.jpg",
                         "width": 1519,
                         "height": 473
                       }
                     },
                     {
-                      "alt": "Banner black friday moveis",
+                      "alt": "Black Friday - Moveis -  Copel Colchoes",
                       "action": {
                         "href": "/moveis",
                         "variant": "primary"
@@ -142,7 +142,7 @@
                         "height": 320
                       },
                       "desktop": {
-                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/cdab23d9-dc64-4152-8421-d9ec1ef899ad/05-SITE.png",
+                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/10e8a495-0a5c-4bd6-9feb-caf33e7cba4a/banner-home-balck-friday-2024-05.jpg",
                         "width": 1519,
                         "height": 473
                       }
