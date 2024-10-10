@@ -1,1 +1,76 @@
-{"sections":[{"label":"Marcas carrossel","shadow":"none","section":{"images":[{"href":"/theva","image":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/76bef745-e625-4fef-8739-b8e1658f4def","label":"Theva"},{"href":"/dunlopillo","image":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/c7a89f8d-7a03-4216-8dce-b3adc14b3b2c","label":"Dunlopillo"},{"href":"/copel-colchoes","image":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/2a1d1a4f-e6e2-47e9-aee7-519397b2070c","label":"Copel"},{"href":"/dabe","image":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/36bff187-8c1e-4bd4-98c8-ec32d9773240","label":"Dabe"},{"href":"/v-joy","image":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/757b9fce-2647-43dc-b547-d69ba73a8af1","label":"V-Joy"},{"href":"/luckspuma","image":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/096854bf-dee8-4463-b195-e4d33b39adf5","label":"Luckspuma"},{"href":"/sleep-confort","image":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/6e274d3f-5ee4-4684-86c4-44f8bbb3730f","label":"Sleep Confort"},{"href":"/pilati","image":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/9f7b9913-a98a-4226-904c-be538ee3934a","label":"Pilati"},{"href":"/orbhes","image":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/89c8a32d-61a5-443e-98d7-468642c4033a","label":"Orbhes"},{"href":"/herval","image":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/22ca0811-6fd5-49bc-9f16-fa415b1f9f86","label":"Herval"},{"href":"/sankonfort","image":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/63fa7aef-71a0-4ade-a684-0156f060d421","label":"Sankonfort"},{"href":"/gazin","image":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/60638a0e-e6dc-4d2a-b721-c35bddc5513f","label":"Gazin"}],"__resolveType":"site/sections/Miscellaneous/BannerMarcas.tsx"},"verticalSpacing":"top"}],"__resolveType":"site/sections/Container.tsx"}
+{
+  "sections": [
+    {
+      "label": "Marcas carrossel",
+      "shadow": "none",
+      "section": {
+        "images": [
+          {
+            "href": "/theva",
+            "image": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/76bef745-e625-4fef-8739-b8e1658f4def",
+            "label": "Theva"
+          },
+          {
+            "href": "/dunlopillo",
+            "image": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/c7a89f8d-7a03-4216-8dce-b3adc14b3b2c",
+            "label": "Dunlopillo"
+          },
+          {
+            "href": "/copel-colchoes",
+            "image": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/2a1d1a4f-e6e2-47e9-aee7-519397b2070c",
+            "label": "Copel"
+          },
+          {
+            "href": "/dabe",
+            "image": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/36bff187-8c1e-4bd4-98c8-ec32d9773240",
+            "label": "Dabe"
+          },
+          {
+            "href": "/v-joy",
+            "image": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/757b9fce-2647-43dc-b547-d69ba73a8af1",
+            "label": "V-Joy"
+          },
+          {
+            "href": "/luckspuma",
+            "image": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/096854bf-dee8-4463-b195-e4d33b39adf5",
+            "label": "Luckspuma"
+          },
+          {
+            "href": "/sleep-confort",
+            "image": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/6e274d3f-5ee4-4684-86c4-44f8bbb3730f",
+            "label": "Sleep Confort"
+          },
+          {
+            "href": "/pilati",
+            "image": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/9f7b9913-a98a-4226-904c-be538ee3934a",
+            "label": "Pilati"
+          },
+          {
+            "href": "/orbhes",
+            "image": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/89c8a32d-61a5-443e-98d7-468642c4033a",
+            "label": "Orbhes"
+          },
+          {
+            "href": "/herval",
+            "image": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/22ca0811-6fd5-49bc-9f16-fa415b1f9f86",
+            "label": "Herval"
+          },
+          {
+            "href": "/sankonfort",
+            "image": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/63fa7aef-71a0-4ade-a684-0156f060d421",
+            "label": "Sankonfort"
+          },
+          {
+            "href": "/gazin",
+            "image": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/60638a0e-e6dc-4d2a-b721-c35bddc5513f",
+            "label": "Gazin"
+          }
+        ],
+        "__resolveType": "site/sections/Miscellaneous/BannerMarcas.tsx"
+      },
+      "verticalSpacing": "top"
+    }
+  ],
+  "__resolveType": "site/sections/Container.tsx",
+  "isHeader": false
+}
