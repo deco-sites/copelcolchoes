@@ -1,5 +1,6 @@
 import { App, AppContext as AC } from "$live/mod.ts";
 import std, { Props } from "apps/compat/std/mod.ts";
+import commerce from "apps/commerce/mod.ts";
 
 import manifest, { Manifest } from "../manifest.gen.ts";
 
@@ -8,12 +9,14 @@ export default function Site(
   state: Props,
 ): App<Manifest, Props, [
   StdApp,
+  ReturnType<typeof commerce>
 ]> {
   return {
     state,
     manifest,
     dependencies: [
       std(state),
+      commerce(state)
     ],
   };
 }
