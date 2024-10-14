@@ -145,7 +145,7 @@ function Form(props: Props) {
                   disabled={loading}
                   title="Enviar Newsletter"
                 >
-                  {form?.button?.label || "Entrar"}
+                  {form?.button?.label || "Entrar  "}
                 </button>
               </div>
             </form>
