@@ -1,0 +1,111 @@
+@import url(https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css);@import url(http://fonts.googleapis.com/css?family=Oswald:400,300);@import url(http://fonts.googleapis.com/css?family=Comfortaa:400,600);body,html{height:100%;box-sizing:content-box}.container{min-height:calc(100% - 351px)}body a{color:#002b62}h1{font-family:comfortaabold;color:#666}@font-face{font-family:comfortaabold;src:url(https://copelcolchoes.vteximg.com.br/arquivos/comfortaa-bold-webfont.eot.css);src:url(https://copelcolchoes.vteximg.com.br/arquivos/comfortaa-bold-webfont.eot.css?#iefix) format("embedded-opentype"),url(https://copelcolchoes.vteximg.com.br/arquivos/comfortaa-bold-webfont.woff.css) format("woff"),url(https://copelcolchoes.vteximg.com.br/arquivos/comfortaa-bold-webfont.ttf.css) format("truetype"),url(https://copelcolchoes.vteximg.com.br/arquivos/comfortaa-bold-webfont.svg.css#comfortaabold) format("svg");font-weight:400;font-style:normal}@font-face{font-family:comfortaalight;src:url(https://copelcolchoes.vteximg.com.br/arquivos/comfortaa-light-webfont.eot.css);src:url(https://copelcolchoes.vteximg.com.br/arquivos/comfortaa-light-webfont.eot.css?#iefix) format("embedded-opentype"),url(https://copelcolchoes.vteximg.com.br/arquivos/comfortaa-light-webfont.woff.css) format("woff"),url(https://copelcolchoes.vteximg.com.br/arquivos/comfortaa-light-webfont.ttf.css) format("truetype"),url(https://copelcolchoes.vteximg.com.br/arquivos/comfortaa-light-webfont.svg.css#comfortaalight) format("svg");font-weight:400;font-style:normal}@font-face{font-family:comfortaaregular;src:url(https://copelcolchoes.vteximg.com.br/arquivos/comfortaa-regular-webfont.eot.css);src:url(https://copelcolchoes.vteximg.com.br/arquivos/comfortaa-regular-webfont.eot.css?#iefix) format("embedded-opentype"),url(https://copelcolchoes.vteximg.com.br/arquivos/comfortaa-regular-webfont.woff.css) format("woff"),url(https://copelcolchoes.vteximg.com.br/arquivos/comfortaa-regular-webfont.ttf.css) format("truetype"),url(https://copelcolchoes.vteximg.com.br/arquivos/comfortaa-regular-webfont.svg.css#comfortaaregular) format("svg");font-weight:400;font-style:normal}@font-face{font-family:lao_uiregular;src:url(https://copelcolchoes.vteximg.com.br/arquivos/laoui-webfont.eot.css);src:url(https://copelcolchoes.vteximg.com.br/arquivos/laoui-webfont.eot.css?#iefix) format("embedded-opentype"),url(https://copelcolchoes.vteximg.com.br/arquivos/laoui-webfont.woff.css) format("woff"),url(https://copelcolchoes.vteximg.com.br/arquivos/laoui-webfont.ttf.css) format("truetype"),url(https://copelcolchoes.vteximg.com.br/arquivos/laoui-webfont.svg.css#lao_uiregular) format("svg");font-weight:400;font-style:normal}@font-face{font-family:lao_uibold;src:url(https://copelcolchoes.vteximg.com.br/arquivos/laouib-webfont.eot.css);src:url(https://copelcolchoes.vteximg.com.br/arquivos/laouib-webfont.eot.css?#iefix) format("embedded-opentype"),url(https://copelcolchoes.vteximg.com.br/arquivos/laouib-webfont.woff.css) format("woff"),url(https://copelcolchoes.vteximg.com.br/arquivos/laouib-webfont.ttf.css) format("truetype"),url(https://copelcolchoes.vteximg.com.br/arquivos/laouib-webfont.svg.css#lao_uibold) format("svg");font-weight:400;font-style:normal}@media (min-width: 1200px){.buy-button,.nav>.pull-right{float:right} body{}.container{width:1170px}.container-cart,.container-order-form{width:970px}.masthead{padding:10px 5px 0}.masthead h3{font-size:24.5px;margin:10px 0}.masthead h1,.masthead h2,.masthead h3{line-height:40px}.masthead h1,.masthead h2,.masthead h3,.masthead h4,.masthead h5,.masthead h6{font-family:Oswald, sans-serif;font-weight:300}#footerCredits{background-color:#F5F5F5;padding:60px 10px}#footerCredits img{display:inline-block;margin-bottom:40px}.nav>li>a,.valor-por,nav{display:block}h1.lead{margin-top:0}.valor-por{font-size:36px;margin-top:4px;line-height:140%}.descricao-preco{margin-top:10px}.buy-button{width:30%;font-weight:700}.nav{margin-bottom:20px;margin-left:0;list-style:none}.nav>li>a{font-size:14px}.locale{display:none}.product-name .brand-name,.product-name .seller{display:none}.nav>li>a:hover{text-decoration:none;background-color:#eee}.nav>li>a>img{max-width:none}.nav-pills>li,.nav-tabs>li{float:left}.nav-pills>li>a,.nav-tabs>li>a{padding-right:12px;padding-left:12px;margin-right:2px;line-height:14px}.nav-pills>li>a{padding-top:8px;padding-bottom:8px;margin-top:2px;margin-bottom:2px;-webkit-border-radius:5px;-moz-border-radius:5px;border-radius:5px}.steps-view{width:422px}.mini-cart{text-shadow:0 1px 0 #fff;position:relative}.mini-cart .summary-template-holder,.mini-cart h2{background:#f7f7f7;border-bottom-left-radius:5px;border-bottom-right-radius:5px;border-top:1px dotted #eee;padding-top:8px}.mini-cart .cart-template-holder{background:#fff;border-right:3px solid #F7F7F7;border-left:3px solid #F7F7F7}.mini-cart h2{font-size:14px;font-weight:700;margin-top:0;padding:4px 6px;text-align:right;color:#aaa;margin-bottom:0;border-radius:5px 5px 0 0}.mini-cart .cart{margin-bottom:0;padding:1px 3px 6px 5px}.mini-cart .monetary,.mini-cart .quantity-price{text-align:right;white-space:nowrap}.mini-cart .cart table tbody tr td.quantity-price{float:right;margin-right:6px}.mini-cart .info{text-align:right;width:58%;padding-top:6px}.mini-cart .monetary{padding-top:6px}.mini-cart .table tfoot td{color:#468847;font-size:13px;font-weight:700;padding-top:12px}.mini-cart .product-item{padding-bottom:6px}.mini-cart .product-item .quantity-price,.mini-cart .product-item .shipping-date{font-size:11px;padding:10px 0 4px}.mini-cart .totalizers{margin-bottom:10px}.mini-cart .link-cart{font-size:11px;margin-top:5px}}.body-order-placed .selo-Ebit{margin:40px auto 20px;width:468px;display:block !important}@media (max-width: 480px){#header button.back{background-color:transparent;float:left;margin:10px;color:#fff;border:0;font-size:17px;line-height:24px;font-weight:400;padding:0}#header button.back .arrow{width:17px;height:23px;background-image:url(/arquivos/playkids-mobile-sprite.png);background-size:320px auto;background-repeat:no-repeat;background-position:-177px -60px;float:left}}#header{overflow:hidden;clear:both;padding-top:30px}.wrapper{width:90%;max-width:940px;padding:0 20px;margin:0 auto;position:relative}.Logo{float:left}.Logo a{background:url(/arquivos/logo.png?v=635175432440430000);width:180px;height:90px;display:block;font-size:0}.selo-seguro{background:url(/arquivos/selo-seguro.png);width:100px;height:45px;display:block;float:right;margin:40px 0}@media screen and (max-width: 440px){.Logo a{font-size:0;background:url(/arquivos/logo-copel-mobile.png) no-repeat;background-size:contain;width:105px;height:54px;display:block}.selo-seguro{margin:20px 0}}#footer-smart-checkout,.left-footer-smart-checkout,.right-footer-smart-checkout{background:#f4f4f4}.content-footer-smart-checkout{margin:0 auto;width:960px;padding:10px 0;box-sizing:content-box}#footer-smart-checkout{margin:0 auto;width:100%;height:130px;border-top:1px #ccc solid}.left-footer-smart-checkout{float:left;color:#9a9a9a;font-size:12px}.right-footer-smart-checkout{float:right;padding:15px 0 10px}.text-footer{color:#891D1D;font-size:14px}.alert.alert-correios{width:750px;display:none}.body-cart .alert.alert-correios{display:block}#clock,#container-countdown ul li{vertical-align:middle;display:inline-block}.alert-correios p{vertical-align:middle;display:inline-block}.alert-correios .fa.fa-exclamation-triangle{font-size:29px;vertical-align:middle}.alert-correios p{width:90%;padding-left:15px;text-align:justify}@media screen and (max-width: 550px){.alert-correios p{width:80%}}#container-countdown{float:left;width:100%;margin:0 auto}#container-countdown ul{margin:0 auto;width:350px;padding:0}#countdown{width:145px;height:30px;background-color:#000}#clock{font-size:22px;font-family:arial;font-weight:700;color:#FFC800;padding:5px}.show-boleto{overflow-y:hidden}.boleto-modal{background:rgba(0,0,0,0.63);width:100%;height:100vh;display:block;position:fixed;top:0}.boleto-modal__body{position:fixed;z-index:999999999;top:15%;left:23%;width:745px;height:500px;background:#fff;padding:15px}.boleto-modal__fechar{position:absolute;right:-10px;top:-10px;background:#002b62;width:40px;height:40px;border-radius:50%;text-align:center;font-size:25px;line-height:40px;color:#fff;cursor:pointer}.boleto-modal__iframe{width:100%;height:100%}@media screen and (max-width: 550px){#container-countdown ul{width:200px}#container-countdown ul li{display:block;text-align:center}#countdown{margin:0 auto;width:135px;height:30px}#clock{font-size:18px;font-family:arial}}.add-service-container a{background:#253271;color:#fff;padding:7px 20px;clear:both;margin-top:15px;font-size:12px;border-radius:7px;border:0}.add-service-container a:hover{background:#212d65;color:#fff}body{overflow-x:hidden}#footer-smart-checkout{height:auto}#footer-smart-checkout .container{max-width:976px}.box.formpag{width:100%;margin-bottom:12px}.box.formpag h2{font-size:1em}.box.formpag span{background:url(/arquivos/formpag.png) no-repeat;background-size:300px;width:300px;height:31px;display:block}.content-footer-smart-checkout:not(.text-footer){display:flex !important;max-width:976px;margin:auto;justify-content:space-between;align-items:center}.left-footer-smart-checkout{font-size:.8em;padding-right:12px}@media screen and (max-width: 992px){.body-cart{padding:0 0 70px}.container.container-main.container-cart{padding:0 20px !important}.content-footer-smart-checkout.text-footer{display:block !important;width:100%;text-align:center}.box.formpag span{background-size:240px;width:240px}#footer-smart-checkout{padding:0 20px}.right-footer-smart-checkout img{max-width:260px}#footer-smart-checkout .content-footer-smart-checkout{flex-flow:column nowrap;align-items:flex-start}}#payment-group-payMeePaymentGroup span{font-size:0;background-image:url(/arquivos/paymee-arrows.png) !important}#payment-group-payMeePaymentGroup span:after{font-size:12px;content:"Transf. Bancária"}
+
+.n1-bg-black {
+    background: #000 !important;
+}
+
+.n1-header{
+    background: #002b62;
+    padding: 25px 0 !important;
+}
+
+.n1-checkout {
+    padding: 0 !important;
+    border: none;
+}
+
+.n1-header .n1-checkout-wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.n1-checkout-wrapper {
+    width: 90%;
+    max-width: 970px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.n1-header-selo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 7px;
+}
+
+.n1-header-selo p {
+    font-family: 'comfortaaregular';
+    font-size: 14px;
+    color: white;
+    margin-top: 5px;
+    width: 140px;
+    letter-spacing: 1px;
+}
+
+.n1-header-logo-copel img {
+    width: 112px;
+    height: 48px;
+}
+
+.n1-footer {
+    background: #002b62 !important;
+    padding: 0 !important;
+}
+
+.n1-footer-logos,
+.n1-footer-selos {
+    display: flex;
+    gap: 15px;
+}
+
+.n1-footer-container-checkout-copel {
+    display: flex;
+    padding: 25px 0;
+    justify-content: space-between;
+}
+
+.n1-footer-title-checkout p {
+    font-family: 'comfortaaregular';
+    font-size: 14px;
+    text-align: left;
+    color: white;
+    letter-spacing: 1px;
+}
+
+.n1-footer-text-copyright {
+    border-top: 1px solid white;
+    padding: 25px 0;
+}
+
+.n1-footer-text-copyright p {
+    font-family: 'comfortaaregular';
+    font-size: 12px;
+    text-align: left;
+    color: white;
+    letter-spacing: 1px;
+}
+
+@media (max-width: 860px) {
+    
+    .n1-footer-container-checkout-copel {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .n1-footer-subcontainer.selos,
+    .n1-footer-subcontainer.desenvolvido {
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+    }
+
+    .n1-header .n1-checkout-wrapper {
+        margin: auto;
+    }
+
+    .n1-footer-logos,
+    .n1-footer-selos {
+        gap: 11px;
+    }
+}
