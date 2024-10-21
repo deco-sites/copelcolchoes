@@ -1,5 +1,6 @@
 import Icon from "$store/components/ui/Icon.tsx";
-import type { Image as LiveImage } from "deco-sites/std/components/types.ts";
+import type { ImageWidget } from "apps/admin/widgets.ts";
+import Image from "apps/website/components/Image.tsx";
 import { FooterSectionItem } from "./Payments.tsx";
 import SocialNetWorks, { SocialItem } from "./SocialNetWorks.tsx";
 
@@ -25,7 +26,7 @@ function SectionItem({ item }: { item: Item }) {
 }
 
 export interface SecuritiesItem {
-  image: LiveImage;
+  image: ImageWidget;
 }
 
 export interface FooterImage {
@@ -33,7 +34,7 @@ export interface FooterImage {
   images: FooterLink[];
 }
 export interface FooterLink {
-  image: LiveImage;
+  image: ImageWidget;
   alt: string;
   link: string;
 }
@@ -168,11 +169,12 @@ function Footer(
                   payments.map((item) => (
                     <li class="lg:w-[3.125rem] mr-[0.3125rem] mb-4">
                       <span>
-                        <img
-                          loading="lazy"
-                          src={item.image}
-                          width={34}
-                          height={25}
+                        <Image
+                          fetchPriority="high"
+                          loading="eager"
+                          src={item.image || ""}
+                          width={35}
+                          height={21}
                           alt={item.alt || "footer image"}
                           class="h-auto w-full inline-block align-middle mix-blend-multiply"
                         />
@@ -192,10 +194,12 @@ function Footer(
                     <li class="w-[3.8125rem] flex items-center">
                       <span>
                         <a href={item.href || "#"} class="block">
-                          <img
-                            loading="lazy"
-                            src={item.image}
-                            width={61}
+                          <Image
+                            fetchPriority="high"
+                            loading="eager"
+                            src={item.image || ""}
+                            width={73}
+                            height={34}
                             alt={item.alt || "footer image"}
                             class="h-auto w-full inline-block align-middle mix-blend-multiply"
                           />
@@ -214,13 +218,15 @@ function Footer(
                   {poweredby?.map((item) => (
                     item.images.map((image) => (
                       <a href={image.link}>
-                        <img
+                        <Image
+                          fetchPriority="high"
+                          loading="eager"
                           src={image.image}
                           alt={image.alt}
-                          width={89}
-                          height={20}
+                          width={73}
+                          height={34}
                           target="_blank"
-                          class="w-auto h-auto"
+                          // class="w-auto h-auto"
                         />
                       </a>
                     ))

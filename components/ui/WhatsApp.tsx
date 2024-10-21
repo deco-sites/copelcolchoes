@@ -1,10 +1,10 @@
-import Icon from "$store/components/ui/Icon.tsx";
-import type { Image as LiveImage } from "deco-sites/std/components/types.ts";
 import BackToTop from "$store/islands/BackToTopButton.tsx";
+import type { ImageWidget } from "apps/admin/widgets.ts";
+import Image from "apps/website/components/Image.tsx";
 
 export interface Props {
   phone?: number;
-  whatsappImage: LiveImage;
+  whatsappImage: ImageWidget;
 }
 
 function WhatsApp({ phone, whatsappImage }: Props) {
@@ -20,10 +20,11 @@ function WhatsApp({ phone, whatsappImage }: Props) {
         aria-label="Chat on WhatsApp"
         target="_blank"
       >
-        <img
+        <Image
+          fetchPriority="high"
+          loading="eager"
           src={whatsappImage}
           alt="Whatsapp"
-          class="w-[65%]"
           width={35}
           height={35}
         />
