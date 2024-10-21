@@ -94,13 +94,12 @@ export default function BannerMarcas(props: Props) {
                   title={item.label}
                 >
                   <Image
-                    fetchPriority="auto"
+                    fetchPriority="high"
                     loading="lazy"
                     width={250}
                     height={250}
                     src={item.image}
                     alt={item.label}
-                    decoding="auto"
                     class="w-full h-full"
                   />
                 </a>
