@@ -1,7 +1,8 @@
 import Icon from "$store/components/ui/Icon.tsx";
 import Slider from "$store/components/ui/Slider.tsx";
 import SliderJS from "$store/islands/SliderJS.tsx";
-import type { Image as LiveImage } from "deco-sites/std/components/types.ts";
+import type { ImageWidget } from "apps/admin/widgets.ts";
+import Image from "apps/website/components/Image.tsx";
 import { useId } from "preact/hooks";
 
 export interface ImageGalleryItem {
@@ -9,7 +10,7 @@ export interface ImageGalleryItem {
   label: string;
 
   /** @description Imagem */
-  image: LiveImage;
+  image: ImageWidget;
 
   /** @description Link */
   href?: string;
@@ -92,10 +93,14 @@ export default function BannerMarcas(props: Props) {
                   href={item.href}
                   title={item.label}
                 >
-                  <img
+                  <Image
+                    fetchPriority="auto"
+                    loading="lazy"
+                    width={250}
+                    height={250}
                     src={item.image}
                     alt={item.label}
-                    decoding="async"
+                    decoding="auto"
                     class="w-full h-full"
                   />
                 </a>

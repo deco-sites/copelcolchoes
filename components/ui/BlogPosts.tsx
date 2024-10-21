@@ -37,13 +37,13 @@ export default function BlogPosts({
               >
                 <div class="h-full w-full">
                   <Image
-                    fetchPriority="high"
+                    fetchPriority="auto"
                     loading="eager"
                     src={post.banner}
                     alt={post.alt || "Banner da postagem do blog"}
                     class="object-cover inline-block"
-                    width={374}
-                    height={248}
+                    width={460}
+                    height={305}
                   />
                 </div>
               </a>
