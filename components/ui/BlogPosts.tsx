@@ -1,9 +1,9 @@
-import type { Image as LiveImage } from "deco-sites/std/components/types.ts";
-import Image from "deco-sites/std/components/Image.tsx";
+import type { ImageWidget } from "apps/admin/widgets.ts";
+import Image from "apps/website/components/Image.tsx";
 
 export interface Post {
   /** @description Banners do post */
-  banner: LiveImage;
+  banner: ImageWidget;
   /** @description Texto alternativo */
   alt?: string;
   /** @description Link do post */
@@ -37,10 +37,11 @@ export default function BlogPosts({
               >
                 <div class="h-full w-full">
                   <Image
-                    loading="lazy"
+                    fetchPriority="high"
+                    loading="eager"
                     src={post.banner}
                     alt={post.alt || "Banner da postagem do blog"}
-                    class="object-cover h-full w-full inline-block"
+                    class="object-cover inline-block"
                     width={374}
                     height={248}
                   />
