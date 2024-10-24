@@ -6238,10 +6238,6 @@ details.collapse summary::-webkit-details-marker {
 .border-none {
   border-style: none;
 }
-.border-\[\#002A61\] {
-  --tw-border-opacity: 1;
-  border-color: rgb(0 42 97 / var(--tw-border-opacity));
-}
 .border-\[\#707070\] {
   --tw-border-opacity: 1;
   border-color: rgb(112 112 112 / var(--tw-border-opacity));
@@ -6409,10 +6405,6 @@ details.collapse summary::-webkit-details-marker {
 .bg-\[\#000080\] {
   --tw-bg-opacity: 1;
   background-color: rgb(0 0 128 / var(--tw-bg-opacity));
-}
-.bg-\[\#002b62\] {
-  --tw-bg-opacity: 1;
-  background-color: rgb(0 43 98 / var(--tw-bg-opacity));
 }
 .bg-\[\#0D1717\] {
   --tw-bg-opacity: 1;
@@ -7332,10 +7324,6 @@ details.collapse summary::-webkit-details-marker {
   --tw-text-opacity: 1;
   color: rgb(0 43 98 / var(--tw-text-opacity));
 }
-.text-\[\#041F33\] {
-  --tw-text-opacity: 1;
-  color: rgb(4 31 51 / var(--tw-text-opacity));
-}
 .text-\[\#057EB5\] {
   --tw-text-opacity: 1;
   color: rgb(5 126 181 / var(--tw-text-opacity));
@@ -7765,6 +7753,9 @@ details.collapse summary::-webkit-details-marker {
   }
 .animate-slide-bottom {
     animation: slide-bottom-frame 0.4s ease normal;
+  }
+.filter-black {
+        filter: grayscale(1) brightness(1) contrast(100);
   }
 
 .group:disabled .group-disabled\:animate-progress {

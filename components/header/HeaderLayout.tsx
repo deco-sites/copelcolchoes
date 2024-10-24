@@ -25,7 +25,7 @@ function HeaderLayout({ minicart, searchbar }: Props) {
         <div class="flex items-center justify-center gap-5">
           <Buttons variant="menu"/>
           <a href="/" class="" aria-label="Store logo">
-            <Icon id="Logo" class="max-lg:hidden" width={WIDTH_LOGO} height={79}/>
+            <Icon id="Logo" class="max-lg:hidden filter-black" width={WIDTH_LOGO} height={79}/>
           </a>
         </div>
         <div className="hidden md:flex md:ml-[32px] flex-1 w-full">
@@ -33,7 +33,7 @@ function HeaderLayout({ minicart, searchbar }: Props) {
         </div>
         <div class="lg:hidden logo-mobile">
           <a href="/" class="" aria-label="Store logo">
-            <Icon id="Logo" width={105} height={52.16}/>
+            <Icon id="Logo" class="filter-black" width={105} height={52.16}/>
           </a>
         </div>
         <div class="flex w-full md:w-auto justify-start md:justify-end 2xl:mr-[50px] 2xl:ml-0 ml-[8%] ">
@@ -42,8 +42,8 @@ function HeaderLayout({ minicart, searchbar }: Props) {
               <div class="hidden lg:flex relative items-center justify-center">
                 <a class="relative font-medium text-primary text-[0.8125rem] leading-[1.125rem] w-full flex items-center justify-center appearance-none" href="https://www.copelcolchoes.com.br/_secure/account">
                   {device === 'desktop'
-            ? (<Icon class="mr-[0.625rem]" id="User" size={36} strokeWidth={1}/>)
-            : (<Icon class="" id="UserMobile" size={28} strokeWidth={1}/>)}
+            ? (<Icon class="mr-[0.625rem] filter-black" id="User" size={36} strokeWidth={1}/>)
+            : (<Icon class="filter-black" id="UserMobile" size={28} strokeWidth={1}/>)}
                   
                   <p class={`max-lg:hidden text-[14px] leading-[21px] text-[#656565] font-black`}>
                     Bem vindo! <br /> <span class={`text-primary underline`}>Entre</span>  ou <span class={`text-primary underline`}>cadastre-se</span>
@@ -54,8 +54,8 @@ function HeaderLayout({ minicart, searchbar }: Props) {
             <div class="m-0 flex lg:items-center lg:w-[107px]">
               <a class="flex items-center justify-center w-full md:w-auto" href="/nossas-lojas">
                 {device === 'desktop'
-            ? (<Icon class="mr-[0.625rem]" id="Lojas" width={36} height={36} strokeWidth={1}/>)
-            : (<Icon class="" id="LojasMobile" width={28} height={28} strokeWidth={1}/>)}
+            ? (<Icon class="mr-[0.625rem] filter-black" id="Lojas" width={36} height={36} strokeWidth={1}/>)
+            : (<Icon class="filter-black" id="LojasMobile" width={28} height={28} strokeWidth={1}/>)}
 
                 <span class={`max-md:ml-[5px] text-[12px] md:text-[14px] leading-[21px] text-[#656565] font-black`}>Lojas <br /> Copel</span>
               </a>

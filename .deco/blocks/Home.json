@@ -9,7 +9,7 @@
         },
         "value": [
           {
-            "__resolveType": "Default - Design System"
+            "__resolveType": "Design System - Black Friday"
           },
           {
             "__resolveType": "SEODefault"
@@ -21,6 +21,7 @@
             "__resolveType": "Header Global"
           },
           {
+            "__resolveType": "site/sections/Container.tsx",
             "isHeader": false,
             "sections": [
               {
@@ -174,8 +175,7 @@
                 "withContainer": false,
                 "verticalSpacing": "both"
               }
-            ],
-            "__resolveType": "site/sections/Container.tsx"
+            ]
           },
           {
             "__resolveType": "Categorias - ImageGallery"
@@ -193,6 +193,7 @@
             "__resolveType": "NewsLetter"
           },
           {
+            "__resolveType": "site/sections/Container.tsx",
             "sections": [
               {
                 "label": "Blog",
@@ -218,13 +219,13 @@
                 "withContainer": true,
                 "verticalSpacing": "top"
               }
-            ],
-            "__resolveType": "site/sections/Container.tsx"
+            ]
           },
           {
             "__resolveType": "FloatingButtons"
           },
           {
+            "__resolveType": "site/sections/Container.tsx",
             "isHeader": false,
             "sections": [
               {
@@ -474,7 +475,6 @@
                 "verticalSpacing": "none"
               }
             ],
-            "__resolveType": "site/sections/Container.tsx",
             "backgroundColor": "pink"
           },
           {
