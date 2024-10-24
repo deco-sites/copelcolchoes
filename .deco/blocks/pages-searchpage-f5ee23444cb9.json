@@ -1,1 +1,32 @@
-{"name":"Search page","path":"/busca","sections":[{"__resolveType":"Default - Design System"},{"jsonLD":null,"__resolveType":"commerce/sections/Seo/SeoPLP.tsx"},{"__resolveType":"analytics"},{"__resolveType":"Header Global"},{"__resolveType":"categoryBreadcrumb"},{"__resolveType":"SearchResults Global"},{"__resolveType":"Footer Global"},{"__resolveType":"FloatingButtons"}],"__resolveType":"$live/pages/LivePage.tsx"}
+{
+  "name": "Search page",
+  "path": "/busca",
+  "sections": [
+    {
+      "__resolveType": "Design System - Black Friday"
+    },
+    {
+      "__resolveType": "commerce/sections/Seo/SeoPLP.tsx",
+      "jsonLD": null
+    },
+    {
+      "__resolveType": "analytics"
+    },
+    {
+      "__resolveType": "Header Global"
+    },
+    {
+      "__resolveType": "categoryBreadcrumb"
+    },
+    {
+      "__resolveType": "SearchResults Global"
+    },
+    {
+      "__resolveType": "Footer Global"
+    },
+    {
+      "__resolveType": "FloatingButtons"
+    }
+  ],
+  "__resolveType": "$live/pages/LivePage.tsx"
+}

@@ -1,4 +1,4 @@
-import type { SectionProps } from "$live/mod.ts";
+import { type SectionProps } from "@deco/deco";
 import Searchbar from "$store/components/search/Searchbar.tsx";
 
 export interface Props {

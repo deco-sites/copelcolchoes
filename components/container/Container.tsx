@@ -1,4 +1,4 @@
-import { Section } from "$live/blocks/section.ts";
+import { type Section } from "@deco/deco/blocks";
 import { headerHeight } from "$store/components/header/constants.ts";
 import { clx } from "$store/sdk/clx.ts";
 

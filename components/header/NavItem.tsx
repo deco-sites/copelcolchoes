@@ -81,7 +81,7 @@ function NavItemDropDown(
   return (
     <div
       class={clx(`shadow-md rounded-b-[20px] w-full left-[0] fixed top-[218px] pt-[30px] pb-[50px] px-6 z-20 ${activeMenu ? 'flex' : 'hidden'} hover:flex 
-        group-hover:flex flex-col items-center bg-white border-t-[4px] border-[#002A61] ${navStyle[label as keyof typeof navStyle] || ""}`)}
+        group-hover:flex flex-col items-center bg-white border-t-[4px] border-primary ${navStyle[label as keyof typeof navStyle] || ""}`)}
     >
       <div class={clx(`md:w-[1440px] mx-[auto] my-[0] lg:pl-[80px] md:pl-[100px] 2xl:pl-[50px] flex items-center justify-start menu-container`)}>
         <div class="flex justify-between xl:w-[85%] xl:pr-[70px] 2xl:w-[95%] container-menu">
@@ -97,7 +97,7 @@ function NavItemDropDown(
                       element.children.map((child) => (
                         <li class="lg:w-[5.5rem] xl:w-[12.5rem]">
                           <a
-                            class="font-comfortaa text-[#041F33] lg:text-[12px] xl:text-[14px] leading-[19.6px] inline-block w-full whitespace-break-spaces font-normal"
+                            class="font-comfortaa text-primary lg:text-[12px] xl:text-[14px] leading-[19.6px] inline-block w-full whitespace-break-spaces font-normal"
                             href={child.href || ""}
                           >
                             {child.label}
@@ -180,7 +180,7 @@ function NavItem({ item }: { item: INavItem }) {
         <div class={`flex items-center`}>
           {highlighted && (
             <Icon
-              class="text-primary"
+              class="text-primary filter-black"
               id="IconMenuOutlet"
               size={18}
             />

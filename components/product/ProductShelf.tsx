@@ -1,4 +1,4 @@
-import type { LoaderReturnType } from "$live/types.ts";
+import { type LoaderReturnType } from "@deco/deco";
 import type { Layout as CardLayout } from "$store/components/product/ProductCard.tsx";
 import ProductCard from "$store/components/product/ProductCard.tsx";
 import {

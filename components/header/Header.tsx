@@ -1,4 +1,4 @@
-import type { LoaderReturnType } from "$live/types.ts";
+import { type LoaderReturnType } from "@deco/deco";
 import type { EditableProps as SearchbarProps } from "$store/components/search/Searchbar.tsx";
 import Modals from "$store/islands/HeaderModals.tsx";
 import type { Product, Suggestion } from "apps/commerce/types.ts";

@@ -7,7 +7,7 @@ import { formatPrice } from "$store/sdk/format.ts";
 import { SendEventOnLoad } from "$store/sdk/analytics.tsx";
 import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalyticsItem.ts";
 import type { ProductDetailsPage } from "apps/commerce/types.ts";
-import type { LoaderReturnType } from "$live/types.ts";
+import { type LoaderReturnType } from "@deco/deco";
 import AddToCartActions from "$store/islands/AddToCartActions.tsx";
 import ProductDetailsImages from "$store/islands/ProductDetailsImages.tsx";
 import type { Product } from "apps/commerce/types.ts";

@@ -1,4 +1,4 @@
-import type { SectionProps } from "$live/types.ts";
+import { type SectionProps } from "@deco/deco";
 import {
   BUTTON_VARIANTS,
   ButtonVariant,

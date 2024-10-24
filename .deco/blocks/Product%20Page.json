@@ -1,1 +1,120 @@
-{"name":"Product page","path":"/:slug/p","sections":[{"__resolveType":"Default - Design System"},{"__resolveType":"analytics"},{"jsonLD":{"slug":{"param":"slug","__resolveType":"website/functions/requestToParam.ts"},"__resolveType":"vtex/loaders/intelligentSearch/productDetailsPage.ts"},"__resolveType":"commerce/sections/Seo/SeoPDP.tsx"},{"__resolveType":"Header Global"},{"sections":[{"label":"ProductDetails","shadow":"none","section":{"page":{"slug":{"param":"slug","__resolveType":"website/functions/requestToParam.ts"},"__resolveType":"vtex/loaders/intelligentSearch/productDetailsPage.ts"},"variant":"slider","yourViews":{"key":"945b6e04-d2fd-40de-b2d8-bdb100431d3a","auth":"ac001e41-b426-458e-a605-ef5eebf17521"},"buyTogether":{"products":{"slug":{"param":"slug","__resolveType":"website/functions/requestToParam.ts"},"crossSelling":"accessories","__resolveType":"vtex/loaders/legacy/relatedProductsLoader.ts"},"__resolveType":"site/sections/Product/BuyTogether.tsx"},"__resolveType":"site/sections/Product/ProductDetails.tsx","shipmentPolitics":{"link":"#","label":"Confira nossa política de frete e entregas"},"buyTogetherLoader":{"slug":{"param":"slug","__resolveType":"website/functions/requestToParam.ts"},"count":10,"crossSelling":"accessories","__resolveType":"vtex/loaders/legacy/relatedProductsLoader.ts"},"shareableNetworks":["Facebook","Twitter","Email","WhatsApp"]},"spacing":10,"withContainer":true,"verticalSpacing":"bottom"}],"__resolveType":"site/sections/Container.tsx"},{"sections":[{"label":"Reviews","shadow":"none","section":{"page":{"slug":{"param":"slug","__resolveType":"website/functions/requestToParam.ts"},"__resolveType":"vtex/loaders/intelligentSearch/productDetailsPage.ts"},"yourViews":{"key":"945b6e04-d2fd-40de-b2d8-bdb100431d3a","auth":"ac001e41-b426-458e-a605-ef5eebf17521"},"__resolveType":"site/sections/Product/ProductReview.tsx"},"withContainer":true,"verticalSpacing":"top"}],"__resolveType":"site/sections/Container.tsx"},{"__resolveType":"Produtos relacionados - ProductShelf"},{"__resolveType":"Footer Global"},{"__resolveType":"FloatingButtons"},{"__resolveType":"site/sections/Integrations/JivoChat.tsx"}],"__resolveType":"$live/pages/LivePage.tsx"}
+{
+  "name": "Product page",
+  "path": "/:slug/p",
+  "sections": [
+    {
+      "__resolveType": "Design System - Black Friday"
+    },
+    {
+      "__resolveType": "analytics"
+    },
+    {
+      "__resolveType": "commerce/sections/Seo/SeoPDP.tsx",
+      "jsonLD": {
+        "slug": {
+          "param": "slug",
+          "__resolveType": "website/functions/requestToParam.ts"
+        },
+        "__resolveType": "vtex/loaders/intelligentSearch/productDetailsPage.ts"
+      }
+    },
+    {
+      "__resolveType": "Header Global"
+    },
+    {
+      "sections": [
+        {
+          "label": "ProductDetails",
+          "shadow": "none",
+          "section": {
+            "page": {
+              "slug": {
+                "param": "slug",
+                "__resolveType": "website/functions/requestToParam.ts"
+              },
+              "__resolveType": "vtex/loaders/intelligentSearch/productDetailsPage.ts"
+            },
+            "yourViews": {
+              "key": "945b6e04-d2fd-40de-b2d8-bdb100431d3a",
+              "auth": "ac001e41-b426-458e-a605-ef5eebf17521"
+            },
+            "__resolveType": "site/sections/Product/ProductDetails.tsx",
+            "variant": "slider",
+            "buyTogether": {
+              "products": {
+                "slug": {
+                  "param": "slug",
+                  "__resolveType": "website/functions/requestToParam.ts"
+                },
+                "crossSelling": "accessories",
+                "__resolveType": "vtex/loaders/legacy/relatedProductsLoader.ts"
+              },
+              "__resolveType": "site/sections/Product/BuyTogether.tsx"
+            },
+            "shipmentPolitics": {
+              "link": "#",
+              "label": "Confira nossa política de frete e entregas"
+            },
+            "buyTogetherLoader": {
+              "slug": {
+                "param": "slug",
+                "__resolveType": "website/functions/requestToParam.ts"
+              },
+              "count": 10,
+              "crossSelling": "accessories",
+              "__resolveType": "vtex/loaders/legacy/relatedProductsLoader.ts"
+            },
+            "shareableNetworks": [
+              "Facebook",
+              "Twitter",
+              "Email",
+              "WhatsApp"
+            ]
+          },
+          "withContainer": true,
+          "verticalSpacing": "bottom",
+          "spacing": 10
+        }
+      ],
+      "__resolveType": "site/sections/Container.tsx"
+    },
+    {
+      "__resolveType": "site/sections/Container.tsx",
+      "sections": [
+        {
+          "label": "Reviews",
+          "shadow": "none",
+          "section": {
+            "page": {
+              "slug": {
+                "param": "slug",
+                "__resolveType": "website/functions/requestToParam.ts"
+              },
+              "__resolveType": "vtex/loaders/intelligentSearch/productDetailsPage.ts"
+            },
+            "yourViews": {
+              "key": "945b6e04-d2fd-40de-b2d8-bdb100431d3a",
+              "auth": "ac001e41-b426-458e-a605-ef5eebf17521"
+            },
+            "__resolveType": "site/sections/Product/ProductReview.tsx"
+          },
+          "withContainer": true,
+          "verticalSpacing": "top"
+        }
+      ]
+    },
+    {
+      "__resolveType": "Produtos relacionados - ProductShelf"
+    },
+    {
+      "__resolveType": "Footer Global"
+    },
+    {
+      "__resolveType": "FloatingButtons"
+    },
+    {
+      "__resolveType": "site/sections/Integrations/JivoChat.tsx"
+    }
+  ],
+  "__resolveType": "$live/pages/LivePage.tsx"
+}

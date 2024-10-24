@@ -1,6 +1,6 @@
-import type { SectionProps } from "$live/types.ts";
+import { type SectionProps } from "@deco/deco";
 
-import type { LoaderReturnType } from "$live/types.ts";
+import { type LoaderReturnType } from "@deco/deco";
 import type { ProductListingPage } from "apps/commerce/types.ts";
 
 export interface Category {
