@@ -79,7 +79,7 @@ function Footer(
       <footer class="lg:relative">
         <div class="flex text-primary lg:justify-between lg:py-16 container lg:max-w-[80rem] w-full m-auto lg:px-[4rem] px-[1.375rem] max-lg:flex-col max-lg:pb-[1.875rem]">
           <div class="flex flex-col w-1/4 max-lg:w-full">
-            <div class="flex flex-col mb-[2.0625rem] w-[9.9375rem] max-lg:text-center max-lg:my-6 max-lg:mx-auto ">
+            <div class="flex flex-col mb-[2.0625rem] w-[9.9375rem] max-lg:text-center max-lg:my-6 max-lg:mx-auto filter-black">
               <Icon id="Logo" class={"max-lg:m-auto"} height={79} width={159} />
             </div>
             <div class="flex flex-col max-lg:mx-auto">
