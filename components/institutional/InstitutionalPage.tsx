@@ -1,5 +1,5 @@
 import { Head } from "$fresh/runtime.ts";
-import { Section } from "$live/blocks/section.ts";
+import { type Section } from "@deco/deco/blocks";
 
 export interface Props {
   title: string;

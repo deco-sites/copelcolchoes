@@ -1,1 +1,38 @@
-{"name":"Lojas","path":"/nossas-lojas","sections":{"variants":[{"rule":{"__resolveType":"$live/matchers/MatchAlways.ts"},"value":[{"__resolveType":"Default - Design System"},{"__resolveType":"SEODefault"},{"__resolveType":"analytics"},{"__resolveType":"Header Global"},{"__resolveType":"site/sections/Institutional/StoreLocator.tsx"},{"__resolveType":"Footer Global"}]}],"__resolveType":"$live/flags/multivariate.ts"},"__resolveType":"$live/pages/LivePage.tsx"}
+{
+  "name": "Lojas",
+  "path": "/nossas-lojas",
+  "sections": {
+    "variants": [
+      {
+        "rule": {
+          "__resolveType": "$live/matchers/MatchAlways.ts"
+        },
+        "value": [
+          {
+            "__resolveType": "website/sections/Rendering/Lazy.tsx",
+            "section": {
+              "__resolveType": "Design System - Black Friday"
+            }
+          },
+          {
+            "__resolveType": "SEODefault"
+          },
+          {
+            "__resolveType": "analytics"
+          },
+          {
+            "__resolveType": "Header Global"
+          },
+          {
+            "__resolveType": "site/sections/Institutional/StoreLocator.tsx"
+          },
+          {
+            "__resolveType": "Footer Global"
+          }
+        ]
+      }
+    ],
+    "__resolveType": "$live/flags/multivariate.ts"
+  },
+  "__resolveType": "$live/pages/LivePage.tsx"
+}

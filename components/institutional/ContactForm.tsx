@@ -109,7 +109,7 @@ function ContactForm({
                   >
                     <a
                       href="#"
-                      class="flex items-center justify-center w-full h-full text-white"
+                      class="flex items-center justify-center w-full h-full text-white "
                       target="_blank"
                       aria-label={social.label}
                     >
