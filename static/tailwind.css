@@ -5432,6 +5432,9 @@ details.collapse summary::-webkit-details-marker {
 .w-\[5px\] {
   width: 5px;
 }
+.lg\:w-\[65\%\] {
+  width: 65%;
+}
 .w-\[70\%\] {
   width: 70%;
 }
