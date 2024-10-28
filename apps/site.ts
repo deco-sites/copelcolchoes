@@ -1,4 +1,4 @@
-import { App, AppContext as AC } from "$live/mod.ts";
+import { App, AppContext as AC } from "@deco/deco";
 import std, { Props } from "apps/compat/std/mod.ts";
 import commerce from "apps/commerce/mod.ts";
 
@@ -23,4 +23,4 @@ export default function Site(
 
 export type Storefront = ReturnType<typeof Site>;
 export type AppContext = AC<Storefront>;
-export { onBeforeResolveProps } from "apps/compat/$live/mod.ts";
+export { onBeforeResolveProps } from "apps/website/mod.ts";

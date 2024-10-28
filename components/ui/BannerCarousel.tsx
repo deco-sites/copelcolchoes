@@ -242,7 +242,7 @@ function Buttons({ className }: ButtonsProps) {
       >
         <Slider.PrevButton class="btn btn-circle border-none shadow-md bg-primary hover:bg-primary min-h-0 h-[42px] w-[42px]">
           <Icon
-            class="text-white"
+            class="text-white filter-brightness-saturate-white"
             size={17}
             id="LeftArrowFigma"
           />
@@ -253,7 +253,7 @@ function Buttons({ className }: ButtonsProps) {
       >
         <Slider.NextButton class="btn btn-circle border-none shadow-md bg-primary hover:bg-primary min-h-0 h-[42px] w-[42px]">
           <Icon
-            class="text-white"
+            class="text-white filter-brightness-saturate-white"
             size={17}
             id="RightArrowFigma"
           />
