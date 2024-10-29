@@ -219,7 +219,8 @@
                 "withContainer": true,
                 "verticalSpacing": "top"
               }
-            ]
+            ],
+            "isVisible": false
           },
           {
             "__resolveType": "FloatingButtons"
@@ -419,7 +420,9 @@
                         {
                           "alt": "Deco",
                           "link": "https://deco.cx/",
-                          "image": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2415/b0a9b073-cadb-4846-ba49-ec47cbfd896d"
+                          "image": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2415/b0a9b073-cadb-4846-ba49-ec47cbfd896d",
+                          "height": 27,
+                          "width": 73
                         }
                       ]
                     },
@@ -440,7 +443,9 @@
                     {
                       "alt": "Google safe browsing",
                       "href": "https://transparencyreport.google.com/safe-browsing/search?url=https:%2F%2Fwww.copelcolchoes.com.br%2F",
-                      "image": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/f543e950-86ce-4987-ae08-ed41da242da3"
+                      "image": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/f543e950-86ce-4987-ae08-ed41da242da3",
+                      "width": 61,
+                      "height": 21
                     },
                     {
                       "alt": "PCI Vtex Certified",

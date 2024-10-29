@@ -33,9 +33,13 @@ export interface Props {
   }[];
   /** @default false */
   isHeader?: boolean;
+  isVisible?: boolean;
 }
 
-function Container({ sections, isHeader = false }: Props) {
+function Container({ sections, isHeader = false, isVisible = true }: Props) {
+
+  if (!isVisible) return null;
+
   return (
     <>
       <div class={isHeader ? "fixed top-0 w-full bg-white z-[5000] header" : ""}>
