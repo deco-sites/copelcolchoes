@@ -219,7 +219,8 @@
                 "withContainer": true,
                 "verticalSpacing": "top"
               }
-            ]
+            ],
+            "isVisible": false
           },
           {
             "__resolveType": "FloatingButtons"
