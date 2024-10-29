@@ -26,7 +26,11 @@ function SectionItem({ item }: { item: Item }) {
 }
 
 export interface SecuritiesItem {
-  image: ImageWidget;
+  image?: ImageWidget;
+  alt: string;
+  href?: string;
+  width?: number;
+  height?: number;
 }
 
 export interface FooterImage {
@@ -37,6 +41,8 @@ export interface FooterLink {
   image: ImageWidget;
   alt: string;
   link: string;
+  width?: number;
+  height?: number;
 }
 
 export interface Props {
@@ -56,7 +62,7 @@ export interface Props {
   /**
    * @title Securities
    */
-  securities?: FooterSectionItem[];
+  securities?: SecuritiesItem[];
   /**
    * @title Poweredby
    */
@@ -198,10 +204,10 @@ function Footer(
                             fetchPriority="high"
                             loading="eager"
                             src={item.image || ""}
-                            width={73}
-                            height={34}
+                            width={item.width ?? 73} 
+                            height={item.height}
                             alt={item.alt || "footer image"}
-                            class="h-auto w-full inline-block align-middle mix-blend-multiply"
+                            // class="h-auto w-full inline-block align-middle mix-blend-multiply"
                           />
                         </a>
                       </span>
@@ -223,8 +229,8 @@ function Footer(
                           loading="eager"
                           src={image.image}
                           alt={image.alt}
-                          width={73}
-                          height={34}
+                          width={image.width ?? 73} 
+                          height={image.height}
                           target="_blank"
                           // class="w-auto h-auto"
                         />
