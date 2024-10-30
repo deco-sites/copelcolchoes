@@ -11,6 +11,7 @@ const displaySearchbar = signal(false);
 const displayBuyWarning = signal(false);
 const displayTopBar = signal(true);
 const searchResultCols = signal({ mobile: 1, desktop: 2 });
+const vtexIdScriptsLoaded = signal(false);
 
 const state = {
   displayCart,
@@ -19,6 +20,7 @@ const state = {
   displayBuyWarning,
   displayTopBar,
   searchResultCols,
+  vtexIdScriptsLoaded,
 };
 
 export const useUI = () => state;
