@@ -30,13 +30,13 @@ const handleSetScope = () => {
 
 export const loadVtexIdScripts = (callback: () => void) => {
   handleLoadCss(
-    `
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap'); 
+    ` 
+        @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
 
         :root{
-            --fontPrimary: "Montserrat", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+            --fontPrimary: "Comfortaa", Arial, sans-serif;
         }        
-  
+
         /*LOGIN ESTILIZADO:*/
         .vtexIdUI * {
             font-family: var(--fontPrimary) !important; }
