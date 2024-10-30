@@ -56,7 +56,7 @@ function ModalLoginCustom() {
           strokeWidth={1}
         />
 
-        {1 && (
+        {user.value?.email && (
           <div
             class={clx(
               `modal-login-custom hidden group-hover:block hover:block duration-150 bg-transparent top-[3px] -right-5 absolute w-auto z-[100] p-6 shadow-[0_0_50px_0_rgba(0_0_0_0.08)]`,

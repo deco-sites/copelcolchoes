@@ -162,7 +162,7 @@ function Menu({ items }: Props) {
           Meus pedidos
         </a>
           
-        {1 && (
+        {user.value?.email && (
           <a href={`/api/vtexid/pub/logout?scope=copelcolchoes&returnUrl=https://www.copelcolchoes.com.br`}
             class={clx(`text-[12px] leading-[15.6px] text-primary font-comfortaa py-[8px] px-[20px] rounded-[5px] border border-primary font-bold w-full text-center`)}>
             Sair
