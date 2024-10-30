@@ -2,6 +2,9 @@ import Icon from "$store/components/ui/Icon.tsx";
 import { useUI } from "$store/sdk/useUI.ts";
 import type { INavItem } from "./NavItem.tsx";
 import { clx } from "$store/sdk/clx.ts";
+
+import { useUser } from "apps/vtex/hooks/useUser.ts";
+
 export interface Props {
   items: INavItem[];
 }
@@ -128,14 +131,18 @@ function MenuItem({ item }: { item: INavItem }) {
 function Menu({ items }: Props) {
   const { displayMenu } = useUI();
 
+  const { user } = useUser();
+
   return (
     <div class="flex flex-col justify-center pb-3 h-full">
       <div class="w-full flex items-center justify-between py-4 pb-2 px-4">
+
         <a href="https://www.copelcolchoes.com.br/_secure/account" 
           class={clx(`flex items-center justify-start gap-1 uppercase text-base-content font-comfortaa leading-[18.2px] text-[14px] font-bold tracking-[1px]`)}>
           <Icon id="XMarkMobile" width={28} height={28} strokeWidth={2} />
           <span>Entrar</span>
-        </a>      
+        </a>   
+           
         <button
           class="btn-square btn-ghost relative flex justify-center items-center rounded-full"
           onClick={() => {
@@ -154,6 +161,13 @@ function Menu({ items }: Props) {
           class={clx(`text-[12px] leading-[15.6px] text-primary font-comfortaa py-[8px] px-[20px] rounded-[5px] border border-primary font-bold w-full text-center`)}>
           Meus pedidos
         </a>
+          
+        {1 && (
+          <a href={`/api/vtexid/pub/logout?scope=copelcolchoes&returnUrl=https://www.copelcolchoes.com.br`}
+            class={clx(`text-[12px] leading-[15.6px] text-primary font-comfortaa py-[8px] px-[20px] rounded-[5px] border border-primary font-bold w-full text-center`)}>
+            Sair
+          </a>
+        )}
       </div>       
       <ul class="flex-grow flex flex-col px-4 mt-[10px]">
         {items.map((item) => <MenuItem item={item} />)}
