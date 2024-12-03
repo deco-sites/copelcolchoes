@@ -110,6 +110,7 @@ function CartButton( { device }: {device?: string} ) {
         {device === 'desktop' 
         ? (
             <Icon
+              class={`filter-black`}
               id="ShoppingCart"
               size={36}
               strokeWidth={1}
@@ -117,7 +118,7 @@ function CartButton( { device }: {device?: string} ) {
           )
         : (
             <Icon
-              class={`-translate-x-[10px]`}
+              class={`-translate-x-[10px] filter-black`}
               id="ShoppingCartMobile"
               size={28}
               strokeWidth={1}
