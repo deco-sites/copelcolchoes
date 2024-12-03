@@ -3,7 +3,7 @@
   "path": "/my-account",
   "sections": [
     {
-      "__resolveType": "Default - Design System"
+      "__resolveType": "Design System - Black Friday"
     },
     {
       "__resolveType": "website/sections/Rendering/Lazy.tsx",
