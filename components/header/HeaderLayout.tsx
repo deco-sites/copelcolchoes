@@ -31,7 +31,7 @@ function HeaderLayout({ minicart, searchbar }: Props) {
           <a href="/" aria-label="Store logo">
             <Icon
               id="Logo"
-              class="max-lg:hidden filter-black"
+              class="max-lg:hidden"
               width={WIDTH_LOGO}
               height={79}
             />
@@ -44,7 +44,7 @@ function HeaderLayout({ minicart, searchbar }: Props) {
         </div>
         <div class="lg:hidden logo-mobile">
           <a href="/" aria-label="Store logo">
-            <Icon id="Logo" class="filter-black" width={105} height={52.16} />
+            <Icon id="Logo" width={105} height={52.16} />
           </a>
         </div>
         <div class="flex w-full md:w-auto justify-start md:justify-end 2xl:mr-[50px] 2xl:ml-0 ml-[8%] ">
@@ -61,7 +61,7 @@ function HeaderLayout({ minicart, searchbar }: Props) {
                   {device === "desktop"
                     ? (
                       <Icon
-                        class="mr-[0.625rem] filter-black"
+                        class="mr-[0.625rem]"
                         id="User"
                         size={36}
                         strokeWidth={1}
@@ -69,7 +69,6 @@ function HeaderLayout({ minicart, searchbar }: Props) {
                     )
                     : (
                       <Icon
-                        class="filter-black"
                         id="UserMobile"
                         size={28}
                         strokeWidth={1}
@@ -93,7 +92,7 @@ function HeaderLayout({ minicart, searchbar }: Props) {
                 {device === "desktop"
                   ? (
                     <Icon
-                      class="mr-[0.625rem] filter-black"
+                      class="mr-[0.625rem]"
                       id="Lojas"
                       width={36}
                       height={36}
@@ -102,7 +101,6 @@ function HeaderLayout({ minicart, searchbar }: Props) {
                   )
                   : (
                     <Icon
-                      class="filter-black"
                       id="LojasMobile"
                       width={28}
                       height={28}

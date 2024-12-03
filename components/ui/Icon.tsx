@@ -117,7 +117,6 @@ function Icon({
       width={width ?? size}
       height={height ?? size}
       strokeWidth={strokeWidth}
-      // class="filter-black"
     >
       <use href={asset(`/sprites.svg#${id}`)} />
     </svg>
