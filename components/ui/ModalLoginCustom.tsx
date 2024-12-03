@@ -50,7 +50,7 @@ function ModalLoginCustom() {
         }}
       >
         <Icon
-          class="mr-[0.625rem]"
+          class="mr-[0.625rem] filter-black"
           id="User"
           size={36}
           strokeWidth={1}
