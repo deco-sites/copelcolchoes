@@ -6263,6 +6263,9 @@ details.collapse summary::-webkit-details-marker {
 .border-2 {
   border-width: 2px;
 }
+.border-4 {
+  border-width: 4px;
+}
 .border-\[1px\] {
   border-width: 1px;
 }
@@ -6280,6 +6283,9 @@ details.collapse summary::-webkit-details-marker {
 }
 .border-solid {
   border-style: solid;
+}
+.border-dashed {
+  border-style: dashed;
 }
 .border-none {
   border-style: none;
@@ -7384,10 +7390,10 @@ details.collapse summary::-webkit-details-marker {
   letter-spacing: 0em;
 }
 .text-\[\#\#444444\] {
-  color: #444444;
+  color: ##444444;
 }
 .text-\[\#\#8c9aad\] {
-  color: #8c9aad;
+  color: ##8c9aad;
 }
 .text-\[\#002b62\] {
   --tw-text-opacity: 1;
