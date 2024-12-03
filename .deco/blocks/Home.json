@@ -9,7 +9,7 @@
         },
         "value": [
           {
-            "__resolveType": "Design System - Black Friday"
+            "__resolveType": "Default - Design System"
           },
           {
             "__resolveType": "SEODefault"
@@ -483,9 +483,9 @@
             "backgroundColor": "pink"
           },
           {
+            "__resolveType": "site/sections/Container.tsx",
             "isHeader": false,
             "sections": [],
-            "__resolveType": "site/sections/Container.tsx",
             "backgroundColor": "pink"
           }
         ]

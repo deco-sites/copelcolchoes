@@ -3,7 +3,7 @@
   "path": "/busca",
   "sections": [
     {
-      "__resolveType": "Design System - Black Friday"
+      "__resolveType": "Default - Design System"
     },
     {
       "__resolveType": "commerce/sections/Seo/SeoPLP.tsx",
