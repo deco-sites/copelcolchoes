@@ -180,7 +180,7 @@ function NavItem({ item }: { item: INavItem }) {
         <div class={`flex items-center`}>
           {highlighted && (
             <Icon
-              class="text-primary filter-black"
+              class="text-primary"
               id="IconMenuOutlet"
               size={18}
             />
