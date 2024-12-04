@@ -7839,9 +7839,6 @@ details.collapse summary::-webkit-details-marker {
 .animate-slide-bottom {
     animation: slide-bottom-frame 0.4s ease normal;
   }
-.filter-black {
-        filter: grayscale(1) brightness(1) contrast(100);
-  }
 
 .group:disabled .group-disabled\:animate-progress {
   animation: progress-frame ease normal

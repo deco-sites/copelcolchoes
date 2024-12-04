@@ -357,13 +357,6 @@
     animation: slide-bottom-frame 0.4s ease normal;
   }
 
-  .filter-black {
-        filter: grayscale(1) brightness(1) contrast(100);
-  }
-
-  .filter-white {
-    filter: brightness(0) saturate(100%) invert(98%) sepia(100%) saturate(28%) hue-rotate(329deg) brightness(107%) contrast(100%);
-  }
 }
 
 .group:disabled .group-disabled\:animate-progress {
