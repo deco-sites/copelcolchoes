@@ -3,9 +3,6 @@
   "path": "/:slug/p",
   "sections": [
     {
-      "__resolveType": "Default - Design System"
-    },
-    {
       "__resolveType": "analytics"
     },
     {
@@ -22,6 +19,7 @@
       "__resolveType": "Header Global"
     },
     {
+      "__resolveType": "site/sections/Container.tsx",
       "sections": [
         {
           "label": "ProductDetails",
@@ -75,11 +73,9 @@
           "verticalSpacing": "bottom",
           "spacing": 10
         }
-      ],
-      "__resolveType": "site/sections/Container.tsx"
+      ]
     },
     {
-      "__resolveType": "site/sections/Container.tsx",
       "sections": [
         {
           "label": "Reviews",
@@ -101,7 +97,8 @@
           "withContainer": true,
           "verticalSpacing": "top"
         }
-      ]
+      ],
+      "__resolveType": "site/sections/Container.tsx"
     },
     {
       "__resolveType": "Produtos relacionados - ProductShelf"
@@ -114,6 +111,9 @@
     },
     {
       "__resolveType": "site/sections/Integrations/JivoChat.tsx"
+    },
+    {
+      "__resolveType": "Design System - Black Friday"
     }
   ],
   "__resolveType": "$live/pages/LivePage.tsx"
