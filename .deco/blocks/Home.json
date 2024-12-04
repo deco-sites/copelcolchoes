@@ -35,115 +35,132 @@
                         "variant": "primary"
                       },
                       "mobile": {
-                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/d269e996-fec4-414a-9a18-dbb275a0b34d/01-MOB.png",
+                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/6b10ad43-71ec-4294-ac03-feba8f312d7b/banner-mobile-dezembro-2024-00.jpg",
                         "width": 440,
                         "height": 320
                       },
                       "desktop": {
-                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/db1463f9-c91b-4f01-a9f9-0bb1c144e492/banner-home-balck-friday-2024-01.jpg",
+                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/201110bf-5286-4217-9a7a-a6abb1f1814c/banner-desktop-dezembro-2024-00.jpg",
                         "width": 1519,
                         "height": 473
                       },
-                      "alt": "Black Friday Copel Colchoes"
+                      "alt": "60 Anos Copel Aniversario -  Copel Colchoes"
                     },
                     {
-                      "alt": "Black Friday - Colchoes -  Copel Colchoes",
+                      "alt": "60 Anos Copel Aniversario - Colchoes -  Copel Colchoes",
                       "action": {
                         "href": "/colchoes",
                         "variant": "primary"
                       },
                       "mobile": {
-                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/8beafcc5-e5ab-4522-a109-a1d61f56d2a5/06-MOB.png",
+                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/4628f520-579f-4561-99e7-9c1b4675a12b/banner-mobile-dezembro-2024-02.jpg",
                         "width": 440,
                         "height": 320
                       },
                       "desktop": {
-                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/827a82d9-d4fd-4450-983c-3d53ec00247e/banner-home-balck-friday-2024-06.jpg",
+                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/1fe12fa0-1ddb-418a-9afc-b5a8f348c731/banner-desktop-dezembro-2024-02.jpg",
                         "width": 1519,
                         "height": 473
                       }
                     },
                     {
-                      "alt": "Black Friday - Cama Box -  Copel Colchoes",
+                      "alt": "60 Anos Copel Aniversario - Cama Box -  Copel Colchoes",
                       "action": {
                         "href": "/cama-box",
                         "variant": "primary"
                       },
                       "mobile": {
-                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/3e2eda03-e402-400a-8834-206a93cafdbf/07-MOB.png",
+                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/b0238914-9d92-442a-9556-68926aa1d8ad/banner-mobile-dezembro-2024-03.jpg",
                         "width": 440,
                         "height": 320
                       },
                       "desktop": {
-                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/24383435-3137-435b-89cc-6a1656f893a7/banner-home-balck-friday-2024-07.jpg",
+                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/241e9ac0-95cc-4227-825f-2a3ecd993db1/banner-desktop-dezembro-2024-03.jpg",
                         "width": 1519,
                         "height": 473
                       }
                     },
                     {
-                      "alt": "Black Friday - Cama Box + Colchao - Copel Colchoes",
+                      "alt": "60 Anos Copel Aniversario - Cama Box + Colchao - Copel Colchoes",
                       "action": {
                         "href": "/cama-box-mais-colchao",
                         "variant": "primary"
                       },
                       "mobile": {
-                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/c9a513d9-4867-447d-bee3-1d48b22e06e7/02-MOB.png",
+                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/1ad98fd4-d7fa-467b-bad3-82989980d715/banner-mobile-dezembro-2024-04.jpg",
                         "width": 440,
                         "height": 320
                       },
                       "desktop": {
-                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/2cad32b0-3435-4854-a340-d92689c7884e/banner-home-balck-friday-2024-02.jpg",
+                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/b28ac8d3-c351-4147-ba29-4be763074956/banner-desktop-dezembro-2024-04.jpg",
                         "width": 1519,
                         "height": 473
                       }
                     },
                     {
-                      "alt": "Black Friday - Travesseiros -  Copel Colchoes",
+                      "alt": "60 Anos Copel Aniversario - Travesseiros -  Copel Colchoes",
                       "action": {
                         "href": "/travesseiros",
                         "variant": "primary"
                       },
                       "mobile": {
-                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/9aaeb3ef-2fc5-4b40-9271-aaf0e9d3056f/03-MOB.png",
+                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/356fdb6e-02b8-49ec-abbc-826056c526fe/banner-mobile-dezembro-2024-05.jpg",
                         "width": 440,
                         "height": 320
                       },
                       "desktop": {
-                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/3df46e27-e153-4c84-904e-0cdd459b6677/banner-home-balck-friday-2024-03.jpg",
+                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/8acc33bd-4e00-47eb-85c9-f00acb524f2b/banner-desktop-dezembro-2024-05.jpg",
                         "width": 1519,
                         "height": 473
                       }
                     },
                     {
-                      "alt": "Black Friday - Acessorios -  Copel Colchoes",
+                      "alt": "60 Anos Copel Aniversario - Acessorios -  Copel Colchoes",
                       "action": {
                         "href": "/acessorios",
                         "variant": "primary"
                       },
                       "mobile": {
-                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/4b1400c4-b78e-4b5d-879e-e0ffe3283884/04-MOB.png",
+                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/c03f020f-db00-4883-998b-8f3ddb8e2ca0/banner-mobile-dezembro-2024-07.jpg",
                         "width": 440,
                         "height": 320
                       },
                       "desktop": {
-                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/733b0374-eaf7-438c-b7d7-418ac2de7457/banner-home-balck-friday-2024-04.jpg",
+                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/dca4d667-ee74-42db-8dfb-27600075a4f4/banner-desktop-dezembro-2024-07.jpg",
                         "width": 1519,
                         "height": 473
                       }
                     },
                     {
-                      "alt": "Black Friday - Moveis -  Copel Colchoes",
+                      "alt": "60 Anos Copel Aniversario - Moveis -  Copel Colchoes",
                       "action": {
                         "href": "/moveis",
                         "variant": "primary"
                       },
                       "mobile": {
-                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/554a4826-b977-4354-b912-1bcaaae0d9bd/05-MOB.png",
+                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/17cd6f04-690e-41b3-b36d-918125892a65/banner-mobile-dezembro-2024-06.jpg",
                         "width": 440,
                         "height": 320
                       },
                       "desktop": {
-                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/10e8a495-0a5c-4bd6-9feb-caf33e7cba4a/banner-home-balck-friday-2024-05.jpg",
+                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/2e5e4e48-9688-45ad-8110-a7a0fe3043cd/banner-desktop-dezembro-2024-06.jpg",
+                        "width": 1519,
+                        "height": 473
+                      }
+                    },
+                    {
+                      "alt": "60 Anos Copel Aniversario - Promocao -  Copel Colchoes",
+                      "action": {
+                        "href": "/promocao",
+                        "variant": "primary"
+                      },
+                      "mobile": {
+                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/7906b797-d45b-44aa-9892-c413ef6fe1ec/banner-mobile-dezembro-2024-01.jpg",
+                        "width": 440,
+                        "height": 320
+                      },
+                      "desktop": {
+                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/175fb37f-72e4-4a97-9f0c-dd504c9c5578/banner-desktop-dezembro-2024-01.jpg",
                         "width": 1519,
                         "height": 473
                       }
