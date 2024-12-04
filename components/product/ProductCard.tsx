@@ -217,15 +217,14 @@ function ProductCard(
             )}
           {bestOferta && (
             <div class="absolute -top-[55px] md:-top-[1.875rem] tag-promotion">
-              {/* <div class="bg-[#D81A4D] border border-[#D81A4D] rounded-[15px] flex items-center justify-center py-[0.313rem] px-[0.5rem] w-fit uppercase"> */}
-              <div class="bg-primary border border-primary rounded-[15px] flex items-center justify-center py-[0.313rem] px-[0.5rem] w-fit uppercase">
+              <div class="bg-[#D81A4D] border border-[#D81A4D] rounded-[15px] flex items-center justify-center py-[0.313rem] px-[0.5rem] w-fit uppercase">
                 <Icon
                   id="BlackFriday"
                   size={16}
                   class="w-[0.9375rem] mr-[0.3125rem]"
                 />
                 <p class="flex text-center font-quicksand text-white text-[0.75rem] max-lg:text-[15.378px] leading-4 font-bold">
-                  Black Friday
+                  Promoção da semana
                 </p>
               </div>
             </div>
