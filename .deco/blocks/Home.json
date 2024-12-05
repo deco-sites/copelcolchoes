@@ -211,32 +211,7 @@
           },
           {
             "__resolveType": "site/sections/Container.tsx",
-            "sections": [
-              {
-                "label": "Blog",
-                "shadow": "none",
-                "section": {
-                  "title": "Confira nossas últimas novidades no blog",
-                  "blogPost": [
-                    {
-                      "href": "https://blog.copelcolchoes.com.br/4-dicas-para-otimizar-o-espaco-em-quarto-pequeno/",
-                      "banner": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/a6bee5ff-9520-4492-bfec-b59d848fc2cf"
-                    },
-                    {
-                      "href": "https://blog.copelcolchoes.com.br/tudo-o-que-voce-precisa-saber-sobre-o-colchao-ortopedico/",
-                      "banner": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/3a2b00d5-b886-4c2a-84a8-ea3fbaa14e9f"
-                    },
-                    {
-                      "href": "https://blog.copelcolchoes.com.br/travesseiro-cervical-para-que-serve-e-quais-os-beneficios/",
-                      "banner": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/e8ce352c-badb-4895-8890-231dffc81c92"
-                    }
-                  ],
-                  "__resolveType": "site/sections/Miscellaneous/BlogPosts.tsx"
-                },
-                "withContainer": true,
-                "verticalSpacing": "top"
-              }
-            ],
+            "sections": [],
             "isVisible": false
           },
           {
@@ -365,10 +340,6 @@
                         {
                           "href": "/institucional#trabalhe-conosco",
                           "label": "Trabalhe Conosco"
-                        },
-                        {
-                          "href": "https://www.blogcopelcolchoes.com.br/",
-                          "label": "Acesse o Blog"
                         },
                         {
                           "href": "/institucional#politica-de-seguranca",
