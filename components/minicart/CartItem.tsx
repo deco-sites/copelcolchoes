@@ -1,12 +1,9 @@
-import Button from "$store/components/ui/Button.tsx";
 import Icon from "$store/components/ui/Icon.tsx";
 import QuantitySelector from "$store/components/ui/QuantitySelector.tsx";
 import { sendEvent } from "$store/sdk/analytics.tsx";
 import { formatPrice } from "$store/sdk/format.ts";
-import { useSignal } from "@preact/signals";
 import Image from "deco-sites/std/components/Image.tsx";
 import { useCart } from "deco-sites/std/packs/vtex/hooks/useCart.ts";
-import { useOffer } from "$store/sdk/useOffer.ts";
 
 interface Props {
   index: number;

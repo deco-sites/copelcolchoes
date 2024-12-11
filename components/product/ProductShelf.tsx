@@ -10,7 +10,7 @@ import Header from "$store/components/ui/SectionHeader.tsx";
 import Slider from "$store/components/ui/Slider.tsx";
 import SliderJS from "$store/islands/SliderJS.tsx";
 import { SendEventOnLoad } from "$store/sdk/analytics.tsx";
-import { useOffer } from "$store/sdk/useOffer.ts";
+import { useOffer } from "../../utils/userOffer.ts";
 import type { Product } from "apps/commerce/types.ts";
 import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalyticsItem.ts";
 import { useId } from "preact/hooks";

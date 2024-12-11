@@ -2,7 +2,7 @@ import Filters from "$store/components/search/Filters.tsx";
 import SearchControls from "$store/islands/SearchControls.tsx";
 import { SendEventOnLoad } from "$store/sdk/analytics.tsx";
 import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalyticsItem.ts";
-import { useOffer } from "$store/sdk/useOffer.ts";
+import { useOffer } from "../../utils/userOffer.ts";
 import ProductGallery from "$store/components/product/ProductGallery.tsx";
 import { type LoaderReturnType } from "@deco/deco";
 import type { ProductListingPage } from "apps/commerce/types.ts";
