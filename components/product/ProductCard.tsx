@@ -109,9 +109,10 @@ function ProductCard(
   const bestOferta = additionalProperty &&
     additionalProperty.some((prop) => prop.propertyID === "244");
 
-  const { listPrice, price, installment, availability } = useOffer(
-    offers,
-  );
+  const { listPrice, price, installment, priceWithPixDiscount, availability } =
+    useOffer(
+      offers,
+    );
 
   const clickEvent = {
     name: "select_item" as const,
@@ -249,19 +250,24 @@ function ProductCard(
                     De {formatPrice(listPrice, offers!.priceCurrency!)}
                   </del>
                 )}
-
-                <ins class="product-card__price--por font-bold no-underline text-secondary text-xl leading-[1.5625rem] mb-[0.3125rem] max-lg:text-[25.63px] font-quicksand">
-                  {installment?.billingDuration}x {formatPrice(
-                    installment?.billingIncrement,
-                    offers!.priceCurrency!,
-                  )}
-                </ins>
-                <span class="text-[#828282] text-[0.8125rem] font-medium font-quicksand product-card__price">
-                  Total: {formatPrice(price, offers!.priceCurrency!)}
-                </span>
-                <span class="text-[#828282] text-[0.8125rem] font-medium font-quicksand product-card__pix">
+                {priceWithPixDiscount && (
+                  <ins class="product-card__price--por font-bold no-underline text-secondary text-xl leading-[1.5625rem] mb-[0.3125rem] max-lg:text-[25.63px] font-quicksand">
+                    {formatPrice(priceWithPixDiscount, offers!.priceCurrency!)}
+                  </ins>
+                )}
+                <span class="text-secondary text-[0.8125rem] font-extrabold font-quicksand product-card__pix">
                   10% de desconto no Pix ou Boleto
                 </span>
+                <p class="text-[#828282] text-[0.8125rem] font-medium font-quicksand">
+                  Ou <span class="">{formatPrice(price, offers!.priceCurrency!)}</span> em
+                  <span class="mx-1">
+                    {installment?.billingDuration}x de {formatPrice(
+                      installment?.billingIncrement,
+                      offers!.priceCurrency,
+                    )}
+                  </span>
+                  sem juros
+                </p>
               </div>
             )
             : <h4 class="text-lg mt-2 font-black">Produto esgotado</h4>}

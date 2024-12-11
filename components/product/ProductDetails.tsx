@@ -114,10 +114,11 @@ function ProductInfo(
                     {formatPrice(listPrice, offers!.priceCurrency!)}
                   </del>
                 )}
-                <p class="text-secondary text-[26px] font-extrabold">
-                  {priceWithPixDiscount &&
-                    formatPrice(priceWithPixDiscount, offers!.priceCurrency!)}
-                </p>
+                {priceWithPixDiscount && (
+                  <p class="text-secondary text-[26px] font-extrabold">
+                    {formatPrice(priceWithPixDiscount, offers!.priceCurrency!)}
+                  </p>
+                )}
                 <p class="text-secondary text-sm font-semibold leading-5 flex-col items-start font-quicksand mb-3">
                   à vista no Pix, Boleto ou em 1x no cartão
                 </p>
