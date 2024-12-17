@@ -241,10 +241,10 @@ function ProductCard(
           {availability
             ? (
               <div class="flex flex-col max-lg:contents">
-                {(listPrice && price) && listPrice >= price && (
+                {(listPrice && price) && (
                   <del
                     className={`product-card__price--de mb-[0.3125rem] text-[#464646] font-light text-[0.875rem] leading-[1.125rem] max-lg:text-[17.941px] max-lg:leading-[23px] font-quicksand ${
-                      discount ? "" : "opacity-0"
+                      listPrice > price && discount ? "" : "opacity-0"
                     }`}
                   >
                     De {formatPrice(listPrice, offers!.priceCurrency!)}
