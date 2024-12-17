@@ -1,5 +1,5 @@
 import type { Product } from "apps/commerce/types.ts";
-import { useOffer } from "$store/sdk/useOffer.ts";
+import { useOffer } from "../../utils/userOffer.ts";
 import Button from "$store/components/ui/Button.tsx";
 import { useAddToCart } from "$store/sdk/useAddToCart.ts";
 import Image from "deco-sites/std/components/Image.tsx";

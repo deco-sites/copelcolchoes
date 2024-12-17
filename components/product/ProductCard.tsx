@@ -1,7 +1,7 @@
 import { ButtonVariant } from "$store/components/minicart/Cart.tsx";
 import { sendEventOnClick } from "$store/sdk/analytics.tsx";
 import { formatPrice } from "$store/sdk/format.ts";
-import { useOffer } from "$store/sdk/useOffer.ts";
+import { useOffer } from "../../utils/userOffer.ts";
 import type { Product, PropertyValue } from "apps/commerce/types.ts";
 import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalyticsItem.ts";
 import Image from "deco-sites/std/components/Image.tsx";
@@ -100,6 +100,7 @@ function ProductCard(
     isVariantOf,
     additionalProperty,
   } = product;
+
   // deno-lint-ignore no-explicit-any
   const { additionalProperty: additionalPropertyVariant } = isVariantOf as any;
   const medidas = getMedidas(additionalPropertyVariant);
@@ -107,11 +108,12 @@ function ProductCard(
   const [front] = images ?? [];
   const bestOferta = additionalProperty &&
     additionalProperty.some((prop) => prop.propertyID === "244");
-  const { listPrice, price, installment, availability } = useOffer(
-    offers,
-  );
 
-  const inStock = availability === "https://schema.org/InStock";
+  const { listPrice, price, installment, priceWithPixDiscount, availability } =
+    useOffer(
+      offers,
+    );
+
   const clickEvent = {
     name: "select_item" as const,
     params: {
@@ -129,6 +131,10 @@ function ProductCard(
   const price2: number = price as number;
   const listPrice2: number = listPrice as number;
 
+  const discount = ((listPrice && price) && listPrice !== price)
+    ? Math.round(((listPrice - price) / listPrice) * 100)
+    : undefined;
+
   return (
     <article
       class="h-max font-quicksand shadow-md rounded-[5px] border border-[#dbdbdb] justify-start flex flex-col  hover:border-primary"
@@ -138,7 +144,7 @@ function ProductCard(
     >
       <div class="relative overflow-hidden px-[0.625rem] pt-[1.375rem] max-lg:px-[0.625rem]">
         <div class="relative">
-          {inStock
+          {availability
             ? (
               <a
                 href={url && relative(url)}
@@ -177,7 +183,7 @@ function ProductCard(
 
       {/* Prices & Name */}
       <div class="lg:pt-[0.625rem] lg:pb-[1.25rem] lg:px-[0.938rem] relative max-lg:pt-0 max-lg-[0.625rem] max-lg:px-2.5 max-lg:pb-7 max-lg:w-full">
-        {inStock
+        {availability
           ? (
             <a
               href={url && relative(url)}
@@ -232,32 +238,41 @@ function ProductCard(
         </div>
 
         <div class="flex flex-col">
-          {inStock
+          {availability
             ? (
               <div class="flex flex-col max-lg:contents">
-                {(listPrice && price) && listPrice >= price && (
-                  <del class="product-card__price--de mb-[0.3125rem] text-[#464646] font-light text-[0.875rem] leading-[1.125rem] max-lg:text-[17.941px] max-lg:leading-[23px] font-quicksand">
-                     De {formatPrice(listPrice, offers!.priceCurrency!)}
+                {(listPrice && price) && (
+                  <del
+                    className={`product-card__price--de mb-[0.3125rem] text-[#464646] font-light text-[0.875rem] leading-[1.125rem] max-lg:text-[17.941px] max-lg:leading-[23px] font-quicksand ${
+                      listPrice > price && discount ? "" : "opacity-0"
+                    }`}
+                  >
+                    De {formatPrice(listPrice, offers!.priceCurrency!)}
                   </del>
                 )}
-
-                <ins class="product-card__price--por font-bold no-underline text-secondary text-xl leading-[1.5625rem] mb-[0.3125rem] max-lg:text-[25.63px] font-quicksand">
-                  {installment?.billingDuration}x {formatPrice(
-                    installment?.billingIncrement,
-                    offers!.priceCurrency!,
-                  )}
-                </ins>
-                <span class="text-[#828282] text-[0.8125rem] font-medium font-quicksand product-card__price">
-                  Total: {formatPrice(price, offers!.priceCurrency!)}
-                </span>
-                <span class="text-[#828282] text-[0.8125rem] font-medium font-quicksand product-card__pix">
+                {priceWithPixDiscount && (
+                  <ins class="product-card__price--por font-bold no-underline text-secondary text-xl leading-[1.5625rem] mb-[0.3125rem] max-lg:text-[25.63px] font-quicksand">
+                    {formatPrice(priceWithPixDiscount, offers!.priceCurrency!)}
+                  </ins>
+                )}
+                <span class="text-secondary text-[0.8125rem] font-extrabold font-quicksand product-card__pix">
                   10% de desconto no Pix ou Boleto
                 </span>
+                <p class="text-[#828282] text-[0.8125rem] font-medium font-quicksand">
+                  Ou <span class="">{formatPrice(price, offers!.priceCurrency!)}</span> em
+                  <span class="mx-1">
+                    {installment?.billingDuration}x de {formatPrice(
+                      installment?.billingIncrement,
+                      offers!.priceCurrency,
+                    )}
+                  </span>
+                  sem juros
+                </p>
               </div>
             )
             : <h4 class="text-lg mt-2 font-black">Produto esgotado</h4>}
         </div>
-        {inStock
+        {availability
           ? (
             <a
               href={url && relative(url)}

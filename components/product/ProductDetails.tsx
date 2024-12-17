@@ -2,7 +2,7 @@ import ShippingSimulation from "$store/islands/ShippingSimulation.tsx";
 import Breadcrumb from "$store/components/ui/Breadcrumb.tsx";
 import Button from "$store/components/ui/Button.tsx";
 import OutOfStock from "$store/islands/OutOfStock.tsx";
-import { useOffer } from "$store/sdk/useOffer.ts";
+import { useOffer } from "../../utils/userOffer.ts";
 import { formatPrice } from "$store/sdk/format.ts";
 import { SendEventOnLoad } from "$store/sdk/analytics.tsx";
 import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalyticsItem.ts";
@@ -60,10 +60,16 @@ function ProductInfo(
     name,
     isVariantOf,
   } = product;
-  const { price, listPrice, seller, availability, installment } = useOffer(
+  const {
+    price,
+    listPrice,
+    priceWithPixDiscount,
+    seller,
+    availability,
+    installment,
+  } = useOffer(
     offers,
   );
-  const inStock = availability === "https://schema.org/InStock";
   const discount = ((listPrice && price) && listPrice !== price)
     ? Math.round(((listPrice - price) / listPrice) * 100)
     : undefined;
@@ -87,7 +93,7 @@ function ProductInfo(
         <QuickReview />
       </div>
       {/* Prices */}
-      {inStock
+      {availability
         ? (
           <>
             {discount && (
@@ -104,17 +110,23 @@ function ProductInfo(
             <div class="py-[1.375rem] max-lg:pb-0">
               <div class="flex flex-col font-quicksand">
                 {discount && (
-                  <del class="text-[#828282] text-base leading-[1.125rem] line-through">
+                  <del class="text-[#828282] text-[14px] leading-[1.125rem] line-through">
                     {formatPrice(listPrice, offers!.priceCurrency!)}
                   </del>
                 )}
-                <p class="text-primary text-[1.375rem] font-extrabold leading-[1.875rem]">
-                  POR: {formatPrice(price, offers!.priceCurrency!)}
+                {priceWithPixDiscount && (
+                  <p class="text-secondary text-[26px] font-extrabold">
+                    {formatPrice(priceWithPixDiscount, offers!.priceCurrency!)}
+                  </p>
+                )}
+                <p class="text-secondary text-sm font-semibold leading-5 flex-col items-start font-quicksand mb-3">
+                  à vista no Pix, Boleto ou em 1x no cartão
                 </p>
               </div>
+
               <div class="flex text-primary text-sm font-medium leading-5 flex-col items-start font-quicksand">
                 <p class="min-w-fit">
-                  Ou
+                  Ou {formatPrice(price, offers!.priceCurrency!)} em
                   <span class="mx-1 font-extrabold">
                     {installment?.billingDuration}x de {formatPrice(
                       installment?.billingIncrement,
@@ -124,14 +136,7 @@ function ProductInfo(
                   sem juros
                 </p>
               </div>
-              <div>
-                <p class="text-secondary text-base font-quicksand font-extrabold leading-[1.125rem] mt-[10px]">
-                  {price &&
-                    formatPrice(price - (price * 0.1), offers!.priceCurrency!)}
-                  {" "}
-                  à vista
-                </p>
-              </div>
+
               <div class="w-full">
                 <details
                   class="collapse collapse-arrow"
@@ -170,7 +175,7 @@ function ProductInfo(
       {/* Add to Cart and Favorites button */}
       <div class="mb-[0.9375rem] border border-[#f2f3f8]"></div>
       <div class="flex items-center gap-8">
-        {availability === "https://schema.org/InStock"
+        {availability
           ? (
             <>
               {seller && (
@@ -189,7 +194,7 @@ function ProductInfo(
       </div>
       {/* Shipping Simulation */}
 
-      {availability === "https://schema.org/InStock"
+      {availability
         ? (
           <ShippingSimulation
             items={[{
