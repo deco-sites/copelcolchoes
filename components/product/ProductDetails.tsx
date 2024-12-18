@@ -463,6 +463,11 @@ function Details({
 function ProductDetails(
   { page, buyTogetherLoader }: Props,
 ) {
+  
+  console.log('====================================');
+  console.log(page?.product.offers);
+  console.log('====================================');
+
   return (
     <div class="py-0">
       {page
