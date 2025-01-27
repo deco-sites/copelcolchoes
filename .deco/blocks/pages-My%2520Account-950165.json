@@ -12,11 +12,8 @@
       }
     },
     {
-      "__resolveType": "website/sections/Rendering/Lazy.tsx",
-      "section": {
-        "__resolveType": "site/sections/Miscellaneous/ProxyIframe.tsx",
-        "src": "/account#/"
-      }
+      "__resolveType": "site/sections/Miscellaneous/ProxyIframe.tsx",
+      "src": "/account#/"
     },
     {
       "__resolveType": "website/sections/Rendering/Lazy.tsx",

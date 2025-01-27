@@ -56,7 +56,7 @@ function HeaderLayout({ minicart, searchbar }: Props) {
                 </div>
                 <a
                   class="relative font-medium text-primary text-[0.8125rem] leading-[1.125rem] w-full flex items-center justify-center appearance-none"
-                  href="https://www.copelcolchoes.com.br/_secure/account"
+                  href="/my-account"
                 >
                   {device === "desktop"
                     ? (
