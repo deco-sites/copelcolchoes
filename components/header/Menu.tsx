@@ -137,7 +137,7 @@ function Menu({ items }: Props) {
     <div class="flex flex-col justify-center pb-3 h-full">
       <div class="w-full flex items-center justify-between py-4 pb-2 px-4">
 
-        <a href="https://www.copelcolchoes.com.br/_secure/account" 
+        <a href="/my-account" 
           class={clx(`flex items-center justify-start gap-1 uppercase text-base-content font-comfortaa leading-[18.2px] text-[14px] font-bold tracking-[1px]`)}>
           <Icon id="XMarkMobile" width={28} height={28} strokeWidth={2} />
           <span>Entrar</span>
@@ -153,11 +153,11 @@ function Menu({ items }: Props) {
         </button>         
       </div>
       <div class={clx(`px-4 gap-y-[10px] py-[0] flex flex-col justify-center items-center`)}>
-        <a href="https://www.copelcolchoes.com.br/_secure/account#/profile" 
+        <a href="/my-account" 
           class={clx(`text-[12px] leading-[15.6px] text-[#fff] font-comfortaa py-[8px] px-[20px] rounded-[5px] bg-primary w-full font-bold text-center`)}>
           Meus dados
         </a>
-        <a href="https://www.copelcolchoes.com.br/_secure/account#/orders" 
+        <a href="/my-account" 
           class={clx(`text-[12px] leading-[15.6px] text-primary font-comfortaa py-[8px] px-[20px] rounded-[5px] border border-primary font-bold w-full text-center`)}>
           Meus pedidos
         </a>
