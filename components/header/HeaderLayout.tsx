@@ -10,12 +10,9 @@ import ModalLoginCustom from "$store/islands/ModalLoginCustom.tsx";
 import { useUser } from "deco-sites/std/packs/vtex/hooks/useUser.ts";
 import { AppContext } from "apps/vtex/mod.ts";
 
-
 export interface Props {
   minicart: ICartProps;
   searchbar: SearchbarProps;
-
-  
 }
 
 const WIDTH_LOGO = 159;
@@ -64,51 +61,10 @@ function HeaderLayout({ minicart, searchbar }: Props) {
           <div class="flex justify-end w-full md:w-auto md:gap-x-[20px] gap-x-[15px]">
             <div class="flex items-center text-primary">
               <div class="hidden lg:flex relative items-center justify-center">
-                <div class="hidden">
+                <div class=" hidden lg:flex gap-5">
                   <ModalLoginCustom />
                 </div>
-                <a
-                  class="relative font-medium text-primary text-[0.8125rem] leading-[1.125rem] w-full flex items-center justify-center appearance-none"
-                  href={isLogged ? logoutUrl : "/my-account"}
-                >
-                  {device === "desktop"
-                    ? (
-                      <Icon
-                        class="mr-[0.625rem]"
-                        id="User"
-                        size={36}
-                        strokeWidth={1}
-                      />
-                    )
-                    : <Icon id="UserMobile" size={28} strokeWidth={1} />}
-                  <p
-                    class={`max-lg:hidden text-[14px] leading-[21px] text-[#656565] font-black`}
-                  >
-                    {isLogged
-                      ? (
-                        <>
-                          Bem-vindo! <br />
-                          <span class="text-primary font-bold">
-                            {userEmail}
-                          </span> ou 
-                          {/* Botão de Sair */}
-                          <span class="text-primary underline ml-1">
-                            Sair
-                          </span>
-                        </>
-                      )
-                      : (
-                        <>
-                          Bem-vindo! <br />
-                          <span class="text-primary underline">Entre</span> ou
-                          {" "}
-                          <span class="text-primary underline">
-                            cadastre-se
-                          </span>
-                        </>
-                      )}
-                  </p>
-                </a>
+               
               </div>
             </div>
             <div class="m-0 flex lg:items-center lg:w-[107px]">
@@ -153,8 +109,7 @@ function HeaderLayout({ minicart, searchbar }: Props) {
   );
 }
 
-export const loader  =   (props: Props, _req: Request, ctx: AppContext) => {
-
+export const loader = (props: Props, _req: Request, ctx: AppContext) => {
   return {
     ...props,
     device: ctx.device,

@@ -4404,8 +4404,8 @@ details.collapse summary::-webkit-details-marker {
 .-right-5 {
   right: -1.25rem;
 }
-.-right-\[20px\] {
-  right: -20px;
+.-right-\[110px\] {
+  right: -110px;
 }
 .-top-10 {
   top: -2.5rem;
@@ -4530,8 +4530,8 @@ details.collapse summary::-webkit-details-marker {
 .top-\[70px\] {
   top: 70px;
 }
-.top-\[90\%\] {
-  top: 90%;
+.top-\[78\%\] {
+  top: 78%;
 }
 .top-\[unset\] {
   top: unset;
@@ -7099,6 +7099,9 @@ details.collapse summary::-webkit-details-marker {
 }
 .text-justify {
   text-align: justify;
+}
+.text-start {
+  text-align: start;
 }
 .align-middle {
   vertical-align: middle;

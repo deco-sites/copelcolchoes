@@ -12,6 +12,12 @@ function ModalLoginCustom() {
   const storeScope = "copelcolchoes";
   const { vtexIdScriptsLoaded } = useUI();
 
+  const isLogged = user?.value?.email;
+  const userEmail = user?.value?.email;
+
+  const logoutUrl =
+    `/api/vtexid/pub/logout?scope=${storeScope}&returnUrl=https://www.${storeScope}.com.br`;
+
   return (
     <>
       <button
@@ -49,12 +55,49 @@ function ModalLoginCustom() {
           }
         }}
       >
-        <Icon
+        {/* <Icon
           class="mr-[0.625rem]"
           id="User"
           size={36}
           strokeWidth={1}
-        />
+        /> */}
+
+<a
+                  class="relative font-medium text-primary text-[0.8125rem] leading-[1.125rem] w-full flex items-center justify-center appearance-none"
+                  href={isLogged ? logoutUrl : "/my-account"}
+                >
+                 
+                      <Icon
+                        class="mr-[0.625rem]"
+                        id="User"
+                        size={36}
+                        strokeWidth={1}
+                      />
+                  
+                  <p
+                    class={`max-lg:hidden text-[14px] text-start leading-[21px] text-[#656565] font-black`}
+                  >
+                    {isLogged
+                      ? (
+                        <>
+                          Bem-vindo! <br />
+                          <span class="text-primary font-bold">
+                            {userEmail}
+                          </span>{" "}
+                        </>
+                      )
+                      : (
+                        <>
+                          Bem-vindo! <br />
+                          <span class="text-primary underline">Entre</span> ou
+                          {" "}
+                          <span class="text-primary underline">
+                            cadastre-se
+                          </span>
+                        </>
+                      )}
+                  </p>
+                </a>
 
         {user.value?.email && (
           <div
@@ -68,7 +111,7 @@ function ModalLoginCustom() {
                 setSessionFirst(true);
               }}
               class={clx(
-                `modal-login-custom__body absolute bg-white rounded-xl flex border-s-black text-black top-[90%] shadow-lg w-[300px] -right-[20px] whitespace-nowrap p-[24px] flex-col z-50 gap-[6px] items-start
+                `modal-login-custom__body absolute bg-white rounded-xl flex border-s-black text-black top-[78%] shadow-lg w-[300px] -right-[110px] whitespace-nowrap p-[24px] flex-col z-50 gap-[6px] items-start
                 ${!sessionFirst ? "flex" : "hidden group-hover:flex"}`,
               )}
             >
