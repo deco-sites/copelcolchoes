@@ -38,7 +38,7 @@ import * as $Sort from "./islands/Sort.tsx";
 import * as $StoreLocator from "./islands/StoreLocator.tsx";
 import * as $TopBar from "./islands/TopBar.tsx";
 import * as $WishlistButton from "./islands/WishlistButton.tsx";
-import { type Manifest } from "$fresh/server.ts";
+import type { Manifest } from "$fresh/server.ts";
 
 const manifest = {
   routes: {
