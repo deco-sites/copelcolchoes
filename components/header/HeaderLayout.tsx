@@ -7,16 +7,29 @@ import SearchBarComponent from "$store/islands/HeaderSearchbar.tsx";
 import { clx } from "$store/sdk/clx.ts";
 import { useDevice } from "@deco/deco/hooks";
 import ModalLoginCustom from "$store/islands/ModalLoginCustom.tsx";
+import { useUser } from "deco-sites/std/packs/vtex/hooks/useUser.ts";
+import { AppContext } from "apps/vtex/mod.ts";
+
 
 export interface Props {
   minicart: ICartProps;
   searchbar: SearchbarProps;
+
+  
 }
 
 const WIDTH_LOGO = 159;
+const storeScope = "copelcolchoes"; // Definir o escopo da loja
 
 function HeaderLayout({ minicart, searchbar }: Props) {
   const device = useDevice();
+  const { user } = useUser();
+
+  const isLogged = user?.value?.email;
+  const userEmail = user?.value?.email;
+
+  const logoutUrl =
+    `/api/vtexid/pub/logout?scope=${storeScope}&returnUrl=https://www.${storeScope}.com.br`;
 
   return (
     <header class="z-50 pb-6 lg:mt-9 mt-[15px]">
@@ -47,7 +60,7 @@ function HeaderLayout({ minicart, searchbar }: Props) {
             <Icon id="Logo" width={105} height={52.16} />
           </a>
         </div>
-        <div class="flex w-full md:w-auto justify-start md:justify-end 2xl:mr-[50px] 2xl:ml-0 ml-[8%] ">
+        <div class="flex w-full md:w-auto justify-start md:justify-end 2xl:mr-[50px] 2xl:ml-0 ml-[8%]">
           <div class="flex justify-end w-full md:w-auto md:gap-x-[20px] gap-x-[15px]">
             <div class="flex items-center text-primary">
               <div class="hidden lg:flex relative items-center justify-center">
@@ -56,7 +69,7 @@ function HeaderLayout({ minicart, searchbar }: Props) {
                 </div>
                 <a
                   class="relative font-medium text-primary text-[0.8125rem] leading-[1.125rem] w-full flex items-center justify-center appearance-none"
-                  href="/my-account"
+                  href={isLogged ? logoutUrl : "/my-account"}
                 >
                   {device === "desktop"
                     ? (
@@ -67,19 +80,33 @@ function HeaderLayout({ minicart, searchbar }: Props) {
                         strokeWidth={1}
                       />
                     )
-                    : (
-                      <Icon
-                        id="UserMobile"
-                        size={28}
-                        strokeWidth={1}
-                      />
-                    )}
+                    : <Icon id="UserMobile" size={28} strokeWidth={1} />}
                   <p
                     class={`max-lg:hidden text-[14px] leading-[21px] text-[#656565] font-black`}
                   >
-                    Bem vindo! <br />{" "}
-                    <span class={`text-primary underline`}>Entre</span> ou{" "}
-                    <span class={`text-primary underline`}>cadastre-se</span>
+                    {isLogged
+                      ? (
+                        <>
+                          Bem-vindo! <br />
+                          <span class="text-primary font-bold">
+                            {userEmail}
+                          </span> ou 
+                          {/* Botão de Sair */}
+                          <span class="text-primary underline ml-1">
+                            Sair
+                          </span>
+                        </>
+                      )
+                      : (
+                        <>
+                          Bem-vindo! <br />
+                          <span class="text-primary underline">Entre</span> ou
+                          {" "}
+                          <span class="text-primary underline">
+                            cadastre-se
+                          </span>
+                        </>
+                      )}
                   </p>
                 </a>
               </div>
@@ -126,7 +153,8 @@ function HeaderLayout({ minicart, searchbar }: Props) {
   );
 }
 
-export const loader = (props: Props, _req: Request, ctx: FnContext) => {
+export const loader  =   (props: Props, _req: Request, ctx: AppContext) => {
+
   return {
     ...props,
     device: ctx.device,
