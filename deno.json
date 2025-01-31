@@ -58,7 +58,7 @@
     "@std/testing": "jsr:@std/testing@^1.0.0",
     "partytown/": "https://denopkg.com/deco-cx/partytown@0.4.8/",
     "daisyui": "npm:daisyui@3.0.3",
-    "apps/": "https://denopkg.com/deco-cx/apps@0.64.25/",
+    "apps/": "https://denopkg.com/deco-cx/apps@0.64.26/",
     "site/": "./",
     "https://esm.sh/*preact-render-to-string@6.3.1": "npm:preact-render-to-string@6.4.2",
     "@deco/deco": "jsr:@deco/deco@1.109.0",
