@@ -129,7 +129,7 @@ function ModalLoginCustom() {
               </a>
 
               <a
-                href="/my-account/orders"
+                href="/my-account"
                 class={clx(`text-black text-xs hover:font-bold duration-150`)}
               >
                 Meus pedidos
