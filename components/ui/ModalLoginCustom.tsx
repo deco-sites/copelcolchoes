@@ -62,9 +62,9 @@ function ModalLoginCustom() {
           strokeWidth={1}
         /> */}
 
-<a
+<div
                   class="relative font-medium text-primary text-[0.8125rem] leading-[1.125rem] w-full flex items-center justify-center appearance-none"
-                  href={isLogged ? logoutUrl : "/my-account"}
+               
                 >
                  
                       <Icon
@@ -97,7 +97,7 @@ function ModalLoginCustom() {
                         </>
                       )}
                   </p>
-                </a>
+                </div>
 
         {user.value?.email && (
           <div
