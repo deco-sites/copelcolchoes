@@ -6,10 +6,6 @@
       "__resolveType": "Default - Design System"
     },
     {
-      "__resolveType": "commerce/sections/Seo/SeoPLP.tsx",
-      "jsonLD": null
-    },
-    {
       "__resolveType": "analytics"
     },
     {
@@ -28,5 +24,15 @@
       "__resolveType": "FloatingButtons"
     }
   ],
-  "__resolveType": "$live/pages/LivePage.tsx"
+  "__resolveType": "$live/pages/LivePage.tsx",
+  "seo": {
+    "__resolveType": "commerce/sections/Seo/SeoPLPV2.tsx",
+    "jsonLD": {
+      "__resolveType": "deco-sites/std/loaders/vtex/intelligentSearch/productListingPage.ts",
+      "sort": "price:desc",
+      "fuzzy": "automatic",
+      "selectedFacets": [],
+      "count": 12
+    }
+  }
 }

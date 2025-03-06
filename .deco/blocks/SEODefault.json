@@ -1,1 +1,6 @@
-{"type":"website","__resolveType":"deco-sites/std/sections/SEO.tsx"}
+{
+  "type": "website",
+  "__resolveType": "deco-sites/std/sections/SEO.tsx",
+  "titleTemplate": "%s",
+  "descriptionTemplate": "%s"
+}

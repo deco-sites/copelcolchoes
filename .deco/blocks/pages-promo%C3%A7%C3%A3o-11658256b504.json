@@ -15,22 +15,6 @@
       "__resolveType": "categoryBreadcrumb"
     },
     {
-      "__resolveType": "commerce/sections/Seo/SeoPLP.tsx",
-      "jsonLD": {
-        "sort": "price:desc",
-        "count": 1,
-        "fuzzy": "automatic",
-        "__resolveType": "vtex/loaders/intelligentSearch/productListingPage.ts",
-        "selectedFacets": [
-          {
-            "key": "productClusterIds",
-            "value": "238"
-          }
-        ]
-      },
-      "noIndexing": false
-    },
-    {
       "__resolveType": "site/sections/Container.tsx",
       "sections": [
         {
@@ -98,5 +82,20 @@
       "__resolveType": "FloatingButtons"
     }
   ],
-  "__resolveType": "$live/pages/LivePage.tsx"
+  "__resolveType": "$live/pages/LivePage.tsx",
+  "seo": {
+    "__resolveType": "commerce/sections/Seo/SeoPLPV2.tsx",
+    "jsonLD": {
+      "sort": "price:desc",
+      "count": 1,
+      "fuzzy": "automatic",
+      "__resolveType": "vtex/loaders/intelligentSearch/productListingPage.ts",
+      "selectedFacets": [
+        {
+          "key": "productClusterIds",
+          "value": "238"
+        }
+      ]
+    }
+  }
 }
