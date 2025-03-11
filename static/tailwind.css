@@ -5662,9 +5662,6 @@ details.collapse summary::-webkit-details-marker {
 .max-w-\[720px\] {
   max-width: 720px;
 }
-.max-w-\[75px\] {
-  max-width: 75px;
-}
 .max-w-\[80\%\] {
   max-width: 80%;
 }
@@ -9546,6 +9543,10 @@ details.collapse summary::-webkit-details-marker {
 
   .sm\:flex-wrap {
     flex-wrap: wrap;
+  }
+
+  .sm\:gap-8 {
+    gap: 2rem;
   }
 
   .sm\:divide-x > :not([hidden]) ~ :not([hidden]) {
