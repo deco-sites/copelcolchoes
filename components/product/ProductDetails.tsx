@@ -383,6 +383,7 @@ function Selos({ product }: { product: Product }) {
 
   return (
     <div class="w-fit bg-transparent">
+      
       {activeSelos[category as keyof typeof activeSelos] > 0 && (
         <>
           <div class="text-primary text-lg leading-8 font-semibold my-6">
@@ -390,17 +391,12 @@ function Selos({ product }: { product: Product }) {
           </div>
           <div class="flex items-start flex-row gap-4 justify-between">
             {additionalProperty && additionalProperty.map((prop, index) => {
+
               const { value } = prop;
-              const url = value
-                ? value.normalize("NFD").replaceAll("/ ", "").replace(
-                  /[\u0300-\u036f]/g,
-                  "",
-                )
-                  .replaceAll(" ", "_").toLowerCase()
-                : "";
-              if (
-                index >= activeSelos[category as keyof typeof activeSelos]
-              ) return;
+              const url = value ? value.normalize("NFD").replaceAll("/ ", "").replace( /[\u0300-\u036f]/g,"",).replaceAll(" ", "_").toLowerCase(): "";
+
+              if (index >= activeSelos[category as keyof typeof activeSelos]) return;
+
               return (
                 <ImageComponent
                   imageUrl={`/arquivos/icone_${url}.svg`}
