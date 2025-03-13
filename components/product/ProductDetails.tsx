@@ -357,60 +357,51 @@ function ImageComponent(
       <div class="flex items-center flex-col font-quicksand text-sm font-medium leading-6 justify-between py-3">
         <div class="max-w-[3.125rem]">
           <img
-            class="w-full h-auto inline-block align-middle"
+            class="w-[50px] h-[50px] inline-block align-middle"
             src={imageUrl}
             alt={value}
           />
         </div>
-        <div class="text-primary text-sm text-center max-w-[75px]">{value}</div>
+        <div class="text-primary text-sm text-center">{value}</div>
       </div>
     )
     : <></>;
 }
 
 function Selos({ product }: { product: Product }) {
-  const { isVariantOf, category: fullCategory } = product;
+  const { isVariantOf } = product;
   const { additionalProperty } = isVariantOf as unknown as Product;
-  const category = fullCategory ? fullCategory.split(">")[0] : "";
-  const activeSelos = {
-    "Colchões": 7,
-    "Cama Box": 7,
-    "Cama Box mais Colchão": 7,
-    "Travesseiros": 7,
-    "Acessórios": 7,
-    "Móveis": 7,
-  };
+
+  const filteredProperties = additionalProperty?.filter(
+    (property) => property.propertyID === "Modelo",
+  );
 
   return (
     <div class="w-fit bg-transparent">
-      {activeSelos[category as keyof typeof activeSelos] > 0 && (
-        <>
-          <div class="text-primary text-lg leading-8 font-semibold my-6">
-            <p>Informações do seu produto:</p>
-          </div>
-          <div class="flex items-start flex-row gap-4 justify-between">
-            {additionalProperty && additionalProperty.map((prop, index) => {
-              const { value } = prop;
-              const url = value
-                ? value.normalize("NFD").replaceAll("/ ", "").replace(
-                  /[\u0300-\u036f]/g,
-                  "",
-                )
-                  .replaceAll(" ", "_").toLowerCase()
-                : "";
-              if (
-                index >= activeSelos[category as keyof typeof activeSelos]
-              ) return;
-              return (
-                <ImageComponent
-                  imageUrl={`/arquivos/icone_${url}.svg`}
-                  value={value}
-                />
-              );
-            })}
-          </div>
-        </>
-      )}
+      <div class="text-primary text-lg leading-8 font-semibold my-6">
+        <p>Informações do seu produto:</p>
+      </div>
+      <div class="flex items-start flex-wrap flex-row gap-4 sm:gap-8 justify-center lg:justify-start">
+        {filteredProperties && filteredProperties.map((prop) => {
+          const { value } = prop;
+
+          const url = value
+            ? value.normalize("NFD").replaceAll("/ ", "").replace(
+              /[\u0300-\u036f]/g,
+              "",
+            ).replaceAll(" ", "_").toLowerCase()
+            : "";
+
+          console.log(`/arquivos/icone_${url}.svg`);
+
+          return (
+            <ImageComponent
+              imageUrl={`/arquivos/icone_${url}.svg`}
+              value={value}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 }
