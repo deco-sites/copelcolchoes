@@ -357,7 +357,7 @@ function ImageComponent(
       <div class="flex items-center flex-col font-quicksand text-sm font-medium leading-6 justify-between py-3">
         <div class="max-w-[3.125rem]">
           <img
-            class="w-full h-auto inline-block align-middle"
+            class="w-[50px] h-[50px] inline-block align-middle"
             src={imageUrl}
             alt={value}
           />
@@ -381,7 +381,7 @@ function Selos({ product }: { product: Product }) {
       <div class="text-primary text-lg leading-8 font-semibold my-6">
         <p>Informações do seu produto:</p>
       </div>
-      <div class="flex items-start flex-wrap flex-row gap-4 sm:gap-8 justify-center">
+      <div class="flex items-start flex-wrap flex-row gap-4 sm:gap-8 justify-center lg:justify-start">
         {filteredProperties && filteredProperties.map((prop) => {
           const { value } = prop;
 
@@ -391,6 +391,8 @@ function Selos({ product }: { product: Product }) {
               "",
             ).replaceAll(" ", "_").toLowerCase()
             : "";
+
+          console.log(`/arquivos/icone_${url}.svg`);
 
           return (
             <ImageComponent

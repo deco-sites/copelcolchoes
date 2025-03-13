@@ -5177,6 +5177,9 @@ details.collapse summary::-webkit-details-marker {
 .h-\[500px\!important\] {
   height: 500px !important;
 }
+.h-\[50px\] {
+  height: 50px;
+}
 .h-\[55px\] {
   height: 55px;
 }
