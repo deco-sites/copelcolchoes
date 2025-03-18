@@ -1,49 +1,49 @@
 {
-    "seo": {
-        "type": "website",
-        "image": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/aae069cc-754f-4ef7-b05c-1021a04d0c08",
-        "title": "Copel Colchões | A Maior Loja de Colchões",
-        "favicon": "https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/3b8b7e2f-be72-407e-9787-456c4671dad0",
-        "canonical": "https://www.copelcolchoes.com.br/",
-        "themeColor": "#333",
-        "description": "Compre Colchão, Cama Box, Cama Box com Colchão, Travesseiro e Muito Mais na Copel Colchões | Parcelamento em Até 10x Sem Juros | Entregas em Todo o Brasil | Confira!",
-        "titleTemplate": "%s | Copel Colchões",
-        "descriptionTemplate": "%s | Copel Colchões"
+  "seo": {
+    "type": "website",
+    "image": "https://data.decoassets.com/copelcolchoes/19605e25-c020-44e6-9612-bef3e564784f/1742323952956-aae069cc-754f-4ef7-b05c-1021a04d0c08",
+    "title": "Copel Colchões | A Maior Loja de Colchões",
+    "favicon": "https://data.decoassets.com/copelcolchoes/022a1f93-41fa-4e6f-9dcb-2d27f6e9a852/1742323954172-3b8b7e2f-be72-407e-9787-456c4671dad0",
+    "canonical": "https://www.copelcolchoes.com.br/",
+    "themeColor": "#333",
+    "description": "Compre Colchão, Cama Box, Cama Box com Colchão, Travesseiro e Muito Mais na Copel Colchões | Parcelamento em Até 10x Sem Juros | Entregas em Todo o Brasil | Confira!",
+    "titleTemplate": "%s | Copel Colchões",
+    "descriptionTemplate": "%s | Copel Colchões"
+  },
+  "global": [
+    {
+      "__resolveType": "analytics/sections/Analytics/DecoAnalytics.tsx"
+    }
+  ],
+  "routes": [
+    {
+      "__resolveType": "website/loaders/pages.ts"
     },
-    "global": [
-        {
-            "__resolveType": "analytics/sections/Analytics/DecoAnalytics.tsx"
-        }
-    ],
-    "routes": [
-        {
-            "__resolveType": "website/loaders/pages.ts"
-        },
-        {
-            "__resolveType": "website/loaders/redirects.ts"
-        },
-        {
-            "__resolveType": "vtex/loaders/proxy.ts",
-            "includeSiteMap": [],
-            "extraPathsToProxy": [],
-            "includeScriptsToHead": {
-                "includes": [
-                    {
-                        "__resolveType": "analytics/loaders/DecoAnalyticsScript.ts"
-                    }
-                ]
-            }
-        }
-    ],
-    "commerce": {
-        "account": "copelcolchoes",
-        "platform": "vtex",
-        "publicUrl": "secure.copelcolchoes.com.br",
-        "salesChannel": "1",
-        "defaultSegment": {
-            "channelPrivacy": "public"
-        },
-        "usePortalSitemap": true
+    {
+      "__resolveType": "website/loaders/redirects.ts"
     },
-    "__resolveType": "site/apps/site.ts"
+    {
+      "__resolveType": "vtex/loaders/proxy.ts",
+      "includeSiteMap": [],
+      "extraPathsToProxy": [],
+      "includeScriptsToHead": {
+        "includes": [
+          {
+            "__resolveType": "analytics/loaders/DecoAnalyticsScript.ts"
+          }
+        ]
+      }
+    }
+  ],
+  "commerce": {
+    "account": "copelcolchoes",
+    "platform": "vtex",
+    "publicUrl": "secure.copelcolchoes.com.br",
+    "salesChannel": "1",
+    "defaultSegment": {
+      "channelPrivacy": "public"
+    },
+    "usePortalSitemap": true
+  },
+  "__resolveType": "site/apps/site.ts"
 }

@@ -1,1 +1,75 @@
-{"isHeader":false,"sections":[{"label":"Categories","shadow":"none","section":{"images":[{"href":"/colchoes","svgs":[{"alt":"Colchões","image":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/67748e62-a99f-4aec-b54f-15b7e0a1d8a2"}],"title":"Colchões"},{"href":"/cama-box-mais-colchao","svgs":[{"alt":"Cama Box","image":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/7d3cc000-6c88-48ef-a6fe-465b19a07176"},{"alt":"+","image":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/2786b308-cece-4a26-86c6-70da60d01edb"},{"alt":"Colchão","image":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/f30bc0f7-eac1-4f54-9ac2-3b6525b35e7c"}],"title":"Cama Box e Colchão"},{"href":"/cama-box","svgs":[{"alt":"Cama box","image":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/a803e809-caca-4d15-ae06-0311faeda94c"}],"title":"Cama Box"},{"href":"/cama-box?filter.category-1=cama-box&filter.tipo=bicama","svgs":[{"alt":"Bicamas","image":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/f60e70fb-33be-4507-b854-8eec7038d249"}],"title":"Bicamas"},{"href":"/travesseiros","svgs":[{"alt":"Travesseiros","image":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/6d016ba5-5b5c-4dcf-9c22-9cb55d603161"}],"title":"Travesseiros"}],"__resolveType":"site/sections/Category/CategoriesCarroussel.tsx"},"withContainer":true,"verticalSpacing":"top"}],"__resolveType":"site/sections/Container.tsx"}
+{
+  "isHeader": false,
+  "sections": [
+    {
+      "label": "Categories",
+      "shadow": "none",
+      "section": {
+        "images": [
+          {
+            "href": "/colchoes",
+            "svgs": [
+              {
+                "alt": "Colchões",
+                "image": "https://data.decoassets.com/copelcolchoes/7abcefaa-930f-42f3-9c96-693b9ae2f749/1742323943566-67748e62-a99f-4aec-b54f-15b7e0a1d8a2"
+              }
+            ],
+            "title": "Colchões"
+          },
+          {
+            "href": "/cama-box-mais-colchao",
+            "svgs": [
+              {
+                "alt": "Cama Box",
+                "image": "https://data.decoassets.com/copelcolchoes/d51b45ac-53ce-4df7-8d92-f4b27f161666/1742323944864-7d3cc000-6c88-48ef-a6fe-465b19a07176"
+              },
+              {
+                "alt": "+",
+                "image": "https://data.decoassets.com/copelcolchoes/2972c67b-f298-415d-9739-54d55d7029af/1742323946299-2786b308-cece-4a26-86c6-70da60d01edb"
+              },
+              {
+                "alt": "Colchão",
+                "image": "https://data.decoassets.com/copelcolchoes/34883fff-8a5e-431a-ab69-e8f235299ca2/1742323947579-f30bc0f7-eac1-4f54-9ac2-3b6525b35e7c"
+              }
+            ],
+            "title": "Cama Box e Colchão"
+          },
+          {
+            "href": "/cama-box",
+            "svgs": [
+              {
+                "alt": "Cama box",
+                "image": "https://data.decoassets.com/copelcolchoes/3d94bb17-04a2-4060-b358-64bdc4e8660d/1742323948909-a803e809-caca-4d15-ae06-0311faeda94c"
+              }
+            ],
+            "title": "Cama Box"
+          },
+          {
+            "href": "/cama-box?filter.category-1=cama-box&filter.tipo=bicama",
+            "svgs": [
+              {
+                "alt": "Bicamas",
+                "image": "https://data.decoassets.com/copelcolchoes/3e246fab-0aea-4d2b-9a8c-4ffd3f5f7c24/1742323950243-f60e70fb-33be-4507-b854-8eec7038d249"
+              }
+            ],
+            "title": "Bicamas"
+          },
+          {
+            "href": "/travesseiros",
+            "svgs": [
+              {
+                "alt": "Travesseiros",
+                "image": "https://data.decoassets.com/copelcolchoes/88719547-e21e-4ba5-973c-bf17f23fc2e3/1742323951633-6d016ba5-5b5c-4dcf-9c22-9cb55d603161"
+              }
+            ],
+            "title": "Travesseiros"
+          }
+        ],
+        "__resolveType": "site/sections/Category/CategoriesCarroussel.tsx"
+      },
+      "withContainer": true,
+      "verticalSpacing": "top"
+    }
+  ],
+  "__resolveType": "site/sections/Container.tsx"
+}

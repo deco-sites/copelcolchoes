@@ -1,1 +1,72 @@
-{"isHeader":false,"sections":[{"label":"Marcas carrossel","shadow":"none","section":{"images":[{"href":"/dunlopillo","image":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/c7a89f8d-7a03-4216-8dce-b3adc14b3b2c","label":"Dunlopillo"},{"href":"/simmons","image":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/4353c327-281a-4623-b94c-197958ccfd96","label":"Simmons"},{"href":"/theva","image":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/76bef745-e625-4fef-8739-b8e1658f4def","label":"Theva"},{"href":"/copel-colchoes","image":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/2a1d1a4f-e6e2-47e9-aee7-519397b2070c","label":"Copel"},{"href":"/dabe","image":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/36bff187-8c1e-4bd4-98c8-ec32d9773240","label":"Dabe"},{"href":"/luckspuma","image":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/096854bf-dee8-4463-b195-e4d33b39adf5","label":"Luckspuma"},{"href":"/pilati","image":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/9f7b9913-a98a-4226-904c-be538ee3934a","label":"Pilati"},{"href":"/orbhes","image":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/89c8a32d-61a5-443e-98d7-468642c4033a","label":"Orbhes"},{"href":"/herval","image":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/22ca0811-6fd5-49bc-9f16-fa415b1f9f86","label":"Herval"},{"href":"/sankonfort","image":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/63fa7aef-71a0-4ade-a684-0156f060d421","label":"Sankonfort"},{"href":"/gazin","image":"https://ozksgdmyrqcxcwhnbepg.supabase.co/storage/v1/object/public/assets/2800/60638a0e-e6dc-4d2a-b721-c35bddc5513f","label":"Gazin"}],"__resolveType":"site/sections/Miscellaneous/BannerMarcas.tsx"},"withContainer":true,"verticalSpacing":"top"}],"__resolveType":"site/sections/Container.tsx"}
+{
+  "isHeader": false,
+  "sections": [
+    {
+      "label": "Marcas carrossel",
+      "shadow": "none",
+      "section": {
+        "images": [
+          {
+            "href": "/dunlopillo",
+            "image": "https://data.decoassets.com/copelcolchoes/7aba7438-2052-4106-ae84-2f9f7e89e8e0/1742324026813-c7a89f8d-7a03-4216-8dce-b3adc14b3b2c",
+            "label": "Dunlopillo"
+          },
+          {
+            "href": "/simmons",
+            "image": "https://data.decoassets.com/copelcolchoes/6b915132-f255-48d3-8f89-c994f35fdbe9/1742324028215-4353c327-281a-4623-b94c-197958ccfd96",
+            "label": "Simmons"
+          },
+          {
+            "href": "/theva",
+            "image": "https://data.decoassets.com/copelcolchoes/669f8e11-c4af-46c9-847e-1b66c1cd0196/1742324029635-76bef745-e625-4fef-8739-b8e1658f4def",
+            "label": "Theva"
+          },
+          {
+            "href": "/copel-colchoes",
+            "image": "https://data.decoassets.com/copelcolchoes/76df5622-f02e-446e-86ce-c0fc5f5c8246/1742324030865-2a1d1a4f-e6e2-47e9-aee7-519397b2070c",
+            "label": "Copel"
+          },
+          {
+            "href": "/dabe",
+            "image": "https://data.decoassets.com/copelcolchoes/5320250f-912b-42ef-931d-b4b6f7722c32/1742324032209-36bff187-8c1e-4bd4-98c8-ec32d9773240",
+            "label": "Dabe"
+          },
+          {
+            "href": "/luckspuma",
+            "image": "https://data.decoassets.com/copelcolchoes/250f50f3-3e26-4f58-bae8-5b1facdce1ba/1742324033452-096854bf-dee8-4463-b195-e4d33b39adf5",
+            "label": "Luckspuma"
+          },
+          {
+            "href": "/pilati",
+            "image": "https://data.decoassets.com/copelcolchoes/fb6577bc-8be2-4c9e-ad46-0b5f0a0ff65a/1742324034669-9f7b9913-a98a-4226-904c-be538ee3934a",
+            "label": "Pilati"
+          },
+          {
+            "href": "/orbhes",
+            "image": "https://data.decoassets.com/copelcolchoes/dd49b27a-eeda-474a-a5b3-fdd1190ff64d/1742324035873-89c8a32d-61a5-443e-98d7-468642c4033a",
+            "label": "Orbhes"
+          },
+          {
+            "href": "/herval",
+            "image": "https://data.decoassets.com/copelcolchoes/468efe78-b980-4cbc-be6e-887c7589eb97/1742324037064-22ca0811-6fd5-49bc-9f16-fa415b1f9f86",
+            "label": "Herval"
+          },
+          {
+            "href": "/sankonfort",
+            "image": "https://data.decoassets.com/copelcolchoes/05a44309-0789-4e6c-886d-ed6de9832163/1742324038304-63fa7aef-71a0-4ade-a684-0156f060d421",
+            "label": "Sankonfort"
+          },
+          {
+            "href": "/gazin",
+            "image": "https://data.decoassets.com/copelcolchoes/cf72e9a8-95ea-4159-807f-e80da8c0b586/1742324039525-60638a0e-e6dc-4d2a-b721-c35bddc5513f",
+            "label": "Gazin"
+          }
+        ],
+        "__resolveType": "site/sections/Miscellaneous/BannerMarcas.tsx"
+      },
+      "withContainer": true,
+      "verticalSpacing": "top"
+    }
+  ],
+  "__resolveType": "site/sections/Container.tsx"
+}
