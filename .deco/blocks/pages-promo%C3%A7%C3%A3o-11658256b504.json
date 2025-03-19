@@ -6,6 +6,9 @@
       "__resolveType": "Default - Design System"
     },
     {
+      "__resolveType": "SEODefault"
+    },
+    {
       "__resolveType": "analytics"
     },
     {
@@ -82,20 +85,5 @@
       "__resolveType": "FloatingButtons"
     }
   ],
-  "__resolveType": "$live/pages/LivePage.tsx",
-  "seo": {
-    "__resolveType": "commerce/sections/Seo/SeoPLPV2.tsx",
-    "jsonLD": {
-      "sort": "price:desc",
-      "count": 1,
-      "fuzzy": "automatic",
-      "__resolveType": "vtex/loaders/intelligentSearch/productListingPage.ts",
-      "selectedFacets": [
-        {
-          "key": "productClusterIds",
-          "value": "238"
-        }
-      ]
-    }
-  }
+  "__resolveType": "$live/pages/LivePage.tsx"
 }

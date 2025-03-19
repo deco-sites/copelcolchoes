@@ -481,9 +481,5 @@
     ],
     "__resolveType": "website/flags/multivariate.ts"
   },
-  "__resolveType": "$live/pages/LivePage.tsx",
-  "seo": {
-    "__resolveType": "website/sections/Seo/SeoV2.tsx",
-    "type": "website"
-  }
+  "__resolveType": "$live/pages/LivePage.tsx"
 }
