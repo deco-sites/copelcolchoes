@@ -6,9 +6,6 @@
       "__resolveType": "Default - Design System"
     },
     {
-      "__resolveType": "SEODefault"
-    },
-    {
       "__resolveType": "analytics"
     },
     {
@@ -109,5 +106,15 @@
       "__resolveType": "site/sections/Integrations/JivoChat.tsx"
     }
   ],
-  "__resolveType": "$live/pages/LivePage.tsx"
+  "__resolveType": "$live/pages/LivePage.tsx",
+  "seo": {
+    "__resolveType": "commerce/sections/Seo/SeoPDPV2.tsx",
+    "jsonLD": {
+      "slug": {
+        "param": "slug",
+        "__resolveType": "website/functions/requestToParam.ts"
+      },
+      "__resolveType": "vtex/loaders/intelligentSearch/productDetailsPage.ts"
+    }
+  }
 }
