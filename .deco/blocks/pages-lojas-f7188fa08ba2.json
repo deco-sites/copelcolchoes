@@ -12,9 +12,6 @@
             "__resolveType": "Default - Design System"
           },
           {
-            "__resolveType": "SEODefault"
-          },
-          {
             "__resolveType": "analytics"
           },
           {
@@ -31,5 +28,12 @@
     ],
     "__resolveType": "$live/flags/multivariate.ts"
   },
-  "__resolveType": "$live/pages/LivePage.tsx"
+  "__resolveType": "$live/pages/LivePage.tsx",
+  "seo": {
+    "__resolveType": "website/sections/Seo/SeoV2.tsx",
+    "type": "website",
+    "titleTemplate": "%s",
+    "descriptionTemplate": "%s",
+    "canonical": "https://www.copelcolchoes.com.br/nossas-lojas"
+  }
 }
