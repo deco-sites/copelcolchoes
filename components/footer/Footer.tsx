@@ -67,6 +67,10 @@ export interface Props {
    * @title Poweredby
    */
   poweredby?: FooterImage[];
+  /**
+   * @title companyFooterInfo
+   */
+  companyFooterInfo: string;
 }
 
 function Footer(
@@ -77,6 +81,7 @@ function Footer(
     payments,
     securities,
     poweredby,
+    companyFooterInfo,
   }: Props,
 ) {
   return (
@@ -204,7 +209,7 @@ function Footer(
                             fetchPriority="high"
                             loading="eager"
                             src={item.image || ""}
-                            width={item.width ?? 73} 
+                            width={item.width ?? 73}
                             height={item.height}
                             alt={item.alt || "footer image"}
                             // class="h-auto w-full inline-block align-middle mix-blend-multiply"
@@ -229,7 +234,7 @@ function Footer(
                           loading="eager"
                           src={image.image}
                           alt={image.alt}
-                          width={image.width ?? 73} 
+                          width={image.width ?? 73}
                           height={image.height}
                           target="_blank"
                           // class="w-auto h-auto"
@@ -246,11 +251,7 @@ function Footer(
           <div class="lg:w-full px-8 lg:px-52 lg:pb-[3.4375rem] max-w-7xl mx-auto max-lg:pb-[1.25rem]">
             <p class="text-xs leading-[0.9375rem] text-center w-full font-medium text-[#8c9aad]">
               <span>
-                Copyright © Copel Colchões 2010 - Todos os direitos reservados.
-                CONFORTO REDE COMERCIAL DE COLCHÕES LTDA - CNPJ:
-                61.522.850/0112-60 Rodovia Vice Prefeito Hermenegildo Tonolli,
-                3049 - São Roque da Chave - Itupeva - SP 13295-000 - Tel.: (11)
-                3995-3950 - atendimento@copelcolchoes.com.br
+                {companyFooterInfo}
               </span>
             </p>
           </div>
