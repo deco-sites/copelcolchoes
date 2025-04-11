@@ -120,7 +120,7 @@ function ProductInfo(
                   </p>
                 )}
                 <p class="text-secondary text-sm font-semibold leading-5 flex-col items-start font-quicksand mb-3">
-                  à vista no Pix, Boleto ou em 1x no cartão
+                  à vista no Pix ou em 1x no cartão
                 </p>
               </div>
 
