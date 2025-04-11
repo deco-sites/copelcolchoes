@@ -256,7 +256,7 @@ function ProductCard(
                   </ins>
                 )}
                 <span class="text-secondary text-[0.8125rem] font-extrabold font-quicksand product-card__pix">
-                  10% de desconto no Pix ou Boleto
+                  10% de desconto no Pix
                 </span>
                 <p class="text-[#828282] text-[0.8125rem] font-medium font-quicksand">
                   Ou <span class="">{formatPrice(price, offers!.priceCurrency!)}</span> em
