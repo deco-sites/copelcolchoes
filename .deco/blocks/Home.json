@@ -261,11 +261,6 @@
                       "image": "https://data.decoassets.com/copelcolchoes/10e7d171-7735-4ce3-8228-6c2cf863c28d/1742323964326-46d1576d-38a6-49ce-bfc3-67cfafcfa9a6"
                     },
                     {
-                      "alt": "Boleto",
-                      "icon": "Boleto",
-                      "image": "https://data.decoassets.com/copelcolchoes/3c4ab201-9034-4515-b282-d9ce54fb1d86/1742323965686-7f411640-c4ae-44af-9096-472c28b68561"
-                    },
-                    {
                       "alt": "Pix",
                       "icon": "Pix",
                       "image": "https://data.decoassets.com/copelcolchoes/3a937002-0651-4080-9d38-fc58cb627e46/1742323966856-b1862d80-07cc-4066-a889-ccf96586a031"
@@ -469,12 +464,6 @@
                 "verticalSpacing": "none"
               }
             ],
-            "backgroundColor": "pink"
-          },
-          {
-            "__resolveType": "site/sections/Container.tsx",
-            "isHeader": false,
-            "sections": [],
             "backgroundColor": "pink"
           }
         ]
