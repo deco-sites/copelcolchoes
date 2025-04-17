@@ -152,7 +152,7 @@ function ProductInfo(
                           Condições especiais de parcelamento
                         </p>
                         <p class="text-sm font-medium leading-snug my-2 mx-0">
-                          Em 1x no cartão de crédito ou boleto = 10% de desconto
+                          Em 1x no cartão de crédito ou pix = 10% de desconto
                         </p>
                         <p class="text-sm font-medium leading-snug my-2 mx-0">
                           De 2x a 3x = Você ganha 7% de desconto
