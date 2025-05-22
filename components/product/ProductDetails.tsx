@@ -280,7 +280,7 @@ function ProductAccordions({ product }: {
           {description
             ? (
               <>
-                <div class="w-1/2 max-w-[27.125rem]">
+                <div class="hidden lg:block w-1/2 max-w-[27.125rem]">
                   <div class="flex items-center justify-center mx-auto w-full bg-transparent">
                     <Image
                       src={image!.url}
@@ -289,7 +289,7 @@ function ProductAccordions({ product }: {
                     />
                   </div>
                 </div>
-                <div class="w-1/2">
+                <div class="w-full lg:w-1/2">
                   <div
                     class="font-quicksand text-base leading-6 text-[#828282]"
                     dangerouslySetInnerHTML={{ __html: description }}

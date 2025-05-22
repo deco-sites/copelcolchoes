@@ -276,17 +276,17 @@ function ProductCard(
           ? (
             <a
               href={url && relative(url)}
-              aria-label="Saiba mais"
+              aria-label="Comprar"
               name="view product"
               class="block"
             >
               <div>
                 <button
-                  title="Saiba mais"
+                  title="Comprar"
                   type="button"
-                  class="bg-primary w-full text-white tracking-normal capitalize mt-[0.625rem] leading-5 rounded-[0.3125rem] p-0 flex justify-center items-center border border-transparent font-bold relative h-[2.625rem]"
+                  class="bg-primary w-full text-white tracking-normal uppercase mt-[0.625rem] leading-5 rounded-[0.3125rem] p-0 flex justify-center items-center border border-transparent font-bold relative h-[2.625rem]"
                 >
-                  Saiba mais
+                  Comprar
                 </button>
               </div>
             </a>
@@ -296,7 +296,7 @@ function ProductCard(
               <button
                 class="bg-primary w-full tracking-normal capitalize mt-[1.875rem] text-base leading-5 rounded-[0.3125rem] p-0 disabled:opacity-30 disabled:cursor-not-allowed hover:opacity-100 flex justify-center items-center text-white transition-all duration-250 h-[2.625rem] relative font-bold border border-transparent"
                 disabled
-                title="Saiba mais"
+                title="Produto Esgotado"
               >
                 Esgotado
               </button>
