@@ -11,7 +11,15 @@
         },
         "alerts": [
           {
+            "textAlert": "Lorem ipsum 1",
+            "textColor": "#ffffff"
+          },
+          {
             "textAlert": "Sleep Test: São 30 dias para se adaptar ao colchão ou trocamos para você",
+            "textColor": "#ffffff"
+          },
+          {
+            "textAlert": "Lorem ipsum 2",
             "textColor": "#ffffff"
           }
         ],
@@ -19,7 +27,8 @@
         "__resolveType": "site/sections/Header/TopNavBar.tsx"
       },
       "backgroundColor": "#002b62",
-      "verticalSpacing": "both"
+      "verticalSpacing": "both",
+      "spacing": 0
     },
     {
       "label": "Header",
