@@ -11,16 +11,40 @@
         },
         "alerts": [
           {
-            "textAlert": "Lorem ipsum 1",
-            "textColor": "#ffffff"
+            "textAlert": "Sleep Test: São 30 dias para se adaptar ao colchão ou trocamos para você",
+            "textColor": "#ffffff",
+            "icon": {
+              "alt": "MoonStar",
+              "size": {
+                "width": 28,
+                "height": 28
+              },
+              "src": "https://assets.decocache.com/copelcolchoes/9bcb7d8c-5d33-4fca-8bb5-bb89fdd567f9/MoonStars.svg"
+            }
           },
           {
             "textAlert": "Sleep Test: São 30 dias para se adaptar ao colchão ou trocamos para você",
-            "textColor": "#ffffff"
+            "textColor": "#ffffff",
+            "icon": {
+              "alt": "MoonStar",
+              "size": {
+                "width": 28,
+                "height": 28
+              },
+              "src": "https://assets.decocache.com/copelcolchoes/9bcb7d8c-5d33-4fca-8bb5-bb89fdd567f9/MoonStars.svg"
+            }
           },
           {
-            "textAlert": "Lorem ipsum 2",
-            "textColor": "#ffffff"
+            "textAlert": "Sleep Test: São 30 dias para se adaptar ao colchão ou trocamos para você",
+            "textColor": "#ffffff",
+            "icon": {
+              "alt": "MoonStar",
+              "size": {
+                "width": 28,
+                "height": 28
+              },
+              "src": "https://assets.decocache.com/copelcolchoes/9bcb7d8c-5d33-4fca-8bb5-bb89fdd567f9/MoonStars.svg"
+            }
           }
         ],
         "interval": 5000,

@@ -4880,9 +4880,6 @@ details.collapse summary::-webkit-details-marker {
 .ml-\[0\.625rem\] {
   margin-left: 0.625rem;
 }
-.ml-\[14px\] {
-  margin-left: 14px;
-}
 .ml-\[42px\] {
   margin-left: 42px;
 }
@@ -5186,6 +5183,9 @@ details.collapse summary::-webkit-details-marker {
 .h-\[5px\] {
   height: 5px;
 }
+.h-\[67px\] {
+  height: 67px;
+}
 .h-\[7\.5rem\] {
   height: 7.5rem;
 }
@@ -5297,6 +5297,9 @@ details.collapse summary::-webkit-details-marker {
 }
 .\!w-0 {
   width: 0px !important;
+}
+.\!w-\[274px\] {
+  width: 274px !important;
 }
 .w-0 {
   width: 0px;
@@ -5466,9 +5469,6 @@ details.collapse summary::-webkit-details-marker {
 .w-\[50px\] {
   width: 50px;
 }
-.w-\[52\%\] {
-  width: 52%;
-}
 .w-\[522px\] {
   width: 522px;
 }
@@ -5589,9 +5589,6 @@ details.collapse summary::-webkit-details-marker {
 }
 .max-w-\[1170px\] {
   max-width: 1170px;
-}
-.max-w-\[1220px\] {
-  max-width: 1220px;
 }
 .max-w-\[1360px\] {
   max-width: 1360px;
@@ -6297,6 +6294,10 @@ details.collapse summary::-webkit-details-marker {
   --tw-border-opacity: 1;
   border-color: rgb(112 112 112 / var(--tw-border-opacity));
 }
+.border-\[\#A8C7E8\] {
+  --tw-border-opacity: 1;
+  border-color: rgb(168 199 232 / var(--tw-border-opacity));
+}
 .border-\[\#C5C6CB\] {
   --tw-border-opacity: 1;
   border-color: rgb(197 198 203 / var(--tw-border-opacity));
@@ -6504,6 +6505,10 @@ details.collapse summary::-webkit-details-marker {
 .bg-\[\#A52A2A\] {
   --tw-bg-opacity: 1;
   background-color: rgb(165 42 42 / var(--tw-bg-opacity));
+}
+.bg-\[\#A8C7E8\] {
+  --tw-bg-opacity: 1;
+  background-color: rgb(168 199 232 / var(--tw-bg-opacity));
 }
 .bg-\[\#A9A9A9\] {
   --tw-bg-opacity: 1;
@@ -7400,6 +7405,14 @@ details.collapse summary::-webkit-details-marker {
 }
 .text-\[\#\#8c9aad\] {
   color: ##8c9aad;
+}
+.text-\[\#002A61\] {
+  --tw-text-opacity: 1;
+  color: rgb(0 42 97 / var(--tw-text-opacity));
+}
+.text-\[\#002B62\] {
+  --tw-text-opacity: 1;
+  color: rgb(0 43 98 / var(--tw-text-opacity));
 }
 .text-\[\#002b62\] {
   --tw-text-opacity: 1;
@@ -10069,6 +10082,11 @@ details.collapse summary::-webkit-details-marker {
     margin-bottom: 2rem;
   }
 
+  .lg\:my-9 {
+    margin-top: 2.25rem;
+    margin-bottom: 2.25rem;
+  }
+
   .lg\:mb-20 {
     margin-bottom: 5rem;
   }
@@ -10079,10 +10097,6 @@ details.collapse summary::-webkit-details-marker {
 
   .lg\:mb-6 {
     margin-bottom: 1.5rem;
-  }
-
-  .lg\:mb-9 {
-    margin-bottom: 2.25rem;
   }
 
   .lg\:mb-\[2\.125rem\] {
@@ -10541,6 +10555,11 @@ details.collapse summary::-webkit-details-marker {
   .lg\:px-\[60px\] {
     padding-left: 60px;
     padding-right: 60px;
+  }
+
+  .lg\:py-1 {
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
   }
 
   .lg\:py-10 {
