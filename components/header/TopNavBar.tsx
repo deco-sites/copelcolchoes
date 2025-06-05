@@ -3,13 +3,31 @@ import SliderJS from "$store/islands/SliderJS.tsx";
 import { useId } from "preact/hooks";
 
 export interface Props {
+  /**
+   * @title Mensagens de Alerta
+   * @description Array de mensagens de alerta para exibição no slider
+   */
   alerts: Alert[];
+
+  /**
+   * @title Slide Interval
+   * @description Tempo em segundos entre transições automáticas (defina 0 para desativar)
+   */
   interval?: number;
 }
 
 export interface Alert {
+  /**
+   * @title Texto do Alerta
+   * @description O texto da mensagem a ser exibida
+   */
   textAlert: string;
-  /** @format color */
+
+  /**
+   * @format color
+   * @title Cor do Texto
+   * @description Cor do texto do alerta (formato HEX)
+   */
   textColor: string;
 }
 
