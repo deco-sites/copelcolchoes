@@ -44,7 +44,7 @@ function TopNavBar({ alerts, interval =  2000 }: Props) {
           {alerts.map((alert, index) => (
             <Slider.Item
               index={index}
-              class="carousel-item w-full"
+              class="carousel-item w-full transition-all duration-500 ease-in-out"
               data-slider-item={index}
             >
               <div class="flex items-center justify-center w-full">
@@ -58,24 +58,6 @@ function TopNavBar({ alerts, interval =  2000 }: Props) {
             </Slider.Item>
           ))}
         </Slider>
-
-        
-        <div class="absolute top-1/2 left-0 right-0 flex justify-between px-2 transform -translate-y-1/2">
-          <button
-            class="btn btn-circle btn-sm"
-            data-slide="prev"
-            aria-label="Previous"
-          >
-            ❮
-          </button>
-          <button
-            class="btn btn-circle btn-sm"
-            data-slide="next"
-            aria-label="Next"
-          >
-            ❯
-          </button>
-        </div>
 
         <SliderJS
           rootId={id}
