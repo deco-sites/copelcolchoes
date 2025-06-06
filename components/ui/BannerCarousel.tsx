@@ -308,13 +308,13 @@ function BannerCarousel(
       </div>
 
       {advantages && (
-        <div class="w-full px-8 bg-transparent lg:my-9 lg:py-2 max-lg:py-4">
+        <div class="w-full px-[10px] lg:px-8 bg-transparent lg:my-9 lg:py-2 max-lg:py-4">
           <div class="m-auto  flex items-center justify-center" id={idAdvantages}>
-            <Slider class="carousel carousel-start col-span-full row-span-full scrollbar-none gap-6">
+            <Slider class="carousel carousel-start col-span-full row-span-full scrollbar-none gap-3 lg:gap-6">
               {advantages?.map((adv, index) => (
                 <Slider.Item
                   index={index}
-                  class="carousel-item flex flex-row items-center justify-center gap-[10px] px-3 !w-[274px] h-[67px] !lg:w-[300px] lg:h-20 bg-[#A8C7E8] border border-[#A8C7E8] rounded-[10px]"
+                  class="carousel-item flex flex-row items-center justify-center gap-[10px] px-3 !w-[245px] h-[67px] !lg:w-[300px] lg:h-20 bg-[#A8C7E8] border border-[#A8C7E8] rounded-[10px]"
                 >
                   <img
                     class="rounded-full bg-white p-1"
@@ -336,8 +336,8 @@ function BannerCarousel(
             <SliderJS
               rootId={idAdvantages}
               itemsPerPage={{ [720]: 4, [0]: 1 }}
-              interval={interval && interval * 1e3}
-              infinite
+              // interval={interval && interval * 1e3}
+              // infinite
             />
           </div>
         </div>
