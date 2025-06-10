@@ -171,23 +171,23 @@
                   "advantages": [
                     {
                       "image": "https://assets.decocache.com/copelcolchoes/80a346ee-733c-45f2-a5d6-48de69b668dd/cards.svg",
-                      "label": "Pagamento facilitado",
-                      "sublabel": "Pagamento em dois cartões"
+                      "label": "Pagamento Facilitado",
+                      "sublabel": "Em dois cartões"
                     },
                     {
                       "image": "https://assets.decocache.com/copelcolchoes/7c294fc4-ccd0-436d-83c6-8d88171d1e8b/Truck.svg",
-                      "label": "Frete nacional",
-                      "sublabel": "Em todo território nacional"
+                      "label": "Frete Nacional",
+                      "sublabel": "Entrega em todo Brasil"
                     },
                     {
                       "image": "https://assets.decocache.com/copelcolchoes/6d7b1bc1-6049-4dca-94c4-db5a078527c4/boletoPink.svg",
                       "label": "10% OFF",
-                      "sublabel": "No boleto bancário"
+                      "sublabel": "No PIX ou 1x no Cartão de Crédito"
                     },
                     {
                       "image": "https://assets.decocache.com/copelcolchoes/f4690ffb-b85e-4418-8324-d940300e6086/CurrencyDollar.svg",
-                      "label": "Parcelas sem juros",
-                      "sublabel": "em até 10x"
+                      "label": "Parcelas Sem Juros",
+                      "sublabel": "Em até 10x"
                     }
                   ],
                   "__resolveType": "site/sections/Images/Carousel.tsx",
