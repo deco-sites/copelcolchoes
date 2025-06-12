@@ -5,10 +5,6 @@
       "label": "Topbar",
       "shadow": "none",
       "section": {
-        "alert": {
-          "textAlert": "Sleep Test: São 30 dias para se adaptar ao colchão ou trocamos para você",
-          "textColor": "#ffffff"
-        },
         "alerts": [
           {
             "textAlert": "Sleep Test: São 30 dias para se adaptar ao colchão ou trocamos para você",
@@ -23,7 +19,7 @@
             }
           },
           {
-            "textAlert": "Sleep Test: São 30 dias para se adaptar ao colchão ou trocamos para você",
+            "textAlert": "Desde 1965, tradição e conforto com a qualidade Copel.",
             "textColor": "#ffffff",
             "icon": {
               "alt": "MoonStar",
@@ -35,7 +31,7 @@
             }
           },
           {
-            "textAlert": "Sleep Test: São 30 dias para se adaptar ao colchão ou trocamos para você",
+            "textAlert": "Colchões, camas box e travesseiros em até 10x sem juros. Entrega em todo o Brasil.",
             "textColor": "#ffffff",
             "icon": {
               "alt": "MoonStar",
