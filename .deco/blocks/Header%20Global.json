@@ -5,21 +5,50 @@
       "label": "Topbar",
       "shadow": "none",
       "section": {
-        "alert": {
-          "textAlert": "Sleep Test: São 30 dias para se adaptar ao colchão ou trocamos para você",
-          "textColor": "#ffffff"
-        },
         "alerts": [
           {
             "textAlert": "Sleep Test: São 30 dias para se adaptar ao colchão ou trocamos para você",
-            "textColor": "#ffffff"
+            "textColor": "#ffffff",
+            "icon": {
+              "alt": "MoonStar",
+              "size": {
+                "width": 28,
+                "height": 28
+              },
+              "src": "https://assets.decocache.com/copelcolchoes/9bcb7d8c-5d33-4fca-8bb5-bb89fdd567f9/MoonStars.svg"
+            }
+          },
+          {
+            "textAlert": "Colchões, camas box e travesseiros em até 10x sem juros.",
+            "textColor": "#ffffff",
+            "icon": {
+              "alt": "MoonStar",
+              "size": {
+                "width": 28,
+                "height": 28
+              },
+              "src": "https://assets.decocache.com/copelcolchoes/9bcb7d8c-5d33-4fca-8bb5-bb89fdd567f9/MoonStars.svg"
+            }
+          },
+          {
+            "textAlert": "Desde 1965, tradição e conforto com a qualidade Copel.",
+            "textColor": "#ffffff",
+            "icon": {
+              "alt": "MoonStar",
+              "size": {
+                "width": 28,
+                "height": 28
+              },
+              "src": "https://assets.decocache.com/copelcolchoes/9bcb7d8c-5d33-4fca-8bb5-bb89fdd567f9/MoonStars.svg"
+            }
           }
         ],
         "interval": 5000,
         "__resolveType": "site/sections/Header/TopNavBar.tsx"
       },
       "backgroundColor": "#002b62",
-      "verticalSpacing": "both"
+      "verticalSpacing": "both",
+      "spacing": 0
     },
     {
       "label": "Header",

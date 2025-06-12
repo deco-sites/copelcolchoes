@@ -131,19 +131,23 @@
         "advantages": [
           {
             "image": "https://data.decoassets.com/copelcolchoes/95ef9cbb-39bf-4596-aec6-d0532945837f/1742324015791-005e9432-b77f-4c06-8f98-3f533024fe24",
-            "label": "Pagamento em dois cartões"
+            "label": "Pagamento facilitado",
+            "sublabel": "Pagamento em dois cartões"
           },
           {
             "image": "https://data.decoassets.com/copelcolchoes/1c84151b-253a-4505-adfe-feaff2db3244/1742324016966-d79d84b2-7564-49d6-a5e7-0d9199494e00",
-            "label": "Entrega em todo território nacional"
+            "label": "Frete nacional",
+            "sublabel": "Em todo território nacional"
           },
           {
             "image": "https://data.decoassets.com/copelcolchoes/bd18c27d-4ca1-4307-a266-5bbe8296547f/1742324018144-bfbd6fc3-aac7-45c9-8303-83275ba008d4",
-            "label": "10% de desconto no boleto"
+            "label": "10% OFF",
+            "sublabel": "No boleto bancário"
           },
           {
             "image": "https://data.decoassets.com/copelcolchoes/ef92f0f4-9286-47d5-8288-a28d94d82510/1742324019363-57d233fa-74a7-4786-ac7e-523a90e984d0",
-            "label": "Todo site em 10x sem juros"
+            "label": "Parcelas sem juros",
+            "sublabel": "em até 10x"
           }
         ],
         "__resolveType": "site/sections/Images/Carousel.tsx",
