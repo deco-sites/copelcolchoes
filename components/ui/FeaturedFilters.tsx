@@ -1,6 +1,9 @@
 import { type SectionProps } from "@deco/deco";
-
+import Slider from "$store/components/ui/Slider.tsx";
+import SliderJS from "$store/islands/SliderJS.tsx";
 import { Color } from "apps/admin/widgets.ts";
+import { useDevice } from "@deco/deco/hooks";
+import { useId } from "preact/hooks";
 
 /**
  * @titleBy matcher
@@ -22,7 +25,7 @@ export interface FilterCategory {
   /** @description Lista de categorias em destaque */
   categories: {
     /** @description Nome da categoria */
-    name: string
+    name: string;
     /** @description Link da categoria */
     link: string;
   }[];
@@ -34,6 +37,35 @@ function FeaturedFilters(
   if (!filterCategory) return null;
 
   const { categories } = filterCategory;
+  const Ifilters = useId();
+  const device = useDevice();
+
+  if (device === "mobile") {
+    return (
+      <div class="container lg:px-[4rem] px-[1.375rem] pt-3 pb-8 mx-auto">
+        <Slider class="carousel carousel-start gap-[10px]">
+          {categories.map((category, index) => (
+            <Slider.Item
+              index={index}
+              class="carousel-item"
+            >
+              <a
+                href={category.link}
+                class="px-[20px] py-[10px] rounded-lg text-white font-medium text-sm transition-opacity hover:opacity-90"
+                style={{ backgroundColor: filterCategory.color }}
+              >
+                {category.name}
+              </a>
+            </Slider.Item>
+          ))}
+        </Slider>
+        <SliderJS
+          rootId={Ifilters}
+          itemsPerPage={{ [720]: 4, [0]: 3 }}
+        />
+      </div>
+    );
+  }
 
   return (
     <div class="container lg:px-[4rem] px-[1.375rem] pt-3 pb-8 mx-auto">
