@@ -1,4 +1,4 @@
-export { default, loader } from "$store/components/ui/CategoryBanner.tsx";
+export { default, loader } from "$store/components/ui/FeaturedFilters.tsx";
 
 export function LoadingFallback() {
   return (
