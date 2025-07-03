@@ -36,7 +36,7 @@ function FeaturedFilters(
   const { categories } = filterCategory;
 
   return (
-    <div class="container lg:px-[4rem] px-[1.375rem] pt-0 pb-7 mx-auto">
+    <div class="container lg:px-[4rem] px-[1.375rem] pt-3 pb-8 mx-auto">
       <div class="flex flex-wrap gap-5">
         {categories.map((category) => (
           <a
