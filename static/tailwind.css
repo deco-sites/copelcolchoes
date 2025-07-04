@@ -5581,9 +5581,6 @@ details.collapse summary::-webkit-details-marker {
 .max-w-0 {
   max-width: 0px;
 }
-.max-w-28 {
-  max-width: 7rem;
-}
 .max-w-5xl {
   max-width: 64rem;
 }
@@ -9582,10 +9579,6 @@ details.collapse summary::-webkit-details-marker {
 
   .sm\:gap-8 {
     gap: 2rem;
-  }
-
-  .sm\:gap-\[10px\] {
-    gap: 10px;
   }
 
   .sm\:divide-x > :not([hidden]) ~ :not([hidden]) {
