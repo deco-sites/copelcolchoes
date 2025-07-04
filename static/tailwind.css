@@ -5532,6 +5532,9 @@ details.collapse summary::-webkit-details-marker {
 .w-screen {
   width: 100vw;
 }
+.min-w-28 {
+  min-width: 7rem;
+}
 .min-w-\[1\.5rem\] {
   min-width: 1.5rem;
 }
@@ -5577,6 +5580,9 @@ details.collapse summary::-webkit-details-marker {
 }
 .max-w-0 {
   max-width: 0px;
+}
+.max-w-28 {
+  max-width: 7rem;
 }
 .max-w-5xl {
   max-width: 64rem;
@@ -7032,6 +7038,9 @@ details.collapse summary::-webkit-details-marker {
 }
 .pl-5 {
   padding-left: 1.25rem;
+}
+.pl-\[1\.375rem\] {
+  padding-left: 1.375rem;
 }
 .pl-\[10px\] {
   padding-left: 10px;

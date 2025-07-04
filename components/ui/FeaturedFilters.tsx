@@ -42,16 +42,17 @@ function FeaturedFilters(
 
   if (device === "mobile") {
     return (
-      <div class="container lg:px-[4rem] px-[1.375rem] pt-3 pb-8 mx-auto">
-        <Slider class="carousel carousel-start gap-[10px]">
+      <div class="container lg:px-[4rem] pr-0 pl-[1.375rem] pt-3 pb-8 mx-auto" id={Ifilters}>
+
+        <Slider class="w-full carousel carousel-start gap-[10px]">
           {categories.map((category, index) => (
             <Slider.Item
               index={index}
-              class="carousel-item"
+              class="carousel-item w-full"
             >
               <a
                 href={category.link}
-                class="px-[20px] py-[10px] rounded-lg text-white font-medium text-sm transition-opacity hover:opacity-90"
+                class=" min-w-28 max-w-28 py-[10px] rounded-lg text-white text-center font-medium text-sm transition-opacity hover:opacity-90"
                 style={{ backgroundColor: filterCategory.color }}
               >
                 {category.name}
@@ -59,9 +60,10 @@ function FeaturedFilters(
             </Slider.Item>
           ))}
         </Slider>
+
         <SliderJS
           rootId={Ifilters}
-          itemsPerPage={{ [720]: 4, [0]: 3 }}
+          itemsPerPage={{ [720]: 4, [0]: 3.5 }}
         />
       </div>
     );
