@@ -44,7 +44,7 @@ function FeaturedFilters(
     return (
       <div class="container lg:px-[4rem] pr-0 pl-[1.375rem] pt-3 pb-8 mx-auto" id={Ifilters}>
 
-        <Slider class="w-full carousel carousel-start gap-[10px]">
+        <Slider class="w-full carousel carousel-start gap-[13px] sm:gap-[10px]">
           {categories.map((category, index) => (
             <Slider.Item
               index={index}
@@ -52,7 +52,7 @@ function FeaturedFilters(
             >
               <a
                 href={category.link}
-                class=" min-w-28 max-w-28 py-[10px] rounded-lg text-white text-center font-medium text-sm transition-opacity hover:opacity-90"
+                class="min-w-24 sm:min-w-28 max-w-28 py-[10px] rounded-lg text-white text-center font-medium text-sm transition-opacity hover:opacity-90"
                 style={{ backgroundColor: filterCategory.color }}
               >
                 {category.name}

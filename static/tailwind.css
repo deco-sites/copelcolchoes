@@ -5532,8 +5532,8 @@ details.collapse summary::-webkit-details-marker {
 .w-screen {
   width: 100vw;
 }
-.min-w-28 {
-  min-width: 7rem;
+.min-w-24 {
+  min-width: 6rem;
 }
 .min-w-\[1\.5rem\] {
   min-width: 1.5rem;
@@ -6020,6 +6020,9 @@ details.collapse summary::-webkit-details-marker {
 }
 .gap-\[10px\] {
   gap: 10px;
+}
+.gap-\[13px\] {
+  gap: 13px;
 }
 .gap-\[14px\] {
   gap: 14px;
@@ -9497,6 +9500,10 @@ details.collapse summary::-webkit-details-marker {
     width: 552px;
   }
 
+  .sm\:min-w-28 {
+    min-width: 7rem;
+  }
+
   .sm\:min-w-\[25rem\] {
     min-width: 25rem;
   }
@@ -9575,6 +9582,10 @@ details.collapse summary::-webkit-details-marker {
 
   .sm\:gap-8 {
     gap: 2rem;
+  }
+
+  .sm\:gap-\[10px\] {
+    gap: 10px;
   }
 
   .sm\:divide-x > :not([hidden]) ~ :not([hidden]) {
