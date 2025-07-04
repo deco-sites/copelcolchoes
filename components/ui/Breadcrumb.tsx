@@ -10,7 +10,7 @@ function Breadcrumb({ class: _class, itemListElement = [] }: Props) {
 
   return (
     <div
-      class={`${_class} mb-[3.125rem] max-lg:mb-8 ${
+      class={`${_class} mb-[2rem] max-lg:mb-8 ${
         items.length <= 1 ? "h-0 p-0" : "pt-5"
       }`}
     >
