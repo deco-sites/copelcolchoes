@@ -57,6 +57,9 @@ function GlobalTags() {
 
       {/* Web Manifest */}
       <link rel="manifest" href={asset("/site.webmanifest")} />
+
+      {/* JivoSite */}
+      <script src="//code.jivosite.com/widget/5agrwUOcMr" async></script>
     </Head>
   );
 }
