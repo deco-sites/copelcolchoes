@@ -108,13 +108,27 @@
   ],
   "__resolveType": "$live/pages/LivePage.tsx",
   "seo": {
-    "__resolveType": "commerce/sections/Seo/SeoPDPV2.tsx",
+    "__resolveType": "site/sections/Seo/CustomProductJSONLD.tsx",
     "jsonLD": {
       "slug": {
         "param": "slug",
         "__resolveType": "website/functions/requestToParam.ts"
       },
       "__resolveType": "vtex/loaders/intelligentSearch/productDetailsPage.ts"
+    },
+    "canonical": "",
+    "description": "",
+    "title": "",
+    "omitVariants": false,
+    "page": {
+      "__resolveType": "deco-sites/std/loaders/vtex/intelligentSearch/productDetailsPage.ts",
+      "advancedConfigs": {
+        "includeOriginalAttributes": []
+      },
+      "slug": {
+        "__resolveType": "deco-sites/std/functions/requestToParam.ts",
+        "param": "slug"
+      }
     }
   }
 }

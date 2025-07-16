@@ -154,12 +154,14 @@
         "showPaginationDots": "Always"
       },
       "withContainer": false,
-      "verticalSpacing": "both"
+      "verticalSpacing": "both",
+      "spacing": 0
     },
     {
       "section": {},
       "shadow": "none",
-      "verticalSpacing": "top"
+      "verticalSpacing": "top",
+      "spacing": 0
     }
   ],
   "__resolveType": "site/sections/Container.tsx"

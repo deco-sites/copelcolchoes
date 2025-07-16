@@ -259,7 +259,11 @@ function ProductCard(
                   10% de desconto no Pix
                 </span>
                 <p class="text-[#828282] text-[0.8125rem] font-medium font-quicksand">
-                  Ou <span class="">{formatPrice(price, offers!.priceCurrency!)}</span> em
+                  Ou{" "}
+                  <span class="">
+                    {formatPrice(price, offers!.priceCurrency!)}
+                  </span>{" "}
+                  em
                   <span class="mx-1">
                     {installment?.billingDuration}x de {formatPrice(
                       installment?.billingIncrement,

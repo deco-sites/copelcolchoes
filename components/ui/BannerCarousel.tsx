@@ -309,7 +309,10 @@ function BannerCarousel(
 
       {advantages && (
         <div class="w-full px-[10px] lg:px-8 bg-transparent lg:my-9 lg:py-2 max-lg:py-4">
-          <div class="m-auto  flex items-center justify-center" id={idAdvantages}>
+          <div
+            class="m-auto  flex items-center justify-center"
+            id={idAdvantages}
+          >
             <Slider class="carousel carousel-start col-span-full row-span-full scrollbar-none gap-3 lg:gap-6">
               {advantages?.map((adv, index) => (
                 <Slider.Item

@@ -64,10 +64,7 @@ function ChatButton() {
   );
 }
 
-
-
-function CartButton( { device }: {device?: string} ) {
-
+function CartButton({ device }: { device?: string }) {
   const { displayCart } = useUI();
   const { loading, cart, mapItemsToAnalyticsItems } = useCart();
   const totalItems = cart.value?.items.length || 0;
@@ -102,36 +99,45 @@ function CartButton( { device }: {device?: string} ) {
       onClick={onClick}
     >
       <div class="flex relative">
-        <span 
-          class={clx(`flex justify-center items-center text-white bg-[#d81a4d] text-xs font-['Montserrat',_sans-serif] z-[9] rounded-full 
-            font-bold w-[18px] h-[19px] md:w-[20px] md:h-[20px] absolute -top-[2px] md:-right-[8px] right-[3px] text-[12px]`)}>
+        <span
+          class={clx(
+            `flex justify-center items-center text-white bg-[#d81a4d] text-xs font-['Montserrat',_sans-serif] z-[9] rounded-full 
+            font-bold w-[18px] h-[19px] md:w-[20px] md:h-[20px] absolute -top-[2px] md:-right-[8px] right-[3px] text-[12px]`,
+          )}
+        >
           {totalItems > 9 ? "9+" : totalItems}
-        </span>     
-        {device === 'desktop' 
-        ? (
+        </span>
+        {device === "desktop"
+          ? (
             <Icon
               id="ShoppingCart"
               size={36}
               strokeWidth={1}
             />
           )
-        : (
+          : (
             <Icon
               class={`-translate-x-[10px]`}
               id="ShoppingCartMobile"
               size={28}
               strokeWidth={1}
             />
-          )
-        }
+          )}
       </div>
-      <span class={`max-lg:hidden text-[14px] leading-[21px] text-[#656565] font-black text-left md:ml-[12px]`}>Meu <br /> carrinho</span>
+      <span
+        class={`max-lg:hidden text-[14px] leading-[21px] text-[#656565] font-black text-left md:ml-[12px]`}
+      >
+        Meu <br /> carrinho
+      </span>
     </Button>
   );
 }
 
 function Buttons(
-  { variant, device }: { variant: "cart" | "search" | "menu" | "chat", device?:string },
+  { variant, device }: {
+    variant: "cart" | "search" | "menu" | "chat";
+    device?: string;
+  },
 ) {
   if (variant === "cart") {
     return <CartButton device={device} />;
