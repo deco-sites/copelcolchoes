@@ -1,1 +1,41 @@
-{"isHeader":false,"sections":[{"label":"Search Results","shadow":"none","section":{"page":{"sort":"orders:desc","count":12,"fuzzy":"disabled","pageOffset":1,"__resolveType":"deco-sites/std/loaders/vtex/intelligentSearch/productListingPage.ts","selectedFacets":[]},"columns":{"mobile":2,"desktop":4},"variant":"aside","__resolveType":"site/sections/Product/SearchResult.tsx","notFoundSection":{"hints":{"hints":["Verifique os termos digitados.","Tente utilizar uma única palavra.","Utilize termos genéricos na busca.","Procure utilizar sinônimos ao termo desejado."],"title":"Confira algumas dicas para realizar sua busca:"},"__resolveType":"site/sections/Miscellaneous/NotFound.tsx"}},"withContainer":true,"verticalSpacing":"both"}],"__resolveType":"site/sections/Container.tsx"}
+{
+  "isHeader": false,
+  "sections": [
+    {
+      "label": "Search Results",
+      "shadow": "none",
+      "section": {
+        "page": {
+          "sort": "orders:desc",
+          "count": 12,
+          "fuzzy": "disabled",
+          "pageOffset": 1,
+          "__resolveType": "deco-sites/std/loaders/vtex/intelligentSearch/productListingPage.ts",
+          "selectedFacets": []
+        },
+        "columns": {
+          "mobile": 2,
+          "desktop": 4
+        },
+        "variant": "aside",
+        "__resolveType": "site/sections/Product/SearchResult.tsx",
+        "notFoundSection": {
+          "hints": {
+            "hints": [
+              "Verifique os termos digitados.",
+              "Tente utilizar uma única palavra.",
+              "Utilize termos genéricos na busca.",
+              "Procure utilizar sinônimos ao termo desejado."
+            ],
+            "title": "Confira algumas dicas para realizar sua busca:"
+          },
+          "__resolveType": "site/sections/Miscellaneous/NotFound.tsx"
+        }
+      },
+      "withContainer": true,
+      "verticalSpacing": "both",
+      "spacing": 0
+    }
+  ],
+  "__resolveType": "site/sections/Container.tsx"
+}
