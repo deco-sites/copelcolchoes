@@ -149,18 +149,18 @@
                       }
                     },
                     {
-                      "alt": "60 Anos Copel Aniversario - Promocao -  Copel Colchoes",
+                      "alt": "PIX 10% OFF -  Copel Colchoes",
                       "action": {
                         "href": "/promocao",
                         "variant": "primary"
                       },
                       "mobile": {
-                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/7906b797-d45b-44aa-9892-c413ef6fe1ec/banner-mobile-dezembro-2024-01.jpg",
+                        "image": "https://assets.decocache.com/copelcolchoes/d52f3542-8e0d-4c34-b38f-b57fbd0d2eb4/BANNER-PIX-SITE-mobile-1.jpg",
                         "width": 440,
                         "height": 320
                       },
                       "desktop": {
-                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/175fb37f-72e4-4a97-9f0c-dd504c9c5578/banner-desktop-dezembro-2024-01.jpg",
+                        "image": "https://assets.decocache.com/copelcolchoes/7316f44a-65db-4827-9159-9e8679346cd8/BANNER-PIX-SITE-descktop1.jpg",
                         "width": 1519,
                         "height": 473
                       }
