@@ -51,7 +51,7 @@ import * as $$$$$$43 from "./sections/Product/ProductReview.tsx";
 import * as $$$$$$44 from "./sections/Product/ProductShelf.tsx";
 import * as $$$$$$45 from "./sections/Product/SearchResult.tsx";
 import * as $$$$$$46 from "./sections/Product/Wishlist.tsx";
-import * as $$$$$$47 from "./sections/Seo/CustomProductJSONLD.tsx";
+import * as $$$$$$47 from "./sections/Seo/CustomProductSEO.tsx";
 import * as $$$$$$48 from "./sections/Seo/SeoBaseCustomV2.tsx";
 import * as $$$$$$49 from "./sections/Social/InstagramPosts.tsx";
 import * as $$$$$$50 from "./sections/Social/WhatsApp.tsx";
@@ -106,7 +106,7 @@ const manifest = {
     "site/sections/Product/ProductShelf.tsx": $$$$$$44,
     "site/sections/Product/SearchResult.tsx": $$$$$$45,
     "site/sections/Product/Wishlist.tsx": $$$$$$46,
-    "site/sections/Seo/CustomProductJSONLD.tsx": $$$$$$47,
+    "site/sections/Seo/CustomProductSEO.tsx": $$$$$$47,
     "site/sections/Seo/SeoBaseCustomV2.tsx": $$$$$$48,
     "site/sections/Social/InstagramPosts.tsx": $$$$$$49,
     "site/sections/Social/WhatsApp.tsx": $$$$$$50,
