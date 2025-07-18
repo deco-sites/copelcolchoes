@@ -1,0 +1,170 @@
+import { ProductDetailsPage } from "apps/commerce/types.ts";
+import { Head } from "$fresh/runtime.ts";
+import { SEOSection } from "apps/website/components/Seo.tsx";
+import { type SectionProps } from "@deco/deco";
+import {
+  fetchReviewData,
+  type YourViewsConfig,
+} from "$store/utils/yourViewsService.ts";
+import { calculatePixPromotion } from "$store/utils/seo/pixPromotion.ts";
+import {
+  buildAdditionalProperties,
+  extractAdditionalGTINs,
+  extractProductCategories,
+  extractProductSpecifications,
+  extractProductWeight,
+  getSpecificationValue,
+  parseHeightValue,
+  parseWidthValue,
+} from "$store/utils/seo/productDataProcessor.ts";
+import { generateProductKeywords } from "$store/utils/seo/keywordsExtractor.ts";
+import {
+  buildAggregateRating,
+  buildBreadcrumbData,
+  buildOffersObject,
+  buildOrganizationData,
+  buildProductData,
+  buildStructuredData,
+} from "$store/utils/seo/structuredDataBuilder.ts";
+import { MetaTags } from "$store/components/seo/MetaTags.tsx";
+import { buildPageDescription, buildPageTitle } from "$store/utils/seo/metaTags.ts";
+
+interface Props {
+  page: ProductDetailsPage | null;
+  yourViews?: YourViewsConfig;
+}
+
+export async function loader({ page, yourViews }: Props, _req: Request) {
+  if (!page?.product) {
+    return { page, reviewData: null };
+  }
+
+  if (!yourViews?.key) {
+    return { page, reviewData: null };
+  }
+
+  const { product } = page;
+  const { inProductGroupWithID } = product;
+
+  if (!inProductGroupWithID) {
+    return { page, reviewData: null };
+  }
+
+  const reviewData = await fetchReviewData(inProductGroupWithID, yourViews);
+  return { page, reviewData };
+}
+
+export default function CustomProductSEO(
+  { page, reviewData }: SectionProps<typeof loader>,
+): SEOSection {
+  if (!page?.product) return <div></div>;
+  const product = page.product;
+
+  // Deno.writeTextFileSync("product.json", JSON.stringify(product, null, 2));
+
+  const { promotionalPrice } = calculatePixPromotion(
+    product.offers?.offers || [],
+  );
+  const fullProductName = product.isVariantOf?.name || product.name;
+  const { category } = extractProductCategories(product);
+  const specifications = extractProductSpecifications(product);
+  const getSpecValue = (name: string) =>
+    getSpecificationValue(specifications.specifications, name);
+
+  const originalPrice = product.offers?.offers?.[0]?.price || 0;
+  const priceCurrency = product.offers?.priceCurrency || "BRL";
+  const availability = product.offers?.offers?.[0]?.availability ||
+    "https://schema.org/InStock";
+  const sellerName = product.offers?.offers?.[0]?.sellerName || "";
+  const priceValidUntil = product.offers?.offers?.[0]?.priceValidUntil;
+  const inventoryLevel = product.offers?.offers?.[0]?.inventoryLevel?.value;
+
+  const price = promotionalPrice || originalPrice;
+  const heightStr = getSpecValue("altura");
+  const heightValue = parseHeightValue(heightStr);
+  const widthStr = getSpecValue("largura");
+  const widthValue = parseWidthValue(widthStr);
+  const weight = extractProductWeight(specifications.specifications);
+
+  const additionalGTINs = extractAdditionalGTINs(specifications.specifications);
+  const additionalProperties = buildAdditionalProperties(
+    specifications.specifications,
+  );
+  const aggregateReview = buildAggregateRating(reviewData);
+
+  const offers = buildOffersObject({
+    product,
+    originalPrice,
+    promotionalPrice,
+    priceCurrency,
+    availability,
+    sellerName,
+    priceValidUntil,
+    inventoryLevel,
+  });
+
+  const productData = buildProductData({
+    product,
+    fullProductName: fullProductName || "",
+    category,
+    specifications,
+    additionalGTINs,
+    additionalProperties,
+    weight,
+    heightValue,
+    widthValue,
+    heightStr,
+    widthStr,
+    offers,
+    aggregateRating: aggregateReview,
+    getSpecValue,
+  });
+
+  const breadcrumbData = buildBreadcrumbData(page);
+  const organizationData = buildOrganizationData();
+  const structuredData = buildStructuredData(
+    productData,
+    breadcrumbData,
+    organizationData,
+  );
+
+  const jsonLdScript = JSON.stringify(structuredData, null, 2);
+
+  const pageTitle = buildPageTitle(fullProductName);
+  const pageDescription = buildPageDescription(productData.description);
+  const pageUrl = product.url || "";
+  const canonicalUrl = pageUrl.split("?")?.[0] || pageUrl;
+  const imageUrl = product.image?.[0]?.url || "";
+
+  const keywords = generateProductKeywords({
+    product,
+    category,
+    specifications,
+    fullProductName,
+    productDescription: productData.description,
+    getSpecValue,
+  });
+
+  return (
+    <Head>
+      <MetaTags
+        product={product}
+        pageTitle={pageTitle}
+        pageDescription={pageDescription}
+        pageUrl={pageUrl}
+        canonicalUrl={canonicalUrl}
+        imageUrl={imageUrl}
+        keywords={keywords}
+        availability={availability}
+        price={price}
+        priceCurrency={priceCurrency}
+      />
+
+      <script
+        type="application/ld+json"
+        // deno-lint-ignore react-no-danger
+        dangerouslySetInnerHTML={{ __html: jsonLdScript }}
+      />
+    </Head>
+  );
+}

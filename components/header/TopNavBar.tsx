@@ -97,7 +97,10 @@ function TopNavBar({ alerts, interval = 2000, iconConfig }: Props) {
   return (
     <div class="px-[1.875rem] topnavbar bg-primary relative group">
       <div id={id} class="relative">
-        <Slider class="carousel carousel-center w-full align-middle" data-slider>
+        <Slider
+          class="carousel carousel-center w-full align-middle"
+          data-slider
+        >
           {alerts.map((alert, index) => (
             <Slider.Item
               index={index}
@@ -109,8 +112,10 @@ function TopNavBar({ alerts, interval = 2000, iconConfig }: Props) {
                   <img
                     src={alert.icon.src}
                     alt={alert.icon.alt}
-                    width={alert.icon.size?.width || iconConfig?.defaultSize?.width || 20}
-                    height={alert.icon.size?.height || iconConfig?.defaultSize?.height || 20}
+                    width={alert.icon.size?.width ||
+                      iconConfig?.defaultSize?.width || 20}
+                    height={alert.icon.size?.height ||
+                      iconConfig?.defaultSize?.height || 20}
                     class=""
                     loading="lazy"
                     decoding="async"

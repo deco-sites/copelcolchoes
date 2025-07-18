@@ -48,6 +48,7 @@ export default function SeoBaseCustomV2({
       <meta
         name="description"
         content={renderTemplateString(descriptionTemplate, description)}
+        key="description"
       />
       <meta name="theme-color" content={themeColor} />
       <link rel="icon" href={favicon} />
@@ -67,9 +68,9 @@ export default function SeoBaseCustomV2({
       {/* No index, no follow */}
       <meta
         name="robots"
-        content={`${noIndexing || has_url_query_string ? "noindex" : "index"}, ${
-          noIndexing ? "nofollow" : "follow"
-        }`}
+        content={`${
+          noIndexing || has_url_query_string ? "noindex" : "index"
+        }, ${noIndexing ? "nofollow" : "follow"}`}
       />
 
       {jsonLDs.map((json) => (

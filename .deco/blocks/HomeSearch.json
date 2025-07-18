@@ -1,1 +1,12 @@
-{"sections":[{"label":"HomeSearch","shadow":"none","section":{"__resolveType":"site/sections/Product/HomeSearch.tsx"},"withContainer":true,"verticalSpacing":"top"}],"__resolveType":"site/sections/Container.tsx"}
+{
+  "sections": [
+    {
+      "label": "HomeSearch",
+      "shadow": "none",
+      "section": { "__resolveType": "site/sections/Product/HomeSearch.tsx" },
+      "withContainer": true,
+      "verticalSpacing": "top"
+    }
+  ],
+  "__resolveType": "site/sections/Container.tsx"
+}

@@ -1,1 +1,21 @@
-{"isHeader":false,"sections":[{"label":"NewsLetter","shadow":"none","section":{"form":{"name":{},"email":{},"button":{"label":"Enviar","variant":"secondary"}},"text":"<p>Cadastre seu e-mail para ficar por dentro de</p><p>nossas promoções e receber descontos</p><p>exclusivos!<span id=\"_mce_caret\" data-mce-bogus=\"1\" data-mce-type=\"format-caret\">﻿</span></p>","__resolveType":"site/sections/Newsletter/Newsletter.tsx"},"withContainer":true,"verticalSpacing":"top"}],"__resolveType":"site/sections/Container.tsx"}
+{
+  "isHeader": false,
+  "sections": [
+    {
+      "label": "NewsLetter",
+      "shadow": "none",
+      "section": {
+        "form": {
+          "name": {},
+          "email": {},
+          "button": { "label": "Enviar", "variant": "secondary" }
+        },
+        "text": "<p>Cadastre seu e-mail para ficar por dentro de</p><p>nossas promoções e receber descontos</p><p>exclusivos!<span id=\"_mce_caret\" data-mce-bogus=\"1\" data-mce-type=\"format-caret\">﻿</span></p>",
+        "__resolveType": "site/sections/Newsletter/Newsletter.tsx"
+      },
+      "withContainer": true,
+      "verticalSpacing": "top"
+    }
+  ],
+  "__resolveType": "site/sections/Container.tsx"
+}

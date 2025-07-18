@@ -101,10 +101,10 @@ function ProductDetailsImages(
                 })}
               </div>
               <Slider.PrevButton class="btn btn-circle btn-primary bg-white hover:bg-white border-none absolute left-4 min-w-[2.625rem] max-w-[2.625rem] min-h-[2.625rem] max-h-[2.625rem] top-1/2 -translate-y-1/2 active:focus:-translate-y-1/2 active:hover:-translate-y-1/2 no-animation">
-                <Icon size={42} id="PrevProductImage" strokeWidth={1}/>
+                <Icon size={42} id="PrevProductImage" strokeWidth={1} />
               </Slider.PrevButton>
               <Slider.NextButton class="btn btn-circle btn-primary bg-white hover:bg-white absolute border-none right-4 min-w-[2.625rem] max-w-[2.625rem] min-h-[2.625rem] max-h-[2.625rem] top-1/2 -translate-y-1/2 active:focus:-translate-y-1/2 active:hover:-translate-y-1/2 no-animation">
-                <Icon size={42} id="NextProductImage" strokeWidth={1}/>
+                <Icon size={42} id="NextProductImage" strokeWidth={1} />
               </Slider.NextButton>
             </div>
           </div>
@@ -178,12 +178,12 @@ function renderImage({ img, index, aspect, width, height }: {
         const x = offsetX / (zoomer.offsetWidth) * 100;
         const y = offsetY / (zoomer.offsetHeight) * 100;
 
-        zoomer!.style.backgroundPosition = x + "% " + y +"%";
-        zoomer.style.maxWidth = '100%';
+        zoomer!.style.backgroundPosition = x + "% " + y + "%";
+        zoomer.style.maxWidth = "100%";
       }}
-      onMouseLeave={(e: MouseEvent)=>{
+      onMouseLeave={(e: MouseEvent) => {
         const zoomer = e.currentTarget as HTMLElement;
-        zoomer.style.maxWidth = width + 'px';
+        zoomer.style.maxWidth = width + "px";
       }}
       class="overflow-hidden cursor-zoom-in relative group/zoomer"
     >

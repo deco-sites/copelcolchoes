@@ -30,7 +30,7 @@ export interface Props {
     itemsPerPage?: {
       screenWidth?: number;
       itemsQuantity?: number;
-    }[];      
+    }[];
   };
   showPaginationArrows?: ResponsiveConditionals;
   cardLayout?: CardLayout;
@@ -44,7 +44,7 @@ interface DotsProps {
 
 interface ButtonsProps {
   className: string;
-  showPaginationArrows?:ResponsiveConditionals;
+  showPaginationArrows?: ResponsiveConditionals;
 }
 
 function Dots({ images, interval = 0 }: DotsProps) {
@@ -58,11 +58,14 @@ function Dots({ images, interval = 0 }: DotsProps) {
             <Slider.Dot
               index={index}
               classes={`${
-                ((index === 0) || (index % 4 === 0)) ? "" : "lg:hidden lg:w-0"}`}>
+                ((index === 0) || (index % 4 === 0)) ? "" : "lg:hidden lg:w-0"
+              }`}
+            >
               <div
                 class={`${
                   ((index === 0) || (index % 4 === 0)) ? "" : "lg:hidden lg:w-0"
-                }`}>
+                }`}
+              >
                 <div
                   class="w-2 h-2 group-disabled:scale-100 group-disabled:opacity-100 opacity-50 scale-[0.33] rounded-full bg-primary"
                   style={{ animationDuration: `${interval}s` }}
@@ -156,7 +159,7 @@ function ProductShelf({
           ))}
         </Slider>
 
-        <Buttons className="flex" />        
+        <Buttons className="flex" />
 
         <SendEventOnLoad
           event={{
@@ -178,7 +181,7 @@ function ProductShelf({
           className={CONDITIONAL_RESPONSIVE_PARAMS["Always"]}
         />
 
-        <SliderJS          
+        <SliderJS
           rootId={id}
           itemsPerPage={layout?.itemsPerPage?.reduce(
             (initial, { screenWidth, itemsQuantity }) => ({

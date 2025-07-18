@@ -9,14 +9,14 @@ export default function Site(
   state: Props,
 ): App<Manifest, Props, [
   StdApp,
-  ReturnType<typeof commerce>
+  ReturnType<typeof commerce>,
 ]> {
   return {
     state,
     manifest,
     dependencies: [
       std(state),
-      commerce(state)
+      commerce(state),
     ],
   };
 }

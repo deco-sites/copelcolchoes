@@ -3,31 +3,31 @@ import Icon from "$store/components/ui/Icon.tsx";
 import { clx } from "$store/sdk/clx.ts";
 import type { ImageWidget } from "apps/admin/widgets.ts";
 
-interface ImageGeneric{
+interface ImageGeneric {
   /**@title Imagem */
   src?: ImageWidget;
-  /** 
+  /**
    * @title Largura da imagem
    * @description (ex: 200)
    */
   width?: number;
-  /** 
+  /**
    * @title Altura da imagem
    * @description (ex: 400)
-   */  
+   */
   height?: number;
-  /** 
+  /**
    * @title Link da imagem
    * @description (ex: /colchoes)
-   */    
+   */
   href?: string;
 }
 
 /**@titleBy title */
 interface TextBanner {
-    /** @title Título */  
+  /** @title Título */
   title?: string;
-    /** @title Texto do botão */
+  /** @title Texto do botão */
   textButton?: string;
   /**
    * @title Cor do texto do Título
@@ -80,10 +80,20 @@ function NavItemDropDown(
 
   return (
     <div
-      class={clx(`shadow-md rounded-b-[20px] w-full left-[0] fixed top-[218px] pt-[30px] pb-[50px] px-6 z-20 ${activeMenu ? 'flex' : 'hidden'} hover:flex 
-        group-hover:flex flex-col items-center bg-white border-t-[4px] border-primary ${navStyle[label as keyof typeof navStyle] || ""}`)}
+      class={clx(
+        `shadow-md rounded-b-[20px] w-full left-[0] fixed top-[218px] pt-[30px] pb-[50px] px-6 z-20 ${
+          activeMenu ? "flex" : "hidden"
+        } hover:flex 
+        group-hover:flex flex-col items-center bg-white border-t-[4px] border-primary ${
+          navStyle[label as keyof typeof navStyle] || ""
+        }`,
+      )}
     >
-      <div class={clx(`md:w-[1440px] mx-[auto] my-[0] lg:pl-[80px] md:pl-[100px] 2xl:pl-[50px] flex items-center justify-start menu-container`)}>
+      <div
+        class={clx(
+          `md:w-[1440px] mx-[auto] my-[0] lg:pl-[80px] md:pl-[100px] 2xl:pl-[50px] flex items-center justify-start menu-container`,
+        )}
+      >
         <div class="flex justify-between xl:w-[85%] xl:pr-[70px] 2xl:w-[95%] container-menu">
           <ul class="flex gap-[40px] items-start relative w-full">
             {elements.map((element) => {
@@ -116,26 +126,46 @@ function NavItemDropDown(
                 href={`${image.href ? image.href : "javascript:void(0)"}`}
                 style={{
                   pointerEvents: `${image.href ? "all" : "none"}`,
-                }}              
+                }}
               >
-                <div class={clx(`absolute w-full h-full flex flex-col items-center`)}>
+                <div
+                  class={clx(
+                    `absolute w-full h-full flex flex-col items-center`,
+                  )}
+                >
                   {textBanner && (
                     <div class={clx(`mt-[36px] flex flex-col gap-y-[8px]`)}>
                       {textBanner.title && (
-                        <span class={clx(`text-[#fff] text-center  font-poppins text-[1.25rem] font-normal leading-[1.125rem]`)}
-                          style={{ color : textBanner.colorTitle ? textBanner.colorTitle : "initial" }}>
-                          {textBanner.title} 
+                        <span
+                          class={clx(
+                            `text-[#fff] text-center  font-poppins text-[1.25rem] font-normal leading-[1.125rem]`,
+                          )}
+                          style={{
+                            color: textBanner.colorTitle
+                              ? textBanner.colorTitle
+                              : "initial",
+                          }}
+                        >
+                          {textBanner.title}
                         </span>
                       )}
                       {textBanner.textButton && (
-                        <button class={clx(`pt-[7px] pb-[5px] px-5 rounded-[20px]`)} 
-                          style={{ 
-                            backgroundColor : textBanner.bgButton ? textBanner.bgButton : "initial" 
-                          }}>
-                          <span class="font-bold font-poppins text-[1.25rem] leading-[1.125rem]"
-                            style={{ 
-                              color : textBanner?.colorTextButton ? textBanner.colorTextButton : "initial" 
-                            }}>
+                        <button
+                          class={clx(`pt-[7px] pb-[5px] px-5 rounded-[20px]`)}
+                          style={{
+                            backgroundColor: textBanner.bgButton
+                              ? textBanner.bgButton
+                              : "initial",
+                          }}
+                        >
+                          <span
+                            class="font-bold font-poppins text-[1.25rem] leading-[1.125rem]"
+                            style={{
+                              color: textBanner?.colorTextButton
+                                ? textBanner.colorTextButton
+                                : "initial",
+                            }}
+                          >
                             {textBanner.textButton}
                           </span>
                         </button>
@@ -143,17 +173,21 @@ function NavItemDropDown(
                     </div>
                   )}
                 </div>
-                <div class={clx(`rounded-[10px] overflow-hidden container-menu__image`)}
+                <div
+                  class={clx(
+                    `rounded-[10px] overflow-hidden container-menu__image`,
+                  )}
                   style={{
-                    width: image.width ? image.width + 'px' : '',
-                    height: image.height ? image.height + 'px' : ''
-                  }}>
-                  <Image 
+                    width: image.width ? image.width + "px" : "",
+                    height: image.height ? image.height + "px" : "",
+                  }}
+                >
+                  <Image
                     loading="lazy"
                     src={image.src}
                     width={image.width}
                     height={image.height}
-                    alt={"Banner vertical do menu"}               
+                    alt={"Banner vertical do menu"}
                   />
                 </div>
               </a>
@@ -166,12 +200,17 @@ function NavItemDropDown(
 }
 
 function NavItem({ item }: { item: INavItem }) {
-  const { href, label, children, highlighted, image, textBanner, activeMenu } = item;
+  const { href, label, children, highlighted, image, textBanner, activeMenu } =
+    item;
 
   return (
     <li
-      class={clx(`group flex items-center md:px-[30px] md:py-[1px] rounded-[30px] justify-center relative 
-        duration-150 ${highlighted ? 'rounded-[30px] bg-[#fff]' : 'hover:bg-primary-focus'}`)}
+      class={clx(
+        `group flex items-center md:px-[30px] md:py-[1px] rounded-[30px] justify-center relative 
+        duration-150 ${
+          highlighted ? "rounded-[30px] bg-[#fff]" : "hover:bg-primary-focus"
+        }`,
+      )}
     >
       <a
         href={href}
@@ -187,8 +226,13 @@ function NavItem({ item }: { item: INavItem }) {
           )}
 
           <span
-            class={clx(`relative transition-all font-bold duration-300 leading-[18.2px] text-[14px] font-comfortaa
-              ${highlighted ?  'text-primary mt-[3px] ml-[8px]' : 'text-[#fff]'} `)}>
+            class={clx(
+              `relative transition-all font-bold duration-300 leading-[18.2px] text-[14px] font-comfortaa
+              ${
+                highlighted ? "text-primary mt-[3px] ml-[8px]" : "text-[#fff]"
+              } `,
+            )}
+          >
             {label}
           </span>
         </div>
@@ -202,8 +246,13 @@ function NavItem({ item }: { item: INavItem }) {
       />
 
       {children && Object.entries(children).length > 0 && (
-        <div class={clx(`fixed w-full h-[calc(100%-225px)] left-0 bottom-0 bg-[rgba(13,79,129,.6)] hidden hover:!hidden group-hover:flex`)}></div>
-      ) }
+        <div
+          class={clx(
+            `fixed w-full h-[calc(100%-225px)] left-0 bottom-0 bg-[rgba(13,79,129,.6)] hidden hover:!hidden group-hover:flex`,
+          )}
+        >
+        </div>
+      )}
     </li>
   );
 }

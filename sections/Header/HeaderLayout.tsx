@@ -1,1 +1,1 @@
-export {loader, default } from "$store/components/header/HeaderLayout.tsx";
+export { default, loader } from "$store/components/header/HeaderLayout.tsx";

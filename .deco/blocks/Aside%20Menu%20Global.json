@@ -1,1 +1,10 @@
-{"menuItems":[{"href":"/quem-somos","label":"Quem Somos"},{"href":"/central-de-atendimento","label":"Fale Conosco"},{"href":"/politica-de-privacidade","label":"Política de Privacidade"},{"href":"/fretes-e-envios","label":"Fretes e envios"},{"href":"/trocas-devolucoes","label":"Trocas e Devoluções"}],"__resolveType":"site/sections/Institutional/AsideMenu.tsx"}
+{
+  "menuItems": [
+    { "href": "/quem-somos", "label": "Quem Somos" },
+    { "href": "/central-de-atendimento", "label": "Fale Conosco" },
+    { "href": "/politica-de-privacidade", "label": "Política de Privacidade" },
+    { "href": "/fretes-e-envios", "label": "Fretes e envios" },
+    { "href": "/trocas-devolucoes", "label": "Trocas e Devoluções" }
+  ],
+  "__resolveType": "site/sections/Institutional/AsideMenu.tsx"
+}

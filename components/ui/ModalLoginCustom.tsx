@@ -5,7 +5,6 @@ import { useState } from "preact/hooks";
 import { useUI } from "$store/sdk/useUI.ts";
 
 function ModalLoginCustom() {
-
   const { user } = useUser();
   const [sessionFirst, setSessionFirst] = useState(false);
 
@@ -55,49 +54,47 @@ function ModalLoginCustom() {
           }
         }}
       >
-        {/* <Icon
+        {
+          /* <Icon
           class="mr-[0.625rem]"
           id="User"
           size={36}
           strokeWidth={1}
-        /> */}
+        /> */
+        }
 
-<div
-                  class="relative font-medium text-primary text-[0.8125rem] leading-[1.125rem] w-full flex items-center justify-center appearance-none"
-               
-                >
-                 
-                      <Icon
-                        class="mr-[0.625rem]"
-                        id="User"
-                        size={36}
-                        strokeWidth={1}
-                      />
-                  
-                  <p
-                    class={`max-lg:hidden text-[14px] text-start leading-[21px] text-[#656565] font-black`}
-                  >
-                    {isLogged
-                      ? (
-                        <>
-                          Bem-vindo! <br />
-                          <span class="text-primary font-bold">
-                            {userEmail}
-                          </span>{" "}
-                        </>
-                      )
-                      : (
-                        <>
-                          Bem-vindo! <br />
-                          <span class="text-primary underline">Entre</span> ou
-                          {" "}
-                          <span class="text-primary underline">
-                            cadastre-se
-                          </span>
-                        </>
-                      )}
-                  </p>
-                </div>
+        <div class="relative font-medium text-primary text-[0.8125rem] leading-[1.125rem] w-full flex items-center justify-center appearance-none">
+          <Icon
+            class="mr-[0.625rem]"
+            id="User"
+            size={36}
+            strokeWidth={1}
+          />
+
+          <p
+            class={`max-lg:hidden text-[14px] text-start leading-[21px] text-[#656565] font-black`}
+          >
+            {isLogged
+              ? (
+                <>
+                  Bem-vindo! <br />
+                  <span class="text-primary font-bold">
+                    {userEmail}
+                  </span>
+                  {" "}
+                </>
+              )
+              : (
+                <>
+                  Bem-vindo! <br />
+                  <span class="text-primary underline">Entre</span> ou{" "}
+                  <span class="text-primary underline">
+                    cadastre-se
+                  </span>
+                </>
+              )}
+          </p>
+        </div>
 
         {user.value?.email && (
           <div
