@@ -370,7 +370,10 @@ function Section({
       <meta name="msapplication-TileColor" content={theme["primary"]} />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" />
-      <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&display=swap" rel="stylesheet" />      
+      <link
+        href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&display=swap"
+        rel="stylesheet"
+      />
       <style
         id={`__DESIGN_SYSTEM_FONT-${id}`}
         dangerouslySetInnerHTML={{ __html: fonts.styleInnerHtml }}

@@ -135,7 +135,8 @@
         "__resolveType": "website/flags/multivariate/section.ts"
       },
       "withContainer": true,
-      "verticalSpacing": "none"
+      "verticalSpacing": "none",
+      "spacing": 0
     }
   ],
   "__resolveType": "site/sections/Container.tsx"

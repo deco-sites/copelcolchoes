@@ -68,7 +68,8 @@
         ],
         "__resolveType": "site/sections/Miscellaneous/BannerMarcas.tsx"
       },
-      "verticalSpacing": "top"
+      "verticalSpacing": "top",
+      "spacing": 0
     }
   ],
   "__resolveType": "site/sections/Container.tsx",

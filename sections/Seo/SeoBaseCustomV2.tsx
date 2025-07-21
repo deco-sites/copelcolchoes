@@ -119,9 +119,9 @@ export default function SeoBaseCustomV2({
       {/* No index, no follow */}
       <meta
         name="robots"
-        content={`${noIndexing || has_url_query_string ? "noindex" : "index"}, ${
-          noIndexing ? "nofollow" : "follow"
-        }`}
+        content={`${
+          noIndexing || has_url_query_string ? "noindex" : "index"
+        }, ${noIndexing ? "nofollow" : "follow"}`}
       />
 
       {jsonLDs.map((json) => (

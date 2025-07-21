@@ -35,16 +35,16 @@
                         "variant": "primary"
                       },
                       "mobile": {
-                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/6b10ad43-71ec-4294-ac03-feba8f312d7b/banner-mobile-dezembro-2024-00.jpg",
+                        "image": "https://assets.decocache.com/copelcolchoes/e0e76208-7083-4801-9e61-c266e40da59e/mobile-banner-site-copel-colchoes-inveno-home-2025.jpg",
                         "width": 440,
                         "height": 320
                       },
                       "desktop": {
-                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/201110bf-5286-4217-9a7a-a6abb1f1814c/banner-desktop-dezembro-2024-00.jpg",
+                        "image": "https://assets.decocache.com/copelcolchoes/210785c4-5a9f-4d6f-9988-df7e8870434a/banner-site-copel-colchoes-inveno-home-2025.jpg",
                         "width": 1519,
                         "height": 473
                       },
-                      "alt": "60 Anos Copel Aniversario -  Copel Colchoes"
+                      "alt": "Liquidacao de Inverno -  Copel Colchoes"
                     },
                     {
                       "alt": "60 Anos Copel Aniversario - Colchoes -  Copel Colchoes",
@@ -149,18 +149,18 @@
                       }
                     },
                     {
-                      "alt": "60 Anos Copel Aniversario - Promocao -  Copel Colchoes",
+                      "alt": "PIX 10% OFF -  Copel Colchoes",
                       "action": {
                         "href": "/promocao",
                         "variant": "primary"
                       },
                       "mobile": {
-                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/7906b797-d45b-44aa-9892-c413ef6fe1ec/banner-mobile-dezembro-2024-01.jpg",
+                        "image": "https://assets.decocache.com/copelcolchoes/d52f3542-8e0d-4c34-b38f-b57fbd0d2eb4/BANNER-PIX-SITE-mobile-1.jpg",
                         "width": 440,
                         "height": 320
                       },
                       "desktop": {
-                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/175fb37f-72e4-4a97-9f0c-dd504c9c5578/banner-desktop-dezembro-2024-01.jpg",
+                        "image": "https://assets.decocache.com/copelcolchoes/7316f44a-65db-4827-9159-9e8679346cd8/BANNER-PIX-SITE-descktop1.jpg",
                         "width": 1519,
                         "height": 473
                       }
