@@ -55,12 +55,7 @@
               "crossSelling": "accessories",
               "__resolveType": "vtex/loaders/legacy/relatedProductsLoader.ts"
             },
-            "shareableNetworks": [
-              "Facebook",
-              "Twitter",
-              "Email",
-              "WhatsApp"
-            ]
+            "shareableNetworks": ["Facebook", "Twitter", "Email", "WhatsApp"]
           },
           "withContainer": true,
           "verticalSpacing": "bottom",
@@ -101,9 +96,6 @@
     },
     {
       "__resolveType": "FloatingButtons"
-    },
-    {
-      "__resolveType": "site/sections/Integrations/JivoChat.tsx"
     }
   ],
   "__resolveType": "$live/pages/LivePage.tsx",
