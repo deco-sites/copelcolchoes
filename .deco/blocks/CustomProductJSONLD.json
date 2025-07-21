@@ -1,0 +1,13 @@
+{
+  "__resolveType": "site/sections/Seo/CustomProductJSONLD.tsx",
+  "page": {
+    "__resolveType": "deco-sites/std/loaders/vtex/intelligentSearch/productDetailsPage.ts",
+    "slug": {
+      "__resolveType": "deco-sites/std/functions/requestToParam.ts",
+      "param": "slug"
+    },
+    "advancedConfigs": {
+      "includeOriginalAttributes": []
+    }
+  }
+}

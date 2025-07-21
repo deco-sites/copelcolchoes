@@ -37,12 +37,13 @@ export interface Props {
 }
 
 function Container({ sections, isHeader = false, isVisible = true }: Props) {
-
   if (!isVisible) return null;
 
   return (
     <>
-      <div class={isHeader ? "fixed top-0 w-full bg-white z-[5000] header" : ""}>
+      <div
+        class={isHeader ? "fixed top-0 w-full bg-white z-[5000] header" : ""}
+      >
         {sections?.map((
           {
             section: { Component, props },

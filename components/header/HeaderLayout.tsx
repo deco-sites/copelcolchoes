@@ -64,7 +64,6 @@ function HeaderLayout({ minicart, searchbar }: Props) {
                 <div class=" hidden lg:flex gap-5">
                   <ModalLoginCustom />
                 </div>
-               
               </div>
             </div>
             <div class="m-0 flex lg:items-center lg:w-[107px]">

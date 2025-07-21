@@ -65,7 +65,7 @@ function Searchbar({
   cardLayout,
   hide = { cleanButton: false, results: false },
   noContainer = false,
-  device
+  device,
 }: Props) {
   const searchInputRef = useRef<HTMLInputElement>(null);
   const { setSearch, suggestions } = useAutocomplete();
@@ -75,36 +75,45 @@ function Searchbar({
   const notFound = !hasProducts && !hasTerms;
   const valueSearch = valueSearchSignal.value;
 
-  effect(()=>{
+  effect(() => {
     // Fechar o content serach result quando clicar fora dele
-    globalThis.addEventListener('click', function( e ){
-      const _body = this.document.querySelector('body') 
-      const target =  e.target;
+    globalThis.addEventListener("click", function (e) {
+      const _body = this.document.querySelector("body");
+      const target = e.target;
 
-      if(!target) return;
+      if (!target) return;
 
-      if( device === 'desktop' ){
-        if( _body?.querySelector('header input') !== target && _body?.querySelector('header .search-result-content') ){          
-          valueSearchSignal.value = ''
-        } 
+      if (device === "desktop") {
+        if (
+          _body?.querySelector("header input") !== target &&
+          _body?.querySelector("header .search-result-content")
+        ) {
+          valueSearchSignal.value = "";
+        }
       } else {
-         // Quando o resultado do search estiver aberto, clincando em qualquer lugar ele irá fehcar 
-        _body?.querySelectorAll('header') && Array.from(_body?.querySelectorAll('.header *')).map(( el )=>{
-            if(el === target && !el.classList.contains('input-searchbar')){
-              valueSearchSignal.value = ''
-            } else if( _body?.querySelector('.is-overlay-search-results__suggestions') === target ||
-              _body?.querySelector('.topnavbar')  === target ||
-              _body?.querySelector('.header-container') === target ||
-              _body?.querySelector('.header') === target ||
-              _body?.querySelector('header') === target ||
-              _body?.querySelector('button[name="open cart"] > div') === target ||
-              _body?.querySelector('button[name="open menu"] > div') === target  ){             
-              valueSearchSignal.value = ''
-            }             
-        })        
+        // Quando o resultado do search estiver aberto, clincando em qualquer lugar ele irá fehcar
+        _body?.querySelectorAll("header") &&
+          Array.from(_body?.querySelectorAll(".header *")).map((el) => {
+            if (el === target && !el.classList.contains("input-searchbar")) {
+              valueSearchSignal.value = "";
+            } else if (
+              _body?.querySelector(
+                  ".is-overlay-search-results__suggestions",
+                ) === target ||
+              _body?.querySelector(".topnavbar") === target ||
+              _body?.querySelector(".header-container") === target ||
+              _body?.querySelector(".header") === target ||
+              _body?.querySelector("header") === target ||
+              _body?.querySelector('button[name="open cart"] > div') ===
+                target ||
+              _body?.querySelector('button[name="open menu"] > div') === target
+            ) {
+              valueSearchSignal.value = "";
+            }
+          });
       }
-    })
-  })
+    });
+  });
 
   const Searchbar = (
     <div>
@@ -113,54 +122,59 @@ function Searchbar({
         action={action}
         class="flex-grow flex items-center max-lg:px-[20px] max-lg:py-[9px] md:py-0 gap-3 placeholder-base-200 px-5 md:h-[40px] rounded-md"
       >
-        {valueSearchSignal.value !== '' && valueSearchSignal.value !== 'click' ? (
-          <button
-            class="btn-ghost"
-            aria-label="Search"
-            htmlFor="searchbar"
-            tabIndex={-1}
-            type="button"
-            onClick={( e )=>{
-              e.preventDefault();
-              const target = e.target;
-              if( !target ) return;
+        {valueSearchSignal.value !== "" && valueSearchSignal.value !== "click"
+          ? (
+            <button
+              class="btn-ghost"
+              aria-label="Search"
+              htmlFor="searchbar"
+              tabIndex={-1}
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                const target = e.target;
+                if (!target) return;
 
-              if( target instanceof SVGElement ){
-                const form = target.closest('form');
-                const input = form && form.querySelector<HTMLInputElement>('input');
+                if (target instanceof SVGElement) {
+                  const form = target.closest("form");
+                  const input = form &&
+                    form.querySelector<HTMLInputElement>("input");
 
-                if(input) {
-                  input.value = '';
-                  valueSearchSignal.value = '';
+                  if (input) {
+                    input.value = "";
+                    valueSearchSignal.value = "";
+                  }
                 }
-              }
-            }}
-          >
-          <Icon
-            class="text-primary mb-[3px]"
-            id="searchResultsClose"
-            size={18}
-          />
-        </button> 
-        ): (          
-          <button
-            class="btn-ghost"
-            aria-label="Search"
-            htmlFor="searchbar"
-            tabIndex={-1}
-            type="submit"
-          >
-            <Icon
-              class="text-primary"
-              id="MagnifyingGlass"
-              size={18}
-            />
-          </button>          
-        )}
+              }}
+            >
+              <Icon
+                class="text-primary mb-[3px]"
+                id="searchResultsClose"
+                size={18}
+              />
+            </button>
+          )
+          : (
+            <button
+              class="btn-ghost"
+              aria-label="Search"
+              htmlFor="searchbar"
+              tabIndex={-1}
+              type="submit"
+            >
+              <Icon
+                class="text-primary"
+                id="MagnifyingGlass"
+                size={18}
+              />
+            </button>
+          )}
         <input
           ref={searchInputRef}
-          class={clx(`md:text-[14px] md:h-[20px] flex w-full outline-none placeholder:text-[#6B6B6B] 
-            placeholder:font-normal text-sm placeholder:text-sm text-[#6B6B6B] input-searchbar`)}
+          class={clx(
+            `md:text-[14px] md:h-[20px] flex w-full outline-none placeholder:text-[#6B6B6B] 
+            placeholder:font-normal text-sm placeholder:text-sm text-[#6B6B6B] input-searchbar`,
+          )}
           name={name}
           defaultValue={query}
           onInput={(e) => {
@@ -175,8 +189,8 @@ function Searchbar({
             valueSearchSignal.value = value;
             setSearch(value);
           }}
-          onClick={(e)=>{            
-            const value = e.currentTarget.value;  
+          onClick={(e) => {
+            const value = e.currentTarget.value;
 
             if (value) {
               sendEvent({
@@ -184,10 +198,10 @@ function Searchbar({
                 params: { search_term: value },
               });
             }
-            if(value == ""){
-              valueSearchSignal.value = 'click';
+            if (value == "") {
+              valueSearchSignal.value = "click";
             } else {
-              valueSearchSignal.value =value;
+              valueSearchSignal.value = value;
             }
 
             setSearch(value);
@@ -205,10 +219,13 @@ function Searchbar({
   if (noContainer) return Searchbar;
 
   return (
-    <div class={clx(`lg:w-[510px] 2xl:w-[90%] w-full border rounded-md border-[#dbdbdb]`)}>
+    <div
+      class={clx(
+        `lg:w-[510px] 2xl:w-[90%] w-full border rounded-md border-[#dbdbdb]`,
+      )}
+    >
       {Searchbar}
-      {hide.results ? null
-       : (
+      {hide.results ? null : (
         <ResultSearch
           cardLayout={cardLayout}
           notFound={notFound}
