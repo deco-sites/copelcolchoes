@@ -4859,6 +4859,9 @@ details.collapse summary::-webkit-details-marker {
 .mb-\[20px\] {
   margin-bottom: 20px;
 }
+.mb-\[2rem\] {
+  margin-bottom: 2rem;
+}
 .mb-\[3\.125rem\] {
   margin-bottom: 3.125rem;
 }
@@ -5529,6 +5532,9 @@ details.collapse summary::-webkit-details-marker {
 .w-screen {
   width: 100vw;
 }
+.min-w-24 {
+  min-width: 6rem;
+}
 .min-w-\[1\.5rem\] {
   min-width: 1.5rem;
 }
@@ -6011,6 +6017,9 @@ details.collapse summary::-webkit-details-marker {
 }
 .gap-\[10px\] {
   gap: 10px;
+}
+.gap-\[13px\] {
+  gap: 13px;
 }
 .gap-\[14px\] {
   gap: 14px;
@@ -6766,10 +6775,6 @@ details.collapse summary::-webkit-details-marker {
   padding-left: 2.5rem;
   padding-right: 2.5rem;
 }
-.px-12 {
-  padding-left: 3rem;
-  padding-right: 3rem;
-}
 .px-16 {
   padding-left: 4rem;
   padding-right: 4rem;
@@ -6938,6 +6943,10 @@ details.collapse summary::-webkit-details-marker {
   padding-top: 13px;
   padding-bottom: 13px;
 }
+.py-\[14px\] {
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
 .py-\[17px\] {
   padding-top: 17px;
   padding-bottom: 17px;
@@ -7030,6 +7039,9 @@ details.collapse summary::-webkit-details-marker {
 .pl-5 {
   padding-left: 1.25rem;
 }
+.pl-\[1\.375rem\] {
+  padding-left: 1.375rem;
+}
 .pl-\[10px\] {
   padding-left: 10px;
 }
@@ -7065,6 +7077,9 @@ details.collapse summary::-webkit-details-marker {
 }
 .pt-20 {
   padding-top: 5rem;
+}
+.pt-3 {
+  padding-top: 0.75rem;
 }
 .pt-36 {
   padding-top: 9rem;
@@ -8038,14 +8053,6 @@ details.collapse summary::-webkit-details-marker {
       transition: all 0.175s linear;
     }
   }
-
-  @media (max-width: 1279px) {
-
-    
-    .header-nav-menu ul li a ~ div.shadow-md .menu-container ul.md\:items-start {
-      gap: 10px;
-    }
-  }
 }
 
 @media (min-width: 1024px) {
@@ -8611,6 +8618,10 @@ details.collapse summary::-webkit-details-marker {
 
 .hover\:opacity-80:hover {
   opacity: 0.8;
+}
+
+.hover\:opacity-90:hover {
+  opacity: 0.9;
 }
 
 .hover\:duration-300:hover {
@@ -9487,6 +9498,10 @@ details.collapse summary::-webkit-details-marker {
     width: 552px;
   }
 
+  .sm\:min-w-28 {
+    min-width: 7rem;
+  }
+
   .sm\:min-w-\[25rem\] {
     min-width: 25rem;
   }
@@ -9841,14 +9856,6 @@ details.collapse summary::-webkit-details-marker {
 
   .md\:flex-col {
     flex-direction: column;
-  }
-
-  .md\:items-start {
-    align-items: flex-start;
-  }
-
-  .md\:items-end {
-    align-items: flex-end;
   }
 
   .md\:items-center {

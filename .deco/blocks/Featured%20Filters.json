@@ -1,0 +1,56 @@
+{
+  "__resolveType": "site/sections/Category/FeaturedFilters.tsx",
+  "banners": [
+    {
+      "image": {}
+    }
+  ],
+  "filters": [
+    {
+      "color": "#134276",
+      "categories": [
+        {
+          "name": "Ortopédico",
+          "link": "#"
+        },
+        {
+          "name": "Espuma",
+          "link": "#"
+        },
+        {
+          "name": "Molas",
+          "link": "#"
+        },
+        {
+          "name": "Látex",
+          "link": "#"
+        },
+        {
+          "name": "Viscoelástico",
+          "link": "#"
+        },
+        {
+          "name": "Solteiro",
+          "link": "#"
+        },
+        {
+          "name": "Casal",
+          "link": "#"
+        },
+        {
+          "name": "Casal",
+          "link": "#"
+        },
+        {
+          "name": "Casal",
+          "link": "#"
+        },
+        {
+          "name": "Casal",
+          "link": "#"
+        }
+      ],
+      "matcher": "/colchoes*"
+    }
+  ]
+}

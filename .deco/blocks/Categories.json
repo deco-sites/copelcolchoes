@@ -14,6 +14,12 @@
       "__resolveType": "categoryBreadcrumb"
     },
     {
+      "__resolveType": "Category Banner"
+    },
+    {
+      "__resolveType": "Featured Filters"
+    },
+    {
       "__resolveType": "SearchResults Global"
     },
     {
