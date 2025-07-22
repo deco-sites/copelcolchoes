@@ -6,6 +6,16 @@ import { useDevice } from "@deco/deco/hooks";
 import { useId } from "preact/hooks";
 
 /**
+ * @titleBy name
+ */
+export interface Category {
+  /** @description Nome da categoria */
+  name: string;
+  /** @description Link da categoria */
+  link: string;
+}
+
+/**
  * @titleBy matcher
  */
 export interface FilterCategory {
@@ -23,12 +33,7 @@ export interface FilterCategory {
    * @titleBy name
    */
   /** @description Lista de categorias em destaque */
-  categories: {
-    /** @description Nome da categoria */
-    name: string;
-    /** @description Link da categoria */
-    link: string;
-  }[];
+  categories: Category[];
 }
 
 function FeaturedFilters(
@@ -42,8 +47,10 @@ function FeaturedFilters(
 
   if (device === "mobile") {
     return (
-      <div class="container lg:px-[4rem] pr-0 pl-[1.375rem] pt-3 pb-8 mx-auto" id={Ifilters}>
-
+      <div
+        class="container lg:px-[4rem] pr-0 pl-[1.375rem] pt-3 pb-8 mx-auto"
+        id={Ifilters}
+      >
         <Slider class="w-full carousel carousel-start gap-[13px]">
           {categories.map((category, index) => (
             <Slider.Item

@@ -14,10 +14,7 @@
       "__resolveType": "categoryBreadcrumb"
     },
     {
-      "__resolveType": "website/sections/Rendering/Lazy.tsx",
-      "section": {
-        "__resolveType": "Category Banner"
-      }
+      "__resolveType": "Category Banner"
     },
     {
       "__resolveType": "Featured Filters"

@@ -125,25 +125,28 @@ function Cart(props: ICartProps) {
         </div>
       </div>
       <div class="h-full max-h-[calc(100%-17.5625rem] border-t border-[#f2f3f8] pr-[0.625rem] pl-5">
-          <div class={`h-full overflow-y-auto ${!isCartEmpty ? 'pr-[0.625rem]' : '' } `}>
-            {!isCartEmpty 
-              ? (
-                  <ul role="list">
-                    {cart.value.items.map((_, index) => (
-                      <li
-                        class={`py-6 relative border-b border-[#e6e6e6] flex gap-4 ${
-                          loading.value ? "opacity-50" : ""
-                        } transition-opacity duration-150 ease-in-out`}
-                        key={index}
-                      >
-                        <CartItem index={index} currency={currencyCode!} />
-                      </li>
-                    ))}
-                  </ul>
-                )
-              : <CartEmpty />
-            }
-          </div>
+        <div
+          class={`h-full overflow-y-auto ${
+            !isCartEmpty ? "pr-[0.625rem]" : ""
+          } `}
+        >
+          {!isCartEmpty
+            ? (
+              <ul role="list">
+                {cart.value.items.map((_, index) => (
+                  <li
+                    class={`py-6 relative border-b border-[#e6e6e6] flex gap-4 ${
+                      loading.value ? "opacity-50" : ""
+                    } transition-opacity duration-150 ease-in-out`}
+                    key={index}
+                  >
+                    <CartItem index={index} currency={currencyCode!} />
+                  </li>
+                ))}
+              </ul>
+            )
+            : <CartEmpty />}
+        </div>
       </div>
 
       {!isCartEmpty && (
@@ -164,8 +167,7 @@ function Cart(props: ICartProps) {
                   value={deliveryPrice}
                 />
               )
-              : null 
-            }
+              : null}
             <div class="flex justify-between items-center border-t border-[rbg(266,266,266)] py-3 px-0">
               <p class="text-secondary text-base font-extrabold leading-snug capitalize">
                 Total
@@ -189,7 +191,9 @@ function Cart(props: ICartProps) {
                     value: total ? (total - (discounts ?? 0)) / 100 : 0,
                     coupon: cart.value?.marketingData?.coupon ?? undefined,
 
-                    items: cart.value ? mapItemsToAnalyticsItems(cart.value) : [],
+                    items: cart.value
+                      ? mapItemsToAnalyticsItems(cart.value)
+                      : [],
                   },
                 });
               }}

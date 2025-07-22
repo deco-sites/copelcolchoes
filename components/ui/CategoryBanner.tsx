@@ -1,33 +1,37 @@
 import { Picture, Source } from "deco-sites/std/components/Picture.tsx";
 import { type SectionProps } from "@deco/deco";
 import type { ImageWidget } from "apps/admin/widgets.ts";
-import Image from "deco-sites/std/components/Image.tsx";
+import ImageComponent from "deco-sites/std/components/Image.tsx";
+
+interface Image {
+  /**
+   * @title Imagem para Desktop
+   * @description (Tamanho recomendado: 1440x260)
+   */
+  desktop: ImageWidget;
+  /**
+   * @title Imagem para Mobile
+   * @description (Tamanho recomendado: 346x260)
+   */
+  mobile: ImageWidget;
+  /** @title Texto alternativo */
+  alt?: string;
+}
 
 /**
  * @titleBy matcher
  */
 export interface Banner {
-  /** @description RegEx para habilitar este banner na URL atual. Use /feminino/* para exibir este banner na categoria feminino  */
+  /**
+   * @title RegEx para habilitar este banner na categoria desejada
+   * @description Use /feminino/* para exibir este banner na categoria feminino
+   */
   matcher: string;
-
   /**
    * @title Imagens para o Banner
    * @description Imagens que serão exibidas no banner. A imagem para desktop será exibida em telas maiores que 767px, enquanto a imagem para mobile será exibida em telas menores que 767px.
    */
-  image: {
-    /**
-     * @title Imagem para Desktop
-     * @description (Tamanho recomendado: 1440x260)
-     */
-    desktop: ImageWidget;
-    /**
-     * @title Imagem para Mobile
-     * @description (Tamanho recomendado: 346x260)
-     */
-    mobile: ImageWidget;
-    /** @description Texto das imagens */
-    alt?: string;
-  };
+  image: Image;
 }
 
 function Banner({ banner }: SectionProps<ReturnType<typeof loader>>) {
@@ -45,7 +49,7 @@ function Banner({ banner }: SectionProps<ReturnType<typeof loader>>) {
           media="(max-width: 767px)"
         />
 
-        <Image
+        <ImageComponent
           class="w-full h-full object-cover"
           fetchPriority="high"
           preload
@@ -60,7 +64,7 @@ function Banner({ banner }: SectionProps<ReturnType<typeof loader>>) {
 }
 
 /**
- * @titleBy Baners de categoria 
+ * @titleBy Baners de categoria
  * @description Exibe banners de categoria com base na URL atual. Use o campo matcher para definir a URL onde o banner será exibido.
  */
 export interface Props {
