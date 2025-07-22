@@ -8044,13 +8044,17 @@ details.collapse summary::-webkit-details-marker {
 }
 
 @media (min-width: 768px) {
-
   @media (min-width: 768px) {
-
     .header:has(.md\:hidden.menu-custom) .container section > header {
       margin: 16px 0 !important;
       margin-bottom: 0 !important;
       transition: all 0.175s linear;
+    }
+  }
+
+  @media (max-width: 1279px) {
+    .header-nav-menu ul li a ~ div.shadow-md .menu-container ul.md\:items-start {
+      gap: 10px;
     }
   }
 }
