@@ -1,4 +1,4 @@
-import { Product } from "apps/commerce/types.ts";
+import type { Product } from "apps/commerce/types.ts";
 
 export interface MetaTagsProps {
   product: Product;
@@ -11,6 +11,7 @@ export interface MetaTagsProps {
   availability: string;
   price: number;
   priceCurrency: string;
+  favicon?: string;
 }
 
 export function MetaTags({
@@ -24,6 +25,7 @@ export function MetaTags({
   availability,
   price,
   priceCurrency,
+  favicon,
 }: MetaTagsProps) {
   return (
     <>
@@ -31,6 +33,7 @@ export function MetaTags({
       <meta name="description" content={pageDescription} key="description" />
       {keywords && <meta name="keywords" content={keywords} />}
       <link rel="canonical" href={canonicalUrl} />
+      {favicon && <link rel="icon" href={favicon} />}
 
       <meta property="og:title" content={pageTitle} />
       <meta property="og:description" content={pageDescription} />

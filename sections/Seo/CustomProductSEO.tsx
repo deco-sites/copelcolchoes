@@ -27,14 +27,23 @@ import {
   buildStructuredData,
 } from "$store/utils/seo/structuredDataBuilder.ts";
 import { MetaTags } from "$store/components/seo/MetaTags.tsx";
-import { buildPageDescription, buildPageTitle } from "$store/utils/seo/metaTags.ts";
+import {
+  buildPageDescription,
+  buildPageTitle,
+} from "$store/utils/seo/metaTags.ts";
+import { ImageWidget } from "apps/admin/widgets.ts";
 
 interface Props {
   page: ProductDetailsPage | null;
   yourViews?: YourViewsConfig;
+  /** @title Imagem do favicon */
+  favicon: ImageWidget;
 }
 
-export async function loader({ page, yourViews }: Props, _req: Request) {
+export async function loader(
+  { page, yourViews, favicon }: Props,
+  _req: Request,
+) {
   if (!page?.product) {
     return { page, reviewData: null };
   }
@@ -51,16 +60,14 @@ export async function loader({ page, yourViews }: Props, _req: Request) {
   }
 
   const reviewData = await fetchReviewData(inProductGroupWithID, yourViews);
-  return { page, reviewData };
+  return { page, reviewData, favicon };
 }
 
 export default function CustomProductSEO(
-  { page, reviewData }: SectionProps<typeof loader>,
+  { page, reviewData, favicon }: SectionProps<typeof loader>,
 ): SEOSection {
   if (!page?.product) return <div></div>;
   const product = page.product;
-
-  // Deno.writeTextFileSync("product.json", JSON.stringify(product, null, 2));
 
   const { promotionalPrice } = calculatePixPromotion(
     product.offers?.offers || [],
@@ -158,6 +165,7 @@ export default function CustomProductSEO(
         availability={availability}
         price={price}
         priceCurrency={priceCurrency}
+        favicon={favicon}
       />
 
       <script

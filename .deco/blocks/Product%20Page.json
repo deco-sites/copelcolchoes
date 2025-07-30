@@ -55,12 +55,7 @@
               "crossSelling": "accessories",
               "__resolveType": "vtex/loaders/legacy/relatedProductsLoader.ts"
             },
-            "shareableNetworks": [
-              "Facebook",
-              "Twitter",
-              "Email",
-              "WhatsApp"
-            ]
+            "shareableNetworks": ["Facebook", "Twitter", "Email", "WhatsApp"]
           },
           "withContainer": true,
           "verticalSpacing": "bottom",
@@ -101,9 +96,6 @@
     },
     {
       "__resolveType": "FloatingButtons"
-    },
-    {
-      "__resolveType": "site/sections/Integrations/JivoChat.tsx"
     }
   ],
   "__resolveType": "$live/pages/LivePage.tsx",
@@ -132,6 +124,7 @@
     },
     "yourViews": {
       "key": "945b6e04-d2fd-40de-b2d8-bdb100431d3a"
-    }
+    },
+    "favicon": "https://data.decoassets.com/copelcolchoes/022a1f93-41fa-4e6f-9dcb-2d27f6e9a852/1742323954172-3b8b7e2f-be72-407e-9787-456c4671dad0"
   }
 }
