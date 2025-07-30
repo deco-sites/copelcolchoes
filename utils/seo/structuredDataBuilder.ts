@@ -150,14 +150,14 @@ export interface ProductDataBuilderParams {
   category: string[];
   specifications: ProductSpecifications;
   additionalGTINs: { [key: string]: string };
-  additionalProperties: any[];
+  additionalProperties: Record<string, unknown>[];
   weight: ProductWeight | null;
   heightValue: number | string;
   heightStr: string;
   widthValue: number | string;
   widthStr: string;
-  offers: any;
-  aggregateRating: any;
+  offers: Record<string, unknown>;
+  aggregateRating: Record<string, unknown> | null;
   getSpecValue: (name: string) => string;
 }
 
@@ -256,8 +256,8 @@ export function buildProductData(params: ProductDataBuilderParams) {
     }),
     ...(getSpecValue("para") && {
       "audience": {
-        "@type": "Audience",
-        "name": getSpecValue("para"),
+        "@type": "PeopleAudience",
+        "audienceType": getSpecValue("para"),
       },
     }),
     ...(aggregateRating ? { "aggregateRating": aggregateRating } : {}),
@@ -289,9 +289,9 @@ export function buildOrganizationData() {
 }
 
 export function buildStructuredData(
-  productData: any,
-  breadcrumbData: any,
-  organizationData: any,
+  productData: Record<string, unknown>,
+  breadcrumbData: Record<string, unknown> | null,
+  organizationData: Record<string, unknown>,
 ) {
   return breadcrumbData
     ? {

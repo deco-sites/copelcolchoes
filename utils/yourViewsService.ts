@@ -5,12 +5,13 @@ export interface ReviewData {
 }
 
 export interface YourViewsConfig {
+  /** @title Chave de API */
   key: string;
 }
 
 export async function fetchReviewData(
   productGroupId: string,
-  config: YourViewsConfig
+  config: YourViewsConfig,
 ): Promise<ReviewData | null> {
   if (!config.key) {
     return null;
@@ -27,11 +28,11 @@ export async function fetchReviewData(
       `https://service.yourviews.com.br/api/v2/pub/review/${productGroupId}?page=1&count=100&orderBy=1`,
       options,
     );
-    
+
     if (!response.ok) {
       return null;
     }
-    
+
     const reviewsData = await response.json();
     const { Element } = reviewsData;
 
@@ -45,7 +46,7 @@ export async function fetchReviewData(
       reviewCount: Element.Reviews ? Element.Reviews.length : 0,
     };
   } catch (error) {
-    console.error('Failed to fetch review data:', error);
+    console.error("Failed to fetch review data:", error);
     return null;
   }
 }

@@ -1,12 +1,12 @@
-import { ProductDetailsPage } from "apps/commerce/types.ts";
+import type { ProductDetailsPage } from "apps/commerce/types.ts";
+import type { SEOSection } from "apps/website/components/Seo.tsx";
+import type { SectionProps } from "@deco/deco";
+import type { ImageWidget } from "apps/admin/widgets.ts";
 import { Head } from "$fresh/runtime.ts";
-import { SEOSection } from "apps/website/components/Seo.tsx";
-import { type SectionProps } from "@deco/deco";
 import {
   fetchReviewData,
   type YourViewsConfig,
 } from "$store/utils/yourViewsService.ts";
-import { calculatePixPromotion } from "$store/utils/seo/pixPromotion.ts";
 import {
   buildAdditionalProperties,
   extractAdditionalGTINs,
@@ -26,15 +26,25 @@ import {
   buildProductData,
   buildStructuredData,
 } from "$store/utils/seo/structuredDataBuilder.ts";
+import {
+  buildPageDescription,
+  buildPageTitle,
+} from "$store/utils/seo/metaTags.ts";
+import { getOfferPrice } from "$store/utils/seo/offerPrice.ts";
 import { MetaTags } from "$store/components/seo/MetaTags.tsx";
-import { buildPageDescription, buildPageTitle } from "$store/utils/seo/metaTags.ts";
 
 interface Props {
   page: ProductDetailsPage | null;
+  /** @title Configuração do YourViews */
   yourViews?: YourViewsConfig;
+  /** @title Imagem do favicon */
+  favicon: ImageWidget;
 }
 
-export async function loader({ page, yourViews }: Props, _req: Request) {
+export async function loader(
+  { page, yourViews, favicon }: Props,
+  _req: Request,
+) {
   if (!page?.product) {
     return { page, reviewData: null };
   }
@@ -51,27 +61,34 @@ export async function loader({ page, yourViews }: Props, _req: Request) {
   }
 
   const reviewData = await fetchReviewData(inProductGroupWithID, yourViews);
-  return { page, reviewData };
+  return { page, reviewData, favicon };
 }
 
 export default function CustomProductSEO(
-  { page, reviewData }: SectionProps<typeof loader>,
+  { page, reviewData, favicon }: SectionProps<typeof loader>,
 ): SEOSection {
   if (!page?.product) return <div></div>;
   const product = page.product;
 
-  // Deno.writeTextFileSync("product.json", JSON.stringify(product, null, 2));
-
-  const { promotionalPrice } = calculatePixPromotion(
-    product.offers?.offers || [],
-  );
+  // Esta função calcula o preço com o desconto do pix
+  // Veja em `/utils/seo/pixPromotion.ts`
+  // const { promotionalPrice } = calculatePixPromotion(
+  //   product.offers?.offers || [],
+  // );
   const fullProductName = product.isVariantOf?.name || product.name;
   const { category } = extractProductCategories(product);
   const specifications = extractProductSpecifications(product);
   const getSpecValue = (name: string) =>
     getSpecificationValue(specifications.specifications, name);
 
-  const originalPrice = product.offers?.offers?.[0]?.price || 0;
+  const originalPrice = getOfferPrice(
+    product.offers?.offers?.[0],
+    "ListPrice",
+  );
+  const promotionalPrice = getOfferPrice(
+    product.offers?.offers?.[0],
+    "SalePrice",
+  );
   const priceCurrency = product.offers?.priceCurrency || "BRL";
   const availability = product.offers?.offers?.[0]?.availability ||
     "https://schema.org/InStock";
@@ -79,7 +96,7 @@ export default function CustomProductSEO(
   const priceValidUntil = product.offers?.offers?.[0]?.priceValidUntil;
   const inventoryLevel = product.offers?.offers?.[0]?.inventoryLevel?.value;
 
-  const price = promotionalPrice || originalPrice;
+  const price = originalPrice;
   const heightStr = getSpecValue("altura");
   const heightValue = parseHeightValue(heightStr);
   const widthStr = getSpecValue("largura");
@@ -158,6 +175,7 @@ export default function CustomProductSEO(
         availability={availability}
         price={price}
         priceCurrency={priceCurrency}
+        favicon={favicon}
       />
 
       <script
