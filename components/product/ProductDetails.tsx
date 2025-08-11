@@ -1,21 +1,23 @@
-import ShippingSimulation from "$store/islands/ShippingSimulation.tsx";
-import Breadcrumb from "$store/components/ui/Breadcrumb.tsx";
-import Button from "$store/components/ui/Button.tsx";
-import OutOfStock from "$store/islands/OutOfStock.tsx";
-import { useOffer } from "../../utils/userOffer.ts";
+import type { ProductDetailsPage } from "apps/commerce/types.ts";
+import type { Product } from "apps/commerce/types.ts";
+import type { FnContext, LoaderReturnType } from "@deco/deco";
+import type { ComponentChildren } from "preact";
+import type { Device } from "@deco/deco/utils";
+import { useOffer } from "$store/utils/userOffer.ts";
 import { formatPrice } from "$store/sdk/format.ts";
 import { SendEventOnLoad } from "$store/sdk/analytics.tsx";
 import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalyticsItem.ts";
-import type { ProductDetailsPage } from "apps/commerce/types.ts";
-import { type LoaderReturnType } from "@deco/deco";
+import { getDiscountPercent } from "$store/utils/calc.ts";
+import { useDeviceType } from "$store/sdk/useDeviceType.ts";
+import Breadcrumb from "$store/components/ui/Breadcrumb.tsx";
+import Button from "$store/components/ui/Button.tsx";
+import ProductInfoCarousel from "$store/components/product/ProductInfoCarousel.tsx";
+import Image from "deco-sites/std/components/Image.tsx";
+import ShippingSimulation from "$store/islands/ShippingSimulation.tsx";
+import OutOfStock from "$store/islands/OutOfStock.tsx";
 import AddToCartActions from "$store/islands/AddToCartActions.tsx";
 import ProductDetailsImages from "$store/islands/ProductDetailsImages.tsx";
-import type { Product } from "apps/commerce/types.ts";
 import BuyTogether from "$store/islands/BuyTogether.tsx";
-import Image from "deco-sites/std/components/Image.tsx";
-import type { ComponentChildren } from "preact";
-import { useEffect, useState } from "preact/hooks";
-// import ProductReviews, { loader } from "$store/islands/ProductReviews.tsx";
 import QuickReview from "$store/islands/QuickReview.tsx";
 
 export type ShareableNetwork = "Facebook" | "Twitter" | "Email" | "WhatsApp";
@@ -25,18 +27,14 @@ export interface Props {
   buyTogetherLoader: LoaderReturnType<Product[] | null>;
 }
 
-const WIDTH = 576;
-const HEIGHT = 576;
-const ASPECT_RATIO = "1";
-
 /**
  * Rendered when a not found is returned by any of the loaders run on this page
  */
 function NotFound() {
   return (
-    <div class="w-full flex justify-center items-center py-28">
+    <div class="flex w-full items-center justify-center py-28">
       <div class="flex flex-col items-center justify-center gap-6">
-        <span class="font-medium text-2xl">Página não encontrada</span>
+        <span class="text-2xl font-medium">Página não encontrada</span>
         <a href="/">
           <Button>Voltar à página inicial</Button>
         </a>
@@ -45,21 +43,15 @@ function NotFound() {
   );
 }
 
-function ProductInfo(
-  { page }: {
-    page: ProductDetailsPage;
-  },
-) {
-  const {
-    breadcrumbList,
-    product,
-  } = page;
-  const {
-    productID,
-    offers,
-    name,
-    isVariantOf,
-  } = product;
+function ProductInfo({
+  page,
+  isMobile,
+}: {
+  page: ProductDetailsPage;
+  isMobile: boolean;
+}) {
+  const { breadcrumbList, product } = page;
+  const { productID, offers, name, isVariantOf } = product;
   const {
     price,
     listPrice,
@@ -67,144 +59,139 @@ function ProductInfo(
     seller,
     availability,
     installment,
-  } = useOffer(
-    offers,
-  );
-  const discount = ((listPrice && price) && listPrice !== price)
-    ? Math.round(((listPrice - price) / listPrice) * 100)
-    : undefined;
+    totalDiscount,
+  } = useOffer(offers);
+  const discount = getDiscountPercent(listPrice, price);
 
   return (
     <>
       {/* Code and name */}
-      <div class="font-quicksand mt-5 relative">
-        <span class="text-[#828282] text-sm leading-[1.125rem] mb-6">
+      <div class="relative mt-3 font-quicksand lg:mt-0">
+        <span class="mb-6 text-sm leading-[1.125rem] text-[#828282]">
           Cód.: {isVariantOf?.model}
         </span>
-        <h1 class="text-primary text-[1.75rem] max-lg:text-[1.5rem] leading-8 font-semibold pt-2 capitalize">
+        <h1 class="pt-2 text-xl font-semibold capitalize leading-8 text-primary lg:text-[28px]">
           {(isVariantOf?.name || name || "").toLowerCase()}
         </h1>
       </div>
       {/* YourViews Box */}
       <div
-        class="text-primary font-quicksand text-[0.875rem] font-medium leading-8 py-4 underline"
+        class="my-3 font-quicksand text-sm font-medium leading-8 text-primary underline"
         id="yv-quickreview"
       >
         <QuickReview />
       </div>
       {/* Prices */}
-      {availability
-        ? (
-          <>
-            {discount && (
-              <div>
-                <div class="bg-primary rounded-[16px] py-1 px-4 pointer-events-none relative text-left top-[unset] w-fit z-1">
-                  <div class="flex justify-center items-center flex-col text-white h-full">
-                    <p class="text-sm font-normal leading-4 whitespace-nowrap font-quicksand">
-                      -{discount}%
-                    </p>
-                  </div>
-                </div>
-              </div>
-            )}
-            <div class="py-[1.375rem] max-lg:pb-0">
-              <div class="flex flex-col font-quicksand">
-                {priceWithPixDiscount && (
-                  <p class="text-secondary text-[26px] font-extrabold">
+      {availability ? (
+        <>
+          <div class="pb-5 max-lg:pb-0">
+            <div class="flex flex-col font-quicksand">
+              {priceWithPixDiscount && (
+                <div class="flex items-center gap-2">
+                  <p class="text-[26px] font-extrabold text-secondary">
                     {formatPrice(priceWithPixDiscount, offers!.priceCurrency!)}
                   </p>
-                )}
-                {discount && (
-                  <del class="text-[#828282] text-[14px] leading-[1.125rem] line-through -order-1">
-                    {formatPrice(listPrice, offers!.priceCurrency!)}
-                  </del>
-                )}
-                <p class="text-secondary text-sm font-semibold leading-5 flex-col items-start font-quicksand mb-3">
-                  à vista no Pix ou em 1x no cartão
-                </p>
-              </div>
+                  {totalDiscount > 0 && (
+                    <span class="w-fit rounded-2xl bg-primary px-4 py-1 text-sm font-normal text-white">
+                      -{totalDiscount}%
+                    </span>
+                  )}
+                </div>
+              )}
+              {!!discount && (
+                <del class="-order-1 text-[14px] leading-[1.125rem] text-[#828282] line-through">
+                  {formatPrice(listPrice, offers!.priceCurrency!)}
+                </del>
+              )}
+              <p class="my-2 flex-col items-start font-quicksand text-sm font-semibold leading-5 text-secondary">
+                à vista no Pix ou em 1x no cartão
+              </p>
+            </div>
 
-              <div class="flex text-primary text-sm font-medium leading-5 flex-col items-start font-quicksand">
-                <p class="min-w-fit">
-                  Ou {formatPrice(price, offers!.priceCurrency!)} em
-                  <span class="mx-1 font-extrabold">
-                    {installment?.billingDuration}x de {formatPrice(
-                      installment?.billingIncrement,
-                      offers!.priceCurrency,
-                    )}
-                  </span>
-                  sem juros
-                </p>
-              </div>
+            <div class="flex flex-col items-start font-quicksand text-sm font-medium leading-5 text-primary">
+              <p class="min-w-fit">
+                Ou {formatPrice(price, offers!.priceCurrency!)} em
+                <span class="mx-1 font-extrabold">
+                  {installment?.billingDuration}x de{" "}
+                  {formatPrice(
+                    installment?.billingIncrement,
+                    offers!.priceCurrency,
+                  )}
+                </span>
+                sem juros
+              </p>
+            </div>
 
-              <div class="w-full">
-                <details
-                  class="collapse collapse-arrow"
-                  open={false}
-                >
-                  <summary class="collapse-title mt-[10px] h-auto text-sm font-medium leading-[1.125rem] text-primary font-quicksand p-0 min-h-0 after:!right-[unset] after:!left-[125px] after:!shadow-[1px_1px] after:!h-[0.4rem] after:!w-[0.4rem]">
-                    Ver parcelamento
-                  </summary>
-                  <div class="collapse-content p-0 transition-all duration-300">
-                    <div class="font-quicksand bg-white border border-primary rounded-2xl text-black flex py-4 px-5 relative right-0 w-full z-1">
-                      <div class="flex font-quicksand justify-center flex-col w-full h-full">
-                        <p class="text-sm font-medium leading-snug my-2 mx-0">
-                          Condições especiais de parcelamento
-                        </p>
-                        <p class="text-sm font-medium leading-snug my-2 mx-0">
-                          Em 1x no cartão de crédito ou pix = 10% de desconto
-                        </p>
-                        <p class="text-sm font-medium leading-snug my-2 mx-0">
-                          De 2x a 3x = Você ganha 7% de desconto
-                        </p>
-                        <p class="text-sm font-medium leading-snug my-2 mx-0">
-                          De 4x a 6x = Você ganha 3% de desconto
-                        </p>
-                        <p class="text-sm font-medium leading-snug my-2 mx-0">
-                          De 7x a 10x = Finalize suas compras sem juros
-                        </p>
-                      </div>
+            <div class="w-full">
+              <details class="collapse collapse-arrow" open={false}>
+                <summary class="collapse-title mt-[10px] !flex min-h-0 w-fit items-center py-2 pl-0 pr-8 text-sm font-medium text-primary after:!right-4">
+                  Ver parcelamento
+                </summary>
+                <div class="collapse-content p-0 transition-all duration-300">
+                  <div class="z-1 relative right-0 flex w-full rounded-2xl border border-primary bg-white px-5 py-4 font-quicksand text-black">
+                    <div class="flex h-full w-full flex-col justify-center font-quicksand">
+                      <p class="mx-0 my-2 text-sm font-medium leading-snug">
+                        Condições especiais de parcelamento
+                      </p>
+                      <p class="mx-0 my-2 text-sm font-medium leading-snug">
+                        Em 1x no cartão de crédito ou pix = 10% de desconto
+                      </p>
+                      <p class="mx-0 my-2 text-sm font-medium leading-snug">
+                        De 2x a 3x = Você ganha 7% de desconto
+                      </p>
+                      <p class="mx-0 my-2 text-sm font-medium leading-snug">
+                        De 4x a 6x = Você ganha 3% de desconto
+                      </p>
+                      <p class="mx-0 my-2 text-sm font-medium leading-snug">
+                        De 7x a 10x = Finalize suas compras sem juros
+                      </p>
                     </div>
                   </div>
-                </details>
-              </div>
+                </div>
+              </details>
             </div>
-          </>
-        )
-        : null}
+          </div>
+        </>
+      ) : null}
       {/* Add to Cart and Favorites button */}
-      <div class="mb-[0.9375rem] border border-[#f2f3f8]"></div>
+      <div class="border border-[#DCE3EA]" />
       <div class="flex items-center gap-8">
-        {availability
-          ? (
-            <>
-              {seller && (
-                <AddToCartActions
-                  productID={productID}
-                  seller={seller}
-                  price={price}
-                  listPrice={listPrice}
-                  productName={name ?? ""}
-                  productGroupID={product.isVariantOf?.productGroupID ?? ""}
-                />
-              )}
-            </>
-          )
-          : <OutOfStock productID={productID} />}
+        {availability ? (
+          <>
+            {seller && (
+              <AddToCartActions
+                productID={productID}
+                seller={seller}
+                price={price}
+                listPrice={listPrice}
+                productName={name ?? ""}
+                productGroupID={product.isVariantOf?.productGroupID ?? ""}
+              />
+            )}
+          </>
+        ) : (
+          <OutOfStock productID={productID} />
+        )}
       </div>
       {/* Shipping Simulation */}
 
-      {availability
-        ? (
-          <ShippingSimulation
-            items={[{
+      {isMobile && (
+        <div class="mt-5 lg:hidden">
+          <ProductInfoCarousel product={product} isMobile={isMobile} />
+        </div>
+      )}
+
+      {availability ? (
+        <ShippingSimulation
+          items={[
+            {
               id: Number(product.sku),
               quantity: 1,
               seller: seller ?? "1",
-            }]}
-          />
-        )
-        : null}
+            },
+          ]}
+        />
+      ) : null}
 
       {/* Analytics Event */}
       <SendEventOnLoad
@@ -232,13 +219,18 @@ const useStableImages = (product: ProductDetailsPage["product"]) => {
   };
 
   const images = product.image ?? [];
-  const allImages = product.isVariantOf?.hasVariant.flatMap((p) => p.image)
-    .reduce((acc, img) => {
-      if (img?.url) {
-        acc[imageNameFromURL(img.url)] = img.url;
-      }
-      return acc;
-    }, {} as Record<string, string>) ?? {};
+  const allImages =
+    product.isVariantOf?.hasVariant
+      .flatMap((p) => p.image)
+      .reduce(
+        (acc, img) => {
+          if (img?.url) {
+            acc[imageNameFromURL(img.url)] = img.url;
+          }
+          return acc;
+        },
+        {} as Record<string, string>,
+      ) ?? {};
 
   return images.map((img) => {
     const name = imageNameFromURL(img.url);
@@ -247,78 +239,83 @@ const useStableImages = (product: ProductDetailsPage["product"]) => {
   });
 };
 
-function ProductAccordion(
-  { title, children }: { title: string; children: ComponentChildren },
-) {
+function ProductAccordion({
+  title,
+  children,
+}: {
+  title: string;
+  children: ComponentChildren;
+}) {
   return (
-    <details class="collapse collapse-arrow border-b border-[#eaeaea] outline-none overflow-visible">
-      <summary class="collapse-title border border-[#e0dddc] rounded-[0.3125rem] shadow-[0_0.125rem_0.125rem_rgba(0,0,0,0.16)] h-auto p-5 text-left flex justify-between items-center w-full relative after:!h-4 after:!w-4 text-lg font-medium text-primary">
+    <details class="collapse collapse-arrow overflow-visible border-b border-[#eaeaea] outline-none">
+      <summary class="collapse-title relative flex h-auto w-full items-center justify-between rounded-[0.3125rem] border border-[#e0dddc] p-5 text-left text-lg font-medium text-primary shadow-[0_0.125rem_0.125rem_rgba(0,0,0,0.16)] after:!h-4 after:!w-4">
         {title}
       </summary>
-      <div class="collapse-content flex items-center border border-[#eaeaea] rounded-[0.3125rem] shadow-[0_0.125rem_0.125rem_rgba(0,0,0,0.16)] gap-12 h-auto p-6">
+      <div class="collapse-content flex h-auto items-center gap-12 rounded-[0.3125rem] border border-[#eaeaea] p-6 shadow-[0_0.125rem_0.125rem_rgba(0,0,0,0.16)]">
         {children}
       </div>
     </details>
   );
 }
 
-function ProductAccordions({ product }: {
-  product: Product;
-}) {
+function ProductAccordions({ product }: { product: Product }) {
   const { description, isVariantOf } = product;
   const { additionalProperty } = isVariantOf as unknown as Product;
   const cuidados = additionalProperty
-    ? additionalProperty.find((prop) =>
-      prop.name === "Cuidados e manutenção do produto"
-    )
+    ? additionalProperty.find(
+        (prop) => prop.name === "Cuidados e manutenção do produto",
+      )
     : undefined;
   const [image] = useStableImages(product);
   return (
-    <section class="lg:py-10 bg-transparent relative w-full font-quicksand max-lg:py-6">
-      <div class="flex flex-col gap-4 justify-between">
+    <section class="relative w-full bg-transparent font-quicksand max-lg:py-6 lg:py-10">
+      <div class="flex flex-col justify-between gap-4">
         <ProductAccordion title="Descrição do produto">
-          {description
-            ? (
-              <>
-                <div class="hidden lg:block w-1/2 max-w-[27.125rem]">
-                  <div class="flex items-center justify-center mx-auto w-full bg-transparent">
-                    <Image
-                      src={image!.url}
-                      alt={image.alternateName}
-                      width={400}
-                    />
-                  </div>
+          {description && (
+            <>
+              <div class="hidden w-1/2 max-w-[27.125rem] lg:block">
+                <div class="mx-auto flex w-full items-center justify-center bg-transparent">
+                  <Image
+                    src={image!.url}
+                    alt={image.alternateName}
+                    width={400}
+                    height={400}
+                  />
                 </div>
-                <div class="w-full lg:w-1/2">
-                  <div
-                    class="font-quicksand text-base leading-6 text-[#828282]"
-                    dangerouslySetInnerHTML={{ __html: description }}
-                  >
-                  </div>
-                </div>
-              </>
-            )
-            : <></>}
+              </div>
+              <div class="w-full lg:w-1/2">
+                <div
+                  class="font-quicksand text-base leading-6 text-[#828282]"
+                  // deno-lint-ignore react-no-danger
+                  dangerouslySetInnerHTML={{ __html: description }}
+                ></div>
+              </div>
+            </>
+          )}
         </ProductAccordion>
         <ProductAccordion title="Informações técnicas">
           {additionalProperty && (
-            <div class="bg-[#f6f7f9] py-6 px-8 w-full">
-              {additionalProperty.filter((prop) =>
-                prop.name != "sellerId" && prop.name != "Medidas" &&
-                prop.name != "Video"
-              ).map((prop) => (
-                <div class="border-b border-b-[#dbdbdb] last:border-b-0 items-center flex font-quicksand text-sm font-medium leading-6 justify-between py-3">
-                  <div class="w-1/2 text-[#403c3c]">{prop.name}</div>
-                  <div class="w-1/2 text-primary">{prop.value}</div>
-                </div>
-              ))}
+            <div class="w-full bg-[#f6f7f9] px-8 py-6">
+              {additionalProperty
+                .filter(
+                  (prop) =>
+                    prop.name != "sellerId" &&
+                    prop.name != "Medidas" &&
+                    prop.name != "Video",
+                )
+                .map((prop) => (
+                  <div class="flex items-center justify-between border-b border-b-[#dbdbdb] py-3 font-quicksand text-sm font-medium leading-6 last:border-b-0">
+                    <div class="w-1/2 text-[#403c3c]">{prop.name}</div>
+                    <div class="w-1/2 text-primary">{prop.value}</div>
+                  </div>
+                ))}
             </div>
           )}
         </ProductAccordion>
         <ProductAccordion title="Cuidados e manutenção do produto">
-          {(additionalProperty && cuidados) && (
+          {additionalProperty && cuidados && (
             <div>
-              <div class="text-base leading-6 font-quicksand whitespace-pre-wrap text-[#828282]">
+              <div class="whitespace-pre-wrap font-quicksand text-base leading-6 text-[#828282]">
                 {cuidados.value}
               </div>
             </div>
@@ -329,145 +326,82 @@ function ProductAccordions({ product }: {
   );
 }
 
-function ImageComponent(
-  { imageUrl, value }: { imageUrl: string; value: string | undefined },
-) {
-  const [imageExists, setImageExists] = useState<boolean | null>(null);
-
-  useEffect(() => {
-    fetch(imageUrl)
-      .then((response) => {
-        if (response.ok) {
-          setImageExists(true);
-        } else {
-          setImageExists(false);
-        }
-      })
-      .catch(() => {
-        setImageExists(false);
-      });
-  }, [imageUrl]);
-
-  if (imageExists === null) {
-    return <></>;
-  }
-
-  return imageExists
-    ? (
-      <div class="flex items-center flex-col font-quicksand text-sm font-medium leading-6 justify-between py-3">
-        <div class="max-w-[3.125rem]">
-          <img
-            class="w-[50px] h-[50px] inline-block align-middle"
-            src={imageUrl}
-            alt={value}
-          />
-        </div>
-        <div class="text-primary text-sm text-center">{value}</div>
-      </div>
-    )
-    : <></>;
-}
-
-function Selos({ product }: { product: Product }) {
-  const { isVariantOf } = product;
-  const { additionalProperty } = isVariantOf as unknown as Product;
-
-  const filteredProperties = additionalProperty?.filter(
-    (property) => property.propertyID === "Modelo",
-  );
-
-  return (
-    <div class="w-fit bg-transparent">
-      <div class="text-primary text-lg leading-8 font-semibold my-6">
-        <p>Informações do seu produto:</p>
-      </div>
-      <div class="flex items-start flex-wrap flex-row gap-4 sm:gap-8 justify-center lg:justify-start">
-        {filteredProperties && filteredProperties.map((prop) => {
-          const { value } = prop;
-
-          const url = value
-            ? value.normalize("NFD").replaceAll("/ ", "").replace(
-              /[\u0300-\u036f]/g,
-              "",
-            ).replaceAll(" ", "_").toLowerCase()
-            : "";
-
-          console.log(`/arquivos/icone_${url}.svg`);
-
-          return (
-            <ImageComponent
-              imageUrl={`/arquivos/icone_${url}.svg`}
-              value={value}
-            />
-          );
-        })}
-      </div>
-    </div>
-  );
-}
-
 function Details({
   page,
   buyTogether,
+  device,
 }: {
   page: ProductDetailsPage;
   buyTogether: Product[] | null;
+  device: Device;
 }) {
+  const { isDesktop } = useDeviceType(device);
+  const isMobile = !isDesktop;
   const { product, breadcrumbList } = page;
-  const filteredBreadcrumbList = breadcrumbList.itemListElement.filter((item) =>
-    item.name!.length > 1
+  const filteredBreadcrumbList = breadcrumbList.itemListElement.filter(
+    (item) => item.name!.length > 1,
   );
   const images = useStableImages(product);
 
   return (
     <>
-      {/* Breadcrumb */}
-      <Breadcrumb
-        itemListElement={filteredBreadcrumbList}
-        class="!mb-0"
-      />
-      <section class="lg:flex lg:gap-16">
-        {/* Product Images */}
-        <ProductDetailsImages
-          images={images}
-          width={WIDTH}
-          height={HEIGHT}
-          aspect={ASPECT_RATIO}
-          url={product.url!}
-          product={product}
-        />
-        {/* Product Info */}
-        <div class="lg:w-1/2 lg:z-50 lg:sticky lg:h-fit lg:top-5 lg:mb-[2.125rem]">
-          <ProductInfo
-            page={page}
+      <Breadcrumb itemListElement={filteredBreadcrumbList} class="!mb-0" />
+      <section class="mt-7 lg:mt-9 lg:flex lg:gap-16">
+        <div class="relative lg:flex-shrink-0">
+          <ProductDetailsImages
+            images={images}
+            width={480}
+            height={480}
+            aspect="1"
+            url={product.url!}
+            product={product}
+            isMobile={isMobile}
           />
+          {!isMobile && (
+            <div class="hidden lg:block">
+              <ProductInfoCarousel product={product} isMobile={isMobile} />
+            </div>
+          )}
+        </div>
+        <div class="lg:h-fit lg:flex-1">
+          <ProductInfo page={page} isMobile={isMobile} />
         </div>
       </section>
-      <Selos product={product} />
-      {buyTogether &&
-        <BuyTogether product={product} buyTogether={buyTogether} />}
+      {buyTogether && (
+        <BuyTogether product={product} buyTogether={buyTogether} />
+      )}
       <ProductAccordions product={product} />
     </>
   );
 }
 
-function ProductDetails(
-  { page, buyTogetherLoader }: Props,
-) {
+function ProductDetails({
+  page,
+  buyTogetherLoader,
+  device,
+}: Awaited<ReturnType<typeof loader>>) {
   return (
     <div class="py-0">
-      {page
-        ? (
-          <>
-            <Details
-              page={page}
-              buyTogether={buyTogetherLoader}
-            />
-          </>
-        )
-        : <NotFound />}
+      {page ? (
+        <>
+          <Details
+            page={page}
+            buyTogether={buyTogetherLoader}
+            device={device}
+          />
+        </>
+      ) : (
+        <NotFound />
+      )}
     </div>
   );
+}
+
+export function loader(props: Props, _req: Request, ctx: FnContext) {
+  return {
+    ...props,
+    device: ctx.device,
+  };
 }
 
 export default ProductDetails;

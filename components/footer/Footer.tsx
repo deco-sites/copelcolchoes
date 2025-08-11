@@ -16,10 +16,7 @@ export type Section = {
 
 function SectionItem({ item }: { item: Item }) {
   return (
-    <a
-      href={item.href}
-      class="text-sm leading-4 text-[#8c9aad] font-medium"
-    >
+    <a href={item.href} class="text-sm font-medium leading-4 text-[#8c9aad]">
       {item.label}
     </a>
   );
@@ -77,36 +74,33 @@ export interface Props {
   openingHours: RichText;
 }
 
-function Footer(
-  {
-    sections = [],
-    socialNetWorks,
-    phone,
-    payments,
-    securities,
-    poweredby,
-    companyFooterInfo,
-    openingHours,
-  }: Props,
-) {
+function Footer({
+  sections = [],
+  socialNetWorks,
+  phone,
+  payments,
+  securities,
+  poweredby,
+  companyFooterInfo,
+  openingHours,
+}: Props) {
   return (
     <div class="bg-[#e8ebef] font-quicksand">
-      <div class="flex bg-white justify-center text-base p-0 leading-9 relative max-w-7xl my-0 mx-auto max-lg:flex-col max-lg:py-[3.125rem] max-lg:px-[1.1875rem]">
-      </div>
+      <div class="relative mx-auto my-0 flex max-w-7xl justify-center bg-white p-0 text-base leading-9 max-lg:flex-col max-lg:px-[1.1875rem] max-lg:py-[3.125rem]"></div>
       <footer class="lg:relative">
-        <div class="flex text-primary lg:justify-between lg:py-16 container lg:max-w-[80rem] w-full m-auto lg:px-[4rem] px-[1.375rem] max-lg:flex-col max-lg:pb-[1.875rem]">
-          <div class="flex flex-col w-1/4 max-lg:w-full">
-            <div class="flex flex-col mb-[2.0625rem] w-[9.9375rem] max-lg:text-center max-lg:my-6 max-lg:mx-auto">
+        <div class="container m-auto flex w-full px-[1.375rem] text-primary max-lg:flex-col max-lg:pb-[1.875rem] lg:max-w-[80rem] lg:justify-between lg:px-[4rem] lg:py-16">
+          <div class="flex w-1/4 flex-col max-lg:w-full">
+            <div class="mb-[2.0625rem] flex w-[9.9375rem] flex-col max-lg:mx-auto max-lg:my-6 max-lg:text-center">
               <Icon id="Logo" class={"max-lg:m-auto"} height={79} width={159} />
             </div>
             <div class="flex flex-col max-lg:mx-auto">
               <div>
-                <div class="flex flex-col mx-auto my-0 max-lg:text-center">
-                  <span class="text-base uppercase font-bold mb-3">
+                <div class="mx-auto my-0 flex flex-col max-lg:text-center">
+                  <span class="mb-3 text-base font-bold uppercase">
                     Televendas
                   </span>
-                  <div class="lg:mb-4 text-xl font-black">{phone}</div>
-                  <div class="lg:mb-4 text-sm leading-6 text-[##8c9aad]">
+                  <div class="text-xl font-black lg:mb-4">{phone}</div>
+                  <div class="text-sm leading-6 text-[##8c9aad] lg:mb-4">
                     <div dangerouslySetInnerHTML={{ __html: openingHours }} />
                   </div>
                 </div>
@@ -117,10 +111,10 @@ function Footer(
             </div>
           </div>
           <div>
-            <ul class="max-lg:hidden flex justify-between lg:gap-[3.375rem]">
+            <ul class="flex justify-between max-lg:hidden lg:gap-[3.375rem]">
               {sections.map((section) => (
                 <li>
-                  <span class="font-bold text-base uppercase mb-4 block">
+                  <span class="mb-4 block text-base font-bold uppercase">
                     {section.label}
                   </span>
                   <ul class="flex flex-col">
@@ -134,14 +128,14 @@ function Footer(
               ))}
             </ul>
             <div
-              class="max-lg:flex hidden flex-col items-center justify-center relative mt-5 px-5"
+              class="relative mt-5 hidden flex-col items-center justify-center px-5 max-lg:flex"
               id="accordion-container--footer"
             >
               {sections.map((section) => (
                 <div class="collapse collapse-arrow w-full rounded-none">
                   <label
                     for={`my-accordion-mobile--footer-${section.label}`}
-                    class="h-0 opacity-0 w-0"
+                    class="h-0 w-0 opacity-0"
                   >
                     Abrir opções
                   </label>
@@ -149,15 +143,15 @@ function Footer(
                     type="checkbox"
                     name="my-accordion-mobile--footer"
                     id={`my-accordion-mobile--footer-${section.label}`}
-                    class="absolute left-0 w-full top-0"
+                    class="absolute left-0 top-0 w-full"
                   />
-                  <div class="collapse-title border-b border-[#dbdbdb] py-2.5 text-primary font-bold pl-0 flex items-center justify-between pr-0 uppercase">
+                  <div class="collapse-title flex items-center justify-between border-b border-[#dbdbdb] py-2.5 pl-0 pr-0 font-bold uppercase text-primary">
                     {section.label}
                   </div>
                   <div class="collapse-content pl-0">
                     <ul>
                       {section.children.map((item) => (
-                        <li class="leading-normal py-1">
+                        <li class="py-1 leading-normal">
                           <SectionItem item={item} />
                         </li>
                       ))}
@@ -169,24 +163,22 @@ function Footer(
           </div>
         </div>
         <div class="bg-white">
-          <div class="lg:flex lg:w-full lg:justify-between lg:py-8 container lg:max-w-[80rem] w-full m-auto lg:px-[4rem] px-[1.375rem] max-lg:py-5">
+          <div class="container m-auto w-full px-[1.375rem] max-lg:py-5 lg:flex lg:w-full lg:max-w-[80rem] lg:justify-between lg:px-[4rem] lg:py-8">
             <div class="max-lg:my-[2.8125rem]">
-              <div class="text-base font-medium text-primary mb-4">
+              <div class="mb-4 text-base font-medium text-primary">
                 Pagamento
               </div>
-              <ul class="mb-[3.125rem] w-[359px] flex max-lg:w-full max-lg:grid max-lg:grid-cols-7 max-lg:my-0 max-lg:mx-auto max-lg:gap-y-[0.3125rem] max-lg:gap-x-[0.9375rem]">
+              <ul class="mb-[3.125rem] flex w-[359px] max-lg:mx-auto max-lg:my-0 max-lg:grid max-lg:w-full max-lg:grid-cols-7 max-lg:gap-x-[0.9375rem] max-lg:gap-y-[0.3125rem]">
                 {payments &&
                   payments.map((item) => (
-                    <li class="lg:w-[3.125rem] mr-[0.3125rem] mb-4">
+                    <li class="mb-4 mr-[0.3125rem] lg:w-[3.125rem]">
                       <span>
                         <Image
-                          fetchPriority="high"
-                          loading="eager"
                           src={item.image || ""}
                           width={35}
                           height={21}
                           alt={item.alt || "footer image"}
-                          class="h-auto w-full inline-block align-middle mix-blend-multiply"
+                          class="inline-block h-auto w-full align-middle mix-blend-multiply"
                         />
                       </span>
                     </li>
@@ -194,19 +186,16 @@ function Footer(
               </ul>
             </div>
             <div class="max-lg:my-6">
-              <div class="text-base font-medium text-primary mb-4">
+              <div class="mb-4 text-base font-medium text-primary">
                 Certificados e Segurança
               </div>
               <ul class="flex gap-5 max-lg:mx-auto">
-                <li class="w-[3.8125rem]"></li>
                 {securities &&
                   securities.map((item) => (
-                    <li class="w-[3.8125rem] flex items-center">
+                    <li class="flex w-[3.8125rem] items-center">
                       <span>
                         <a href={item.href || "#"} class="block">
                           <Image
-                            fetchPriority="high"
-                            loading="eager"
                             src={item.image || ""}
                             width={item.width ?? 73}
                             height={item.height}
@@ -221,16 +210,14 @@ function Footer(
             </div>
             <div class="max-lg:mt-[1.4375rem]">
               <div class="flex flex-col max-lg:my-8">
-                <span class="block text-base mb-4 font-medium text-primary">
+                <span class="mb-4 block text-base font-medium text-primary">
                   Desenvolvimento
                 </span>
                 <div class="flex items-center gap-5">
-                  {poweredby?.map((item) => (
+                  {poweredby?.map((item) =>
                     item.images.map((image) => (
                       <a href={image.link}>
                         <Image
-                          fetchPriority="high"
-                          loading="eager"
                           src={image.image}
                           alt={image.alt}
                           width={image.width ?? 73}
@@ -239,19 +226,17 @@ function Footer(
                           // class="w-auto h-auto"
                         />
                       </a>
-                    ))
-                  ))}
+                    )),
+                  )}
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div class="bg-white">
-          <div class="lg:w-full px-8 lg:px-52 lg:pb-[3.4375rem] max-w-7xl mx-auto max-lg:pb-[1.25rem]">
-            <p class="text-xs leading-[0.9375rem] text-center w-full font-medium text-[#8c9aad]">
-              <span>
-                {companyFooterInfo}
-              </span>
+          <div class="mx-auto max-w-7xl px-8 max-lg:pb-[1.25rem] lg:w-full lg:px-52 lg:pb-[3.4375rem]">
+            <p class="w-full text-center text-xs font-medium leading-[0.9375rem] text-[#8c9aad]">
+              <span>{companyFooterInfo}</span>
             </p>
           </div>
         </div>

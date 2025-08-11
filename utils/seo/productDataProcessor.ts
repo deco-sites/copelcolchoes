@@ -159,7 +159,6 @@ export function buildAdditionalProperties(
 export function parseHeightValue(heightStr: string): number | string {
   let heightValue: number | string = heightStr;
   const heightMatches = heightStr.match(/(\d+(?:[.,]\d+)?)\s*(?:cm)?/g);
-  console.log(heightStr, heightMatches);
   if (heightMatches && heightMatches.length > 0) {
     const lastMatch = heightMatches[heightMatches.length - 1];
     const numberMatch = lastMatch.match(/(\d+(?:[.,]\d+)?)/);

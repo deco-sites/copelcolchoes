@@ -98,8 +98,8 @@ function Searchbar({
               valueSearchSignal.value = "";
             } else if (
               _body?.querySelector(
-                  ".is-overlay-search-results__suggestions",
-                ) === target ||
+                ".is-overlay-search-results__suggestions",
+              ) === target ||
               _body?.querySelector(".topnavbar") === target ||
               _body?.querySelector(".header-container") === target ||
               _body?.querySelector(".header") === target ||
@@ -120,60 +120,50 @@ function Searchbar({
       <form
         id="searchbar"
         action={action}
-        class="flex-grow flex items-center max-lg:px-[20px] max-lg:py-[9px] md:py-0 gap-3 placeholder-base-200 px-5 md:h-[40px] rounded-md"
+        class="flex flex-grow items-center gap-3 rounded-md px-5 placeholder-base-200 max-lg:px-[20px] max-lg:py-[9px] md:h-[40px] md:py-0"
       >
-        {valueSearchSignal.value !== "" && valueSearchSignal.value !== "click"
-          ? (
-            <button
-              class="btn-ghost"
-              aria-label="Search"
-              htmlFor="searchbar"
-              tabIndex={-1}
-              type="button"
-              onClick={(e) => {
-                e.preventDefault();
-                const target = e.target;
-                if (!target) return;
+        {valueSearchSignal.value !== "" &&
+        valueSearchSignal.value !== "click" ? (
+          <button
+            class="btn-ghost"
+            aria-label="Search"
+            htmlFor="searchbar"
+            tabIndex={-1}
+            type="button"
+            onClick={(e) => {
+              e.preventDefault();
+              const target = e.target;
+              if (!target) return;
 
-                if (target instanceof SVGElement) {
-                  const form = target.closest("form");
-                  const input = form &&
-                    form.querySelector<HTMLInputElement>("input");
+              if (target instanceof SVGElement) {
+                const form = target.closest("form");
+                const input =
+                  form && form.querySelector<HTMLInputElement>("input");
 
-                  if (input) {
-                    input.value = "";
-                    valueSearchSignal.value = "";
-                  }
+                if (input) {
+                  input.value = "";
+                  valueSearchSignal.value = "";
                 }
-              }}
-            >
-              <Icon
-                class="text-primary mb-[3px]"
-                id="searchResultsClose"
-                size={18}
-              />
-            </button>
-          )
-          : (
-            <button
-              class="btn-ghost"
-              aria-label="Search"
-              htmlFor="searchbar"
-              tabIndex={-1}
-              type="submit"
-            >
-              <Icon
-                class="text-primary"
-                id="MagnifyingGlass"
-                size={18}
-              />
-            </button>
-          )}
+              }
+            }}
+          >
+            <Icon class="text-primary" id="searchResultsClose" size={18} />
+          </button>
+        ) : (
+          <button
+            class="btn-ghost"
+            aria-label="Search"
+            htmlFor="searchbar"
+            tabIndex={-1}
+            type="submit"
+          >
+            <Icon class="text-primary" id="MagnifyingGlass" size={18} />
+          </button>
+        )}
         <input
           ref={searchInputRef}
           class={clx(
-            `md:text-[14px] md:h-[20px] flex w-full outline-none placeholder:text-[#6B6B6B] 
-            placeholder:font-normal text-sm placeholder:text-sm text-[#6B6B6B] input-searchbar`,
+            `input-searchbar flex w-full text-sm text-[#6B6B6B] outline-none placeholder:text-sm placeholder:font-normal placeholder:text-[#6B6B6B] md:h-[20px] md:text-[14px]`,
           )}
           name={name}
           defaultValue={query}
@@ -219,11 +209,7 @@ function Searchbar({
   if (noContainer) return Searchbar;
 
   return (
-    <div
-      class={clx(
-        `lg:w-[510px] 2xl:w-[90%] w-full border rounded-md border-[#dbdbdb]`,
-      )}
-    >
+    <div class={clx(`w-full rounded-md border border-[#dbdbdb] lg:w-[374px]`)}>
       {Searchbar}
       {hide.results ? null : (
         <ResultSearch

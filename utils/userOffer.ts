@@ -50,7 +50,9 @@ export const useOffer = (aggregateOffer?: AggregateOffer) => {
     ({ priceType }) => priceType === "https://schema.org/SalePrice",
   );
 
-  const { promotionalPrice } = calculatePixPromotion(aggregateOffer?.offers);
+  const { promotionalPrice, totalDiscount } = calculatePixPromotion(
+    aggregateOffer?.offers,
+  );
 
   const installment = offer?.priceSpecification.reduce(bestInstallment, null);
   const seller = offer?.seller;
@@ -71,5 +73,6 @@ export const useOffer = (aggregateOffer?: AggregateOffer) => {
     seller,
     installment_text: installment ? installmentToString(installment) : null,
     installment: installment || null,
+    totalDiscount,
   };
 };

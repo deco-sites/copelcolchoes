@@ -6,6 +6,9 @@ export default {
   content: ["./**/*.tsx"],
   theme: {
     container: {
+      screens: {
+        "2xl": "1180px",
+      },
       center: true,
     },
     fontFamily: {

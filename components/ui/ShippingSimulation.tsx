@@ -21,15 +21,18 @@ const formatShippingEstimate = (estimate: string) => {
   if (type === "h") return `${time} horas`;
 };
 
-function ShippingContent({ simulation }: {
+function ShippingContent({
+  simulation,
+}: {
   simulation: Signal<SimulationOrderForm | null>;
 }) {
   const { cart } = useCart();
 
-  const methods = simulation.value?.logisticsInfo?.reduce(
-    (initial, { slas }) => [...initial, ...slas],
-    [] as Sla[],
-  ) ?? [];
+  const methods =
+    simulation.value?.logisticsInfo?.reduce(
+      (initial, { slas }) => [...initial, ...slas],
+      [] as Sla[],
+    ) ?? [];
 
   const locale = cart.value?.clientPreferencesData.locale || "pt-BR";
   const currencyCode = cart.value?.storePreferencesData.currencyCode || "BRL";
@@ -49,21 +52,21 @@ function ShippingContent({ simulation }: {
   return (
     <div class="py-4">
       <table class="w-full border-collapse">
-        <thead size={12} class="uppercase text-xs">
+        <thead size={12} class="text-xs uppercase">
           <tr>
             <th class="border-t-none py-2 text-center">Entrega</th>
             <th class="border-t-none py-2 text-center">Frete</th>
             <th class="border-t-none py-2 text-center">Prazo</th>
           </tr>
         </thead>
-        <tbody size={12} class="uppercase text-xs">
+        <tbody size={12} class="text-xs uppercase">
           {methods.map((method) => (
-            <tr class="bg-white hover:bg-[rgba(0,0,0,0.075)] transition-all duration-150">
+            <tr class="bg-white transition-all duration-150 hover:bg-[rgba(0,0,0,0.075)]">
               <td class="py-2 text-center">{method.name}</td>
               <td class="py-2 text-center">
-                {method.price === 0 ? "Grátis" : (
-                  formatPrice(method.price / 100, currencyCode, locale)
-                )}
+                {method.price === 0
+                  ? "Grátis"
+                  : formatPrice(method.price / 100, currencyCode, locale)}
               </td>
               <td class="py-2 text-center">
                 Até {formatShippingEstimate(method.shippingEstimate)}
@@ -119,57 +122,57 @@ function ShippingSimulation({ items }: Props) {
   }, []);
 
   return (
-    <div class="font-quicksand py-5">
-      <h4 class="text-primary text-lg font-semibold leading-8">
+    <div class="py-5 font-quicksand">
+      <h4 class="text-lg font-semibold leading-8 text-primary">
         Calcule as opções de entrega
       </h4>
-      {!simulateResult.value
-        ? (
-          <div class="py-3">
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                handleSimulation();
-              }}
-            >
-              <div class="flex items-end max-lg:items-start max-lg:flex-col max-lg:gap-5">
-                <div class="mr-3 text-[0.8125rem] relative w-full lg:w-auto">
-                  <label for="shippingPostalCode"></label>
-                  <input
-                    as="input"
-                    type="text"
-                    inputMode="numeric"
-                    pattern="[0-9]*"
-                    class="input !rounded-none border h-[2.625rem] w-[16.25rem] border-[#dcdcdc] px-4 text-xs focus:outline-none outline-none max-lg:w-full"
-                    placeholder="Insira seu cep"
-                    value={postalCode.value}
-                    maxLength={8}
-                    onChange={(e: { currentTarget: { value: string } }) => {
-                      postalCode.value = e.currentTarget.value;
-                    }}
-                  />
-                </div>
-                <Button
-                  type="submit"
-                  loading={loading.value}
-                  class="bg-white !border border-primary !rounded-[0.3125rem] h-[2.625rem] transition-all duration-300 w-[9.5rem] flex items-center justify-center text-[0.9375rem] font-bold relative px-8 appearance-none hover:bg-primary hover:text-white"
+      {!simulateResult.value ? (
+        <div class="py-3">
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleSimulation();
+            }}
+          >
+            <div class="flex max-lg:flex-col max-lg:gap-4">
+              <div class="relative mr-3 w-full text-[0.8125rem] lg:w-auto">
+                <label for="shippingPostalCode"></label>
+                <input
+                  as="input"
+                  type="text"
+                  inputMode="numeric"
+                  pattern="[0-9]*"
+                  class="input h-[2.625rem] w-[16.25rem] !rounded-none border border-[#dcdcdc] px-4 text-xs outline-none focus:outline-none max-lg:w-full"
+                  placeholder="Insira seu cep"
+                  value={postalCode.value}
+                  maxLength={8}
+                  onChange={(e: { currentTarget: { value: string } }) => {
+                    postalCode.value = e.currentTarget.value;
+                  }}
+                />
+                <a
+                  href="https://buscacepinter.correios.com.br/app/endereco/index.php"
+                  target="_blank"
+                  title="Não sei meu cep"
+                  rel="noopener noreferer"
+                  class="block w-fit cursor-pointer text-[0.875rem] font-normal leading-8 text-primary underline"
                 >
-                  Calcular
-                </Button>
+                  Não sei o meu cep
+                </a>
               </div>
-            </form>
-          </div>
-        )
-        : <ShippingContent simulation={simulateResult} />}
-      <a
-        href="https://buscacepinter.correios.com.br/app/endereco/index.php"
-        target="_blank"
-        title="Não sei meu cep"
-        rel="noopener noreferer"
-        class="text-primary text-[0.875rem] font-normal leading-8 underline block cursor-pointer"
-      >
-        Não sei o meu cep
-      </a>
+              <Button
+                type="submit"
+                loading={loading.value}
+                class="relative flex h-[2.625rem] w-[9.5rem] appearance-none items-center justify-center !rounded-[0.3125rem] !border border-primary bg-white px-8 text-[0.9375rem] font-bold transition-all duration-300 hover:bg-primary hover:text-white"
+              >
+                Calcular
+              </Button>
+            </div>
+          </form>
+        </div>
+      ) : (
+        <ShippingContent simulation={simulateResult} />
+      )}
     </div>
   );
 }
