@@ -82,3 +82,9 @@ _fresh/
 blocks.json
 .deco/metadata/blocks.json
 fresh.gen.ts
+
+# AI
+*CLAUDE.md
+.claude/
+.cursorignore
+.cursorrules

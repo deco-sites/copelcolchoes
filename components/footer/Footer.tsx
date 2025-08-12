@@ -1,5 +1,5 @@
 import Icon from "$store/components/ui/Icon.tsx";
-import type { ImageWidget } from "apps/admin/widgets.ts";
+import type { ImageWidget, RichText } from "apps/admin/widgets.ts";
 import Image from "apps/website/components/Image.tsx";
 import { FooterSectionItem } from "./Payments.tsx";
 import SocialNetWorks, { SocialItem } from "./SocialNetWorks.tsx";
@@ -71,6 +71,10 @@ export interface Props {
    * @title companyFooterInfo
    */
   companyFooterInfo: string;
+  /**
+   * @title Horários de atendimento
+   */
+  openingHours: RichText;
 }
 
 function Footer(
@@ -82,6 +86,7 @@ function Footer(
     securities,
     poweredby,
     companyFooterInfo,
+    openingHours,
   }: Props,
 ) {
   return (
@@ -101,15 +106,9 @@ function Footer(
                     Televendas
                   </span>
                   <div class="lg:mb-4 text-xl font-black">{phone}</div>
-                  <p class="lg:mb-4 text-sm leading-6 text-[##8c9aad]">
-                    Segunda à sexta das{" "}
-                    <strong class="text-primary">8h às 18h</strong>
-                    <br />
-                    Sábado de <strong class="text-primary">10h às 15h</strong>
-                    <br />
-                    Domingo <strong class="text-primary">fechado</strong>
-                    <br></br>
-                  </p>
+                  <div class="lg:mb-4 text-sm leading-6 text-[##8c9aad]">
+                    <div dangerouslySetInnerHTML={{ __html: openingHours }} />
+                  </div>
                 </div>
                 {socialNetWorks?.length && (
                   <SocialNetWorks socialItems={socialNetWorks} />
