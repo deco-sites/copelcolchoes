@@ -216,7 +216,7 @@
             "image": "https://data.decoassets.com/copelcolchoes/a40812fa-6e29-4a0d-887f-1fb2b8d5ff25/1742323975162-d81a7c01-9682-4bae-9550-a092ff9df977"
           }
         ],
-        "openingHours": "<p>Segunda à sexta das&nbsp;<strong>8h às 18h</strong><br>Sábado de&nbsp;<strong>10h às 15h</strong><br>Domingo&nbsp;<strong>fechado</strong></p>",
+        "openingHours": "<p>De segunda a sexta, das <strong>7h30 às 18h30</strong></p><p>Sábado, das <strong>9h às 14h</strong><br>Domingo, <strong>fechado</strong></p>",
         "__resolveType": "site/sections/Footer/Footer.tsx",
         "socialNetWorks": [
           {
