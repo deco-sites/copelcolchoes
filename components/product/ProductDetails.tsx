@@ -101,7 +101,7 @@ function ProductInfo(
                 <div class="bg-primary rounded-[16px] py-1 px-4 pointer-events-none relative text-left top-[unset] w-fit z-1">
                   <div class="flex justify-center items-center flex-col text-white h-full">
                     <p class="text-sm font-normal leading-4 whitespace-nowrap font-quicksand">
-                      - {discount}%
+                      -{discount}%
                     </p>
                   </div>
                 </div>
@@ -109,15 +109,15 @@ function ProductInfo(
             )}
             <div class="py-[1.375rem] max-lg:pb-0">
               <div class="flex flex-col font-quicksand">
-                {discount && (
-                  <del class="text-[#828282] text-[14px] leading-[1.125rem] line-through">
-                    {formatPrice(listPrice, offers!.priceCurrency!)}
-                  </del>
-                )}
                 {priceWithPixDiscount && (
                   <p class="text-secondary text-[26px] font-extrabold">
                     {formatPrice(priceWithPixDiscount, offers!.priceCurrency!)}
                   </p>
+                )}
+                {discount && (
+                  <del class="text-[#828282] text-[14px] leading-[1.125rem] line-through -order-1">
+                    {formatPrice(listPrice, offers!.priceCurrency!)}
+                  </del>
                 )}
                 <p class="text-secondary text-sm font-semibold leading-5 flex-col items-start font-quicksand mb-3">
                   à vista no Pix ou em 1x no cartão
