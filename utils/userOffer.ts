@@ -3,6 +3,7 @@ import type {
   UnitPriceSpecification,
 } from "apps/commerce/types.ts";
 import { formatPrice } from "../sdk/format.ts";
+import { calculatePixPromotion } from "./seo/pixPromotion.ts";
 
 const bestInstallment = (
   accumulator: UnitPriceSpecification | null,
@@ -45,31 +46,24 @@ export const useOffer = (aggregateOffer?: AggregateOffer) => {
     ({ priceType }) => priceType === "https://schema.org/ListPrice",
   );
 
-  const sellerPrice = offer?.priceSpecification.find(
+  const salePrice = offer?.priceSpecification.find(
     ({ priceType }) => priceType === "https://schema.org/SalePrice",
   );
 
-  const priceWithPixPayment = offer?.priceSpecification.find(
-    ({ name }) => name?.toLowerCase() === "pix",
-  );
+  const { promotionalPrice } = calculatePixPromotion(aggregateOffer?.offers);
 
   const installment = offer?.priceSpecification.reduce(bestInstallment, null);
   const seller = offer?.seller;
-  const price = sellerPrice?.price || 0;
+  const price = salePrice?.price || 0;
   const availability = (offer?.inventoryLevel.value || 0) > 0;
-  const manualPixPercentDiscount = 10;
-
-  const priceWithPixDiscount = (priceWithPixPayment?.price || price) < price
-    ? priceWithPixPayment?.price || price
-    : price * ((100 - manualPixPercentDiscount) / 100);
 
   const pixPercentDiscountByDiferenceSellerPrice = Math.round(
-    100 - (priceWithPixDiscount * 100) / price,
+    100 - (promotionalPrice * 100) / price,
   );
 
   return {
     price,
-    priceWithPixDiscount,
+    priceWithPixDiscount: promotionalPrice,
     pixPercentDiscountByDiferenceSellerPrice,
     listPrice: listPrice?.price || price,
     has_discount: (listPrice?.price || price) > price,

@@ -4569,6 +4569,9 @@ details.collapse summary::-webkit-details-marker {
 .z-\[9\] {
   z-index: 9;
 }
+.-order-1 {
+  order: -1;
+}
 .order-1 {
   order: 1;
 }

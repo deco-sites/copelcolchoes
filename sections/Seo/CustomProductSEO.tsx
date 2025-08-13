@@ -32,6 +32,7 @@ import {
 } from "$store/utils/seo/metaTags.ts";
 import { getOfferPrice } from "$store/utils/seo/offerPrice.ts";
 import { MetaTags } from "$store/components/seo/MetaTags.tsx";
+import { calculatePixPromotion } from "../../utils/seo/pixPromotion.ts";
 
 interface Props {
   page: ProductDetailsPage | null;
@@ -70,11 +71,6 @@ export default function CustomProductSEO(
   if (!page?.product) return <div></div>;
   const product = page.product;
 
-  // Esta função calcula o preço com o desconto do pix
-  // Veja em `/utils/seo/pixPromotion.ts`
-  // const { promotionalPrice } = calculatePixPromotion(
-  //   product.offers?.offers || [],
-  // );
   const fullProductName = product.isVariantOf?.name || product.name;
   const { category } = extractProductCategories(product);
   const specifications = extractProductSpecifications(product);
@@ -85,9 +81,8 @@ export default function CustomProductSEO(
     product.offers?.offers?.[0],
     "ListPrice",
   );
-  const promotionalPrice = getOfferPrice(
-    product.offers?.offers?.[0],
-    "SalePrice",
+  const { promotionalPrice } = calculatePixPromotion(
+    product.offers?.offers,
   );
   const priceCurrency = product.offers?.priceCurrency || "BRL";
   const availability = product.offers?.offers?.[0]?.availability ||
@@ -96,7 +91,6 @@ export default function CustomProductSEO(
   const priceValidUntil = product.offers?.offers?.[0]?.priceValidUntil;
   const inventoryLevel = product.offers?.offers?.[0]?.inventoryLevel?.value;
 
-  const price = originalPrice;
   const heightStr = getSpecValue("altura");
   const heightValue = parseHeightValue(heightStr);
   const widthStr = getSpecValue("largura");
@@ -173,7 +167,7 @@ export default function CustomProductSEO(
         imageUrl={imageUrl}
         keywords={keywords}
         availability={availability}
-        price={price}
+        price={promotionalPrice}
         priceCurrency={priceCurrency}
         favicon={favicon}
       />
