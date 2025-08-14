@@ -18,7 +18,7 @@
     "pre-commit": "check"
   },
   "exclude": ["node_modules", "static/", "README.md", "**/_fresh/*"],
-  "nodeModulesDir": false,
+  "nodeModulesDir": true,
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "preact",
