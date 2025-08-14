@@ -23,19 +23,19 @@ export interface MainColors {
    * @title Primary
    * @default #003232
    */
-  "primary": string;
+  primary: string;
   /**
    * @format color
    * @title Scondary
    * @default #8C3D3D
    */
-  "secondary": string;
+  secondary: string;
   /**
    * @format color
    * @title Tertiary
    * @default #00FF7F
    */
-  "tertiary": string;
+  tertiary: string;
 }
 
 export interface ComplementaryColors {
@@ -141,31 +141,31 @@ export interface SystemColors {
    * @format color
    * @default #333333
    */
-  "neutral": string;
+  neutral: string;
 
   /**
    * @format color
    * @default #EAFAF2
    */
-  "success": string;
+  success: string;
 
   /**
    * @format color
    * @default #FFF8E6
    */
-  "warning": string;
+  warning: string;
 
   /**
    * @format color
    * @default #FFE9E5
    */
-  "error": string;
+  error: string;
 
   /**
    * @format color
    * @default #F0F5FF
    */
-  "info": string;
+  info: string;
 }
 
 export interface Button {
@@ -249,16 +249,15 @@ export interface Props extends GoogleFontsLoaderProps {
 
 type FontSheet = string;
 
-type Theme =
-  & MainColors
-  & PrimaryColorOptional
-  & SecondaryColorOptional
-  & TertiaryColorOptional
-  & BaseColorOptional
-  & Button
-  & SystemColors
-  & OtherOptionalColors
-  & Miscellaneous;
+type Theme = MainColors &
+  PrimaryColorOptional &
+  SecondaryColorOptional &
+  TertiaryColorOptional &
+  BaseColorOptional &
+  Button &
+  SystemColors &
+  OtherOptionalColors &
+  Miscellaneous;
 
 const darken = (color: string, percentage = 0.2) =>
   Color.string(color).darken(percentage);
@@ -267,8 +266,8 @@ const contrasted = (color: string, percentage = 0.8) => {
   const c = Color.string(color);
 
   return c.isDark()
-    ? c.mix(Color.rgb(255, 255, 255), percentage).saturate(.1)
-    : c.mix(Color.rgb(0, 0, 0), percentage).saturate(.1);
+    ? c.mix(Color.rgb(255, 255, 255), percentage).saturate(0.1)
+    : c.mix(Color.rgb(0, 0, 0), percentage).saturate(0.1);
 };
 
 const toVariables = (t: Theme): [string, string][] => {
@@ -329,18 +328,18 @@ const toVariables = (t: Theme): [string, string][] => {
 };
 
 const defaultTheme = {
-  "primary": "hsla(209, 28%, 21%, 1)",
+  primary: "hsla(209, 28%, 21%, 1)",
   "primary-content": "hsla(0, 0%, 100%, 1)",
-  "secondary": "hsla(104, 18%, 46%, 1)",
+  secondary: "hsla(104, 18%, 46%, 1)",
   "secondary-content": "hsla(0, 0%, 100%, 1)",
-  "tertiary": "hsla(8, 69%, 65%, 1)",
+  tertiary: "hsla(8, 69%, 65%, 1)",
   "tertiary-content": "hsla(0, 0%, 100%, 1)",
-  "neutral": "hsla(0, 0%, 47%, 1)",
+  neutral: "hsla(0, 0%, 47%, 1)",
   "base-100": "hsla(0, 0%, 100%, 1)",
-  "success": "hsl(150 62% 95%)",
-  "warning": "hsl(43 100% 95%)",
-  "error": "hsl(9 100% 95%)",
-  "info": "hsl(220 100% 97%)",
+  success: "hsl(150 62% 95%)",
+  warning: "hsl(43 100% 95%)",
+  error: "hsl(9 100% 95%)",
+  info: "hsl(220 100% 97%)",
 
   "--rounded-box": "1rem", // border radius rounded-box utility class, used in card and other large boxes
   "--rounded-btn": "0.2rem" as const, // border radius rounded-btn utility class, used in buttons and similar element
@@ -374,10 +373,9 @@ function Section({
   fontsSheet,
 }: SectionProps) {
   const id = useId();
-  const fontsFamilies = fonts?.map((font) => font.other || font.fontFamily)
-    .join(
-      ", ",
-    );
+  const fontsFamilies = fonts
+    ?.map((font) => font.other || font.fontFamily)
+    .join(", ");
   const theme = {
     ...defaultTheme,
     ...mainColors,
@@ -397,7 +395,7 @@ function Section({
     [
       "--font-family",
       selectedFont ||
-      "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif",
+        "-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif",
     ],
   ]
     .map(([cssVar, value]) => `${cssVar}: ${value}`)
@@ -432,190 +430,155 @@ function Section({
 }
 
 export function Preview(props: Props) {
-  const selectedFont = props.customFont?.fontFamily ||
+  const selectedFont =
+    props.customFont?.fontFamily ||
     props.fonts?.map((font) => font.other || font.fontFamily).join(", ");
 
   return (
     <>
       <Section {...props} />
       <div class="grid grid-flow-row md:grid-flow-col">
-        <div class="flex flex-col gap-4 p-4 bg-base-100 text-base-content">
-          <div class="text-xl">The quick brown fox jumps over the lazy dog</div>
-          {" "}
+        <div class="flex flex-col gap-4 bg-base-100 p-4 text-base-content">
+          <div class="text-xl">The quick brown fox jumps over the lazy dog</div>{" "}
           <button class="btn">Default button</button>{" "}
           <div class="flex flex-col gap-1">
             <div class="flex flex-wrap gap-1">
               <button class="btn btn-sm">A</button>{" "}
-              <button class="btn btn-sm btn-primary">A</button>{" "}
-              <button class="btn btn-sm btn-secondary">A</button>{" "}
-              <button class="btn btn-sm btn-accent">A</button>
-              {" "}
+              <button class="btn btn-primary btn-sm">A</button>{" "}
+              <button class="btn btn-secondary btn-sm">A</button>{" "}
+              <button class="btn btn-accent btn-sm">A</button>{" "}
             </div>
             <div class="flex flex-wrap gap-1">
-              <button class="btn btn-sm btn-outline">A</button>{" "}
-              <button class="btn btn-sm btn-primary btn-outline">A</button>{" "}
-              <button class="btn btn-sm btn-secondary btn-outline">A</button>
-              {" "}
-              <button class="btn btn-sm btn-accent btn-outline">A</button>
-              {" "}
-            </div>
-            {" "}
+              <button class="btn btn-outline btn-sm">A</button>{" "}
+              <button class="btn btn-primary btn-outline btn-sm">A</button>{" "}
+              <button class="btn btn-secondary btn-outline btn-sm">A</button>{" "}
+              <button class="btn btn-accent btn-outline btn-sm">A</button>{" "}
+            </div>{" "}
           </div>
           <div class="flex flex-col gap-2">
             <span class="badge">Base</span>{" "}
             <span class="badge badge-primary">Primary</span>{" "}
             <span class="badge badge-secondary">Secondary</span>{" "}
-            <span class="badge badge-accent">Tertiary</span>
-            {" "}
+            <span class="badge badge-accent">Tertiary</span>{" "}
           </div>{" "}
           <div class="flex flex-col">
             <div class="text-base">Content</div>
             <div class="text-base text-primary">Primary</div>
             <div class="text-base text-secondary">Secondary</div>
             <div class="text-base text-accent">Tertiary</div>
-          </div>
-          {" "}
+          </div>{" "}
         </div>{" "}
-        <div class="flex flex-col gap-4 p-4 bg-base-content text-base-100">
-          <div class="text-xl">The quick brown fox jumps over the lazy dog</div>
-          {" "}
+        <div class="flex flex-col gap-4 bg-base-content p-4 text-base-100">
+          <div class="text-xl">The quick brown fox jumps over the lazy dog</div>{" "}
           <button class="btn">Default button</button>{" "}
           <div class="flex flex-col gap-1">
             <div class="flex flex-wrap gap-1">
               <button class="btn btn-sm">A</button>{" "}
-              <button class="btn btn-sm btn-primary">A</button>{" "}
-              <button class="btn btn-sm btn-secondary">A</button>{" "}
-              <button class="btn btn-sm btn-accent">A</button>
-              {" "}
+              <button class="btn btn-primary btn-sm">A</button>{" "}
+              <button class="btn btn-secondary btn-sm">A</button>{" "}
+              <button class="btn btn-accent btn-sm">A</button>{" "}
             </div>
             <div class="flex flex-wrap gap-1">
-              <button class="btn btn-sm btn-primary btn-outline">A</button>{" "}
-              <button class="btn btn-sm btn-secondary btn-outline">A</button>
-              {" "}
-              <button class="btn btn-sm btn-accent btn-outline">A</button>
-              {" "}
-            </div>
-            {" "}
+              <button class="btn btn-primary btn-outline btn-sm">A</button>{" "}
+              <button class="btn btn-secondary btn-outline btn-sm">A</button>{" "}
+              <button class="btn btn-accent btn-outline btn-sm">A</button>{" "}
+            </div>{" "}
           </div>
           <div class="flex flex-col gap-2">
             <span class="badge">Base</span>{" "}
             <span class="badge badge-primary">Primary</span>{" "}
             <span class="badge badge-secondary">Secondary</span>{" "}
-            <span class="badge badge-accent">Tertiary</span>
-            {" "}
+            <span class="badge badge-accent">Tertiary</span>{" "}
           </div>{" "}
           <div class="flex flex-col">
             <div class="text-base">Content</div>
             <div class="text-base text-primary">Primary</div>
             <div class="text-base text-secondary">Secondary</div>
             <div class="text-base text-accent">Tertiary</div>
-          </div>
-          {" "}
+          </div>{" "}
         </div>{" "}
-        <div class="flex flex-col gap-4 p-4 bg-primary text-primary-content">
-          <div class="text-xl">The quick brown fox jumps over the lazy dog</div>
-          {" "}
+        <div class="flex flex-col gap-4 bg-primary p-4 text-primary-content">
+          <div class="text-xl">The quick brown fox jumps over the lazy dog</div>{" "}
           <button class="btn">Default button</button>{" "}
           <div class="flex flex-col gap-1">
             <div class="flex flex-wrap gap-1">
               <button class="btn btn-sm">A</button>{" "}
-              <button class="btn btn-sm btn-secondary">A</button>{" "}
-              <button class="btn btn-sm btn-accent">A</button>
-              {" "}
+              <button class="btn btn-secondary btn-sm">A</button>{" "}
+              <button class="btn btn-accent btn-sm">A</button>{" "}
             </div>
             <div class="flex flex-wrap gap-1">
-              <button class="btn btn-sm btn-outline">A</button>{" "}
-              <button class="btn btn-sm btn-secondary btn-outline">A</button>
-              {" "}
-              <button class="btn btn-sm btn-accent btn-outline">A</button>
-              {" "}
-            </div>
-            {" "}
+              <button class="btn btn-outline btn-sm">A</button>{" "}
+              <button class="btn btn-secondary btn-outline btn-sm">A</button>{" "}
+              <button class="btn btn-accent btn-outline btn-sm">A</button>{" "}
+            </div>{" "}
           </div>
           <div class="flex flex-col gap-2">
             <span class="badge">Base</span>{" "}
             <span class="badge badge-secondary">Secondary</span>{" "}
-            <span class="badge badge-accent">Tertiary</span>
-            {" "}
+            <span class="badge badge-accent">Tertiary</span>{" "}
           </div>{" "}
           <div class="flex flex-col">
             <div class="text-base">Content</div>
             <div class="text-base text-secondary">Secondary</div>
             <div class="text-base text-accent">Tertiary</div>
-          </div>
-          {" "}
+          </div>{" "}
         </div>{" "}
-        <div class="flex flex-col gap-4 p-4 bg-secondary text-secondary-content">
-          <div class="text-xl">The quick brown fox jumps over the lazy dog</div>
-          {" "}
+        <div class="flex flex-col gap-4 bg-secondary p-4 text-secondary-content">
+          <div class="text-xl">The quick brown fox jumps over the lazy dog</div>{" "}
           <button class="btn">Default button</button>{" "}
           <div class="flex flex-col gap-1">
             <div class="flex flex-wrap gap-1">
               <button class="btn btn-sm">A</button>{" "}
-              <button class="btn btn-sm btn-primary">A</button>{" "}
-              <button class="btn btn-sm btn-accent">A</button>
-              {" "}
+              <button class="btn btn-primary btn-sm">A</button>{" "}
+              <button class="btn btn-accent btn-sm">A</button>{" "}
             </div>
             <div class="flex flex-wrap gap-1">
-              <button class="btn btn-sm btn-outline">A</button>{" "}
-              <button class="btn btn-sm btn-primary btn-outline">A</button>{" "}
-              <button class="btn btn-sm btn-accent btn-outline">A</button>
-              {" "}
-            </div>
-            {" "}
+              <button class="btn btn-outline btn-sm">A</button>{" "}
+              <button class="btn btn-primary btn-outline btn-sm">A</button>{" "}
+              <button class="btn btn-accent btn-outline btn-sm">A</button>{" "}
+            </div>{" "}
           </div>
           <div class="flex flex-col gap-2">
             <span class="badge">Base</span>{" "}
             <span class="badge badge-primary">Primary</span>{" "}
-            <span class="badge badge-accent">Tertiary</span>
-            {" "}
+            <span class="badge badge-accent">Tertiary</span>{" "}
           </div>{" "}
           <div class="flex flex-col">
             <div class="text-base">Content</div>
             <div class="text-base text-primary">Primary</div>
             <div class="text-base text-accent">Tertiary</div>
-          </div>
-          {" "}
+          </div>{" "}
         </div>{" "}
-        <div class="flex flex-col gap-4 p-4 bg-accent text-accent-content">
-          <div class="text-xl">The quick brown fox jumps over the lazy dog</div>
-          {" "}
+        <div class="flex flex-col gap-4 bg-accent p-4 text-accent-content">
+          <div class="text-xl">The quick brown fox jumps over the lazy dog</div>{" "}
           <button class="btn">Default button</button>{" "}
           <div class="flex flex-col gap-1">
             <div class="flex flex-wrap gap-1">
               <button class="btn btn-sm">A</button>{" "}
-              <button class="btn btn-sm btn-primary">A</button>{" "}
-              <button class="btn btn-sm btn-secondary">A</button>
-              {" "}
+              <button class="btn btn-primary btn-sm">A</button>{" "}
+              <button class="btn btn-secondary btn-sm">A</button>{" "}
             </div>
             <div class="flex flex-wrap gap-1">
-              <button class="btn btn-sm btn-outline">A</button>{" "}
-              <button class="btn btn-sm btn-primary btn-outline">A</button>{" "}
-              <button class="btn btn-sm btn-secondary btn-outline">A</button>
-              {" "}
-            </div>
-            {" "}
+              <button class="btn btn-outline btn-sm">A</button>{" "}
+              <button class="btn btn-primary btn-outline btn-sm">A</button>{" "}
+              <button class="btn btn-secondary btn-outline btn-sm">
+                A
+              </button>{" "}
+            </div>{" "}
           </div>
           <div class="flex flex-col gap-2">
             <span class="badge">Base</span>{" "}
             <span class="badge badge-primary">Primary</span>{" "}
-            <span class="badge badge-secondary">Secondary</span>
-            {" "}
+            <span class="badge badge-secondary">Secondary</span>{" "}
           </div>{" "}
           <div class="flex flex-col">
             <div class="text-base">Content</div>
             <div class="text-base text-primary">Primary</div>
             <div class="text-base text-secondary">Secondary</div>
-          </div>
-          {" "}
-        </div>
-        {" "}
+          </div>{" "}
+        </div>{" "}
       </div>
-      {selectedFont && (
-        <div class="text-center py-2">
-          Font: {selectedFont}
-        </div>
-      )}
+      {selectedFont && <div class="py-2 text-center">Font: {selectedFont}</div>}
     </>
   );
 }
@@ -624,9 +587,12 @@ export const loader = async (
   props: Props,
   req: Request,
 ): Promise<SectionProps> => {
-  const fontProps = await googleFontsLoader(props, req);
-
-  return { ...props, ...fontProps };
+  try {
+    const fontProps = await googleFontsLoader(props, req);
+    return { ...props, ...fontProps };
+  } catch (_err) {
+    return { ...props, fontsSheet: [] };
+  }
 };
 
 export default Section;
