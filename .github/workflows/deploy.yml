@@ -1,34 +1,59 @@
 name: Deploy
 on:
   push:
-    branches: main
+    branches: [main]
   pull_request:
-    branches: main
+    branches: [main]
 
 jobs:
   deploy:
-    name: Deploy
     runs-on: ubuntu-latest
-
+    timeout-minutes: 30
     permissions:
-      id-token: write # Needed for auth with Deno Deploy
-      contents: read # Needed to clone the repository
+      id-token: write
+      contents: read
+    concurrency:
+      group: deploy-${{ github.ref }}
+      cancel-in-progress: true
 
     steps:
-      - name: Clone repository
-        uses: actions/checkout@v3
-
-      - name: Install Deno
-        uses: denoland/setup-deno@v1
+      - name: Checkout
+        uses: actions/checkout@v4  # upgrade from v3
+      - name: Setup Deno
+        uses: denoland/setup-deno@v2
         with:
-          deno-version: v1.x
+          deno-version: v2.x       # if your repo isn't on Deno 2 yet, use v1.x
+          cache: true
 
-      - name: Build step
-        run: "deno task build"
+      - name: Build
+        run: deno task build
 
-      - name: Upload to Deno Deploy
-        uses: denoland/deployctl@v1
-        with:
-          project: "deco-sites-copelcolchoes"
-          entrypoint: "main.ts"
-          root: "."
+      - name: Show tool versions
+        run: |
+          deno --version
+          deno run -A -q jsr:@deno/deployctl --version
+
+      - name: Deploy to Deno Deploy (retry & include only what’s needed)
+        shell: bash
+        env:
+          PROJECT: "deco-sites-copelcolchoes"
+        run: |
+          set -euo pipefail
+          for i in {1..3}; do
+            deno run -A -q jsr:@deno/deployctl deploy \
+              --project="$PROJECT" \
+              --entrypoint=main.ts \
+              --include=./routes \
+              --include=./islands \
+              --include=./sections \
+              --include=./components \
+              --include=./apps \
+              --include=./loaders \
+              --include=./static \
+              --include=./fresh.gen.ts \
+              --include=./import_map.json \
+              --include=./deno.json \
+              && exit 0
+            echo "retry $i"; sleep 10
+          done
+          exit 1
