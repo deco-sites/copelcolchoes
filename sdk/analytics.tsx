@@ -1,4 +1,3 @@
-import { IS_BROWSER } from "$fresh/runtime.ts";
 import type { AnalyticsEvent } from "apps/commerce/types.ts";
 
 declare global {
@@ -10,14 +9,14 @@ declare global {
 }
 
 export const sendEvent = <E extends AnalyticsEvent>(event: E) => {
-  if (typeof window.DECO_SITES_STD?.sendAnalyticsEvent !== "function") {
+  if (typeof globalThis.DECO_SITES_STD?.sendAnalyticsEvent !== "function") {
     console.info(
       "Cannot find Analytics section in your page. Press `.` to add Analytics and supress this warning",
     );
 
     return;
   }
-  window.DECO_SITES_STD.sendAnalyticsEvent(event);
+  globalThis.DECO_SITES_STD.sendAnalyticsEvent(event);
 };
 
 /**

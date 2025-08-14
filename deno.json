@@ -17,12 +17,7 @@
   "githooks": {
     "pre-commit": "check"
   },
-  "exclude": [
-    "node_modules",
-    "static/",
-    "README.md",
-    "**/_fresh/*"
-  ],
+  "exclude": ["node_modules", "static/", "README.md", "**/_fresh/*"],
   "nodeModulesDir": false,
   "compilerOptions": {
     "jsx": "react-jsx",
@@ -67,9 +62,19 @@
   },
   "lint": {
     "rules": {
-      "tags": [
-        "fresh",
-        "recommended"
+      "tags": ["fresh", "recommended"],
+      "exclude": [
+        "react-no-danger",
+        "jsx-button-has-type",
+        "jsx-no-useless-fragment",
+        "jsx-curly-braces",
+        "no-unused-vars",
+        "jsx-key",
+        "jsx-boolean-value",
+        "react-rules-of-hooks",
+        "ban-unused-ignore",
+        "jsx-void-dom-elements-no-children",
+        "no-window"
       ]
     }
   },

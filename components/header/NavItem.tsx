@@ -186,7 +186,7 @@ function NavItemDropDown({
                     src={image.src}
                     width={image.width}
                     height={image.height}
-                    alt={"Banner vertical do menu"}
+                    alt="Banner vertical do menu"
                   />
                 </div>
               </a>

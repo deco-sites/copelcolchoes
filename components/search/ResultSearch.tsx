@@ -5,7 +5,6 @@ import type { Product, Suggestion } from "apps/commerce/types.ts";
 import { clx } from "$store/sdk/clx.ts";
 import { useOffer } from "../../utils/userOffer.ts";
 import { formatPrice } from "$store/sdk/format.ts";
-import { color } from "apps/vtex/mod.ts";
 export type ResultSearch = EditableProps & {
   valueSearch: string;
   notFound: boolean;

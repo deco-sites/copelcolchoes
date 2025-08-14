@@ -1,7 +1,6 @@
 import Image from "deco-sites/std/components/Image.tsx";
 import Slider from "$store/components/ui/Slider.tsx";
 import type { Image as LiveImage } from "deco-sites/std/components/types.ts";
-import Icon from "$store/components/ui/Icon.tsx";
 import { useId } from "preact/hooks";
 import SliderJS from "$store/islands/SliderJS.tsx";
 import Header from "$store/components/ui/SectionHeader.tsx";

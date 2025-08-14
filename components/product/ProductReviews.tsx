@@ -459,11 +459,15 @@ const getPages = (page: number, lastPage: number) => {
 function ProductReviews(
   { reviews, product, yourViews }: SectionProps<typeof loader>,
 ) {
+  const { reviews: rates, totalReview: totalRate } = useQuickReview();
+  const loadingPageReview = useSignal(false);
+  const displayQuestionForm = useSignal(false);
+  const displayReviewForm = useSignal(false);
+
   if (!product) {
     return null;
   }
   const { inProductGroupWithID } = product;
-  const { reviews: rates, totalReview: totalRate } = useQuickReview();
   const { Element, Pagination } = reviews;
   rates.value = !Element ? 0 : Element.TotalRatings;
   totalRate.value = !Element ? 0 : Element.Rating;
@@ -473,7 +477,6 @@ function ProductReviews(
   const [pagination, setPagination] = useState(Pagination ? Pagination : {});
   const { IsFirstPage, IsLastPage, PageCount, PageNumber } = pagination;
   const [pages, setPages] = useState(getPages(PageNumber, PageCount));
-  const loadingPageReview = useSignal(false);
   const handlePageChange = async (page: number) => {
     const options = {
       headers: {
@@ -497,8 +500,6 @@ function ProductReviews(
       loadingPageReview.value = false;
     }
   };
-  const displayQuestionForm = useSignal(false);
-  const displayReviewForm = useSignal(false);
   const hasRatings = rates.value > 0;
   const openQuestionForm = () => {
     displayQuestionForm.value = true;
