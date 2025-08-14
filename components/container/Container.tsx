@@ -47,17 +47,19 @@ function Container({ sections, isHeader = false, isVisible = true }: Props) {
           }) => (
             <div
               class={clx(
-                `w-full ${VERTICAL_SPACING[verticalSpacing]} ${SPACING[spacing]} ${SHADOW_SIZE[shadow]}`,
+                `w-full ${VERTICAL_SPACING[verticalSpacing]} ${
+                  SPACING[spacing]
+                } ${SHADOW_SIZE[shadow]}`,
               )}
               style={backgroundColor && { background: `${backgroundColor}` }}
             >
-              {withContainer ? (
-                <div class="container relative m-auto w-full max-[1220px]:!px-5 lg:px-0">
-                  <Component {...props} />
-                </div>
-              ) : (
-                <Component {...props} />
-              )}
+              {withContainer
+                ? (
+                  <div class="container relative m-auto w-full max-[1220px]:!px-5 lg:px-0">
+                    <Component {...props} />
+                  </div>
+                )
+                : <Component {...props} />}
             </div>
           ),
         )}

@@ -1,7 +1,10 @@
-import { useRef, useState, useEffect } from "preact/hooks";
+import { useEffect, useRef, useState } from "preact/hooks";
 import { clx } from "$store/sdk/clx.ts";
 import Icon from "$store/components/ui/Icon.tsx";
-import { NAVIGATION_BUTTON_STYLES, NAVIGATION_ICON_STYLES } from "$store/sdk/imageConstants.ts";
+import {
+  NAVIGATION_BUTTON_STYLES,
+  NAVIGATION_ICON_STYLES,
+} from "$store/sdk/imageConstants.ts";
 import { MediaItem, type MediaType } from "./MediaItem.tsx";
 
 export interface MobileThumbnailCarouselProps {
@@ -65,9 +68,11 @@ export function MobileThumbnailCarousel({
           msOverflowStyle: "none",
         }}
       >
-        <style>{`
+        <style>
+          {`
           .scrollbar-hide::-webkit-scrollbar { display: none; }
-        `}</style>
+        `}
+        </style>
         {media.map((item, index) => (
           <div key={index} class="flex-shrink-0">
             <MediaItem

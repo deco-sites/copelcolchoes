@@ -56,47 +56,51 @@ function ProductDetailsImages({
                 isMobile
                   ? "w-full"
                   : media.length <= 5
-                    ? "overflow-hidden"
-                    : "",
+                  ? "overflow-hidden"
+                  : "",
                 "relative mx-auto h-full",
               )}
             >
-              {isMobile ? (
-                media.length >= 5 ? (
-                  <div class="flex w-full justify-center">
-                    <MobileThumbnailCarousel
-                      media={media}
-                      aspect={aspect}
-                      activeIndex={activeIndex.value}
-                      onThumbnailClick={handleThumbnailClick}
-                    />
-                  </div>
-                ) : (
-                  <div class="z-1 relative box-content flex h-auto w-full justify-center gap-[18px] lg:w-[350px]">
-                    {media.map((item, index) => (
-                      <MediaItem
-                        key={index}
-                        media={item}
-                        index={index}
-                        aspect={aspect}
-                        isMobile={isMobile}
-                        isThumb
-                        isMainSliderControl={false}
-                        isActive={activeIndex.value === index}
-                        onClick={() => handleThumbnailClick(index)}
-                      />
-                    ))}
-                  </div>
+              {isMobile
+                ? (
+                  media.length >= 5
+                    ? (
+                      <div class="flex w-full justify-center">
+                        <MobileThumbnailCarousel
+                          media={media}
+                          aspect={aspect}
+                          activeIndex={activeIndex.value}
+                          onThumbnailClick={handleThumbnailClick}
+                        />
+                      </div>
+                    )
+                    : (
+                      <div class="z-1 relative box-content flex h-auto w-full justify-center gap-[18px] lg:w-[350px]">
+                        {media.map((item, index) => (
+                          <MediaItem
+                            key={index}
+                            media={item}
+                            index={index}
+                            aspect={aspect}
+                            isMobile={isMobile}
+                            isThumb
+                            isMainSliderControl={false}
+                            isActive={activeIndex.value === index}
+                            onClick={() => handleThumbnailClick(index)}
+                          />
+                        ))}
+                      </div>
+                    )
                 )
-              ) : (
-                <VerticalThumbnailCarousel
-                  media={media}
-                  aspect={aspect}
-                  itemsPerPage={5}
-                  activeIndex={activeIndex.value}
-                  onThumbnailClick={handleThumbnailClick}
-                />
-              )}
+                : (
+                  <VerticalThumbnailCarousel
+                    media={media}
+                    aspect={aspect}
+                    itemsPerPage={5}
+                    activeIndex={activeIndex.value}
+                    onThumbnailClick={handleThumbnailClick}
+                  />
+                )}
             </div>
           </div>
 
@@ -139,30 +143,32 @@ function ProductDetailsImages({
                       }}
                     >
                       {img["@type"] === "ImageObject" &&
-                        (isMobile ? (
-                          <SafeImage
-                            class="mx-auto h-full w-full object-cover"
-                            sizes={`(max-width: 480px) calc(100vw - 2.5rem), calc(100vw - 2.5rem)`}
-                            style={{ aspectRatio: aspect }}
-                            src={img?.url!}
-                            alt={img.alternateName || "Imagem do produto"}
-                            width={700}
-                            height={700}
-                            containerWidth={0}
-                            containerHeight={0}
-                            preload={index === 0}
-                            fetchPriority={index === 0 ? "high" : "auto"}
-                            loading={index === 0 ? "eager" : "lazy"}
-                          />
-                        ) : (
-                          <ZoomableImage
-                            img={img}
-                            index={index}
-                            aspect={aspect}
-                            width={width}
-                            height={height}
-                          />
-                        ))}
+                        (isMobile
+                          ? (
+                            <SafeImage
+                              class="mx-auto h-full w-full object-cover"
+                              sizes={`(max-width: 480px) calc(100vw - 2.5rem), calc(100vw - 2.5rem)`}
+                              style={{ aspectRatio: aspect }}
+                              src={img?.url!}
+                              alt={img.alternateName || "Imagem do produto"}
+                              width={700}
+                              height={700}
+                              containerWidth={0}
+                              containerHeight={0}
+                              preload={index === 0}
+                              fetchPriority={index === 0 ? "high" : "auto"}
+                              loading={index === 0 ? "eager" : "lazy"}
+                            />
+                          )
+                          : (
+                            <ZoomableImage
+                              img={img}
+                              index={index}
+                              aspect={aspect}
+                              width={width}
+                              height={height}
+                            />
+                          ))}
                       {img["@type"] === "VideoObject" && (
                         <iframe
                           class="slide-dot-custom absolute inset-0 h-full w-full"
@@ -170,7 +176,8 @@ function ProductDetailsImages({
                           src={img.contentUrl!}
                           frameborder={0}
                           loading="lazy"
-                        ></iframe>
+                        >
+                        </iframe>
                       )}
                     </div>
                   </Slider.Item>
@@ -214,7 +221,9 @@ function ProductDetailsImages({
               />
               <ShareButton
                 network="Pinterest"
-                link={`https://pinterest.com/pin/create/button/?media=${images[0]
+                link={`https://pinterest.com/pin/create/button/?media=${images[
+                  0
+                ]
                   .url!}`}
               />
             </div>

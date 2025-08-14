@@ -82,96 +82,100 @@ function ProductInfo({
         <QuickReview />
       </div>
       {/* Prices */}
-      {availability ? (
-        <>
-          <div class="pb-5 max-lg:pb-0">
-            <div class="flex flex-col font-quicksand">
-              {priceWithPixDiscount && (
-                <div class="flex items-center gap-2">
-                  <p class="text-[26px] font-extrabold text-secondary">
-                    {formatPrice(priceWithPixDiscount, offers!.priceCurrency!)}
-                  </p>
-                  {totalDiscount > 0 && (
-                    <span class="w-fit rounded-2xl bg-primary px-4 py-1 text-sm font-normal text-white">
-                      -{totalDiscount}%
-                    </span>
-                  )}
-                </div>
-              )}
-              {!!discount && (
-                <del class="-order-1 text-[14px] leading-[1.125rem] text-[#828282] line-through">
-                  {formatPrice(listPrice, offers!.priceCurrency!)}
-                </del>
-              )}
-              <p class="my-2 flex-col items-start font-quicksand text-sm font-semibold leading-5 text-secondary">
-                à vista no Pix ou em 1x no cartão
-              </p>
-            </div>
+      {availability
+        ? (
+          <>
+            <div class="pb-5 max-lg:pb-0">
+              <div class="flex flex-col font-quicksand">
+                {priceWithPixDiscount && (
+                  <div class="flex items-center gap-2">
+                    <p class="text-[26px] font-extrabold text-secondary">
+                      {formatPrice(
+                        priceWithPixDiscount,
+                        offers!.priceCurrency!,
+                      )}
+                    </p>
+                    {totalDiscount > 0 && (
+                      <span class="w-fit rounded-2xl bg-primary px-4 py-1 text-sm font-normal text-white">
+                        -{totalDiscount}%
+                      </span>
+                    )}
+                  </div>
+                )}
+                {!!discount && (
+                  <del class="-order-1 text-[14px] leading-[1.125rem] text-[#828282] line-through">
+                    {formatPrice(listPrice, offers!.priceCurrency!)}
+                  </del>
+                )}
+                <p class="my-2 flex-col items-start font-quicksand text-sm font-semibold leading-5 text-secondary">
+                  à vista no Pix ou em 1x no cartão
+                </p>
+              </div>
 
-            <div class="flex flex-col items-start font-quicksand text-sm font-medium leading-5 text-primary">
-              <p class="min-w-fit">
-                Ou {formatPrice(price, offers!.priceCurrency!)} em
-                <span class="mx-1 font-extrabold">
-                  {installment?.billingDuration}x de{" "}
-                  {formatPrice(
-                    installment?.billingIncrement,
-                    offers!.priceCurrency,
-                  )}
-                </span>
-                sem juros
-              </p>
-            </div>
+              <div class="flex flex-col items-start font-quicksand text-sm font-medium leading-5 text-primary">
+                <p class="min-w-fit">
+                  Ou {formatPrice(price, offers!.priceCurrency!)} em
+                  <span class="mx-1 font-extrabold">
+                    {installment?.billingDuration}x de {formatPrice(
+                      installment?.billingIncrement,
+                      offers!.priceCurrency,
+                    )}
+                  </span>
+                  sem juros
+                </p>
+              </div>
 
-            <div class="w-full">
-              <details class="collapse collapse-arrow" open={false}>
-                <summary class="collapse-title mt-[10px] !flex min-h-0 w-fit items-center py-2 pl-0 pr-8 text-sm font-medium text-primary after:!right-4">
-                  Ver parcelamento
-                </summary>
-                <div class="collapse-content p-0 transition-all duration-300">
-                  <div class="z-1 relative right-0 flex w-full rounded-2xl border border-primary bg-white px-5 py-4 font-quicksand text-black">
-                    <div class="flex h-full w-full flex-col justify-center font-quicksand">
-                      <p class="mx-0 my-2 text-sm font-medium leading-snug">
-                        Condições especiais de parcelamento
-                      </p>
-                      <p class="mx-0 my-2 text-sm font-medium leading-snug">
-                        Em 1x no cartão de crédito ou pix = 10% de desconto
-                      </p>
-                      <p class="mx-0 my-2 text-sm font-medium leading-snug">
-                        De 2x a 3x = Você ganha 7% de desconto
-                      </p>
-                      <p class="mx-0 my-2 text-sm font-medium leading-snug">
-                        De 4x a 6x = Você ganha 3% de desconto
-                      </p>
-                      <p class="mx-0 my-2 text-sm font-medium leading-snug">
-                        De 7x a 10x = Finalize suas compras sem juros
-                      </p>
+              <div class="w-full">
+                <details class="collapse collapse-arrow" open={false}>
+                  <summary class="collapse-title mt-[10px] !flex min-h-0 w-fit items-center py-2 pl-0 pr-8 text-sm font-medium text-primary after:!right-4">
+                    Ver parcelamento
+                  </summary>
+                  <div class="collapse-content p-0 transition-all duration-300">
+                    <div class="z-1 relative right-0 flex w-full rounded-2xl border border-primary bg-white px-5 py-4 font-quicksand text-black">
+                      <div class="flex h-full w-full flex-col justify-center font-quicksand">
+                        <p class="mx-0 my-2 text-sm font-medium leading-snug">
+                          Condições especiais de parcelamento
+                        </p>
+                        <p class="mx-0 my-2 text-sm font-medium leading-snug">
+                          Em 1x no cartão de crédito ou pix = 10% de desconto
+                        </p>
+                        <p class="mx-0 my-2 text-sm font-medium leading-snug">
+                          De 2x a 3x = Você ganha 7% de desconto
+                        </p>
+                        <p class="mx-0 my-2 text-sm font-medium leading-snug">
+                          De 4x a 6x = Você ganha 3% de desconto
+                        </p>
+                        <p class="mx-0 my-2 text-sm font-medium leading-snug">
+                          De 7x a 10x = Finalize suas compras sem juros
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </details>
+                </details>
+              </div>
             </div>
-          </div>
-        </>
-      ) : null}
+          </>
+        )
+        : null}
       {/* Add to Cart and Favorites button */}
       <div class="border border-[#DCE3EA]" />
       <div class="flex items-center gap-8">
-        {availability ? (
-          <>
-            {seller && (
-              <AddToCartActions
-                productID={productID}
-                seller={seller}
-                price={price}
-                listPrice={listPrice}
-                productName={name ?? ""}
-                productGroupID={product.isVariantOf?.productGroupID ?? ""}
-              />
-            )}
-          </>
-        ) : (
-          <OutOfStock productID={productID} />
-        )}
+        {availability
+          ? (
+            <>
+              {seller && (
+                <AddToCartActions
+                  productID={productID}
+                  seller={seller}
+                  price={price}
+                  listPrice={listPrice}
+                  productName={name ?? ""}
+                  productGroupID={product.isVariantOf?.productGroupID ?? ""}
+                />
+              )}
+            </>
+          )
+          : <OutOfStock productID={productID} />}
       </div>
       {/* Shipping Simulation */}
 
@@ -181,17 +185,19 @@ function ProductInfo({
         </div>
       )}
 
-      {availability ? (
-        <ShippingSimulation
-          items={[
-            {
-              id: Number(product.sku),
-              quantity: 1,
-              seller: seller ?? "1",
-            },
-          ]}
-        />
-      ) : null}
+      {availability
+        ? (
+          <ShippingSimulation
+            items={[
+              {
+                id: Number(product.sku),
+                quantity: 1,
+                seller: seller ?? "1",
+              },
+            ]}
+          />
+        )
+        : null}
 
       {/* Analytics Event */}
       <SendEventOnLoad
@@ -219,18 +225,17 @@ const useStableImages = (product: ProductDetailsPage["product"]) => {
   };
 
   const images = product.image ?? [];
-  const allImages =
-    product.isVariantOf?.hasVariant
-      .flatMap((p) => p.image)
-      .reduce(
-        (acc, img) => {
-          if (img?.url) {
-            acc[imageNameFromURL(img.url)] = img.url;
-          }
-          return acc;
-        },
-        {} as Record<string, string>,
-      ) ?? {};
+  const allImages = product.isVariantOf?.hasVariant
+    .flatMap((p) => p.image)
+    .reduce(
+      (acc, img) => {
+        if (img?.url) {
+          acc[imageNameFromURL(img.url)] = img.url;
+        }
+        return acc;
+      },
+      {} as Record<string, string>,
+    ) ?? {};
 
   return images.map((img) => {
     const name = imageNameFromURL(img.url);
@@ -263,8 +268,8 @@ function ProductAccordions({ product }: { product: Product }) {
   const { additionalProperty } = isVariantOf as unknown as Product;
   const cuidados = additionalProperty
     ? additionalProperty.find(
-        (prop) => prop.name === "Cuidados e manutenção do produto",
-      )
+      (prop) => prop.name === "Cuidados e manutenção do produto",
+    )
     : undefined;
   const [image] = useStableImages(product);
   return (
@@ -288,7 +293,8 @@ function ProductAccordions({ product }: { product: Product }) {
                   class="font-quicksand text-base leading-6 text-[#828282]"
                   // deno-lint-ignore react-no-danger
                   dangerouslySetInnerHTML={{ __html: description }}
-                ></div>
+                >
+                </div>
               </div>
             </>
           )}
@@ -382,17 +388,17 @@ function ProductDetails({
 }: Awaited<ReturnType<typeof loader>>) {
   return (
     <div class="py-0">
-      {page ? (
-        <>
-          <Details
-            page={page}
-            buyTogether={buyTogetherLoader}
-            device={device}
-          />
-        </>
-      ) : (
-        <NotFound />
-      )}
+      {page
+        ? (
+          <>
+            <Details
+              page={page}
+              buyTogether={buyTogetherLoader}
+              device={device}
+            />
+          </>
+        )
+        : <NotFound />}
     </div>
   );
 }

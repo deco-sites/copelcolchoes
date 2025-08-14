@@ -107,7 +107,8 @@ function TopNavBar({ alerts, interval = 2000 }: Props) {
               data-slider-item={index}
             >
               <div class="flex w-full items-center justify-center">
-                {/* {alert.icon && (
+                {
+                  /* {alert.icon && (
                   <img
                     src={alert.icon.src}
                     alt={alert.icon.alt}
@@ -119,7 +120,8 @@ function TopNavBar({ alerts, interval = 2000 }: Props) {
                     loading="lazy"
                     decoding="async"
                   />
-                )} */}
+                )} */
+                }
                 <span
                   class="text-center text-xs lg:text-sm"
                   style={{ color: alert.textColor }}

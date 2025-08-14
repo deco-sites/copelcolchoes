@@ -98,8 +98,8 @@ function Searchbar({
               valueSearchSignal.value = "";
             } else if (
               _body?.querySelector(
-                ".is-overlay-search-results__suggestions",
-              ) === target ||
+                  ".is-overlay-search-results__suggestions",
+                ) === target ||
               _body?.querySelector(".topnavbar") === target ||
               _body?.querySelector(".header-container") === target ||
               _body?.querySelector(".header") === target ||
@@ -123,43 +123,45 @@ function Searchbar({
         class="flex flex-grow items-center gap-3 rounded-md px-5 placeholder-base-200 max-lg:px-[20px] max-lg:py-[9px] md:h-[40px] md:py-0"
       >
         {valueSearchSignal.value !== "" &&
-        valueSearchSignal.value !== "click" ? (
-          <button
-            class="btn-ghost"
-            aria-label="Search"
-            htmlFor="searchbar"
-            tabIndex={-1}
-            type="button"
-            onClick={(e) => {
-              e.preventDefault();
-              const target = e.target;
-              if (!target) return;
+            valueSearchSignal.value !== "click"
+          ? (
+            <button
+              class="btn-ghost"
+              aria-label="Search"
+              htmlFor="searchbar"
+              tabIndex={-1}
+              type="button"
+              onClick={(e) => {
+                e.preventDefault();
+                const target = e.target;
+                if (!target) return;
 
-              if (target instanceof SVGElement) {
-                const form = target.closest("form");
-                const input =
-                  form && form.querySelector<HTMLInputElement>("input");
+                if (target instanceof SVGElement) {
+                  const form = target.closest("form");
+                  const input = form &&
+                    form.querySelector<HTMLInputElement>("input");
 
-                if (input) {
-                  input.value = "";
-                  valueSearchSignal.value = "";
+                  if (input) {
+                    input.value = "";
+                    valueSearchSignal.value = "";
+                  }
                 }
-              }
-            }}
-          >
-            <Icon class="text-primary" id="searchResultsClose" size={18} />
-          </button>
-        ) : (
-          <button
-            class="btn-ghost"
-            aria-label="Search"
-            htmlFor="searchbar"
-            tabIndex={-1}
-            type="submit"
-          >
-            <Icon class="text-primary" id="MagnifyingGlass" size={18} />
-          </button>
-        )}
+              }}
+            >
+              <Icon class="text-primary" id="searchResultsClose" size={18} />
+            </button>
+          )
+          : (
+            <button
+              class="btn-ghost"
+              aria-label="Search"
+              htmlFor="searchbar"
+              tabIndex={-1}
+              type="submit"
+            >
+              <Icon class="text-primary" id="MagnifyingGlass" size={18} />
+            </button>
+          )}
         <input
           ref={searchInputRef}
           class={clx(

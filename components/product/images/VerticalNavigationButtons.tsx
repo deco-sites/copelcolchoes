@@ -1,6 +1,9 @@
 import Icon from "$store/components/ui/Icon.tsx";
 import { clx } from "$store/sdk/clx.ts";
-import { NAVIGATION_BUTTON_STYLES, NAVIGATION_ICON_STYLES } from "$store/sdk/imageConstants.ts";
+import {
+  NAVIGATION_BUTTON_STYLES,
+  NAVIGATION_ICON_STYLES,
+} from "$store/sdk/imageConstants.ts";
 
 export interface VerticalNavigationButtonsProps {
   onUpClick: () => void;

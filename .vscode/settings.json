@@ -25,6 +25,6 @@
   "workbench.settings.openDefaultKeybindings": false,
   "tailwindCSS.experimental.classRegex": [
     // clx("...", '...', `...`)
-    ["\\bclx\\(([^)]*)\\)", "(?:'|\"|`)([^'\"`]*)"],
+    ["\\bclx\\(([^)]*)\\)", "(?:'|\"|`)([^'\"`]*)"]
   ]
 }

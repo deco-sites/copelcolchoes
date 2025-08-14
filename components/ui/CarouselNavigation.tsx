@@ -28,13 +28,13 @@ export default function CarouselNavigation({
     "p-[5px] rounded-full",
     "bg-transparent hover:bg-primary",
     "group disabled:bg-transparent disabled:cursor-not-allowed",
-    "active:hover:-translate-y-1/2"
+    "active:hover:-translate-y-1/2",
   );
 
   const baseIconClasses = clx(
     "transition-colors duration-200",
     "group-hover:text-white",
-    "group-disabled:text-gray-400"
+    "group-disabled:text-gray-400",
   );
 
   const defaultLeftPosition = position === "default" ? "left-4" : "left-0";

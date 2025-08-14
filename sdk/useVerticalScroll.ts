@@ -1,4 +1,4 @@
-import { useRef, useEffect } from "preact/hooks";
+import { useEffect, useRef } from "preact/hooks";
 
 export function useVerticalScroll() {
   const containerRef = useRef<HTMLDivElement>(null);

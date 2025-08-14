@@ -92,8 +92,8 @@ export default function ProductInfoCarousel({ product, isMobile }: Props) {
     (property) => property.propertyID === "Modelo",
   );
 
-  const validProperties =
-    filteredProperties?.filter((prop) => prop.value) || [];
+  const validProperties = filteredProperties?.filter((prop) => prop.value) ||
+    [];
 
   if (!validProperties.length) return null;
 
@@ -127,40 +127,42 @@ export default function ProductInfoCarousel({ product, isMobile }: Props) {
 
   return (
     <div class={CAROUSEL_CONTAINER_CLASSES}>
-      {needsCarousel ? (
-        <div id={id} class="relative ml-auto mt-3 w-fit">
-          <Slider class="carousel-start carousel box-border w-[560px] gap-4">
-            {validProperties.map((prop, index) => (
-              <Slider.Item
-                index={index}
-                class="carousel-item w-20 flex-shrink-0"
-              >
-                <ImageComponent
-                  imageName={generateIconUrl(prop.value)}
-                  value={prop.value}
-                  preload={index < desktopPageSize}
-                />
-              </Slider.Item>
-            ))}
-          </Slider>
-          {validProperties.length > desktopPageSize && (
-            <CarouselNavigation
-              position="custom"
-              leftButtonProps={{ position: "-left-10" }}
-              rightButtonProps={{ position: "-right-10" }}
+      {needsCarousel
+        ? (
+          <div id={id} class="relative ml-auto mt-3 w-fit">
+            <Slider class="carousel-start carousel box-border w-[560px] gap-4">
+              {validProperties.map((prop, index) => (
+                <Slider.Item
+                  index={index}
+                  class="carousel-item w-20 flex-shrink-0"
+                >
+                  <ImageComponent
+                    imageName={generateIconUrl(prop.value)}
+                    value={prop.value}
+                    preload={index < desktopPageSize}
+                  />
+                </Slider.Item>
+              ))}
+            </Slider>
+            {validProperties.length > desktopPageSize && (
+              <CarouselNavigation
+                position="custom"
+                leftButtonProps={{ position: "-left-10" }}
+                rightButtonProps={{ position: "-right-10" }}
+              />
+            )}
+            <SliderJS
+              rootId={id}
+              itemsPerPage={{ 0: 2, 768: 4, 1024: desktopPageSize }}
+              infinite={false}
             />
-          )}
-          <SliderJS
-            rootId={id}
-            itemsPerPage={{ 0: 2, 768: 4, 1024: desktopPageSize }}
-            infinite={false}
-          />
-        </div>
-      ) : (
-        <div class={DESKTOP_STATIC_CLASSES}>
-          {renderImageComponents(validProperties, validProperties.length)}
-        </div>
-      )}
+          </div>
+        )
+        : (
+          <div class={DESKTOP_STATIC_CLASSES}>
+            {renderImageComponents(validProperties, validProperties.length)}
+          </div>
+        )}
     </div>
   );
 }

@@ -14,7 +14,8 @@ function ModalLoginCustom() {
   const isLogged = user?.value?.email;
   const userEmail = user?.value?.email;
 
-  const logoutUrl = `/api/vtexid/pub/logout?scope=${storeScope}&returnUrl=https://www.${storeScope}.com.br`;
+  const logoutUrl =
+    `/api/vtexid/pub/logout?scope=${storeScope}&returnUrl=https://www.${storeScope}.com.br`;
 
   return (
     <>
@@ -27,7 +28,8 @@ function ModalLoginCustom() {
             if (currentPathname !== "/my-account") {
               window.location.pathname = "/my-account";
             } else {
-              window.location.href = `/api/vtexid/pub/logout?scope=${storeScope}&returnUrl=https://www.${storeScope}.com.br`;
+              window.location.href =
+                `/api/vtexid/pub/logout?scope=${storeScope}&returnUrl=https://www.${storeScope}.com.br`;
             }
           } else {
             const execute = () => {
@@ -52,12 +54,14 @@ function ModalLoginCustom() {
           }
         }}
       >
-        {/* <Icon
+        {
+          /* <Icon
           class="mr-[0.625rem]"
           id="User"
           size={36}
           strokeWidth={1}
-        /> */}
+        /> */
+        }
 
         <div class="relative flex w-full appearance-none items-center justify-center text-[0.8125rem] font-medium leading-[1.125rem] text-primary">
           <Icon class="mr-[0.625rem]" id="User" size={36} strokeWidth={1} />
@@ -65,18 +69,21 @@ function ModalLoginCustom() {
           <p
             class={`text-start text-sm font-black leading-[1.2] text-[#656565] max-lg:hidden`}
           >
-            {isLogged ? (
-              <>
-                Bem-vindo! <br />
-                <span class="font-bold text-primary">{userEmail}</span>{" "}
-              </>
-            ) : (
-              <>
-                Bem-vindo! <br />
-                <span class="text-primary underline">Entre</span> ou{" "}
-                <span class="text-primary underline">cadastre-se</span>
-              </>
-            )}
+            {isLogged
+              ? (
+                <>
+                  Bem-vindo! <br />
+                  <span class="font-bold text-primary">{userEmail}</span>
+                  {" "}
+                </>
+              )
+              : (
+                <>
+                  Bem-vindo! <br />
+                  <span class="text-primary underline">Entre</span> ou{" "}
+                  <span class="text-primary underline">cadastre-se</span>
+                </>
+              )}
           </p>
         </div>
 
@@ -92,7 +99,9 @@ function ModalLoginCustom() {
                 setSessionFirst(true);
               }}
               class={clx(
-                `modal-login-custom__body absolute -right-[110px] top-[78%] z-50 flex w-[300px] flex-col items-start gap-[6px] whitespace-nowrap rounded-xl border-s-black bg-white p-[24px] text-black shadow-lg ${!sessionFirst ? "flex" : "hidden group-hover:flex"}`,
+                `modal-login-custom__body absolute -right-[110px] top-[78%] z-50 flex w-[300px] flex-col items-start gap-[6px] whitespace-nowrap rounded-xl border-s-black bg-white p-[24px] text-black shadow-lg ${
+                  !sessionFirst ? "flex" : "hidden group-hover:flex"
+                }`,
               )}
             >
               <span class={`text-sm font-bold text-black`}>

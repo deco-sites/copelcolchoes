@@ -1,6 +1,6 @@
 export const normalizeStringForUrl = (value: string | undefined): string => {
   if (!value) return "";
-  
+
   return value
     .normalize("NFD")
     .replaceAll("/ ", "")

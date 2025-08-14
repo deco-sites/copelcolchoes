@@ -14,8 +14,10 @@ export function ScrollGradient({ position, show }: ScrollGradientProps) {
     <div
       class={`pointer-events-none absolute ${positionClass} left-0 z-10 h-12 w-full`}
       style={{
-        background: `linear-gradient(${gradientDirection}, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.8) 70%, #FFFFFF 100%)`,
+        background:
+          `linear-gradient(${gradientDirection}, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.8) 70%, #FFFFFF 100%)`,
       }}
-    ></div>
+    >
+    </div>
   );
 }

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 import { clx } from "$store/sdk/clx.ts";
 import { useVerticalScroll } from "$store/sdk/useVerticalScroll.ts";
 import { MediaItem, type MediaType } from "./MediaItem.tsx";
@@ -56,9 +56,11 @@ export function VerticalThumbnailCarousel({
           )}
           style="scrollbar-width: none; -ms-overflow-style: none;"
         >
-          <style>{`
+          <style>
+            {`
             [data-thumb-scroll]::-webkit-scrollbar { display: none; }
-          `}</style>
+          `}
+          </style>
           {media.map((item, index) => (
             <div key={index} class="size-[70px] flex-shrink-0">
               <MediaItem
@@ -69,7 +71,8 @@ export function VerticalThumbnailCarousel({
                 isThumb
                 isMainSliderControl={false}
                 isActive={activeIndex === index}
-                onClick={() => onThumbnailClick(index)}
+                onClick={() =>
+                  onThumbnailClick(index)}
               />
             </div>
           ))}

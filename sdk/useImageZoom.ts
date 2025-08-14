@@ -11,7 +11,8 @@ export function useImageZoom() {
     const translateX = -x * 50;
     const translateY = -y * 50;
 
-    zoomElement.style.transform = `scale(2) translate(${translateX}px, ${translateY}px)`;
+    zoomElement.style.transform =
+      `scale(2) translate(${translateX}px, ${translateY}px)`;
     zoomElement.style.transformOrigin = `${x * 100}% ${y * 100}%`;
   };
 

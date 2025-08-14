@@ -26,8 +26,8 @@ function HeaderNavMenu({
               <ul class="container flex w-full items-center justify-between py-2 max-[1220px]:px-[1.375rem]">
                 {navItems && navItems?.length
                   ? navItems?.map((item) => (
-                      <NavItem key={item.label} item={item} />
-                    ))
+                    <NavItem key={item.label} item={item} />
+                  ))
                   : null}
               </ul>
             </div>

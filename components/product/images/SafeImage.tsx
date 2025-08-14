@@ -1,5 +1,5 @@
 import Image from "deco-sites/std/components/Image.tsx";
-import { useRef, useEffect, useState } from "preact/hooks";
+import { useEffect, useRef, useState } from "preact/hooks";
 import { clx } from "$store/sdk/clx.ts";
 
 export interface SafeImageProps {

@@ -86,7 +86,8 @@ function Footer({
 }: Props) {
   return (
     <div class="bg-[#e8ebef] font-quicksand">
-      <div class="relative mx-auto my-0 flex max-w-7xl justify-center bg-white p-0 text-base leading-9 max-lg:flex-col max-lg:px-[1.1875rem] max-lg:py-[3.125rem]"></div>
+      <div class="relative mx-auto my-0 flex max-w-7xl justify-center bg-white p-0 text-base leading-9 max-lg:flex-col max-lg:px-[1.1875rem] max-lg:py-[3.125rem]">
+      </div>
       <footer class="lg:relative">
         <div class="container m-auto flex w-full px-[1.375rem] text-primary max-lg:flex-col max-lg:pb-[1.875rem] lg:max-w-[80rem] lg:justify-between lg:px-[4rem] lg:py-16">
           <div class="flex w-1/4 flex-col max-lg:w-full">
@@ -226,7 +227,7 @@ function Footer({
                           // class="w-auto h-auto"
                         />
                       </a>
-                    )),
+                    ))
                   )}
                 </div>
               </div>

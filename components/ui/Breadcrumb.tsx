@@ -16,8 +16,11 @@ function Breadcrumb({ class: _class, itemListElement = [] }: Props) {
         {items
           .filter(({ name, item }) => name && item)
           .map(({ name, item }, index) => {
-            if ((index > 2 && index === items.length - 1) || items.length <= 1)
+            if (
+              (index > 2 && index === items.length - 1) || items.length <= 1
+            ) {
               return;
+            }
             return (
               <li
                 class={`flex before:mx-2 before:font-normal before:content-['>'] first:before:hidden last:font-black`}

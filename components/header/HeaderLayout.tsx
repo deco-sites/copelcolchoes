@@ -76,22 +76,24 @@ function HeaderLayout({
                 class="flex w-full items-center justify-center md:w-auto"
                 href="/nossas-lojas"
               >
-                {device === "desktop" ? (
-                  <Icon
-                    class="mr-[0.625rem]"
-                    id="Lojas"
-                    width={36}
-                    height={36}
-                    strokeWidth={1}
-                  />
-                ) : (
-                  <Icon
-                    id="LojasMobile"
-                    width={28}
-                    height={28}
-                    strokeWidth={1}
-                  />
-                )}
+                {device === "desktop"
+                  ? (
+                    <Icon
+                      class="mr-[0.625rem]"
+                      id="Lojas"
+                      width={36}
+                      height={36}
+                      strokeWidth={1}
+                    />
+                  )
+                  : (
+                    <Icon
+                      id="LojasMobile"
+                      width={28}
+                      height={28}
+                      strokeWidth={1}
+                    />
+                  )}
                 <span class="text-xs font-black leading-[1.2] text-[#656565] max-md:ml-[5px] md:text-[14px]">
                   Lojas <br /> Copel
                 </span>

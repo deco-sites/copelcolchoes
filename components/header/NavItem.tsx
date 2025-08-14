@@ -248,7 +248,8 @@ function NavItem({ item }: { item: INavItem }) {
           class={clx(
             `fixed bottom-0 left-0 hidden h-[calc(100%-225px)] w-full bg-[rgba(13,79,129,.6)] hover:!hidden group-hover:flex`,
           )}
-        ></div>
+        >
+        </div>
       )}
     </li>
   );

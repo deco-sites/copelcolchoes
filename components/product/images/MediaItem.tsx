@@ -41,8 +41,8 @@ export function MediaItem({
     isThumb && !isMobile ? "cursor-pointer" : "",
   );
 
-  const isInitiallyVisible =
-    isThumb && ((isMobile && index < 4) || (!isMobile && index < 5));
+  const isInitiallyVisible = isThumb &&
+    ((isMobile && index < 4) || (!isMobile && index < 5));
 
   const content = (
     <>
@@ -52,11 +52,9 @@ export function MediaItem({
           class={commonImageClasses}
           width={isMobile && isThumb ? 60 : 70}
           height={isMobile && isThumb ? 60 : 70}
-          sizes={
-            isMobile && isThumb
-              ? "(max-width: 480px) 60px, 60px"
-              : "(max-width: 480px) 70px, 70px"
-          }
+          sizes={isMobile && isThumb
+            ? "(max-width: 480px) 60px, 60px"
+            : "(max-width: 480px) 70px, 70px"}
           src={media.url!}
           alt={media.alternateName}
           preload={isInitiallyVisible}
@@ -74,7 +72,8 @@ export function MediaItem({
           frameborder={0}
           allow="picture-in-picture"
           loading="lazy"
-        ></iframe>
+        >
+        </iframe>
       )}
     </>
   );

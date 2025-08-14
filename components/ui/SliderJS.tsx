@@ -175,7 +175,7 @@ const setup = (
   const cardSize = Math.round(safeWidth / perPage);
 
   items.forEach((item) => {
-    if (!item.classList.contains('w-20')) {
+    if (!item.classList.contains("w-20")) {
       item.style.width = `${cardSize}px`;
     }
     observer.observe(item);

@@ -28,11 +28,10 @@ function ShippingContent({
 }) {
   const { cart } = useCart();
 
-  const methods =
-    simulation.value?.logisticsInfo?.reduce(
-      (initial, { slas }) => [...initial, ...slas],
-      [] as Sla[],
-    ) ?? [];
+  const methods = simulation.value?.logisticsInfo?.reduce(
+    (initial, { slas }) => [...initial, ...slas],
+    [] as Sla[],
+  ) ?? [];
 
   const locale = cart.value?.clientPreferencesData.locale || "pt-BR";
   const currencyCode = cart.value?.storePreferencesData.currencyCode || "BRL";
@@ -126,53 +125,53 @@ function ShippingSimulation({ items }: Props) {
       <h4 class="text-lg font-semibold leading-8 text-primary">
         Calcule as opções de entrega
       </h4>
-      {!simulateResult.value ? (
-        <div class="py-3">
-          <form
-            onSubmit={(e) => {
-              e.preventDefault();
-              handleSimulation();
-            }}
-          >
-            <div class="flex max-lg:flex-col max-lg:gap-4">
-              <div class="relative mr-3 w-full text-[0.8125rem] lg:w-auto">
-                <label for="shippingPostalCode"></label>
-                <input
-                  as="input"
-                  type="text"
-                  inputMode="numeric"
-                  pattern="[0-9]*"
-                  class="input h-[2.625rem] w-[16.25rem] !rounded-none border border-[#dcdcdc] px-4 text-xs outline-none focus:outline-none max-lg:w-full"
-                  placeholder="Insira seu cep"
-                  value={postalCode.value}
-                  maxLength={8}
-                  onChange={(e: { currentTarget: { value: string } }) => {
-                    postalCode.value = e.currentTarget.value;
-                  }}
-                />
-                <a
-                  href="https://buscacepinter.correios.com.br/app/endereco/index.php"
-                  target="_blank"
-                  title="Não sei meu cep"
-                  rel="noopener noreferer"
-                  class="block w-fit cursor-pointer text-[0.875rem] font-normal leading-8 text-primary underline"
+      {!simulateResult.value
+        ? (
+          <div class="py-3">
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                handleSimulation();
+              }}
+            >
+              <div class="flex max-lg:flex-col max-lg:gap-4">
+                <div class="relative mr-3 w-full text-[0.8125rem] lg:w-auto">
+                  <label for="shippingPostalCode"></label>
+                  <input
+                    as="input"
+                    type="text"
+                    inputMode="numeric"
+                    pattern="[0-9]*"
+                    class="input h-[2.625rem] w-[16.25rem] !rounded-none border border-[#dcdcdc] px-4 text-xs outline-none focus:outline-none max-lg:w-full"
+                    placeholder="Insira seu cep"
+                    value={postalCode.value}
+                    maxLength={8}
+                    onChange={(e: { currentTarget: { value: string } }) => {
+                      postalCode.value = e.currentTarget.value;
+                    }}
+                  />
+                  <a
+                    href="https://buscacepinter.correios.com.br/app/endereco/index.php"
+                    target="_blank"
+                    title="Não sei meu cep"
+                    rel="noopener noreferer"
+                    class="block w-fit cursor-pointer text-[0.875rem] font-normal leading-8 text-primary underline"
+                  >
+                    Não sei o meu cep
+                  </a>
+                </div>
+                <Button
+                  type="submit"
+                  loading={loading.value}
+                  class="relative flex h-[2.625rem] w-[9.5rem] appearance-none items-center justify-center !rounded-[0.3125rem] !border border-primary bg-white px-8 text-[0.9375rem] font-bold transition-all duration-300 hover:bg-primary hover:text-white"
                 >
-                  Não sei o meu cep
-                </a>
+                  Calcular
+                </Button>
               </div>
-              <Button
-                type="submit"
-                loading={loading.value}
-                class="relative flex h-[2.625rem] w-[9.5rem] appearance-none items-center justify-center !rounded-[0.3125rem] !border border-primary bg-white px-8 text-[0.9375rem] font-bold transition-all duration-300 hover:bg-primary hover:text-white"
-              >
-                Calcular
-              </Button>
-            </div>
-          </form>
-        </div>
-      ) : (
-        <ShippingContent simulation={simulateResult} />
-      )}
+            </form>
+          </div>
+        )
+        : <ShippingContent simulation={simulateResult} />}
     </div>
   );
 }

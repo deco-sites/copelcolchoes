@@ -66,23 +66,25 @@ const Suggestions = ({ products, searchValue, device }: SuggestionsProps) => {
                   >
                     {product && product?.image && product.image[0].url && (
                       <>
-                        {device && device === "desktop" ? (
-                          <Image
-                            src={product.image[0].url}
-                            alt={product.isVariantOf?.name}
-                            width={232}
-                            height={206}
-                            class="inline-block align-middle xl:h-[206px] xl:w-[232px]"
-                          />
-                        ) : (
-                          <Image
-                            src={product.image[0].url}
-                            alt={product.isVariantOf?.name}
-                            width={100}
-                            height={100}
-                            class="w-[100px]"
-                          />
-                        )}
+                        {device && device === "desktop"
+                          ? (
+                            <Image
+                              src={product.image[0].url}
+                              alt={product.isVariantOf?.name}
+                              width={232}
+                              height={206}
+                              class="inline-block align-middle xl:h-[206px] xl:w-[232px]"
+                            />
+                          )
+                          : (
+                            <Image
+                              src={product.image[0].url}
+                              alt={product.isVariantOf?.name}
+                              width={100}
+                              height={100}
+                              class="w-[100px]"
+                            />
+                          )}
                       </>
                     )}
 
@@ -94,7 +96,8 @@ const Suggestions = ({ products, searchValue, device }: SuggestionsProps) => {
                         dangerouslySetInnerHTML={{
                           __html: urlToLabel(product.url, searchValue),
                         }}
-                      ></p>
+                      >
+                      </p>
 
                       {product.additionalProperty?.map((item) => {
                         if (item.name === "Medidas") {
@@ -155,8 +158,8 @@ const ResultSearch = ({
           className={clx(
             `fixed left-0 top-[170px] z-10 w-full bg-[#fff] max-md:z-50 max-md:flex max-md:flex-col max-md:gap-y-[10px] md:top-[114px] lg:top-[118px] ${
               notFound ||
-              !suggestions.value!.products?.length ||
-              valueSearch === "click"
+                !suggestions.value!.products?.length ||
+                valueSearch === "click"
                 ? ""
                 : "max-md:h-[calc(100%_-_170px)] max-md:[border-radius:initial]"
             } search-result-content rounded-bl-[30px] rounded-br-[30px] border-t max-lg:bg-white max-lg:py-[20px] max-md:px-[20px] md:p-[30px] xl:p-[40px]`,
@@ -166,103 +169,105 @@ const ResultSearch = ({
             class={clx(
               `flex gap-x-[30px] py-[0] pl-[10px] max-md:flex-col ${
                 notFound ||
-                !suggestions.value!.products?.length ||
-                valueSearch === "click"
+                  !suggestions.value!.products?.length ||
+                  valueSearch === "click"
                   ? ""
                   : "max-md:h-[calc(100%_-_42px)]"
               }`,
             )}
           >
-            {suggestions.value!.searches?.length ? (
-              <section
-                class={clx(
-                  `flex flex-col gap-[14px] ${
-                    suggestions.value!.products?.length &&
-                    valueSearch !== "click"
-                      ? "md:w-[15.25rem]"
-                      : "md:w-2/4"
-                  }`,
-                )}
-              >
-                <div class="flex items-center gap-2">
-                  <span
-                    class={clx(
-                      `text-[16px] font-normal leading-[19.2px] text-primary max-lg:tracking-[1px] md:font-bold ${
-                        suggestions.value!.products?.length &&
+            {suggestions.value!.searches?.length
+              ? (
+                <section
+                  class={clx(
+                    `flex flex-col gap-[14px] ${
+                      suggestions.value!.products?.length &&
                         valueSearch !== "click"
-                          ? "md:mb-[6px]"
-                          : ""
-                      }`,
-                    )}
-                    role="heading"
-                    aria-level={3}
-                    style={{
-                      fontFamily:
-                        valueSearch !== "click"
+                        ? "md:w-[15.25rem]"
+                        : "md:w-2/4"
+                    }`,
+                  )}
+                >
+                  <div class="flex items-center gap-2">
+                    <span
+                      class={clx(
+                        `text-[16px] font-normal leading-[19.2px] text-primary max-lg:tracking-[1px] md:font-bold ${
+                          suggestions.value!.products?.length &&
+                            valueSearch !== "click"
+                            ? "md:mb-[6px]"
+                            : ""
+                        }`,
+                      )}
+                      role="heading"
+                      aria-level={3}
+                      style={{
+                        fontFamily: valueSearch !== "click"
                           ? "'Comfortaa', sans-serif"
                           : "'Baloo 2', sans serif",
-                      color: valueSearch !== "click" ? "#0D4F81" : "",
-                    }}
-                  >
-                    {device === "desktop"
-                      ? valueSearch !== "click"
-                        ? "Sugestões"
-                        : "Termos mais buscados"
-                      : valueSearch !== "click"
+                        color: valueSearch !== "click" ? "#0D4F81" : "",
+                      }}
+                    >
+                      {device === "desktop"
+                        ? valueSearch !== "click"
+                          ? "Sugestões"
+                          : "Termos mais buscados"
+                        : valueSearch !== "click"
                         ? "Sugestões de busca"
                         : "Termos mais buscados"}
-                  </span>
-                </div>
-                <ul
-                  id="search-suggestion"
-                  class="flex flex-col gap-[8.5px] lg:h-full"
-                >
-                  {suggestions &&
-                    suggestions.value &&
-                    suggestions.value.searches &&
-                    suggestions.value.searches.map(({ term }, index) => (
-                      <li>
-                        <a
-                          href={`/busca?q=${term}`}
-                          class="flex items-center gap-4"
-                        >
-                          {valueSearch !== "click" ? (
-                            <span
-                              class={clx(
-                                `font-comfortaa text-[14px] font-normal leading-[22.4px] text-primary first-letter:capitalize md:text-[16px]`,
-                              )}
-                            >
-                              {term}
-                            </span>
-                          ) : (
-                            <div class={`flex items-center gap-x-[10px]`}>
-                              {device === "desktop" && (
+                    </span>
+                  </div>
+                  <ul
+                    id="search-suggestion"
+                    class="flex flex-col gap-[8.5px] lg:h-full"
+                  >
+                    {suggestions &&
+                      suggestions.value &&
+                      suggestions.value.searches &&
+                      suggestions.value.searches.map(({ term }, index) => (
+                        <li>
+                          <a
+                            href={`/busca?q=${term}`}
+                            class="flex items-center gap-4"
+                          >
+                            {valueSearch !== "click"
+                              ? (
                                 <span
                                   class={clx(
-                                    `flex h-[28px] w-[28px] items-center justify-center rounded-[5px] bg-primary px-[5px] py-[5px] font-baloo_2 text-[14px] font-semibold leading-[19.6px] text-[#ffff]`,
+                                    `font-comfortaa text-[14px] font-normal leading-[22.4px] text-primary first-letter:capitalize md:text-[16px]`,
                                   )}
                                 >
-                                  {index + 1}°
+                                  {term}
                                 </span>
-                              )}
+                              )
+                              : (
+                                <div class={`flex items-center gap-x-[10px]`}>
+                                  {device === "desktop" && (
+                                    <span
+                                      class={clx(
+                                        `flex h-[28px] w-[28px] items-center justify-center rounded-[5px] bg-primary px-[5px] py-[5px] font-baloo_2 text-[14px] font-semibold leading-[19.6px] text-[#ffff]`,
+                                      )}
+                                    >
+                                      {index + 1}°
+                                    </span>
+                                  )}
 
-                              <span
-                                class={clx(
-                                  `font-baloo_2 text-[14px] font-normal leading-[22.4px] text-primary first-letter:capitalize md:text-[16px]`,
-                                )}
-                              >
-                                {term}
-                              </span>
-                            </div>
-                          )}
-                        </a>
-                      </li>
-                    ))}
-                </ul>
-                {device === "desktop" &&
-                  valueSearch !== "click" &&
-                  suggestions.value!.products?.length !== 0 &&
-                  !notFound && (
+                                  <span
+                                    class={clx(
+                                      `font-baloo_2 text-[14px] font-normal leading-[22.4px] text-primary first-letter:capitalize md:text-[16px]`,
+                                    )}
+                                  >
+                                    {term}
+                                  </span>
+                                </div>
+                              )}
+                          </a>
+                        </li>
+                      ))}
+                  </ul>
+                  {device === "desktop" &&
+                    valueSearch !== "click" &&
+                    suggestions.value!.products?.length !== 0 &&
+                    !notFound && (
                     <a
                       class={clx(
                         `max-w-[220px] rounded-[5px] border border-primary px-[20px] py-[10px] text-center font-baloo_2 text-sm font-bold text-primary`,
@@ -272,24 +277,29 @@ const ResultSearch = ({
                       Confira todos os produtos
                     </a>
                   )}
-              </section>
-            ) : null}
+                </section>
+              )
+              : null}
 
             {/* <section> */}
             <div>
-              {suggestions.value!.searches?.length === 0 ? (
-                <h3 class="text-sm font-black leading-[1.125rem] text-[##444444]">
-                  Nada encontrado
-                </h3>
-              ) : notFound ||
-                !suggestions.value!.products?.length ||
-                valueSearch === "click" ? null : (
-                <Suggestions
-                  products={suggestions.value.products}
-                  searchValue={valueSearch}
-                  device={device}
-                />
-              )}
+              {suggestions.value!.searches?.length === 0
+                ? (
+                  <h3 class="text-sm font-black leading-[1.125rem] text-[##444444]">
+                    Nada encontrado
+                  </h3>
+                )
+                : notFound ||
+                    !suggestions.value!.products?.length ||
+                    valueSearch === "click"
+                ? null
+                : (
+                  <Suggestions
+                    products={suggestions.value.products}
+                    searchValue={valueSearch}
+                    device={device}
+                  />
+                )}
             </div>
             {/* </section>             */}
           </div>
@@ -298,20 +308,20 @@ const ResultSearch = ({
             suggestions.value &&
             suggestions.value?.products &&
             Object.entries(suggestions.value!.products).length > 0 && (
-              <a
-                class={clx(
-                  `justify-center rounded-[5px] bg-primary px-[20px] py-[10px] font-quicksand text-sm font-bold text-[#fff] max-md:flex md:hidden`,
-                )}
-                href={`/busca?q=${valueSearch}`}
-              >
-                Ver todos os produtos
-              </a>
-            )}
+            <a
+              class={clx(
+                `justify-center rounded-[5px] bg-primary px-[20px] py-[10px] font-quicksand text-sm font-bold text-[#fff] max-md:flex md:hidden`,
+              )}
+              href={`/busca?q=${valueSearch}`}
+            >
+              Ver todos os produtos
+            </a>
+          )}
         </div>
 
-        {notFound || suggestions.value!.searches?.length ? (
-          <div class={`is-overlay-search-results__suggestions`}></div>
-        ) : null}
+        {notFound || suggestions.value!.searches?.length
+          ? <div class={`is-overlay-search-results__suggestions`}></div>
+          : null}
       </>
     );
   }
