@@ -12,35 +12,35 @@ interface Props extends UseAddToCartProps {
   label?: string;
 }
 
-function AddToCartButton(
-  {
-    skuId,
-    sellerId,
-    discount,
-    price,
-    productGroupId,
-    name,
-    label,
-    quantity,
-  }: Props,
-) {
-  const items = [{
-    skuId,
-    sellerId,
-    discount,
-    price,
-    productGroupId,
-    name,
-    quantity,
-  }];
+function AddToCartButton({
+  skuId,
+  sellerId,
+  discount,
+  price,
+  productGroupId,
+  name,
+  label,
+  quantity,
+}: Props) {
+  const items = [
+    {
+      skuId,
+      sellerId,
+      discount,
+      price,
+      productGroupId,
+      name,
+      quantity,
+    },
+  ];
   const props = useAddToCart({ items });
 
   return (
-    <div class="py-[0.3125rem] text-[#464646] max-w-[17.5rem] w-[70%]">
+    <div class="mt-8 w-full lg:max-w-[380px]">
       <div>
         <Button
           title={label || "Adicionar ao carrinho"}
-          class="bg-primary uppercase border-transparent !rounded-[0.3125rem] font-quicksand text-base font-semibold h-12 leading-5 min-w-[13.25rem] transition-all duration-300 hover:bg-[#00224d] w-full flex items-center justify-center relative px-8 text-white appearance-none"
+          class="relative flex h-12 w-full min-w-[13.25rem] appearance-none items-center justify-center !rounded-[0.3125rem] border-transparent bg-primary px-8 font-quicksand text-base font-medium uppercase leading-5 text-white transition-all duration-300 hover:bg-[#00224d]"
           data-deco="add-to-cart"
           {...props}
         >

@@ -29,27 +29,34 @@ export interface Props {
 }
 
 export async function loader(
-  {
-    title,
-    description,
-    facebookToken,
-    layout,
-  }: Props,
+  { title, description, facebookToken, layout }: Props,
   _req: Request,
 ) {
+  if (!facebookToken) {
+    return { data: [], title, description, layout };
+  }
+
   const fields = ["media_url", "media_type", "permalink"];
   const joinFields = fields.join(",");
-  const url =
-    `https://graph.instagram.com/me/media?access_token=${facebookToken}&fields=${joinFields}`;
+  const url = `https://graph.instagram.com/me/media?access_token=${facebookToken}&fields=${joinFields}`;
 
-  const { data } = (await fetch(url).then((r) => r.json())) as { data: Data[] };
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 5000);
 
-  return {
-    data: data.slice(0, layout?.numberOfPosts ?? 12),
-    title,
-    description,
-    layout,
-  };
+  try {
+    const res = await fetch(url, { signal: controller.signal });
+    const { data } = (await res.json()) as { data: Data[] };
+    return {
+      data: data.slice(0, layout?.numberOfPosts ?? 12),
+      title,
+      description,
+      layout,
+    };
+  } catch (_err) {
+    return { data: [], title, description, layout };
+  } finally {
+    clearTimeout(timeoutId);
+  }
 }
 
 export default function InstagramPosts({
@@ -66,18 +73,17 @@ export default function InstagramPosts({
   ],
 }: SectionProps<typeof loader>) {
   return (
-    <div class="w-full container px-4 py-8 flex flex-col gap-14 lg:gap-20 lg:py-10 lg:px-0">
+    <div class="container flex w-full flex-col gap-14 px-4 py-8 lg:gap-20 lg:px-0 lg:py-10">
       <Header
         title={title}
         description={description}
         alignment={layout?.headerAlignment || "center"}
       />
-      <div class="hidden lg:grid-cols-1 lg:grid-cols-2 lg:grid-cols-3 lg:grid-cols-4 lg:grid-cols-5 lg:grid-cols-6">
-      </div>
+      <div class="hidden lg:grid-cols-1 lg:grid-cols-2 lg:grid-cols-3 lg:grid-cols-4 lg:grid-cols-5 lg:grid-cols-6"></div>
       <div
         class={`grid grid-cols-2 lg:grid-cols-${
           layout?.postsPerLine || 4
-        } gap-4 items-center justify-center place-items-center`}
+        } place-items-center items-center justify-center gap-4`}
       >
         {data.map((item) => (
           <a
@@ -85,24 +91,22 @@ export default function InstagramPosts({
             href={item.permalink}
             target="_blank"
             title="Visite nosso instagram"
-            class="rounded-lg overflow-hidden w-full max-w-[350px] sm:max-w-[350px] group"
+            class="group w-full max-w-[350px] overflow-hidden rounded-lg sm:max-w-[350px]"
           >
-            {item.media_type === "IMAGE"
-              ? (
-                <Image
-                  class="max-w-full max-h-full object-cover w-full group-hover:scale-110  transition duration-400 group-hover:brightness-90"
-                  src={item.media_url ?? ""}
-                  alt="Imagem do instagram"
-                  width={350}
-                  height={350}
-                  loading="lazy"
-                />
-              )
-              : (
-                <video controls class="max-w-full max-h-full object-cover">
-                  <source src={item.media_url}></source>
-                </video>
-              )}
+            {item.media_type === "IMAGE" ? (
+              <Image
+                class="duration-400 max-h-full w-full max-w-full object-cover transition group-hover:scale-110 group-hover:brightness-90"
+                src={item.media_url ?? ""}
+                alt="Imagem do instagram"
+                width={350}
+                height={350}
+                loading="lazy"
+              />
+            ) : (
+              <video controls class="max-h-full max-w-full object-cover">
+                <source src={item.media_url}></source>
+              </video>
+            )}
           </a>
         ))}
       </div>

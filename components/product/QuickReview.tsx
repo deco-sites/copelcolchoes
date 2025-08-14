@@ -12,7 +12,8 @@ function QuickReview() {
   const totalRate = totalReview.value;
   return (
     <button
-      class="flex items-center gap-4"
+      type="button"
+      class="flex items-center gap-2"
       title={`${rates} avaliaç${rates != 1 ? "ões" : "ão"}`}
       onClick={handleClick}
     >

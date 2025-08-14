@@ -1,5 +1,3 @@
-export const headerHeight = "232px";
-
 export const navbarHeight = "52px";
 
 export const megaMenuDefaultItems = [

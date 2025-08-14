@@ -1,17 +1,21 @@
 import { Offer } from "apps/commerce/types.ts";
 import { getOfferPrice } from "./offerPrice.ts";
+import { getDiscountPercent } from "../calc.ts";
 
 export interface PixPromotionResult {
   promotionalPrice: number;
+  totalDiscount: number;
 }
 
 export function calculatePixPromotion(offers?: Offer[]): PixPromotionResult {
   if (!offers || offers.length === 0) {
-    return { promotionalPrice: 0 };
+    return { promotionalPrice: 0, totalDiscount: 0 };
   }
 
   const offer = offers[0];
+  const listPrice = getOfferPrice(offer, "ListPrice");
   let promotionalPrice = getOfferPrice(offer, "SalePrice");
+  let discount = getDiscountPercent(listPrice, promotionalPrice);
 
   const pixPromotion = offer?.teasers?.find(
     (teaser) =>
@@ -26,14 +30,16 @@ export function calculatePixPromotion(offers?: Offer[]): PixPromotionResult {
     );
 
     if (discountParam) {
-      const discount = parseFloat(discountParam.value);
+      const pixDiscount = parseFloat(discountParam.value);
       promotionalPrice = Number(
-        (promotionalPrice * (1 - discount / 100)).toFixed(2),
+        (promotionalPrice * (1 - pixDiscount / 100)).toFixed(2),
       );
+      discount = getDiscountPercent(listPrice, promotionalPrice);
     }
   }
 
   return {
     promotionalPrice: Number(promotionalPrice.toFixed(2)),
+    totalDiscount: Number(discount.toFixed(2)),
   };
 }

@@ -6,7 +6,7 @@
     "editor.defaultFormatter": "denoland.vscode-deno"
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "denoland.vscode-deno"
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "editor.suggest.showStatusBar": true,
   "editor.quickSuggestions": {
@@ -22,5 +22,9 @@
     "skus",
     "YOURVIEWS"
   ],
-  "workbench.settings.openDefaultKeybindings": false
+  "workbench.settings.openDefaultKeybindings": false,
+  "tailwindCSS.experimental.classRegex": [
+    // clx("...", '...', `...`)
+    ["\\bclx\\(([^)]*)\\)", "(?:'|\"|`)([^'\"`]*)"]
+  ]
 }

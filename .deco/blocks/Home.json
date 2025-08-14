@@ -402,7 +402,9 @@
                         {
                           "alt": "Agencia N1",
                           "link": "https://www.n1.ag/",
-                          "image": "https://data.decoassets.com/copelcolchoes/71a52c73-9d48-4a8b-b61d-9ac587e5a1fc/1742324025620-c4ce199d-667d-43e0-bd3a-c10fc460b970"
+                          "image": "https://data.decoassets.com/copelcolchoes/4e670f22-d3e0-421a-b593-95c90f641a96/1742323969533-ca814e26-cd0f-4ae3-890d-3760a9c4c39a",
+                          "height": 34,
+                          "width": 73
                         },
                         {
                           "alt": "Deco",
@@ -421,7 +423,9 @@
                         {
                           "alt": "Vtex",
                           "link": "https://vtex.com/br-pt",
-                          "image": "https://data.decoassets.com/copelcolchoes/e620e582-ecda-49ca-8c53-b778f3ff6387/1742323972671-7a3b9c32-2ae7-4bf6-9ea1-1878d0f4349b"
+                          "image": "https://data.decoassets.com/copelcolchoes/e620e582-ecda-49ca-8c53-b778f3ff6387/1742323972671-7a3b9c32-2ae7-4bf6-9ea1-1878d0f4349b",
+                          "height": 24,
+                          "width": 73
                         }
                       ]
                     }
@@ -431,13 +435,15 @@
                       "alt": "Google safe browsing",
                       "href": "https://transparencyreport.google.com/safe-browsing/search?url=https:%2F%2Fwww.copelcolchoes.com.br%2F",
                       "image": "https://data.decoassets.com/copelcolchoes/e00decd6-b943-4a4d-8e35-9ca509a63c21/1742323973974-f543e950-86ce-4987-ae08-ed41da242da3",
-                      "width": 61,
-                      "height": 21
+                      "height": 22,
+                      "width": 73
                     },
                     {
                       "alt": "PCI Vtex Certified",
                       "href": "http://secure.vtex.com/?an=copelcolchoes",
-                      "image": "https://data.decoassets.com/copelcolchoes/a40812fa-6e29-4a0d-887f-1fb2b8d5ff25/1742323975162-d81a7c01-9682-4bae-9550-a092ff9df977"
+                      "image": "https://data.decoassets.com/copelcolchoes/a40812fa-6e29-4a0d-887f-1fb2b8d5ff25/1742323975162-d81a7c01-9682-4bae-9550-a092ff9df977",
+                      "height": 61,
+                      "width": 57
                     }
                   ],
                   "openingHours": "<p>De segunda a sexta, das <strong>7h30 às 18h30</strong></p><p>Sábado, das <strong>9h às 14h</strong><br>Domingo, <strong>fechado</strong></p>",
