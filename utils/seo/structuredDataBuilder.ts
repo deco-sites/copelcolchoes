@@ -29,7 +29,7 @@ export function buildPriceSpecifications(
     priceSpecifications.push({
       "@type": "UnitPriceSpecification",
       "priceType": "https://schema.org/StrikethroughPrice",
-      "price": listPrice,
+      "price": listPrice.toFixed(2),
       "priceCurrency": priceCurrency,
     });
   }
@@ -37,13 +37,13 @@ export function buildPriceSpecifications(
     {
       "@type": "UnitPriceSpecification",
       "priceType": "https://schema.org/RegularPrice",
-      "price": basePrice,
+      "price": basePrice.toFixed(2),
       "priceCurrency": priceCurrency,
     },
     {
       "@type": "UnitPriceSpecification",
       "priceType": "https://schema.org/SalePrice",
-      "price": offerPrice,
+      "price": offerPrice.toFixed(2),
       "priceCurrency": priceCurrency,
     },
   );
@@ -77,12 +77,12 @@ export function buildOffersObject(params: OfferBuilderParams) {
     return {
       "@type": "AggregateOffer",
       "priceCurrency": priceCurrency,
-      "lowPrice": promotionalPrice
-        ? Math.min(promotionalPrice, lowPrice)
-        : lowPrice,
-      "highPrice": promotionalPrice
-        ? Math.max(promotionalPrice, highPrice)
-        : highPrice,
+      "lowPrice":
+        (promotionalPrice ? Math.min(promotionalPrice, lowPrice) : lowPrice)
+          .toFixed(2),
+      "highPrice":
+        (promotionalPrice ? Math.max(promotionalPrice, highPrice) : highPrice)
+          .toFixed(2),
       "offerCount": product.offers?.offers?.length || 1,
       "availability": availability,
       "seller": {
@@ -91,7 +91,7 @@ export function buildOffersObject(params: OfferBuilderParams) {
       },
       "offers": product.offers?.offers?.map((offer) => ({
         "@type": "Offer",
-        "price": offer.price,
+        "price": offer.price?.toFixed(2),
         "priceCurrency": priceCurrency,
         "availability": offer.availability || availability,
         "seller": {
@@ -118,7 +118,7 @@ export function buildOffersObject(params: OfferBuilderParams) {
     return {
       "@type": "Offer",
       "priceCurrency": priceCurrency,
-      "price": price,
+      "price": price.toFixed(2),
       ...(priceValidUntil && listPrice !== basePrice &&
         { "priceValidUntil": priceValidUntil }),
       "availability": availability,
