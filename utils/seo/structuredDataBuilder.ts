@@ -7,7 +7,8 @@ import {
 
 export interface OfferBuilderParams {
   product: Product;
-  originalPrice: number;
+  listPrice: number;
+  basePrice: number;
   promotionalPrice: number | null;
   priceCurrency: string;
   availability: string;
@@ -17,30 +18,44 @@ export interface OfferBuilderParams {
 }
 
 export function buildPriceSpecifications(
+  listPrice: number,
+  basePrice: number,
   offerPrice: number,
-  originalPrice: number,
   priceCurrency: string,
 ) {
-  return [
+  const priceSpecifications = [];
+
+  if (listPrice !== basePrice) {
+    priceSpecifications.push({
+      "@type": "UnitPriceSpecification",
+      "priceType": "https://schema.org/StrikethroughPrice",
+      "price": listPrice.toFixed(2),
+      "priceCurrency": priceCurrency,
+    });
+  }
+  priceSpecifications.push(
     {
       "@type": "UnitPriceSpecification",
-      "priceType": "https://schema.org/ListPrice",
-      "price": originalPrice,
+      "priceType": "https://schema.org/RegularPrice",
+      "price": basePrice.toFixed(2),
       "priceCurrency": priceCurrency,
     },
     {
       "@type": "UnitPriceSpecification",
       "priceType": "https://schema.org/SalePrice",
-      "price": offerPrice,
+      "price": offerPrice.toFixed(2),
       "priceCurrency": priceCurrency,
     },
-  ];
+  );
+
+  return priceSpecifications;
 }
 
 export function buildOffersObject(params: OfferBuilderParams) {
   const {
     product,
-    originalPrice,
+    basePrice,
+    listPrice,
     promotionalPrice,
     priceCurrency,
     availability,
@@ -51,8 +66,7 @@ export function buildOffersObject(params: OfferBuilderParams) {
 
   const hasMultipleOffers = product.offers?.offers &&
     product.offers.offers.length > 1;
-  const basePrice = product.offers?.offers?.[0]?.price || 0;
-  const price = promotionalPrice || originalPrice;
+  const price = promotionalPrice || basePrice;
 
   if (hasMultipleOffers) {
     const prices = product.offers?.offers?.map((offer) => offer.price || 0) ||
@@ -63,12 +77,12 @@ export function buildOffersObject(params: OfferBuilderParams) {
     return {
       "@type": "AggregateOffer",
       "priceCurrency": priceCurrency,
-      "lowPrice": promotionalPrice
-        ? Math.min(promotionalPrice, lowPrice)
-        : lowPrice,
-      "highPrice": promotionalPrice
-        ? Math.max(promotionalPrice, highPrice)
-        : highPrice,
+      "lowPrice":
+        (promotionalPrice ? Math.min(promotionalPrice, lowPrice) : lowPrice)
+          .toFixed(2),
+      "highPrice":
+        (promotionalPrice ? Math.max(promotionalPrice, highPrice) : highPrice)
+          .toFixed(2),
       "offerCount": product.offers?.offers?.length || 1,
       "availability": availability,
       "seller": {
@@ -77,14 +91,14 @@ export function buildOffersObject(params: OfferBuilderParams) {
       },
       "offers": product.offers?.offers?.map((offer) => ({
         "@type": "Offer",
-        "price": offer.price,
+        "price": offer.price?.toFixed(2),
         "priceCurrency": priceCurrency,
         "availability": offer.availability || availability,
         "seller": {
           "@type": "Organization",
           "name": offer.sellerName || sellerName,
         },
-        ...(offer.priceValidUntil &&
+        ...(offer.priceValidUntil && listPrice !== basePrice &&
           { "priceValidUntil": offer.priceValidUntil }),
         ...(offer.inventoryLevel?.value && {
           "inventoryLevel": {
@@ -93,8 +107,9 @@ export function buildOffersObject(params: OfferBuilderParams) {
           },
         }),
         "priceSpecification": buildPriceSpecifications(
-          offer.price || 0,
-          originalPrice,
+          listPrice,
+          basePrice,
+          promotionalPrice || basePrice,
           priceCurrency,
         ),
       })) || [],
@@ -103,16 +118,18 @@ export function buildOffersObject(params: OfferBuilderParams) {
     return {
       "@type": "Offer",
       "priceCurrency": priceCurrency,
-      "price": price,
-      "priceValidUntil": priceValidUntil,
+      "price": price.toFixed(2),
+      ...(priceValidUntil && listPrice !== basePrice &&
+        { "priceValidUntil": priceValidUntil }),
       "availability": availability,
       "seller": {
         "@type": "Organization",
         "name": sellerName,
       },
       "priceSpecification": buildPriceSpecifications(
-        price,
-        originalPrice,
+        listPrice,
+        basePrice,
+        promotionalPrice || basePrice,
         priceCurrency,
       ),
       ...(inventoryLevel && {
@@ -149,7 +166,7 @@ export interface ProductDataBuilderParams {
   fullProductName: string;
   category: string[];
   specifications: ProductSpecifications;
-  additionalGTINs: { [key: string]: string };
+  GTIN: { [key: string]: string };
   additionalProperties: Record<string, unknown>[];
   weight: ProductWeight | null;
   heightValue: number | string;
@@ -167,7 +184,7 @@ export function buildProductData(params: ProductDataBuilderParams) {
     fullProductName,
     category,
     specifications,
-    additionalGTINs,
+    GTIN,
     additionalProperties,
     weight,
     heightValue,
@@ -194,8 +211,7 @@ export function buildProductData(params: ProductDataBuilderParams) {
     },
     "sku": product.sku,
     "productID": product.productID,
-    ...(specifications.gtin && { "gtin": specifications.gtin }),
-    ...additionalGTINs,
+    ...GTIN,
     ...(specifications.mpn && { "mpn": specifications.mpn }),
     "url": product.url || "",
     "image": product.image?.map((img) => ({
