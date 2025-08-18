@@ -4,8 +4,6 @@ import Modals from "$store/islands/HeaderModals.tsx";
 import type { Product, Suggestion } from "apps/commerce/types.ts";
 import type { Image } from "deco-sites/std/components/types.ts";
 
-import { headerHeight } from "./constants.ts";
-
 export interface NavItem {
   label: string;
   href: string;
@@ -44,25 +42,13 @@ export interface Props {
   suggestions?: LoaderReturnType<Suggestion | null>;
 }
 
-function Header(
-  {
-    searchbar: _searchbar,
-    products,
-    navItems = [],
-    suggestions,
-  }: Props,
-) {
-  const searchbar = { ..._searchbar, products, suggestions };
+function Header({ navItems = [] }: Props) {
   return (
     <>
-      <header style={{ height: headerHeight }}>
-        <div class="bg-base-100 fixed w-full z-50">
-        </div>
+      <header class="h-[170px] md:h-[114px] lg:h-[160px]">
+        <div class="fixed z-50 w-full bg-base-100"></div>
 
-        <Modals
-          menu={{ items: navItems }}
-          searchbar={searchbar}
-        />
+        <Modals menu={{ items: navItems }} />
       </header>
     </>
   );

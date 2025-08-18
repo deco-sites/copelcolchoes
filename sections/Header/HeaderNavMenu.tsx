@@ -1,1 +1,1 @@
-export { default } from "$store/components/header/HeaderNavMenu.tsx";
+export { default, loader } from "$store/components/header/HeaderNavMenu.tsx";

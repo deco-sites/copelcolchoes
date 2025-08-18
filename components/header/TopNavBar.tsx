@@ -1,7 +1,6 @@
 import Slider from "$store/components/ui/Slider.tsx";
 import SliderJS from "$store/islands/SliderJS.tsx";
 import { useId } from "preact/hooks";
-import type { Image as LiveImage } from "deco-sites/std/components/types.ts";
 
 export interface Props {
   /**
@@ -57,45 +56,45 @@ export interface Alert {
    */
   textColor: string;
 
-  /**
-   * @title Ícone
-   * @description Imagem/ícone que acompanha a mensagem
-   */
-  icon?: {
-    /**
-     * @title Imagem
-     * @description URL da imagem do ícone
-     */
-    src: LiveImage;
-    /**
-     * @title Texto Alternativo
-     * @description Descrição acessível da imagem
-     */
-    alt: string;
-    /**
-     * @title Tamanho Personalizado
-     * @description Dimensões específicas para este ícone
-     */
-    size?: {
-      /**
-       * @title Largura
-       * @description Largura personalizada em pixels
-       */
-      width: number;
-      /**
-       * @title Altura
-       * @description Altura personalizada em pixels
-       */
-      height: number;
-    };
-  };
+  // /**
+  //  * @title Ícone
+  //  * @description Imagem/ícone que acompanha a mensagem
+  //  */
+  // icon?: {
+  //   /**
+  //    * @title Imagem
+  //    * @description URL da imagem do ícone
+  //    */
+  //   src: LiveImage;
+  //   /**
+  //    * @title Texto Alternativo
+  //    * @description Descrição acessível da imagem
+  //    */
+  //   alt: string;
+  //   /**
+  //    * @title Tamanho Personalizado
+  //    * @description Dimensões específicas para este ícone
+  //    */
+  //   size?: {
+  //     /**
+  //      * @title Largura
+  //      * @description Largura personalizada em pixels
+  //      */
+  //     width: number;
+  //     /**
+  //      * @title Altura
+  //      * @description Altura personalizada em pixels
+  //      */
+  //     height: number;
+  //   };
+  // };
 }
 
-function TopNavBar({ alerts, interval = 2000, iconConfig }: Props) {
+function TopNavBar({ alerts, interval = 2000 }: Props) {
   const id = useId();
 
   return (
-    <div class="px-[1.875rem] topnavbar bg-primary relative group">
+    <div class="topnavbar group relative bg-primary px-[1.875rem]">
       <div id={id} class="relative">
         <Slider
           class="carousel carousel-center w-full align-middle"
@@ -104,11 +103,12 @@ function TopNavBar({ alerts, interval = 2000, iconConfig }: Props) {
           {alerts.map((alert, index) => (
             <Slider.Item
               index={index}
-              class="carousel-item w-full transition-all duration-500 ease-in-out py-4 lg:py-1"
+              class="carousel-item w-full py-2 transition-all duration-500 ease-in-out"
               data-slider-item={index}
             >
-              <div class="flex items-center justify-center w-full">
-                {alert.icon && (
+              <div class="flex w-full items-center justify-center">
+                {
+                  /* {alert.icon && (
                   <img
                     src={alert.icon.src}
                     alt={alert.icon.alt}
@@ -120,9 +120,10 @@ function TopNavBar({ alerts, interval = 2000, iconConfig }: Props) {
                     loading="lazy"
                     decoding="async"
                   />
-                )}
+                )} */
+                }
                 <span
-                  class="text-sm ml-3 text-center leading-[1.125rem]"
+                  class="text-center text-xs lg:text-sm"
                   style={{ color: alert.textColor }}
                 >
                   {alert.textAlert}

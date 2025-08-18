@@ -17,16 +17,17 @@ export async function fetchReviewData(
     return null;
   }
 
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 5000);
   try {
     const options = {
       headers: {
         YVStoreKey: config.key,
       },
     };
-
     const response = await fetch(
       `https://service.yourviews.com.br/api/v2/pub/review/${productGroupId}?page=1&count=100&orderBy=1`,
-      options,
+      { ...options, signal: controller.signal },
     );
 
     if (!response.ok) {
@@ -45,8 +46,9 @@ export async function fetchReviewData(
       ratingCount: Element.TotalRatings || 0,
       reviewCount: Element.Reviews ? Element.Reviews.length : 0,
     };
-  } catch (error) {
-    console.error("Failed to fetch review data:", error);
+  } catch (_error) {
     return null;
+  } finally {
+    clearTimeout(timeoutId);
   }
 }

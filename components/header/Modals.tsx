@@ -19,7 +19,7 @@ function Modals({ menu, minicart }: Props) {
   const { displayCart, displayMenu } = useUI();
 
   const fallback = (
-    <div class="flex justify-center items-center w-full h-full">
+    <div class="flex h-full w-full items-center justify-center">
       <span class="loading loading-ring" />
     </div>
   );
@@ -59,7 +59,7 @@ function Modals({ menu, minicart }: Props) {
           closeIcon="ReturnArrow"
         >
           <Suspense fallback={<Loading />}>
-            <Cart {...minicart as ICartProps} />
+            <Cart {...(minicart as ICartProps)} />
           </Suspense>
         </Modal>
       )}

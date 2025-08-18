@@ -5,7 +5,6 @@ import type { Product, Suggestion } from "apps/commerce/types.ts";
 import { clx } from "$store/sdk/clx.ts";
 import { useOffer } from "../../utils/userOffer.ts";
 import { formatPrice } from "$store/sdk/format.ts";
-import { color } from "apps/vtex/mod.ts";
 export type ResultSearch = EditableProps & {
   valueSearch: string;
   notFound: boolean;
@@ -34,16 +33,15 @@ const Suggestions = ({ products, searchValue, device }: SuggestionsProps) => {
   return (
     <>
       <p
-        class={`text-primary text-[16px] leading-[19.2px] font-black mb-[12px] max-md:mt-[20px] md:mb-[20px]`}
+        class={`mb-[12px] text-[16px] font-black leading-[19.2px] text-primary max-md:mt-[20px] md:mb-[20px]`}
         style={{ color: device === "desktop" ? "#0D4F81" : "" }}
       >
         {device && device === "desktop"
           ? "Sugestões de Produtos"
           : "Produtos simulares"}
       </p>
-      {/* max-md:max-h-[50%] */}
-      <div class={clx(`max-md:overflow-y-scroll n1-teste ${device}`)}>
-        <ul class="flex flex-col md:flex-row gap-x-[30px]">
+      <div class={clx(`n1-teste max-md:overflow-y-scroll ${device}`)}>
+        <ul class="flex flex-col gap-x-[30px] md:flex-row">
           {products.slice(0, 3).map((product: Product) => {
             if (!product.url) return;
 
@@ -52,21 +50,17 @@ const Suggestions = ({ products, searchValue, device }: SuggestionsProps) => {
             return (
               <li
                 class={clx(
-                  `md:rounded-[5px] md:border md:border-[#DBDBDB] overflow-hidden bg-[rgba(255,_255,_255,_0.00)] 
-                md:[box-shadow:0px_3px_6px_0px_rgba(0,_0,_0,_0.05)] max-lg:w-full 
-                max-lg:after:content-[""] max-lg:after:block max-lg:after:border-b-[1px] 
-                max-lg:after:border-[#E5E5E5] max-lg:after:mb-[10px]`,
+                  `overflow-hidden bg-[rgba(255,_255,_255,_0.00)] max-lg:w-full max-lg:after:mb-[10px] max-lg:after:block max-lg:after:border-b-[1px] max-lg:after:border-[#E5E5E5] max-lg:after:content-[""] md:rounded-[5px] md:border md:border-[#DBDBDB] md:[box-shadow:0px_3px_6px_0px_rgba(0,_0,_0,_0.05)]`,
                 )}
               >
                 <a
-                  class="text-sm leading-[1.125rem] text-[#444444] "
+                  class="text-sm leading-[1.125rem] text-[#444444]"
                   href={product.url}
                   rel="nofollow"
                 >
                   <div
                     class={clx(
-                      `md:w-[155px] md:items-center lg:w-[200px] xl:w-[232px] flex flex-col justify-start items-baseline h-full bg-[#fff]
-                    max-sm:flex-row max-sm:items-center w-full `,
+                      `flex h-full w-full flex-col items-baseline justify-start bg-[#fff] max-sm:flex-row max-sm:items-center md:w-[155px] md:items-center lg:w-[200px] xl:w-[232px]`,
                     )}
                   >
                     {product && product?.image && product.image[0].url && (
@@ -78,7 +72,7 @@ const Suggestions = ({ products, searchValue, device }: SuggestionsProps) => {
                               alt={product.isVariantOf?.name}
                               width={232}
                               height={206}
-                              class="xl:h-[206px] xl:w-[232px] inline-block align-middle"
+                              class="inline-block align-middle xl:h-[206px] xl:w-[232px]"
                             />
                           )
                           : (
@@ -94,10 +88,10 @@ const Suggestions = ({ products, searchValue, device }: SuggestionsProps) => {
                     )}
 
                     <div
-                      class={`px-[10px] pb-[10px] max-lg:ml-[10px] md:pb-[20px] w-full`}
+                      class={`w-full px-[10px] pb-[10px] max-lg:ml-[10px] md:pb-[20px]`}
                     >
                       <p
-                        class={`![&_strong]:font-thin capitalize text-[12px] text-[#828282] result-search__paragraph leading-normal font-medium`}
+                        class={`![&_strong]:font-thin result-search__paragraph text-[12px] font-medium capitalize leading-normal text-[#828282]`}
                         dangerouslySetInnerHTML={{
                           __html: urlToLabel(product.url, searchValue),
                         }}
@@ -110,8 +104,7 @@ const Suggestions = ({ products, searchValue, device }: SuggestionsProps) => {
                             <>
                               <span
                                 class={clx(
-                                  `inline-block bg-[#466FA3] text-[#fff] text-[12px] leading-[16px] 
-                                  rounded-[10px] px-[9px] py-[4px] my-[6px] md:my-[10px]`,
+                                  `my-[6px] inline-block rounded-[10px] bg-[#466FA3] px-[9px] py-[4px] text-[12px] leading-[16px] text-[#fff] md:my-[10px]`,
                                 )}
                               >
                                 {item.value}
@@ -124,7 +117,7 @@ const Suggestions = ({ products, searchValue, device }: SuggestionsProps) => {
                       {price && (
                         <p
                           class={clx(
-                            `text-[#464646] font-quicksand text-[12px] md:text-[14px] leading-[18px] font-light line-through md:mb-[5px]`,
+                            `font-quicksand text-[12px] font-light leading-[18px] text-[#464646] line-through md:mb-[5px] md:text-[14px]`,
                           )}
                         >
                           De R$ {formatPrice(price)}
@@ -133,7 +126,7 @@ const Suggestions = ({ products, searchValue, device }: SuggestionsProps) => {
 
                       {installment && (
                         <p
-                          class={`text-[#D7194C] text-[14px] md:text-[18px] lg:text-[20px] leading-[18px] md:leading-[25px] font-black`}
+                          class={`text-[14px] font-black leading-[18px] text-[#D7194C] md:text-[18px] md:leading-[25px] lg:text-[20px]`}
                         >
                           {installment?.billingDuration}x{" "}
                           {formatPrice(installment?.billingIncrement)}
@@ -151,49 +144,53 @@ const Suggestions = ({ products, searchValue, device }: SuggestionsProps) => {
   );
 };
 
-const ResultSearch = (
-  { valueSearch, notFound, suggestions, device }: ResultSearch,
-) => {
+const ResultSearch = ({
+  valueSearch,
+  notFound,
+  suggestions,
+  device,
+}: ResultSearch) => {
   if (valueSearch !== "" && suggestions?.value != null) {
     return (
       <>
         <div
           className={clx(
-            `fixed w-full max-md:top-[200px] md:top-[177px] z-10 left-0 bg-[#fff] max-md:z-50 max-md:flex max-md:flex-col max-md:gap-y-[10px]
-          ${
-              notFound || !(suggestions.value!.products?.length) ||
+            `fixed left-0 top-[170px] z-10 w-full bg-[#fff] max-md:z-50 max-md:flex max-md:flex-col max-md:gap-y-[10px] md:top-[114px] lg:top-[118px] ${
+              notFound ||
+                !suggestions.value!.products?.length ||
                 valueSearch === "click"
                 ? ""
-                : "max-md:h-[calc(100%_-_200px)] max-md:[border-radius:initial]"
-            } 
-          border-t rounded-br-[30px] max-md:px-[20px] rounded-bl-[30px] md:p-[30px] xl:p-[40px] max-lg:py-[20px] max-lg:bg-white search-result-content`,
+                : "max-md:h-[calc(100%_-_170px)] max-md:[border-radius:initial]"
+            } search-result-content rounded-bl-[30px] rounded-br-[30px] border-t max-lg:bg-white max-lg:py-[20px] max-md:px-[20px] md:p-[30px] xl:p-[40px]`,
           )}
         >
           <div
-            class={clx(`flex max-md:flex-col pl-[10px] py-[0] gap-x-[30px]
-            ${
-              notFound || !(suggestions.value!.products?.length) ||
-                valueSearch === "click"
-                ? ""
-                : "max-md:h-[calc(100%_-_42px)]"
-            }`)}
+            class={clx(
+              `flex gap-x-[30px] py-[0] pl-[10px] max-md:flex-col ${
+                notFound ||
+                  !suggestions.value!.products?.length ||
+                  valueSearch === "click"
+                  ? ""
+                  : "max-md:h-[calc(100%_-_42px)]"
+              }`,
+            )}
           >
             {suggestions.value!.searches?.length
               ? (
                 <section
-                  class={clx(`flex flex-col gap-[14px] 
-                    ${
-                    suggestions.value!.products?.length &&
-                      valueSearch !== "click"
-                      ? "md:w-[15.25rem]"
-                      : "md:w-2/4"
-                  }`)}
+                  class={clx(
+                    `flex flex-col gap-[14px] ${
+                      suggestions.value!.products?.length &&
+                        valueSearch !== "click"
+                        ? "md:w-[15.25rem]"
+                        : "md:w-2/4"
+                    }`,
+                  )}
                 >
-                  <div class="flex gap-2 items-center">
+                  <div class="flex items-center gap-2">
                     <span
                       class={clx(
-                        `text-primary text-[16px] leading-[19.2px] md:font-bold max-lg:tracking-[1px] font-normal
-                          ${
+                        `text-[16px] font-normal leading-[19.2px] text-primary max-lg:tracking-[1px] md:font-bold ${
                           suggestions.value!.products?.length &&
                             valueSearch !== "click"
                             ? "md:mb-[6px]"
@@ -229,26 +226,24 @@ const ResultSearch = (
                         <li>
                           <a
                             href={`/busca?q=${term}`}
-                            class="flex gap-4 items-center"
+                            class="flex items-center gap-4"
                           >
                             {valueSearch !== "click"
                               ? (
                                 <span
                                   class={clx(
-                                    `text-[14px] md:text-[16px] leading-[22.4px] font-normal text-primary font-comfortaa
-                              first-letter:capitalize`,
+                                    `font-comfortaa text-[14px] font-normal leading-[22.4px] text-primary first-letter:capitalize md:text-[16px]`,
                                   )}
                                 >
                                   {term}
                                 </span>
                               )
                               : (
-                                <div class={`flex gap-x-[10px] items-center`}>
+                                <div class={`flex items-center gap-x-[10px]`}>
                                   {device === "desktop" && (
                                     <span
                                       class={clx(
-                                        `px-[5px] py-[5px] bg-primary text-[#ffff] text-[14px] font-baloo_2
-                                    leading-[19.6px] font-semibold rounded-[5px] w-[28px] h-[28px] flex items-center justify-center`,
+                                        `flex h-[28px] w-[28px] items-center justify-center rounded-[5px] bg-primary px-[5px] py-[5px] font-baloo_2 text-[14px] font-semibold leading-[19.6px] text-[#ffff]`,
                                       )}
                                     >
                                       {index + 1}°
@@ -257,7 +252,7 @@ const ResultSearch = (
 
                                   <span
                                     class={clx(
-                                      `text-[14px] md:text-[16px] leading-[22.4px] font-normal text-primary font-baloo_2 first-letter:capitalize`,
+                                      `font-baloo_2 text-[14px] font-normal leading-[22.4px] text-primary first-letter:capitalize md:text-[16px]`,
                                     )}
                                   >
                                     {term}
@@ -268,12 +263,13 @@ const ResultSearch = (
                         </li>
                       ))}
                   </ul>
-                  {device === "desktop" && valueSearch !== "click" &&
-                    suggestions.value!.products?.length !== 0 && !notFound && (
+                  {device === "desktop" &&
+                    valueSearch !== "click" &&
+                    suggestions.value!.products?.length !== 0 &&
+                    !notFound && (
                     <a
                       class={clx(
-                        `px-[20px] py-[10px] border border-primary rounded-[5px] text-sm text-primary font-bold 
-                          font-baloo_2 max-w-[220px] text-center`,
+                        `max-w-[220px] rounded-[5px] border border-primary px-[20px] py-[10px] text-center font-baloo_2 text-sm font-bold text-primary`,
                       )}
                       href={`/busca?q=${valueSearch}`}
                     >
@@ -288,11 +284,12 @@ const ResultSearch = (
             <div>
               {suggestions.value!.searches?.length === 0
                 ? (
-                  <h3 class="font-black text-[##444444] text-sm leading-[1.125rem]">
+                  <h3 class="text-sm font-black leading-[1.125rem] text-[##444444]">
                     Nada encontrado
                   </h3>
                 )
-                : notFound || !(suggestions.value!.products?.length) ||
+                : notFound ||
+                    !suggestions.value!.products?.length ||
                     valueSearch === "click"
                 ? null
                 : (
@@ -306,12 +303,13 @@ const ResultSearch = (
             {/* </section>             */}
           </div>
           {valueSearch !== "click" &&
-            suggestions && suggestions.value &&
+            suggestions &&
+            suggestions.value &&
             suggestions.value?.products &&
             Object.entries(suggestions.value!.products).length > 0 && (
             <a
               class={clx(
-                `md:hidden max-md:flex justify-center px-[20px] font-quicksand py-[10px] bg-primary rounded-[5px] text-sm text-[#fff] font-bold`,
+                `justify-center rounded-[5px] bg-primary px-[20px] py-[10px] font-quicksand text-sm font-bold text-[#fff] max-md:flex md:hidden`,
               )}
               href={`/busca?q=${valueSearch}`}
             >

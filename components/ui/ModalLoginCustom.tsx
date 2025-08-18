@@ -63,24 +63,17 @@ function ModalLoginCustom() {
         /> */
         }
 
-        <div class="relative font-medium text-primary text-[0.8125rem] leading-[1.125rem] w-full flex items-center justify-center appearance-none">
-          <Icon
-            class="mr-[0.625rem]"
-            id="User"
-            size={36}
-            strokeWidth={1}
-          />
+        <div class="relative flex w-full appearance-none items-center justify-center text-[0.8125rem] font-medium leading-[1.125rem] text-primary">
+          <Icon class="mr-[0.625rem]" id="User" size={36} strokeWidth={1} />
 
           <p
-            class={`max-lg:hidden text-[14px] text-start leading-[21px] text-[#656565] font-black`}
+            class={`text-start text-sm font-black leading-[1.2] text-[#656565] max-lg:hidden`}
           >
             {isLogged
               ? (
                 <>
                   Bem-vindo! <br />
-                  <span class="text-primary font-bold">
-                    {userEmail}
-                  </span>
+                  <span class="font-bold text-primary">{userEmail}</span>
                   {" "}
                 </>
               )
@@ -88,9 +81,7 @@ function ModalLoginCustom() {
                 <>
                   Bem-vindo! <br />
                   <span class="text-primary underline">Entre</span> ou{" "}
-                  <span class="text-primary underline">
-                    cadastre-se
-                  </span>
+                  <span class="text-primary underline">cadastre-se</span>
                 </>
               )}
           </p>
@@ -99,7 +90,7 @@ function ModalLoginCustom() {
         {user.value?.email && (
           <div
             class={clx(
-              `modal-login-custom hidden group-hover:block hover:block duration-150 bg-transparent top-[3px] -right-5 absolute w-auto z-[100] p-6 shadow-[0_0_50px_0_rgba(0_0_0_0.08)]`,
+              `modal-login-custom absolute -right-5 top-[3px] z-[100] hidden w-auto bg-transparent p-6 shadow-[0_0_50px_0_rgba(0_0_0_0.08)] duration-150 hover:block group-hover:block`,
             )}
           >
             <div
@@ -108,36 +99,33 @@ function ModalLoginCustom() {
                 setSessionFirst(true);
               }}
               class={clx(
-                `modal-login-custom__body absolute bg-white rounded-xl flex border-s-black text-black top-[78%] shadow-lg w-[300px] -right-[110px] whitespace-nowrap p-[24px] flex-col z-50 gap-[6px] items-start
-                ${!sessionFirst ? "flex" : "hidden group-hover:flex"}`,
+                `modal-login-custom__body absolute -right-[110px] top-[78%] z-50 flex w-[300px] flex-col items-start gap-[6px] whitespace-nowrap rounded-xl border-s-black bg-white p-[24px] text-black shadow-lg ${
+                  !sessionFirst ? "flex" : "hidden group-hover:flex"
+                }`,
               )}
             >
-              <span
-                class={`font-bold text-black text-sm`}
-              >
+              <span class={`text-sm font-bold text-black`}>
                 Olá {user.value?.givenName} !
               </span>
 
               <a
                 href="/my-account"
-                class={clx(`text-black text-xs hover:font-bold duration-150`)}
+                class={clx(`text-xs text-black duration-150 hover:font-bold`)}
               >
                 Meu perfil
               </a>
 
               <a
                 href="/my-account"
-                class={clx(`text-black text-xs hover:font-bold duration-150`)}
+                class={clx(`text-xs text-black duration-150 hover:font-bold`)}
               >
                 Meus pedidos
               </a>
 
-              <div
-                class={clx(`h-[1px]  w-[160px] my-[5px] duration-150`)}
-              />
+              <div class={clx(`my-[5px] h-[1px] w-[160px] duration-150`)} />
 
               <a
-                class={clx(`text-black text-xs hover:font-bold duration-150`)}
+                class={clx(`text-xs text-black duration-150 hover:font-bold`)}
                 href={`/api/vtexid/pub/logout?scope=${storeScope}&returnUrl=https://www.${storeScope}.com.br`}
               >
                 Sair

@@ -1,9 +1,8 @@
+import type { FnContext } from "@deco/deco";
 import Modals from "$store/islands/HeaderModals.tsx";
 import NavItem, { INavItem } from "./NavItem.tsx";
 import { megaMenuDefaultItems } from "./constants.ts";
-import { clx } from "$store/sdk/clx.ts";
 import { useScroll } from "$store/sdk/useScroll.ts";
-import { headerHeight } from "$store/components/header/constants.ts";
 
 export interface Props {
   /**
@@ -14,44 +13,37 @@ export interface Props {
 }
 const scroll = useScroll();
 
-function HeaderNavMenu(
-  {
-    navItems = megaMenuDefaultItems as INavItem[],
-  }: Props,
-) {
+function HeaderNavMenu({
+  navItems = megaMenuDefaultItems as INavItem[],
+  isMobile,
+}: Awaited<ReturnType<typeof loader>>) {
   return (
-    <div
-      class={`z-50 menu-custom ${
-        scroll.value > Number(headerHeight.replaceAll(/\D/g, ""))
-          ? "hidden"
-          : ""
-      }`}
-    >
-      <div class="flex justify-between items-center lg:p-0 bg-primary">
-        <div class="max-lg:hidden flex justify-between flex-1 whitespace-nowrap sm:p-0 lg:px-16 header-nav-menu">
-          <ul
-            class={clx(
-              `container items-center justify-between mx-0 lg:mx-[auto] my-[0] lg:px-[30px] py-[0] 
-            flex h-[3.25rem] border-b border-[rgba(219,219,219,0.36)] w-full`,
-            )}
-          >
-            {navItems && navItems?.length
-              ? navItems?.map((item) => (
-                <NavItem
-                  key={item.label}
-                  item={item}
-                />
-              ))
-              : null}
-          </ul>
+    <>
+      {!isMobile && (
+        <div class={`menu-custom z-50 ${scroll.value > 60 ? "hidden" : ""}`}>
+          <div class="flex items-center justify-between bg-primary">
+            <div class="flex flex-1 justify-between whitespace-nowrap max-lg:hidden">
+              <ul class="container mx-auto flex w-full max-w-[1180px] items-center justify-between py-2 max-[1220px]:px-[1.375rem] 2xl:max-w-[1408px]">
+                {navItems && navItems?.length
+                  ? navItems?.map((item) => (
+                      <NavItem key={item.label} item={item} />
+                    ))
+                  : null}
+              </ul>
+            </div>
+          </div>
         </div>
-      </div>
-
-      <Modals
-        menu={{ items: navItems }}
-      />
-    </div>
+      )}
+      <Modals menu={{ items: navItems }} />
+    </>
   );
 }
+
+export const loader = (props: Props, _req: Request, ctx: FnContext) => {
+  return {
+    ...props,
+    isMobile: ctx.device !== "desktop",
+  };
+};
 
 export default HeaderNavMenu;

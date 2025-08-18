@@ -32,7 +32,7 @@ function MenuButton() {
 
   return (
     <Button
-      class="rounded-full border-2 border-solid no-animation btn-ghost relative flex justify-center items-center lg:hidden"
+      class="btn-ghost no-animation relative flex items-center justify-center rounded-full border-2 border-solid lg:hidden"
       aria-label="open menu"
       name="open menu"
       onClick={() => {
@@ -70,8 +70,8 @@ function CartButton({ device }: { device?: string }) {
   const totalItems = cart.value?.items.length || 0;
   const currencyCode = cart.value?.storePreferencesData.currencyCode;
   const total = cart.value?.totalizers.find((item) => item.id === "Items");
-  const discounts = cart.value?.totalizers.find((item) =>
-    item.id === "Discounts"
+  const discounts = cart.value?.totalizers.find(
+    (item) => item.id === "Discounts",
   );
 
   const onClick = () => {
@@ -91,41 +91,34 @@ function CartButton({ device }: { device?: string }) {
 
   return (
     <Button
-      class="btn-square btn-ghost relative flex justify-center items-center hover:bg-white"
+      class="btn-square btn-ghost relative flex items-center justify-center hover:bg-white"
       aria-label={totalItems > 9 ? "9+" : `${totalItems}`}
       name="open cart"
       data-deco={displayCart.value && "open-cart"}
       loading={loading.value}
       onClick={onClick}
     >
-      <div class="flex relative">
+      <div class="relative flex">
         <span
           class={clx(
-            `flex justify-center items-center text-white bg-[#d81a4d] text-xs font-['Montserrat',_sans-serif] z-[9] rounded-full 
-            font-bold w-[18px] h-[19px] md:w-[20px] md:h-[20px] absolute -top-[2px] md:-right-[8px] right-[3px] text-[12px]`,
+            `absolute -top-[2px] right-[3px] z-[9] flex h-[19px] w-[18px] items-center justify-center rounded-full bg-[#d81a4d] font-['Montserrat',_sans-serif] text-[12px] text-xs font-bold text-white md:-right-[8px] md:h-[20px] md:w-[20px]`,
           )}
         >
           {totalItems > 9 ? "9+" : totalItems}
         </span>
-        {device === "desktop"
-          ? (
-            <Icon
-              id="ShoppingCart"
-              size={36}
-              strokeWidth={1}
-            />
-          )
-          : (
-            <Icon
-              class={`-translate-x-[10px]`}
-              id="ShoppingCartMobile"
-              size={28}
-              strokeWidth={1}
-            />
-          )}
+        {device === "desktop" ? (
+          <Icon id="ShoppingCart" size={36} strokeWidth={1} />
+        ) : (
+          <Icon
+            class={`-translate-x-[10px]`}
+            id="ShoppingCartMobile"
+            size={28}
+            strokeWidth={1}
+          />
+        )}
       </div>
       <span
-        class={`max-lg:hidden text-[14px] leading-[21px] text-[#656565] font-black text-left md:ml-[12px]`}
+        class={`text-left text-sm font-black leading-[1.2] text-[#656565] max-lg:hidden md:ml-[12px]`}
       >
         Meu <br /> carrinho
       </span>
@@ -133,12 +126,13 @@ function CartButton({ device }: { device?: string }) {
   );
 }
 
-function Buttons(
-  { variant, device }: {
-    variant: "cart" | "search" | "menu" | "chat";
-    device?: string;
-  },
-) {
+function Buttons({
+  variant,
+  device,
+}: {
+  variant: "cart" | "search" | "menu" | "chat";
+  device?: string;
+}) {
   if (variant === "cart") {
     return <CartButton device={device} />;
   }

@@ -1,12 +1,18 @@
-import Slider from "$store/components/ui/Slider.tsx";
+import type { Product } from "apps/commerce/types.ts";
 import type { ImageObject } from "apps/commerce/types.ts";
-import Icon from "$store/components/ui/Icon.tsx";
-import Image from "deco-sites/std/components/Image.tsx";
-import SliderJS from "$store/islands/SliderJS.tsx";
 import { useId } from "preact/hooks";
+import { clx } from "$store/sdk/clx.ts";
+import { useCrossCarouselSync } from "$store/sdk/useCrossCarouselSync.ts";
 import ShareButton from "$store/islands/ShareButton.tsx";
-import { Product } from "apps/commerce/types.ts";
-import useMobileDetect from "$store/sdk/useMobileDetect.ts";
+import Slider from "$store/components/ui/Slider.tsx";
+import CarouselNavigation from "$store/components/ui/CarouselNavigation.tsx";
+import Icon from "$store/components/ui/Icon.tsx";
+import SliderJS from "$store/islands/SliderJS.tsx";
+import { SafeImage } from "./images/SafeImage.tsx";
+import { MediaItem, type MediaType } from "./images/MediaItem.tsx";
+import { VerticalThumbnailCarousel } from "./images/VerticalThumbnailCarousel.tsx";
+import { MobileThumbnailCarousel } from "./images/MobileThumbnailCarousel.tsx";
+import { ZoomableImage } from "./images/ZoomableImage.tsx";
 
 interface Props {
   images: ImageObject[];
@@ -15,186 +21,202 @@ interface Props {
   aspect: string;
   url: string;
   product: Product;
+  isMobile: boolean;
 }
 
-function ProductDetailsImages(
-  { images, width, height, aspect, url, product }: Props,
-) {
-  const id = `product-image-gallery:${useId()}`;
-  const video = product && product.video || [];
-  const midia = [...images, ...video];
+function ProductDetailsImages({
+  images,
+  width,
+  height,
+  aspect,
+  url,
+  product,
+  isMobile,
+}: Props) {
+  const mainId = `product-image-main:${useId()}`;
+  const video = (product && product.video) || [];
+  const media: MediaType[] = [...images, ...video];
+  const { activeIndex, handleThumbnailClick } = useCrossCarouselSync(mainId);
 
   return (
     <>
-      <div class="lg:w-1/2 relative">
-        <div class="flex flex-col relative" id={id}>
-          <div class="mix-blend-multiply w-full">
-            <Slider class="carousel carousel-start box-border lg:box-content w-full">
-              {midia.map((img, index) => {
+      <div class="relative">
+        <div
+          class={`relative flex ${
+            isMobile ? "flex-col" : "lg:flex-row lg:gap-10"
+          }`}
+          // No root id here to avoid colliding with other sliders
+        >
+          {/* Thumbnails - Left on desktop, bottom on mobile */}
+          <div
+            class={isMobile ? "order-2 py-4" : "lg:order-1 lg:flex-shrink-0"}
+          >
+            <div
+              class={clx(
+                isMobile
+                  ? "w-full"
+                  : media.length <= 5
+                    ? "overflow-hidden"
+                    : "",
+                "relative mx-auto h-full",
+              )}
+            >
+              {isMobile ? (
+                media.length >= 5 ? (
+                  <div class="flex w-full justify-center">
+                    <MobileThumbnailCarousel
+                      media={media}
+                      aspect={aspect}
+                      activeIndex={activeIndex.value}
+                      onThumbnailClick={handleThumbnailClick}
+                    />
+                  </div>
+                ) : (
+                  <div class="z-1 relative box-content flex h-auto w-full justify-center gap-[18px] lg:w-[350px]">
+                    {media.map((item, index) => (
+                      <MediaItem
+                        key={index}
+                        media={item}
+                        index={index}
+                        aspect={aspect}
+                        isMobile={isMobile}
+                        isThumb
+                        isMainSliderControl={false}
+                        isActive={activeIndex.value === index}
+                        onClick={() => handleThumbnailClick(index)}
+                      />
+                    ))}
+                  </div>
+                )
+              ) : (
+                <VerticalThumbnailCarousel
+                  media={media}
+                  aspect={aspect}
+                  itemsPerPage={5}
+                  activeIndex={activeIndex.value}
+                  onThumbnailClick={handleThumbnailClick}
+                />
+              )}
+            </div>
+          </div>
+
+          {/* Main image */}
+          <div
+            class={clx(
+              isMobile ? "order-1" : "lg:order-2",
+              "group/zoom-container relative flex w-full justify-center mix-blend-multiply",
+            )}
+            style={{ maxWidth: isMobile ? "calc(100vw - 2.5rem)" : "100%" }}
+            id={mainId}
+          >
+            {!isMobile && (
+              <div class="absolute bottom-2 right-2 z-20 flex items-center gap-1 rounded bg-white/80 px-2 py-1 backdrop-blur-sm transition-opacity duration-200 group-hover/zoom-container:opacity-0">
+                <Icon id="MagnifyingGlassPlus" size={16} />
+                <span class="text-xs font-medium text-gray-700">
+                  Passe o mouse para ampliar
+                </span>
+              </div>
+            )}
+            <Slider class="carousel carousel-center w-full" data-slider>
+              {media.map((img, index) => {
                 return (
                   <Slider.Item
                     index={index}
-                    class="carousel-item w-full last:mr-6"
+                    class="carousel-item w-full flex-shrink-0"
+                    data-slider-item={index}
                   >
-                    <div class="relative block h-0 w-full pb-[100%] ">
+                    <div
+                      class="relative flex w-full max-w-[700px] items-center justify-center"
+                      style={{
+                        width: isMobile ? "calc(100vw - 2.5rem)" : "100%",
+                        height: isMobile ? "calc(100vw - 2.5rem)" : "auto",
+                        aspectRatio: isMobile ? aspect : aspect,
+                      }}
+                    >
                       {img["@type"] === "ImageObject" &&
-                        renderImage({
-                          img,
-                          index,
-                          aspect,
-                          width,
-                          height,
-                        })}
-                      {img["@type"] === "VideoObject" &&
-                        (
-                          <iframe
-                            class="slide-dot-custom"
+                        (isMobile ? (
+                          <SafeImage
+                            class="mx-auto h-full w-full object-cover"
+                            sizes={`(max-width: 480px) calc(100vw - 2.5rem), calc(100vw - 2.5rem)`}
+                            style={{ aspectRatio: aspect }}
+                            src={img?.url!}
+                            alt={img.alternateName || "Imagem do produto"}
+                            width={700}
+                            height={700}
+                            containerWidth={0}
+                            containerHeight={0}
+                            preload={index === 0}
+                            fetchPriority={index === 0 ? "high" : "auto"}
+                            loading={index === 0 ? "eager" : "lazy"}
+                          />
+                        ) : (
+                          <ZoomableImage
+                            img={img}
+                            index={index}
+                            aspect={aspect}
                             width={width}
                             height={height}
-                            title={img?.name}
-                            src={img.contentUrl!}
-                            frameborder={0}
-                            loading={"lazy"}
-                          >
-                          </iframe>
-                        )}
+                          />
+                        ))}
+                      {img["@type"] === "VideoObject" && (
+                        <iframe
+                          class="slide-dot-custom absolute inset-0 h-full w-full"
+                          title={img?.name}
+                          src={img.contentUrl!}
+                          frameborder={0}
+                          loading="lazy"
+                        ></iframe>
+                      )}
                     </div>
                   </Slider.Item>
                 );
               })}
             </Slider>
-          </div>
-          <div class="py-4 flex- basis-[5.8125rem] h-[7.5rem] mix-blend-multiply">
-            <div class="w-full h-full mx-auto relative overflow-hidden">
-              <div class="w-auto h-auto relative z-1 flex box-content justify-center">
-                {midia.map((img, index) => {
-                  return (
-                    <Slider.Dot index={index}>
-                      {img["@type"] === "ImageObject" &&
-                        (
-                          <Image
-                            style={{ aspectRatio: aspect }}
-                            class="border-neutral group-disabled:border-secondary border w-[4.375rem] mr-[10px] rounded-[10px]"
-                            width={70}
-                            height={70}
-                            sizes="(max-width: 480px) 70px, 70px"
-                            src={img?.url!}
-                            alt={img.alternateName}
-                          />
-                        )}
-                      {img["@type"] === "VideoObject" &&
-                        (
-                          <iframe
-                            class={"pointer-events-none rounded-[10px]"}
-                            width={70}
-                            height={70}
-                            src={img.contentUrl + "?controls=0"}
-                            title={img?.name}
-                            frameborder={0}
-                            allow="picture-in-picture"
-                            loading={"lazy"}
-                          >
-                          </iframe>
-                        )}
-                    </Slider.Dot>
-                  );
-                })}
-              </div>
-              <Slider.PrevButton class="btn btn-circle btn-primary bg-white hover:bg-white border-none absolute left-4 min-w-[2.625rem] max-w-[2.625rem] min-h-[2.625rem] max-h-[2.625rem] top-1/2 -translate-y-1/2 active:focus:-translate-y-1/2 active:hover:-translate-y-1/2 no-animation">
-                <Icon size={42} id="PrevProductImage" strokeWidth={1} />
-              </Slider.PrevButton>
-              <Slider.NextButton class="btn btn-circle btn-primary bg-white hover:bg-white absolute border-none right-4 min-w-[2.625rem] max-w-[2.625rem] min-h-[2.625rem] max-h-[2.625rem] top-1/2 -translate-y-1/2 active:focus:-translate-y-1/2 active:hover:-translate-y-1/2 no-animation">
-                <Icon size={42} id="NextProductImage" strokeWidth={1} />
-              </Slider.NextButton>
-            </div>
+
+            {/* Main image navigation arrows */}
+            <CarouselNavigation
+              zIndex="z-10"
+              position="custom"
+              leftButtonProps={{
+                position: isMobile ? "left-0 -translate-x-1/2" : "left-4",
+              }}
+              rightButtonProps={{
+                position: isMobile ? "right-0 translate-x-1/2" : "right-4",
+              }}
+            />
+            <SliderJS rootId={mainId} infinite={false} />
           </div>
         </div>
-        <div class="group items-center cursor-pointer flex flex-col gap-2 h-auto justify-center absolute right-0 top-5">
-          <div class="group-hover:bg-primary bg-white flex items-center rounded-full border border-[#f6f6f6] shadow-[0_0.1875rem_0.375rem_rgba(0,0,0,0.16)] h-10 justify-center transition-all duration-300 ease-out w-10">
+
+        {/* Share button */}
+        <div class="group absolute right-0 top-5 flex h-auto cursor-pointer flex-col items-center justify-center gap-2">
+          <div class="flex h-10 w-10 items-center justify-center rounded-full border border-[#f6f6f6] bg-white shadow-[0_0.1875rem_0.375rem_rgba(0,0,0,0.16)] transition-all duration-300 ease-out group-hover:bg-primary">
             <Icon
               id="ShareCopel"
               size={20}
-              class="group-hover:text-white text-primary"
+              class="text-primary group-hover:text-white"
             />
           </div>
-          <div class="group-hover:max-h-6 group-hover:opacity-100 flex max-h-0 opacity-0 transition-all duration-300">
+          <div class="flex max-h-0 opacity-0 transition-all duration-300 group-hover:max-h-6 group-hover:opacity-100">
             <div class="flex h-auto">
               <ShareButton
-                network={"Facebook"}
+                network="Facebook"
                 link={`https://www.facebook.com/sharer/sharer.php?u=${url}`}
               />
               <ShareButton
-                network={"Twitter"}
+                network="Twitter"
                 link={`https://twitter.com/share?url=${url}`}
               />
               <ShareButton
-                network={"Pinterest"}
-                link={`https://pinterest.com/pin/create/button/?media=${images[
-                  0
-                ].url!}`}
+                network="Pinterest"
+                link={`https://pinterest.com/pin/create/button/?media=${images[0]
+                  .url!}`}
               />
             </div>
           </div>
         </div>
-        <SliderJS rootId={id}></SliderJS>
       </div>
     </>
-  );
-}
-
-function renderImage({ img, index, aspect, width, height }: {
-  img: ImageObject;
-  index: number;
-  aspect: string;
-  width: number;
-  height: number;
-}) {
-  const isMobile = useMobileDetect();
-
-  const image = (
-    <Image
-      class={isMobile.value
-        ? "absolute top-0 left-0 w-full block object-cover font-['blur-up:_auto','object-fit:_cover'] h-auto align-middle"
-        : "transition duration-150 opacity-100  lg:hover:opacity-0 hover:duration-300 lg:w-full"}
-      sizes="(max-width: 480px) 576px, 576px"
-      style={{ aspectRatio: aspect }}
-      src={img?.url!}
-      alt={img.alternateName}
-      width={width}
-      height={height}
-      // Preload LCP image for better web vitals
-      preload={index === 0}
-      loading={index === 0 ? "eager" : "lazy"}
-    />
-  );
-
-  return isMobile.value ? image : (
-    <figure
-      style={`background-image: url(${img?.url!}); background-size: 250%;`}
-      onMouseMove={(e: MouseEvent) => {
-        const zoomer = e.currentTarget as HTMLElement;
-        const offsetX = e.offsetX;
-        const offsetY = e.offsetY;
-        const x = offsetX / (zoomer.offsetWidth) * 100;
-        const y = offsetY / (zoomer.offsetHeight) * 100;
-
-        zoomer!.style.backgroundPosition = x + "% " + y + "%";
-        zoomer.style.maxWidth = "100%";
-      }}
-      onMouseLeave={(e: MouseEvent) => {
-        const zoomer = e.currentTarget as HTMLElement;
-        zoomer.style.maxWidth = width + "px";
-      }}
-      class="overflow-hidden cursor-zoom-in relative group/zoomer"
-    >
-      {image}
-      <div class="absolute bottom-1 right-1 flex items-center gap-1 group-hover/zoomer:hidden">
-        <Icon id="MagnifyingGlassPlus" size={15} />
-        <span class="text-xs font-bold">
-          Passe o mouse sob a imagem para dar zoom
-        </span>
-      </div>
-    </figure>
   );
 }
 

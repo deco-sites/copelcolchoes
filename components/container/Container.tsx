@@ -1,16 +1,8 @@
 import { type Section } from "@deco/deco/blocks";
-import { headerHeight } from "$store/components/header/constants.ts";
 import { clx } from "$store/sdk/clx.ts";
 
 export type VerticalSpacing = "top" | "bottom" | "both" | "none";
-export type ShadowSize =
-  | "none"
-  | "sm"
-  | "md"
-  | "lg"
-  | "xl"
-  | "2xl"
-  | "inner";
+export type ShadowSize = "none" | "sm" | "md" | "lg" | "xl" | "2xl" | "inner";
 
 export interface Props {
   sections: {
@@ -42,61 +34,55 @@ function Container({ sections, isHeader = false, isVisible = true }: Props) {
   return (
     <>
       <div
-        class={isHeader ? "fixed top-0 w-full bg-white z-[5000] header" : ""}
+        class={isHeader ? "header fixed top-0 z-[5000] w-full bg-white" : ""}
       >
-        {sections?.map((
-          {
+        {sections?.map(
+          ({
             section: { Component, props },
             withContainer = false,
             backgroundColor = "",
             verticalSpacing = "both",
             shadow = "none",
             spacing = 0,
-          },
-        ) => (
-          <div
-            class={clx(`w-full
-            ${VERTICAL_SPACING[verticalSpacing]} 
-            ${SPACING[spacing]}
-            ${SHADOW_SIZE[shadow]}`)}
-            style={backgroundColor && { background: `${backgroundColor}` }}
-          >
-            {withContainer
-              ? (
-                // <div class="container w-full m-auto lg:px-[4rem] px-[1.375rem] relative">
-                <div class="container w-full m-auto relative lg:px-[4rem] px-[1.375rem]">
+          }) => (
+            <div
+              class={clx(
+                `w-full ${VERTICAL_SPACING[verticalSpacing]} ${
+                  SPACING[spacing]
+                } ${SHADOW_SIZE[shadow]}`,
+              )}
+              style={backgroundColor && { background: `${backgroundColor}` }}
+            >
+              {withContainer && !isHeader ? (
+                <div class="container relative m-auto w-full px-[1.375rem] lg:px-[4rem]">
                   <Component {...props} />
                 </div>
-              )
-              : <Component {...props} />}
-          </div>
-        ))}
+              ) : (
+                <Component {...props} />
+              )}
+            </div>
+          ),
+        )}
       </div>
-      {isHeader && <div style={{ height: headerHeight }}></div>}
+      {isHeader && <div class="h-[170px] md:h-[114px] lg:h-[160px]"></div>}
     </>
   );
 }
 
-const VERTICAL_SPACING: Record<
-  VerticalSpacing,
-  string
-> = {
+const VERTICAL_SPACING: Record<VerticalSpacing, string> = {
   top: "!mb-0",
   bottom: "!mt-0",
   none: "!my-0",
   both: "",
 };
-const SHADOW_SIZE: Record<
-  ShadowSize,
-  string
-> = {
-  "none": "shadow-none",
-  "sm": "shadow-sm",
-  "md": "shadow-md",
-  "lg": "shadow-lg",
-  "xl": "shadow-xl",
+const SHADOW_SIZE: Record<ShadowSize, string> = {
+  none: "shadow-none",
+  sm: "shadow-sm",
+  md: "shadow-md",
+  lg: "shadow-lg",
+  xl: "shadow-xl",
   "2xl": "shadow-2xl",
-  "inner": "shadow-inner",
+  inner: "shadow-inner",
 };
 
 const SPACING = [

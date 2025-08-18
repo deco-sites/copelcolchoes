@@ -1,95 +1,98 @@
-import { ICartProps } from "$store/components/minicart/Cart.tsx";
-import { EditableProps as SearchbarProps } from "$store/components/search/Searchbar.tsx";
+import type { AppContext } from "apps/vtex/mod.ts";
+import type { ICartProps } from "$store/components/minicart/Cart.tsx";
+import type { EditableProps as SearchbarProps } from "$store/components/search/Searchbar.tsx";
+import Image from "deco-sites/std/components/Image.tsx";
 import Icon from "$store/components/ui/Icon.tsx";
 import Buttons from "$store/islands/HeaderButton.tsx";
 import Modals from "$store/islands/HeaderModals.tsx";
 import SearchBarComponent from "$store/islands/HeaderSearchbar.tsx";
-import { clx } from "$store/sdk/clx.ts";
-import { useDevice } from "@deco/deco/hooks";
 import ModalLoginCustom from "$store/islands/ModalLoginCustom.tsx";
-import { useUser } from "deco-sites/std/packs/vtex/hooks/useUser.ts";
-import { AppContext } from "apps/vtex/mod.ts";
 
 export interface Props {
   minicart: ICartProps;
   searchbar: SearchbarProps;
 }
 
-const WIDTH_LOGO = 159;
-const storeScope = "copelcolchoes"; // Definir o escopo da loja
-
-function HeaderLayout({ minicart, searchbar }: Props) {
-  const device = useDevice();
-  const { user } = useUser();
-
-  const isLogged = user?.value?.email;
-  const userEmail = user?.value?.email;
-
-  const logoutUrl =
-    `/api/vtexid/pub/logout?scope=${storeScope}&returnUrl=https://www.${storeScope}.com.br`;
+function HeaderLayout({
+  minicart,
+  searchbar,
+  origin,
+  device,
+}: Awaited<ReturnType<typeof loader>>) {
+  const isMobile = device !== "desktop";
 
   return (
-    <header class="z-50 pb-6 lg:mt-9 mt-[15px]">
-      <div
-        class={clx(
-          `flex md:grid 2xl:grid-cols-[minmax(auto,_159px)_minmax(_542px,_1fr)_auto] max-md:px-0 max-lg:px-[20px]
-           md:grid-cols-[minmax(auto,_159px)_minmax(auto,_542px)_auto] items-center lg:max-w-[95%] mx-[auto] my-[0] header-container`,
-        )}
-      >
+    <header class="z-50 mx-auto max-w-[1180px] px-[1.375rem] py-3 2xl:max-w-[1408px] 2xl:px-0">
+      <div class="flex items-center justify-between gap-20 max-[1200px]:gap-5">
         <div class="flex items-center justify-center gap-5">
           <Buttons variant="menu" />
-          <a href="/" aria-label="Store logo">
-            <Icon
-              id="Logo"
-              class="max-lg:hidden"
-              width={WIDTH_LOGO}
-              height={79}
+          {!isMobile && (
+            <a href="/" aria-label="Logo Copel Colchões">
+              <Image
+                src={`${origin}/logo-desktop.png`}
+                alt="Logo Copel Colchões"
+                width={136}
+                height={58}
+                loading="eager"
+                fetchPriority="high"
+                preload
+              />
+            </a>
+          )}
+        </div>
+        {isMobile && (
+          <a
+            href="/"
+            aria-label="Logo Copel Colchões"
+            class="block h-[42px] w-[98px] shrink-0"
+          >
+            <Image
+              src={`${origin}/logo-mobile.png`}
+              alt="Logo Copel Colchões"
+              width={98}
+              height={42}
+              loading="eager"
+              fetchPriority="high"
+              preload
             />
           </a>
-        </div>
-        <div class="hidden md:flex md:ml-[32px] flex-1 w-full">
+        )}
+        <div class="hidden w-full flex-1 md:flex">
           <SearchBarComponent
             searchbar={{ variant: "desktop", ...searchbar, device }}
           />
         </div>
-        <div class="lg:hidden logo-mobile">
-          <a href="/" aria-label="Store logo">
-            <Icon id="Logo" width={105} height={52.16} />
-          </a>
-        </div>
-        <div class="flex w-full md:w-auto justify-start md:justify-end 2xl:mr-[50px] 2xl:ml-0 ml-[8%]">
-          <div class="flex justify-end w-full md:w-auto md:gap-x-[20px] gap-x-[15px]">
+        <div class="flex w-full justify-start md:w-auto md:justify-end">
+          <div class="flex w-full justify-end gap-x-5 md:w-auto">
             <div class="flex items-center text-primary">
-              <div class="hidden lg:flex relative items-center justify-center">
-                <div class=" hidden lg:flex gap-5">
+              <div class="relative hidden items-center justify-center lg:flex">
+                <div class="hidden gap-5 lg:flex">
                   <ModalLoginCustom />
                 </div>
               </div>
             </div>
-            <div class="m-0 flex lg:items-center lg:w-[107px]">
+            <div class="m-0 flex lg:w-[107px] lg:items-center">
               <a
-                class="flex items-center justify-center w-full md:w-auto"
+                class="flex w-full items-center justify-center md:w-auto"
                 href="/nossas-lojas"
               >
-                {device === "desktop"
-                  ? (
-                    <Icon
-                      class="mr-[0.625rem]"
-                      id="Lojas"
-                      width={36}
-                      height={36}
-                      strokeWidth={1}
-                    />
-                  )
-                  : (
-                    <Icon
-                      id="LojasMobile"
-                      width={28}
-                      height={28}
-                      strokeWidth={1}
-                    />
-                  )}
-                <span class="max-md:ml-[5px] text-[12px] md:text-[14px] leading-[21px] text-[#656565] font-black">
+                {device === "desktop" ? (
+                  <Icon
+                    class="mr-[0.625rem]"
+                    id="Lojas"
+                    width={36}
+                    height={36}
+                    strokeWidth={1}
+                  />
+                ) : (
+                  <Icon
+                    id="LojasMobile"
+                    width={28}
+                    height={28}
+                    strokeWidth={1}
+                  />
+                )}
+                <span class="text-xs font-black leading-[1.2] text-[#656565] max-md:ml-[5px] md:text-[14px]">
                   Lojas <br /> Copel
                 </span>
               </a>
@@ -108,10 +111,11 @@ function HeaderLayout({ minicart, searchbar }: Props) {
   );
 }
 
-export const loader = (props: Props, _req: Request, ctx: AppContext) => {
+export const loader = (props: Props, req: Request, ctx: AppContext) => {
   return {
     ...props,
     device: ctx.device,
+    origin: new URL(req.url).origin,
   };
 };
 
