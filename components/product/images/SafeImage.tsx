@@ -1,4 +1,5 @@
 import Image from "deco-sites/std/components/Image.tsx";
+import { Picture, Source } from "deco-sites/std/components/Picture.tsx";
 import { useEffect, useRef, useState } from "preact/hooks";
 import { clx } from "$store/sdk/clx.ts";
 
@@ -15,6 +16,7 @@ export interface SafeImageProps {
   preload?: boolean;
   loading?: "eager" | "lazy";
   fetchPriority?: "high" | "low" | "auto";
+  usePicture?: boolean;
 }
 
 export function SafeImage({
@@ -30,6 +32,7 @@ export function SafeImage({
   preload,
   loading,
   fetchPriority,
+  usePicture = false,
 }: SafeImageProps) {
   const imgRef = useRef<HTMLImageElement>(null);
   const [status, setStatus] = useState<"loading" | "loaded" | "error">(
@@ -77,25 +80,58 @@ export function SafeImage({
           </div>
         )}
       </div>
-      <Image
-        ref={imgRef as unknown as preact.Ref<HTMLImageElement>}
-        class={clx(
-          "relative z-10 h-full w-full object-cover transition-opacity duration-200",
-          status === "loaded" ? "opacity-100" : "opacity-0",
-          className,
-        )}
-        sizes={sizes}
-        style={style}
-        src={src}
-        alt={alt}
-        width={width}
-        height={height}
-        preload={preload}
-        fetchPriority={fetchPriority}
-        loading={loading}
-        onLoad={handleLoad}
-        onError={handleError}
-      />
+      {usePicture ? (
+        <Picture preload={preload}>
+          <Source
+            media="(max-width: 767px)"
+            fetchPriority={fetchPriority}
+            src={src}
+            width={Math.min(width, 500)}
+            height={Math.min(height, 500)}
+          />
+          <Source
+            media="(min-width: 768px)"
+            fetchPriority={fetchPriority}
+            src={src}
+            width={Math.min(width * 1.5, 800)}
+            height={Math.min(height * 1.5, 800)}
+          />
+          <img
+            ref={imgRef}
+            class={clx(
+              "relative z-10 h-full w-full object-cover transition-opacity duration-200",
+              status === "loaded" ? "opacity-100" : "opacity-0",
+              className,
+            )}
+            style={style}
+            src={src}
+            alt={alt}
+            loading={loading}
+            onLoad={handleLoad}
+            onError={handleError}
+          />
+        </Picture>
+      ) : (
+        <Image
+          ref={imgRef as unknown as preact.Ref<HTMLImageElement>}
+          class={clx(
+            "relative z-10 h-full w-full object-cover transition-opacity duration-200",
+            status === "loaded" ? "opacity-100" : "opacity-0",
+            className,
+          )}
+          sizes={sizes}
+          style={style}
+          src={src}
+          alt={alt}
+          width={width}
+          height={height}
+          preload={preload}
+          fetchPriority={fetchPriority}
+          loading={loading}
+          onLoad={handleLoad}
+          onError={handleError}
+        />
+      )}
     </div>
   );
 }

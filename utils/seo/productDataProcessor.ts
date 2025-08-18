@@ -90,31 +90,74 @@ export function extractProductWeight(
   return null;
 }
 
-export function extractAdditionalGTINs(
-  specifications: ProductSpecifications["specifications"],
-): { [key: string]: string } {
-  const gtins: { [key: string]: string } = {};
+type GTINMap = Partial<
+  Record<"gtin8" | "gtin12" | "gtin13" | "gtin14" | "upce", string>
+>;
 
-  specifications.forEach((spec) => {
-    if (
-      spec.name?.toLowerCase().includes("gtin") ||
-      spec.name?.toLowerCase().includes("ean") ||
-      spec.name?.toLowerCase().includes("upc")
-    ) {
-      const gtinType = spec.name.toLowerCase().includes("gtin-13")
-        ? "gtin13"
-        : spec.name.toLowerCase().includes("gtin-14")
-        ? "gtin14"
-        : spec.name.toLowerCase().includes("ean")
-        ? "gtin13"
-        : spec.name.toLowerCase().includes("upc")
-        ? "gtin12"
-        : "gtin";
-      gtins[gtinType] = spec.value || "";
+const NAME_TO_TYPE: Array<[RegExp, keyof GTINMap]> = [
+  [/\b(gtin[-\s]?14|ean[-\s]?14)\b/i, "gtin14"],
+  [/\b(gtin[-\s]?13|ean[-\s]?13|\bean\b)/i, "gtin13"],
+  [/\b(gtin[-\s]?12|upc(?:[-\s]?a)?|\bupc\b)/i, "gtin12"],
+  [/\b(gtin[-\s]?8|ean[-\s]?8)\b/i, "gtin8"],
+  [/\bupc[-\s]?e\b/i, "upce"],
+];
+
+function digitsOnly(x: unknown): string {
+  return String(x ?? "").replace(/\D/g, "");
+}
+
+function detectTypeByLength(len: number): keyof GTINMap | undefined {
+  if (len === 8) return "gtin8";
+  if (len === 12) return "gtin12";
+  if (len === 13) return "gtin13";
+  if (len === 14) return "gtin14";
+  return undefined;
+}
+
+function isValidGTIN(code: string): boolean {
+  const len = code.length;
+  if (![8, 12, 13, 14].includes(len)) return false;
+  const body = code.slice(0, -1);
+  const check = Number(code.slice(-1));
+  let sum = 0;
+  for (let i = body.length - 1, pos = 1; i >= 0; i--, pos++) {
+    const n = body.charCodeAt(i) - 48;
+    sum += (pos % 2 === 1 ? 3 : 1) * n;
+  }
+  const calc = (10 - (sum % 10)) % 10;
+  return calc === check;
+}
+
+export function extractGTIN(
+  productSpecifications: ProductSpecifications,
+): GTINMap {
+  const out: GTINMap = {};
+  for (const spec of productSpecifications.specifications ?? []) {
+    const name = spec.name ?? "";
+    const valueDigits = digitsOnly(spec.value);
+    if (!valueDigits) continue;
+    let typeFromName: keyof GTINMap | undefined;
+    for (const [re, t] of NAME_TO_TYPE) {
+      if (re.test(name)) {
+        typeFromName = t;
+        break;
+      }
     }
-  });
-
-  return gtins;
+    const typeFromLen = detectTypeByLength(valueDigits.length);
+    let finalType = typeFromLen ?? typeFromName;
+    if (!finalType && /upc[-\s]?e/i.test(name)) finalType = "upce";
+    const isGTIN = finalType !== "upce";
+    if (isGTIN && !isValidGTIN(valueDigits)) continue;
+    if (finalType && !out[finalType]) out[finalType] = valueDigits;
+  }
+  if (!Object.keys(out).length) {
+    const top = digitsOnly(productSpecifications.gtin);
+    if (top) {
+      const t = detectTypeByLength(top.length);
+      if (t && isValidGTIN(top) && !out[t]) out[t] = top;
+    }
+  }
+  return out;
 }
 
 export function buildAdditionalProperties(

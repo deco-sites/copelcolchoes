@@ -92,7 +92,7 @@ function NavItemDropDown({
         }`,
       )}
     >
-      <div class="container mx-[auto] flex items-center justify-start">
+      <div class="container mx-auto flex max-w-[1180px] items-center justify-start 2xl:max-w-[1408px]">
         <div class="container-menu flex w-full justify-between">
           <ul class="relative flex w-full items-start gap-[40px] max-[1220px]:gap-5">
             {elements.map((element) => {
@@ -248,8 +248,7 @@ function NavItem({ item }: { item: INavItem }) {
           class={clx(
             `fixed bottom-0 left-0 hidden h-[calc(100%-225px)] w-full bg-[rgba(13,79,129,.6)] hover:!hidden group-hover:flex`,
           )}
-        >
-        </div>
+        ></div>
       )}
     </li>
   );

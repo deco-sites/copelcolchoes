@@ -53,13 +53,13 @@ function Container({ sections, isHeader = false, isVisible = true }: Props) {
               )}
               style={backgroundColor && { background: `${backgroundColor}` }}
             >
-              {withContainer
-                ? (
-                  <div class="container relative m-auto w-full max-[1220px]:!px-5 lg:px-0">
-                    <Component {...props} />
-                  </div>
-                )
-                : <Component {...props} />}
+              {withContainer && !isHeader ? (
+                <div class="container relative m-auto w-full px-[1.375rem] lg:px-[4rem]">
+                  <Component {...props} />
+                </div>
+              ) : (
+                <Component {...props} />
+              )}
             </div>
           ),
         )}

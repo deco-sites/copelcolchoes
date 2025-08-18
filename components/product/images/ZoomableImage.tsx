@@ -22,24 +22,25 @@ export function ZoomableImage({
   const image = (
     <SafeImage
       class="h-full w-full object-cover"
-      sizes={`(max-width: 480px) ${width}px, ${width}px`}
+      sizes={`(max-width: 768px) calc(100vw - 2.5rem), (max-width: 1024px) 600px, 700px`}
       style={{ aspectRatio: aspect }}
       src={img?.url!}
       alt={img.alternateName || "Imagem do produto"}
-      width={width * 2}
-      height={height * 2}
-      containerWidth={width}
-      containerHeight={height}
+      width={width}
+      height={height}
+      containerWidth={0}
+      containerHeight={0}
       preload={index === 0}
       fetchPriority={index === 0 ? "high" : "auto"}
       loading={index === 0 ? "eager" : "lazy"}
+      usePicture={true}
     />
   );
 
   return (
     <div
-      class="group/zoomer relative cursor-zoom-in overflow-hidden"
-      style={{ width: `${width}px`, height: `${height}px` }}
+      class="group/zoomer relative cursor-zoom-in overflow-hidden w-full"
+      style={{ aspectRatio: aspect }}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >

@@ -23,11 +23,11 @@ function HeaderNavMenu({
         <div class={`menu-custom z-50 ${scroll.value > 60 ? "hidden" : ""}`}>
           <div class="flex items-center justify-between bg-primary">
             <div class="flex flex-1 justify-between whitespace-nowrap max-lg:hidden">
-              <ul class="container flex w-full items-center justify-between py-2 max-[1220px]:px-[1.375rem]">
+              <ul class="container mx-auto flex w-full max-w-[1180px] items-center justify-between py-2 max-[1220px]:px-[1.375rem] 2xl:max-w-[1408px]">
                 {navItems && navItems?.length
                   ? navItems?.map((item) => (
-                    <NavItem key={item.label} item={item} />
-                  ))
+                      <NavItem key={item.label} item={item} />
+                    ))
                   : null}
               </ul>
             </div>

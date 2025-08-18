@@ -106,16 +106,16 @@ function CartButton({ device }: { device?: string }) {
         >
           {totalItems > 9 ? "9+" : totalItems}
         </span>
-        {device === "desktop"
-          ? <Icon id="ShoppingCart" size={36} strokeWidth={1} />
-          : (
-            <Icon
-              class={`-translate-x-[10px]`}
-              id="ShoppingCartMobile"
-              size={28}
-              strokeWidth={1}
-            />
-          )}
+        {device === "desktop" ? (
+          <Icon id="ShoppingCart" size={36} strokeWidth={1} />
+        ) : (
+          <Icon
+            class={`-translate-x-[10px]`}
+            id="ShoppingCartMobile"
+            size={28}
+            strokeWidth={1}
+          />
+        )}
       </div>
       <span
         class={`text-left text-sm font-black leading-[1.2] text-[#656565] max-lg:hidden md:ml-[12px]`}

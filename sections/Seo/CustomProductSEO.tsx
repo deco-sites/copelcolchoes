@@ -9,7 +9,7 @@ import {
 } from "$store/utils/yourViewsService.ts";
 import {
   buildAdditionalProperties,
-  extractAdditionalGTINs,
+  extractGTIN,
   extractProductCategories,
   extractProductSpecifications,
   extractProductWeight,
@@ -68,18 +68,22 @@ export async function loader(
 export default function CustomProductSEO(
   { page, reviewData, favicon }: SectionProps<typeof loader>,
 ): SEOSection {
-  if (!page?.product) return <div></div>;
+  if (!page?.product) return <div />;
   const product = page.product;
 
-  const fullProductName = product.isVariantOf?.name || product.name;
+  const fullProductName = product.isVariantOf?.name || product.name || "";
   const { category } = extractProductCategories(product);
   const specifications = extractProductSpecifications(product);
   const getSpecValue = (name: string) =>
     getSpecificationValue(specifications.specifications, name);
 
-  const originalPrice = getOfferPrice(
+  const listPrice = getOfferPrice(
     product.offers?.offers?.[0],
     "ListPrice",
+  );
+  const basePrice = getOfferPrice(
+    product.offers?.offers?.[0],
+    "SRP",
   );
   const { promotionalPrice } = calculatePixPromotion(
     product.offers?.offers,
@@ -97,7 +101,7 @@ export default function CustomProductSEO(
   const widthValue = parseWidthValue(widthStr);
   const weight = extractProductWeight(specifications.specifications);
 
-  const additionalGTINs = extractAdditionalGTINs(specifications.specifications);
+  const GTIN = extractGTIN(specifications);
   const additionalProperties = buildAdditionalProperties(
     specifications.specifications,
   );
@@ -105,7 +109,8 @@ export default function CustomProductSEO(
 
   const offers = buildOffersObject({
     product,
-    originalPrice,
+    basePrice,
+    listPrice,
     promotionalPrice,
     priceCurrency,
     availability,
@@ -116,10 +121,10 @@ export default function CustomProductSEO(
 
   const productData = buildProductData({
     product,
-    fullProductName: fullProductName || "",
+    fullProductName,
     category,
     specifications,
-    additionalGTINs,
+    GTIN,
     additionalProperties,
     weight,
     heightValue,
