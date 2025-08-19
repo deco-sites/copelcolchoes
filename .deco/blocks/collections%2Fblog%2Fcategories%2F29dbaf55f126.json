@@ -1,0 +1,8 @@
+{
+  "name": "collections/blog/categories/29dbaf55f126",
+  "__resolveType": "blog/loaders/Category.ts",
+  "category": {
+    "name": "Colchões",
+    "slug": "colchoes"
+  }
+}
