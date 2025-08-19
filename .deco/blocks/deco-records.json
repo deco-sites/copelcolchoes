@@ -1,0 +1,9 @@
+{
+  "__resolveType": "site/apps/deco/records.ts",
+  "url": "libsql://copelcolchoes-decocx.turso.io",
+  "authToken": {
+    "__resolveType": "website/loaders/secret.ts",
+    "name": "DATABASE_AUTH_TOKEN",
+    "encrypted": "4b1fd122c565b4de809337b9d2aa9d035ea9335340b8c32163ff75a17ee1a53303cf62760bc98acafa18c5e86e90152c05c1b5ced529391d9e606349646f813e1617edaff86dec650cff9927767befc1af31944d586d2623ddbd160b50ba7b15656fdbab922c9d89affd608b48166196677566cb2ac8fc30b3d182be632e0d026c5b66d0c62cd70245ed7145756a7ad6de9dba59a41452612d7aead9bc7d2036d9ab8c97b54dffbf185b55ea7febb749537114d11c8685948e8365817e31143a1180734044a857b70cb8f9125acb59609866cecbf9bfccfb910e9e1605c0f509"
+  }
+}

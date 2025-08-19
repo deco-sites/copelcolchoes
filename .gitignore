@@ -88,3 +88,4 @@ fresh.gen.ts
 .claude/
 .cursorignore
 .cursorrules
+sqlite.db
