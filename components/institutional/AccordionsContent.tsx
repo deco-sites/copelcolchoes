@@ -1,6 +1,6 @@
 import type { HTML } from "deco-sites/std/components/types.ts";
 import AccordionItem from "$store/islands/AccordionItem.tsx";
-import { useMemo, useState } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 
 export interface AccordionContent {
   title?: string;
@@ -11,38 +11,34 @@ export interface Props {
   accordions: {
     label: string;
     id: string;
-    /**
-     * @description Content will be rendered as markdown.
-     */
     content: AccordionContent[];
   }[];
 }
 
-const useHash = () =>
-  useMemo(() => {
-    const hash = globalThis.window.location.hash;
-    return hash;
+function AccordionsContent({ accordions }: Props) {
+  const getHash = () => globalThis.location?.hash?.replace("#", "") || "";
+
+  const [activeItem, setActiveItem] = useState(() => getHash());
+
+  useEffect(() => {
+    const handleHashChange = () => setActiveItem(getHash());
+
+    globalThis.addEventListener?.("hashchange", handleHashChange);
+    return () =>
+      globalThis.removeEventListener?.("hashchange", handleHashChange);
   }, []);
 
-function AccordionsContent({ accordions }: Props) {
-  const hash = useHash();
-  const [activeItem, setActiveItem] = useState(hash && hash.replace("#", ""));
-  globalThis.window.addEventListener("hashchange", () => {
-    setActiveItem(globalThis.window.location.hash.replace("#", ""));
-  });
   return (
     <>
-      {accordions.map(
-        (item, index) => (
-          <AccordionItem
-            title={item.label}
-            content={item.content}
-            id={item.id}
-            key={index}
-            activeItem={activeItem}
-          />
-        ),
-      )}
+      {accordions.map((item) => (
+        <AccordionItem
+          title={item.label}
+          content={item.content}
+          id={item.id}
+          key={item.id}
+          activeItem={activeItem}
+        />
+      ))}
     </>
   );
 }

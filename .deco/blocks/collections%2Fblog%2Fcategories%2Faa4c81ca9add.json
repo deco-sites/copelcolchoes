@@ -1,0 +1,8 @@
+{
+  "name": "collections/blog/categories/aa4c81ca9add",
+  "__resolveType": "blog/loaders/Category.ts",
+  "category": {
+    "name": "E-commerce",
+    "slug": "e-commerce"
+  }
+}

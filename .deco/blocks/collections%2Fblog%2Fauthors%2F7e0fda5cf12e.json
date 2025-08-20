@@ -1,0 +1,8 @@
+{
+  "name": "collections/blog/authors/7e0fda5cf12e",
+  "__resolveType": "blog/loaders/Author.ts",
+  "author": {
+    "name": "Copel Colchões",
+    "email": "atendimento@copelcolchoes.com.br"
+  }
+}

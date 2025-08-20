@@ -1,0 +1,69 @@
+{
+  "name": "Blog Post",
+  "path": "/blog/:slug",
+  "sections": [
+    {
+      "__resolveType": "Default - Design System"
+    },
+    {
+      "__resolveType": "analytics"
+    },
+    {
+      "__resolveType": "Header Global"
+    },
+    {
+      "__resolveType": "blog-hero"
+    },
+    {
+      "__resolveType": "blog-breadcrumb"
+    },
+    {
+      "__resolveType": "site/sections/Blog/BlogPostDetail.tsx",
+      "socialMedia": [
+        {
+          "name": "Facebook"
+        },
+        {
+          "name": "X"
+        },
+        {
+          "name": "Instagram"
+        },
+        {
+          "name": "LinkedIn"
+        },
+        {
+          "name": "WhatsApp"
+        }
+      ],
+      "sidebar": [
+        {
+          "__resolveType": "blog-sidebar"
+        }
+      ]
+    },
+    {
+      "__resolveType": "website/sections/Rendering/Lazy.tsx",
+      "section": {
+        "__resolveType": "Footer Global"
+      }
+    },
+    {
+      "__resolveType": "website/sections/Rendering/Lazy.tsx",
+      "section": {
+        "__resolveType": "FloatingButtons"
+      }
+    }
+  ],
+  "seo": {
+    "__resolveType": "site/sections/Seo/CustomBlogSEO.tsx",
+    "titleTemplate": "%s",
+    "descriptionTemplate": "%s",
+    "type": "website",
+    "jsonLDs": [],
+    "canonical": "https://www.copelcolchoes.com.br/blog",
+    "image": "https://data.decoassets.com/copelcolchoes/19605e25-c020-44e6-9612-bef3e564784f/1742323952956-aae069cc-754f-4ef7-b05c-1021a04d0c08",
+    "favicon": "https://data.decoassets.com/copelcolchoes/19605e25-c020-44e6-9612-bef3e564784f/1742323952956-aae069cc-754f-4ef7-b05c-1021a04d0c08"
+  },
+  "__resolveType": "website/pages/Page.tsx"
+}

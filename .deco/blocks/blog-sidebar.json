@@ -1,0 +1,16 @@
+{
+  "__resolveType": "site/sections/Blog/BlogSidebar.tsx",
+  "search": {
+    "title": "Buscar no blog",
+    "placeholder": "Digite o que você busca"
+  },
+  "newsletter": {
+    "title": "Cadastre-se para receber novidades",
+    "namePlaceholder": "Nome",
+    "emailPlaceholder": "E-mail",
+    "submitButtonText": "Cadastrar"
+  },
+  "tags": {
+    "title": "Tags"
+  }
+}

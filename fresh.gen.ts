@@ -9,6 +9,10 @@ import * as $AccordionsContent from "./islands/AccordionsContent.tsx";
 import * as $AddToCartActions from "./islands/AddToCartActions.tsx";
 import * as $AddToCartButton from "./islands/AddToCartButton.tsx";
 import * as $BackToTopButton from "./islands/BackToTopButton.tsx";
+import * as $Blog_BlogNewsletter from "./islands/Blog/BlogNewsletter.tsx";
+import * as $Blog_BlogSearch from "./islands/Blog/BlogSearch.tsx";
+import * as $Blog_PostLoadMoreButton from "./islands/Blog/PostLoadMoreButton.tsx";
+import * as $Blog_PostShare from "./islands/Blog/PostShare.tsx";
 import * as $ButtonUpdateBuyTogether from "./islands/ButtonUpdateBuyTogether.tsx";
 import * as $BuyTogether from "./islands/BuyTogether.tsx";
 import * as $BuyWarning from "./islands/BuyWarning.tsx";
@@ -36,6 +40,7 @@ import * as $ShippingSimulation from "./islands/ShippingSimulation.tsx";
 import * as $SliderJS from "./islands/SliderJS.tsx";
 import * as $Sort from "./islands/Sort.tsx";
 import * as $StoreLocator from "./islands/StoreLocator.tsx";
+import * as $Toast from "./islands/Toast.tsx";
 import * as $TopBar from "./islands/TopBar.tsx";
 import * as $WishlistButton from "./islands/WishlistButton.tsx";
 import type { Manifest } from "$fresh/server.ts";
@@ -51,6 +56,10 @@ const manifest = {
     "./islands/AddToCartActions.tsx": $AddToCartActions,
     "./islands/AddToCartButton.tsx": $AddToCartButton,
     "./islands/BackToTopButton.tsx": $BackToTopButton,
+    "./islands/Blog/BlogNewsletter.tsx": $Blog_BlogNewsletter,
+    "./islands/Blog/BlogSearch.tsx": $Blog_BlogSearch,
+    "./islands/Blog/PostLoadMoreButton.tsx": $Blog_PostLoadMoreButton,
+    "./islands/Blog/PostShare.tsx": $Blog_PostShare,
     "./islands/ButtonUpdateBuyTogether.tsx": $ButtonUpdateBuyTogether,
     "./islands/BuyTogether.tsx": $BuyTogether,
     "./islands/BuyWarning.tsx": $BuyWarning,
@@ -78,6 +87,7 @@ const manifest = {
     "./islands/SliderJS.tsx": $SliderJS,
     "./islands/Sort.tsx": $Sort,
     "./islands/StoreLocator.tsx": $StoreLocator,
+    "./islands/Toast.tsx": $Toast,
     "./islands/TopBar.tsx": $TopBar,
     "./islands/WishlistButton.tsx": $WishlistButton,
   },
