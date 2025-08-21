@@ -198,7 +198,6 @@ function Footer(
                 Certificados e Segurança
               </div>
               <ul class="flex gap-5 max-lg:mx-auto">
-                <li class="w-[3.8125rem]"></li>
                 {securities &&
                   securities.map((item) => (
                     <li class="w-[3.8125rem] flex items-center">
@@ -217,6 +216,17 @@ function Footer(
                       </span>
                     </li>
                   ))}
+                {/* SiteBlindado Security Seal */}
+                <li class="flex items-center">
+                  <div id="armored_website">
+                    <param id="aw_preload" value="true" />
+                    <param id="aw_use_cdn" value="true" />
+                  </div>
+                  <script
+                    type="text/javascript"
+                    src="//cdn.siteblindado.com/aw.js"
+                  />
+                </li>
               </ul>
             </div>
             <div class="max-lg:mt-[1.4375rem]">
