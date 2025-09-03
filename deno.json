@@ -21,9 +21,16 @@
     "db:drop": "deno run -A --node-modules-dir --config=deno.json npm:drizzle-kit@0.21.2 drop",
     "db:schema:update": "DENO_FUTURE=1 deno task db:check:credentials && deno task db:generate && deno task db:migrate"
   },
-  "githooks": { "pre-commit": "check" },
-  "exclude": ["node_modules", "static/", "README.md", "**/_fresh/*"],
-  "nodeModulesDir": true,
+  "githooks": {
+    "pre-commit": "check"
+  },
+  "exclude": [
+    "node_modules",
+    "static/",
+    "README.md",
+    "**/_fresh/*"
+  ],
+  "nodeModulesDir": "auto",
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "preact",
@@ -31,8 +38,8 @@
   },
   "imports": {
     "$store/": "./",
-    "deco-sites/std/": "https://cdn.jsdelivr.net/gh/deco-sites/std@1.26.8/",
-    "deco/": "https://cdn.jsdelivr.net/gh/deco-cx/deco@1.106.2/",
+    "deco-sites/std/": "https://cdn.jsdelivr.net/gh/deco-sites/std@1.27.1/",
+    "deco/": "https://cdn.jsdelivr.net/gh/deco-cx/deco@1.120.11/",
     "$fresh/": "https://deno.land/x/fresh@1.7.3/",
     "preact": "npm:preact@10.23.1",
     "preact-render-to-string": "npm:preact-render-to-string@6.4.2",
@@ -58,16 +65,23 @@
     "@std/testing": "jsr:@std/testing@^1.0.0",
     "partytown/": "https://cdn.jsdelivr.net/gh/deco-cx/partytown@0.4.8/",
     "daisyui": "npm:daisyui@3.0.3",
-    "apps/": "https://cdn.jsdelivr.net/gh/deco-cx/apps@0.64.26/",
+    "apps/": "https://cdn.jsdelivr.net/gh/deco-cx/apps@0.121.0/",
     "site/": "./",
     "https://esm.sh/*preact-render-to-string@6.3.1": "npm:preact-render-to-string@6.4.2",
-    "@deco/deco": "jsr:@deco/deco@1.109.0",
+    "@deco/deco": "jsr:@deco/deco@1.120.11",
     "@deco/durable": "jsr:@deco/durable@0.5.3",
-    "@deco/dev": "jsr:@deco/dev@1.109.0",
+    "@deco/dev": "jsr:@deco/dev@1.120.11",
     "drizzle-orm": "npm:drizzle-orm@0.30.10",
     "drizzle-orm/": "npm:drizzle-orm@0.30.10/",
     "drizzle-kit": "https://esm.sh/drizzle-kit@0.21.2"
   },
-  "lint": { "rules": { "tags": ["fresh", "recommended"] } },
+  "lint": {
+    "rules": {
+      "tags": [
+        "fresh",
+        "recommended"
+      ]
+    }
+  },
   "lock": false
 }
