@@ -24,13 +24,8 @@
   "githooks": {
     "pre-commit": "check"
   },
-  "exclude": [
-    "node_modules",
-    "static/",
-    "README.md",
-    "**/_fresh/*"
-  ],
-  "nodeModulesDir": "auto",
+  "exclude": ["node_modules", "static/", "README.md", "**/_fresh/*"],
+  "nodeModulesDir": true,
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "preact",
@@ -77,10 +72,7 @@
   },
   "lint": {
     "rules": {
-      "tags": [
-        "fresh",
-        "recommended"
-      ]
+      "tags": ["fresh", "recommended"]
     }
   },
   "lock": false
