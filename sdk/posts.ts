@@ -3,7 +3,7 @@ import { type AppContext } from "site/apps/deco/blog.ts";
 import { type Category as CategoryType } from "site/components/Blog/SidebarCategories.tsx";
 import { type Tag as TagType } from "site/components/Blog/SidebarTags.tsx";
 import { slugify } from "https://deno.land/x/slugify@0.3.0/mod.ts";
-import { getRecordsByPath } from "apps/blog/utils/records.ts";
+import { getRecordsByPath } from "apps/blog/core/records.ts";
 import { removeDiacritics } from "site/sdk/utils.ts";
 
 export const VALID_SORT_ORDERS = ["asc", "desc"];
