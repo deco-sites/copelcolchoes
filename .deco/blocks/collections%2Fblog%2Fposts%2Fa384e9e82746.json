@@ -29,12 +29,25 @@
     "excerpt": "Encontre o colchão perfeito para o seu jeito de dormir e aproveite descontos de até 30% em modelos selecionados.",
     "date": "2025-08-19",
     "slug": "colchao-ate-30-off-para-todos-os-gostos",
-    "content": "<p>Colchões para Todos os Gostos 🛏️  </p><p>Dormir bem nunca foi tão fácil!  </p><p>Na Copel você encontra o colchão perfeito que combina com o <strong>seu jeito de dormir</strong>.  </p><p>✨ <strong>Descontos de até 30% OFF</strong> em diversos modelos, para garantir noites tranquilas, saudáveis e cheias de conforto.  </p><p>Seja você fã de colchão firme, macio ou com molas especiais, temos a opção ideal para transformar suas noites de sono.  </p><p>👉 Aproveite já no <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://www.copelcolchoes.com.br/\">site</a>.  </p><p>---</p><p><strong>Copel Colchões – Especialista em bem-estar e qualidade do sono.</strong>  </p>",
+    "content": "<p>Colchões para Todos os Gostos 🛏️</p><p>Dormir bem nunca foi tão fácil!</p><p>Na Copel você encontra o colchão perfeito que combina com o <strong>seu jeito de dormir</strong>.</p><p>✨ <strong>Descontos de até 30% OFF</strong> em diversos modelos, para garantir noites tranquilas, saudáveis e cheias de conforto.</p><p>Seja você fã de colchão firme, macio ou com molas especiais, temos a opção ideal para transformar suas noites de sono.</p><p>👉 Aproveite já no <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://www.copelcolchoes.com.br/\">site</a>.</p><p>---</p><p><strong>Copel Colchões – Especialista em bem-estar e qualidade do sono.</strong></p>",
     "seo": {
       "title": "Colchões para Todos os Gostos – Até 30% OFF em Modelos Selecionados",
       "description": "Escolha o colchão ideal para seu conforto e aproveite descontos de até 30% OFF. Promoção válida por tempo limitado. Confira agora na Copel Colchões!",
       "image": "https://assets.decocache.com/copelcolchoes/9168fc5b-014b-4d55-a209-3f7366c612fa/bannercategorymobile.png"
     },
-    "readTime": 2
+    "readTime": 2,
+    "imageCarousel": {
+      "banners": []
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating"
+    },
+    "review": [],
+    "contentRating": [],
+    "interactionStatistic": {
+      "@type": "InteractionCounter",
+      "video": null,
+      "image": null
+    }
   }
 }
