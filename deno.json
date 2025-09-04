@@ -25,7 +25,7 @@
     "pre-commit": "check"
   },
   "exclude": ["node_modules", "static/", "README.md", "**/_fresh/*"],
-  "nodeModulesDir": true,
+  "nodeModulesDir": false,
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "preact",
@@ -60,7 +60,7 @@
     "@std/testing": "jsr:@std/testing@^1.0.0",
     "partytown/": "https://cdn.jsdelivr.net/gh/deco-cx/partytown@0.4.8/",
     "daisyui": "npm:daisyui@3.0.3",
-    "apps/": "https://cdn.jsdelivr.net/gh/deco-cx/apps@0.121.0/",
+    "apps/": "https://cdn.jsdelivr.net/gh/deco-cx/apps@0.121.1/",
     "site/": "./",
     "https://esm.sh/*preact-render-to-string@6.3.1": "npm:preact-render-to-string@6.4.2",
     "@deco/deco": "jsr:@deco/deco@1.120.11",
