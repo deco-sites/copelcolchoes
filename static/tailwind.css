@@ -11206,8 +11206,16 @@ details.collapse summary::-webkit-details-marker {
   line-height: 1.5rem !important;
 }
 
+.\[\&_\>\*\]\:text-wrap >* {
+  text-wrap: wrap;
+}
+
 .\[\&_\>p\:not\(\:last-child\)\]\:mb-3 >p:not(:last-child) {
   margin-bottom: 0.75rem;
+}
+
+.\[\&_a\]\:underline a {
+  text-decoration-line: underline;
 }
 
 .\[\&_strong\]\:font-thin strong {
