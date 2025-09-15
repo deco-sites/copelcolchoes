@@ -355,6 +355,10 @@
                         {
                           "href": "/institucional#compras-no-atacado",
                           "label": "Compras no atacado"
+                        },
+                        {
+                          "label": "Blog ",
+                          "href": "/blog"
                         }
                       ]
                     },
