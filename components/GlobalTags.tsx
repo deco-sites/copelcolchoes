@@ -67,8 +67,7 @@ function GlobalTags() {
       <link rel="manifest" href={asset("/site.webmanifest")} />
 
       {/* JivoChat */}
-      {/* TODO: Uncomment before PR */}
-      {/* <script src="//code.jivosite.com/widget/5agrwUOcMr" async></script> */}
+      <script src="//code.jivosite.com/widget/5agrwUOcMr" async></script>
     </Head>
   );
 }
