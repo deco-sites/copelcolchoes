@@ -1,0 +1,9 @@
+{
+  "name": "collections/blog/authors/b8c53b988374",
+  "__resolveType": "blog/loaders/Author.ts",
+  "author": {
+    "name": "Marley Kayo",
+    "email": "marleykayo85@gmail.com",
+    "jobTitle": "Redator"
+  }
+}
