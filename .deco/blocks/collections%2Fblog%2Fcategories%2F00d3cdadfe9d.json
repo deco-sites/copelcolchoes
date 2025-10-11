@@ -1,0 +1,8 @@
+{
+  "name": "collections/blog/categories/00d3cdadfe9d",
+  "__resolveType": "blog/loaders/Category.ts",
+  "category": {
+    "name": "Copel Colchões",
+    "slug": "copel-colchoes"
+  }
+}
