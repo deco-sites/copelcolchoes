@@ -4,8 +4,11 @@
     {
       "label": "Blog",
       "shadow": "none",
-      "section": { "__resolveType": "Blog" },
-      "verticalSpacing": "top"
+      "section": {
+        "__resolveType": "Blog"
+      },
+      "verticalSpacing": "top",
+      "spacing": 0
     }
   ],
   "__resolveType": "site/sections/Container.tsx"
