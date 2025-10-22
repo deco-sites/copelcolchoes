@@ -158,7 +158,9 @@ export async function loader(
   const slug = url.pathname.split("/blog/")[1] ?? "";
 
   const posts = await fetchPosts(ctx);
-  const post = posts.find((post) => post.slug === slug);
+  const post = posts.find((post) =>
+    post.slug.trim().toLowerCase() === slug.trim().toLowerCase()
+  );
 
   const categories = getUniqueCategories(posts);
   const tags = getUniqueTags(posts);
