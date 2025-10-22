@@ -48,6 +48,7 @@ export function PostItem({
   socialMedia,
   seo,
   date,
+  authors,
   isFirst = false,
   postButtonText = "Continue lendo",
 }: BlogPost & {
@@ -64,7 +65,7 @@ export function PostItem({
       )}
     >
       <PostTitle link={link} title={title} />
-      <PostDate date={date} className="-mb-1" />
+      <PostDate date={date} authors={authors} className="-mb-1" />
       <PostShare socialMedia={socialMedia} seoTitle={seo?.title} />
       <PostImage
         link={link}

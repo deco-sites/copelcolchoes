@@ -27,7 +27,7 @@ export default function PostDetails({
 }: Props) {
   if (!post) return <PostNotFound {...props} />;
 
-  const { title, image, alt, content, seo, date } = post;
+  const { title, image, alt, content, seo, date, authors } = post;
 
   const tags = getUniqueTags([post]);
 
@@ -40,7 +40,7 @@ export default function PostDetails({
         )}
       >
         <PostTitle title={title} heading="h1" />
-        <PostDate date={date} className="-mb-1" />
+        <PostDate date={date} className="-mb-1" authors={authors} />
         <PostShare socialMedia={socialMedia} seoTitle={seo?.title} />
         <PostImage
           src={image}
