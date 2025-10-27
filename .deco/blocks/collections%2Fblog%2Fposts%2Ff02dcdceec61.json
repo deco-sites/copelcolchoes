@@ -1,0 +1,42 @@
+{
+  "name": "collections/blog/posts/f02dcdceec61",
+  "__resolveType": "blog/loaders/Blogpost.ts",
+  "post": {
+    "authors": [
+      {
+        "name": "Marley Kayo",
+        "email": "marleykayo85@gmail.com",
+        "jobTitle": "Redator"
+      }
+    ],
+    "categories": [
+      {
+        "name": "Copel Colchões",
+        "slug": "copel-colchoes"
+      }
+    ],
+    "imageCarousel": {
+      "banners": []
+    },
+    "extraProps": [],
+    "aggregateRating": {
+      "@type": "AggregateRating"
+    },
+    "review": [],
+    "contentRating": [],
+    "interactionStatistic": {
+      "@type": "InteractionCounter",
+      "image": null,
+      "video": null
+    },
+    "title": "Esquenta Black Friday Copel Colchões já começou!",
+    "date": "2025-10-25",
+    "content": "<p>A <strong>Black Friday Copel Colchões 2025</strong> já está no ar com o nosso <strong>Esquenta Black Friday</strong> — uma prévia especial com <strong>ofertas antecipadas</strong> em colchões, camas box, travesseiros e acessórios para o seu descanso!</p><p>Se você estava esperando o momento certo para renovar seu quarto e garantir mais conforto nas noites de sono, <strong>a hora é agora!</strong></p><p>Durante o <strong>Esquenta Black Friday</strong>, você já encontra <strong>descontos exclusivos</strong> no site oficial e também em todas as <strong>lojas Copel Colchões</strong> espalhadas por São Paulo, Grande São Paulo, litoral e interior.</p><p>🔗 Confira as unidades próximas a você:</p><p>👉 Nossas <a target=\"_blank\" rel=\"noopener noreferrer nofollow\" href=\"https://www.copelcolchoes.com.br/nossas-lojas?utm_source=blog-post&amp;utm_medium=esquenta-black-friday\">Lojas Copel Colchões</a></p><p></p><p>🛒 Ou compre sem sair de casa:👉 www.copelcolchoes.com.br</p><hr><h3>💬 Em breve, mais novidades!</h3><p>As informações oficiais da <strong>Black Friday Copel Colchões 2025</strong> — com datas, condições especiais e ofertas completas — serão divulgadas em breve aqui no blog e nos nossos canais oficiais.</p><p>Fique de olho para não perder os melhores descontos do ano e garantir o <strong>colchão dos seus sonhos com o menor preço</strong>.</p><hr><h3>💤 Copel Colchões — tradição e conforto desde 1965</h3><p>Há quase 60 anos, a <strong>Copel Colchões</strong> é sinônimo de <strong>qualidade, confiança e bem-estar</strong>. Trabalhamos com as melhores marcas e tecnologias para oferecer o descanso que você merece — e a Black Friday é o momento ideal para investir nisso!</p><hr>",
+    "seo": {
+      "description": "Esquenta Black Friday Copel Colchões 2025: descontos antecipados em colchões, camas box, travesseiros e mais. Confira as ofertas no site e nas lojas físicas!",
+      "title": "Esquenta Black Friday Copel Colchões | Descontos já começaram!"
+    },
+    "slug": "esquenta-black-friday-copel-colchoes",
+    "excerpt": "A Black Friday Copel Colchões 2025 já começou com o Esquenta Black Friday! Aproveite descontos antecipados em colchões, camas box e acessórios nas lojas físicas e no site. Em breve, divulgaremos todas as ofertas oficiais!"
+  }
+}
