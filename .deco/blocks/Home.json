@@ -47,7 +47,7 @@
                       "alt": "Black Friday -  Copel Colchoes"
                     },
                     {
-                      "alt": "60 Anos Copel Aniversario - Colchoes -  Copel Colchoes",
+                      "alt": "Black Friday - Colchoes -  Copel Colchoes",
                       "action": {
                         "href": "/colchoes",
                         "variant": "primary"
@@ -58,7 +58,7 @@
                         "height": 320
                       },
                       "desktop": {
-                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/1fe12fa0-1ddb-418a-9afc-b5a8f348c731/banner-desktop-dezembro-2024-02.jpg",
+                        "image": "https://assets.decocache.com/copelcolchoes/5e08c707-2681-4f8e-8412-69dec6fe9103/banner-black-friday-30-10-25-5.png",
                         "width": 1519,
                         "height": 473
                       }
@@ -98,7 +98,7 @@
                       }
                     },
                     {
-                      "alt": "60 Anos Copel Aniversario - Travesseiros -  Copel Colchoes",
+                      "alt": "Black Friday - Travesseiros -  Copel Colchoes",
                       "action": {
                         "href": "/travesseiros",
                         "variant": "primary"
@@ -109,13 +109,13 @@
                         "height": 320
                       },
                       "desktop": {
-                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/8acc33bd-4e00-47eb-85c9-f00acb524f2b/banner-desktop-dezembro-2024-05.jpg",
+                        "image": "https://assets.decocache.com/copelcolchoes/c0ca57df-11db-41c3-85d5-23b357e9efe2/banner-black-friday-30-10-25-4.png",
                         "width": 1519,
                         "height": 473
                       }
                     },
                     {
-                      "alt": "60 Anos Copel Aniversario - Acessorios -  Copel Colchoes",
+                      "alt": "Black Friday - Acessorios -  Copel Colchoes",
                       "action": {
                         "href": "/acessorios",
                         "variant": "primary"
@@ -126,7 +126,7 @@
                         "height": 320
                       },
                       "desktop": {
-                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/dca4d667-ee74-42db-8dfb-27600075a4f4/banner-desktop-dezembro-2024-07.jpg",
+                        "image": "https://assets.decocache.com/copelcolchoes/661a6b4f-7c7b-4a0e-a829-6ff2cb8eabc2/banner-black-friday-30-10-25-6.png",
                         "width": 1519,
                         "height": 473
                       }
