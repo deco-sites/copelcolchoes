@@ -1,0 +1,75 @@
+{
+  "__resolveType": "site/apps/local/app-tags.ts",
+  "tags": {
+    "customFlags": [
+      {
+        "backgroundColor": "#D81A4D",
+        "textColor": "#ffffff",
+        "borderColor": "",
+        "position": "inferior-esquerdo",
+        "iconPosition": "esquerda",
+        "target": {
+          "collectionId": "244"
+        },
+        "text": "Promoção da Semana",
+        "enabled": true,
+        "icon": "https://assets.decocache.com/copelcolchoes/9c8fc790-961d-4afb-b778-3d8cb1db6095/discount-icon.png",
+        "fontSize": "pequeno",
+        "fontWeight": "medio"
+      },
+      {
+        "backgroundColor": "#000000",
+        "textColor": "#ffffff",
+        "borderColor": "",
+        "position": "inferior-esquerdo",
+        "iconPosition": "esquerda",
+        "target": {
+          "collectionId": "244"
+        },
+        "text": "Black Friday",
+        "enabled": true,
+        "offset": {
+          "offsetYDesktop": -12,
+          "offsetYMobile": -16
+        },
+        "icon": "https://assets.decocache.com/copelcolchoes/9c8fc790-961d-4afb-b778-3d8cb1db6095/discount-icon.png",
+        "fontSize": "pequeno",
+        "fontWeight": "medio"
+      },
+      {
+        "iconPosition": "esquerda",
+        "fontSize": "pequeno",
+        "fontWeight": "medio",
+        "textColor": "#ffffff",
+        "backgroundColor": "#000000",
+        "borderColor": "#000000",
+        "position": "superior-direito",
+        "target": {
+          "categoryId": "1000058"
+        },
+        "text": "Colchão",
+        "enabled": true,
+        "offset": {
+          "offsetYMobile": 1,
+          "offsetYDesktop": 1
+        }
+      }
+    ]
+  },
+  "config": {
+    "account": "copelcolchoes",
+    "appKey": {
+      "__resolveType": "website/loaders/secret.ts",
+      "encrypted": "da5c533bad8d4159615c58bf0c4f70712fdfebc2b4d3045374dfa04b127c8d7f",
+      "name": "VTEX_APP_KEY"
+    },
+    "appToken": {
+      "__resolveType": "website/loaders/secret.ts",
+      "encrypted": "c8373c0226a34296f4743b61ae44015f61b5569a9eb0bbb829fe82a6c3afb108cb1affeb0fea0c4a7716e1d27eb980923e485ef1b07bc2dbbeb5975a9d1fecb9a09347e373ded5ec9a22f5b9757cfe85cf45cb76a0447f16801eb395877d1be09e2c1a9bb5c17f009281dddec9ba92d87c1b8e98dbf605ca60906d21460ccbbd47745e5054a0c644460d8505ebf99678",
+      "name": "VTEX_APP_TOKEN"
+    }
+  },
+  "appKey": {},
+  "appToken": {},
+  "customFlags": []
+}

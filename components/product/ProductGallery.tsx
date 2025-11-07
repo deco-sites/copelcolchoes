@@ -1,14 +1,16 @@
 import { Product } from "apps/commerce/types.ts";
 import { computed } from "@preact/signals";
 import { gridColsSignal } from "$store/components/search/SearchResultsGridChoice.tsx";
+import type { TagsConfig } from "../../app-tags/utils/types.ts";
 
 import ProductCard from "./ProductCard.tsx";
 
 export interface Props {
   products: Product[] | null;
+  tags?: TagsConfig | null;
 }
 
-function ProductGallery({ products }: Props) {
+function ProductGallery({ products, tags }: Props) {
   const gridCols = computed(() => gridColsSignal.value);
   return (
     <div
@@ -28,6 +30,7 @@ function ProductGallery({ products }: Props) {
               showCta: true,
             },
           }}
+          tags={tags}
         />
       ))}
     </div>

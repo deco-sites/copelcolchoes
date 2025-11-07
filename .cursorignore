@@ -1,0 +1,8 @@
+_fresh
+.claude
+.github
+.metadata
+.tests
+.vscode
+node_modules
+sqlite.db

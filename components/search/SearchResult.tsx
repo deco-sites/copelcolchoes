@@ -10,6 +10,7 @@ import Sort from "$store/islands/Sort.tsx";
 import SearchPagination from "$store/components/search/SearchPagination.tsx";
 import { type Section } from "@deco/deco/blocks";
 import SearchResultsGridChoice from "$store/islands/SearchResultsGridChoice.tsx";
+import type { TagsConfig } from "../../app-tags/utils/types.ts";
 
 export interface Props {
   page: LoaderReturnType<ProductListingPage | null>;
@@ -21,11 +22,14 @@ export interface Props {
    * @description Not found section, displayed when no products are found
    */
   notFoundSection: Section;
+  /** @ignore */
+  tags?: TagsConfig | null;
 }
 
 function Result({
   page,
   variant,
+  tags,
 }: Omit<Omit<Props, "page">, "notFoundSection"> & {
   page: ProductListingPage;
 }) {
@@ -76,7 +80,7 @@ function Result({
               <SearchResultsGridChoice variant="mobile" />
             </div>
             <div class="flex-grow max-lg:mt-6">
-              <ProductGallery products={products} />
+              <ProductGallery products={products} tags={tags} />
               <SearchPagination pageInfo={pageInfo} />
             </div>
           </div>
