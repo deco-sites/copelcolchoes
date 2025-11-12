@@ -12,7 +12,7 @@
           "collectionId": "244"
         },
         "text": "Promoção da Semana",
-        "enabled": true,
+        "enabled": false,
         "icon": "https://assets.decocache.com/copelcolchoes/9c8fc790-961d-4afb-b778-3d8cb1db6095/discount-icon.png",
         "fontSize": "pequeno",
         "fontWeight": "medio"
@@ -60,12 +60,12 @@
     "account": "copelcolchoes",
     "appKey": {
       "__resolveType": "website/loaders/secret.ts",
-      "encrypted": "da5c533bad8d4159615c58bf0c4f70712fdfebc2b4d3045374dfa04b127c8d7f",
+      "encrypted": "4a1faa2828012669c88be9c487531ce199e5d3d9e4f13e8d5502b27e0ee975c8",
       "name": "VTEX_APP_KEY"
     },
     "appToken": {
       "__resolveType": "website/loaders/secret.ts",
-      "encrypted": "c8373c0226a34296f4743b61ae44015f61b5569a9eb0bbb829fe82a6c3afb108cb1affeb0fea0c4a7716e1d27eb980923e485ef1b07bc2dbbeb5975a9d1fecb9a09347e373ded5ec9a22f5b9757cfe85cf45cb76a0447f16801eb395877d1be09e2c1a9bb5c17f009281dddec9ba92d87c1b8e98dbf605ca60906d21460ccbbd47745e5054a0c644460d8505ebf99678",
+      "encrypted": "9f15f69f308ccfd56ec34c28b3b112c619e16a91566d6ffc37b6981892944e9874e92213c0988d4500ffd79e8e1da59604b3c2d9eccc0055f274ace1b12c880ce12c827df19ab7c0a88ee5225e15fe6fd0d2e7c554d45a7aa22050c0bc88f8d398994355c72c94165588a9085a0f2dea5548cea84c9a6b821123779146d9045b041df0bd46a69d610b465d6e77131eb9",
       "name": "VTEX_APP_TOKEN"
     }
   },
