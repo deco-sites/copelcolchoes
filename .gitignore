@@ -75,17 +75,18 @@ deno.lock
 
 # db files
 .config.json
+
 # Fresh build directory
 _fresh/
 
 # Files
-blocks.json
-.deco/metadata/blocks.json
-fresh.gen.ts
+sqlite.db
 
 # AI
-*CLAUDE.md
 .claude/
-.cursorignore
-.cursorrules
-sqlite.db
+.gemini/
+.codex/
+.factory/
+CLAUDE.md
+AGENTS.md
+GEMINI.md

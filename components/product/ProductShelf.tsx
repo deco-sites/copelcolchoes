@@ -1,6 +1,7 @@
 import { type LoaderReturnType } from "@deco/deco";
 import type { Layout as CardLayout } from "$store/components/product/ProductCard.tsx";
 import ProductCard from "$store/components/product/ProductCard.tsx";
+import type { TagsConfig } from "../../app-tags/utils/types.ts";
 import {
   CONDITIONAL_RESPONSIVE_PARAMS,
   ResponsiveConditionals,
@@ -34,6 +35,8 @@ export interface Props {
   };
   showPaginationArrows?: ResponsiveConditionals;
   cardLayout?: CardLayout;
+  /** @ignore */
+  tags?: TagsConfig | null;
 }
 
 interface DotsProps {
@@ -123,6 +126,7 @@ function ProductShelf({
   layout,
   cardLayout,
   seeMore,
+  tags,
 }: Props) {
   const id = useId();
 
@@ -154,6 +158,7 @@ function ProductShelf({
                 product={product}
                 itemListName={title}
                 layout={cardLayout}
+                tags={tags}
               />
             </Slider.Item>
           ))}

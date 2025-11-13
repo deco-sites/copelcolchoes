@@ -1,0 +1,57 @@
+{
+  "__resolveType": "site/apps/local/app-tags.ts",
+  "tags": {
+    "customFlags": [
+      {
+        "backgroundColor": "#D81A4D",
+        "textColor": "#ffffff",
+        "borderColor": "",
+        "position": "inferior-esquerdo",
+        "iconPosition": "esquerda",
+        "target": {
+          "collectionId": "244"
+        },
+        "text": "Promoção da Semana",
+        "enabled": false,
+        "icon": "https://assets.decocache.com/copelcolchoes/9c8fc790-961d-4afb-b778-3d8cb1db6095/discount-icon.png",
+        "fontSize": "pequeno",
+        "fontWeight": "medio"
+      },
+      {
+        "backgroundColor": "#000000",
+        "textColor": "#ffffff",
+        "borderColor": "",
+        "position": "inferior-esquerdo",
+        "iconPosition": "esquerda",
+        "target": {
+          "collectionId": "244"
+        },
+        "text": "Black Friday",
+        "enabled": true,
+        "offset": {
+          "offsetYDesktop": -12,
+          "offsetYMobile": -16
+        },
+        "icon": "https://assets.decocache.com/copelcolchoes/9c8fc790-961d-4afb-b778-3d8cb1db6095/discount-icon.png",
+        "fontSize": "pequeno",
+        "fontWeight": "medio"
+      }
+    ]
+  },
+  "config": {
+    "account": "copelcolchoes",
+    "appKey": {
+      "__resolveType": "website/loaders/secret.ts",
+      "encrypted": "4a1faa2828012669c88be9c487531ce199e5d3d9e4f13e8d5502b27e0ee975c8",
+      "name": "VTEX_APP_KEY"
+    },
+    "appToken": {
+      "__resolveType": "website/loaders/secret.ts",
+      "encrypted": "9f15f69f308ccfd56ec34c28b3b112c619e16a91566d6ffc37b6981892944e9874e92213c0988d4500ffd79e8e1da59604b3c2d9eccc0055f274ace1b12c880ce12c827df19ab7c0a88ee5225e15fe6fd0d2e7c554d45a7aa22050c0bc88f8d398994355c72c94165588a9085a0f2dea5548cea84c9a6b821123779146d9045b041df0bd46a69d610b465d6e77131eb9",
+      "name": "VTEX_APP_TOKEN"
+    }
+  },
+  "appKey": {},
+  "appToken": {},
+  "customFlags": []
+}

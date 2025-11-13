@@ -1,0 +1,8 @@
+## Commits (Conventional Commits)
+
+Format: `<type>(<scope>): <imperative description>`
+- Types: `feat`, `fix`, `docs`, `refactor`, `test`, `chore`, `perf`
+- Use imperative mood: "add feature" not "added feature"
+- Breaking changes: `feat!:` or `BREAKING CHANGE:` in body
+- Example: `feat(cart): add coupon stacking support`
+- Language: PT-BR

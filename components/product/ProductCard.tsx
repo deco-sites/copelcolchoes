@@ -5,8 +5,8 @@ import { useOffer } from "../../utils/userOffer.ts";
 import type { Product, PropertyValue } from "apps/commerce/types.ts";
 import { mapProductToAnalyticsItem } from "apps/commerce/utils/productToAnalyticsItem.ts";
 import Image from "deco-sites/std/components/Image.tsx";
-import DiscountBadge from "./DiscountBadge.tsx";
-import Icon from "$store/components/ui/Icon.tsx";
+import ProductTags from "./ProductTags.tsx";
+import type { TagsConfig } from "../../app-tags/utils/types.ts";
 export interface Layout {
   basics?: {
     contentAlignment?: "Left" | "Center";
@@ -59,6 +59,7 @@ interface Props {
   itemListName?: string;
   layout?: Layout;
   class?: string;
+  tags?: TagsConfig | null;
 }
 
 export const relative = (url: string) => {
@@ -89,7 +90,7 @@ const WIDTH = 200;
 const HEIGHT = 200;
 
 function ProductCard(
-  { product, itemListName, class: _class }: Props,
+  { product, itemListName, class: _class, tags }: Props,
 ) {
   const {
     url,
@@ -97,8 +98,7 @@ function ProductCard(
     name,
     image: images,
     offers,
-    isVariantOf,
-    additionalProperty,
+    isVariantOf
   } = product;
 
   // deno-lint-ignore no-explicit-any
@@ -106,8 +106,6 @@ function ProductCard(
   const medidas = getMedidas(additionalPropertyVariant);
   const para = getPara(additionalPropertyVariant);
   const [front] = images ?? [];
-  const bestOferta = additionalProperty &&
-    additionalProperty.some((prop) => prop.propertyID === "244");
 
   const { listPrice, price, installment, priceWithPixDiscount, availability } =
     useOffer(
@@ -128,9 +126,6 @@ function ProductCard(
     },
   };
 
-  const price2: number = price as number;
-  const listPrice2: number = listPrice as number;
-
   const discount = ((listPrice && price) && listPrice !== price)
     ? Math.round(((listPrice - price) / listPrice) * 100)
     : undefined;
@@ -142,7 +137,7 @@ function ProductCard(
       id={`product-card-${productID}`}
       {...sendEventOnClick(clickEvent)}
     >
-      <div class="relative overflow-hidden px-[0.625rem] pt-[1.375rem] max-lg:px-[0.625rem]">
+      <div class="relative overflow-hidden px-3 pt-[1.375rem] max-lg:px-5">
         <div class="relative">
           {availability
             ? (
@@ -173,16 +168,14 @@ function ProductCard(
               </div>
             )}
         </div>
-        {listPrice2 !== price2 && (
-          <DiscountBadge
-            price={price2}
-            listPrice={listPrice2}
-          />
-        )}
+        <ProductTags
+          product={product}
+          tags={tags}
+        />
       </div>
 
       {/* Prices & Name */}
-      <div class="lg:pt-[0.625rem] lg:pb-[1.25rem] lg:px-[0.938rem] relative max-lg:pt-0 max-lg-[0.625rem] max-lg:px-2.5 max-lg:pb-7 max-lg:w-full">
+      <div class="lg:pt-[0.625rem] lg:pb-[1.25rem] lg:px-4 relative max-lg:pt-0 max-lg-[0.625rem] max-lg:px-2.5 max-lg:pb-7 max-lg:w-full">
         {availability
           ? (
             <a
@@ -221,20 +214,7 @@ function ProductCard(
                 )}
               </div>
             )}
-          {bestOferta && (
-            <div class="absolute -top-[55px] md:-top-[1.875rem] tag-promotion">
-              <div class="bg-[#D81A4D] border border-[#D81A4D] rounded-[15px] flex items-center justify-center py-[0.313rem] px-[0.5rem] w-fit uppercase">
-                <Icon
-                  id="BlackFriday"
-                  size={16}
-                  class="w-[0.9375rem] mr-[0.3125rem]"
-                />
-                <p class="flex text-center font-quicksand text-white text-[0.75rem] max-lg:text-[15.378px] leading-4 font-bold">
-                  Promoção da semana
-                </p>
-              </div>
-            </div>
-          )}
+  
         </div>
 
         <div class="flex flex-col">
@@ -298,6 +278,7 @@ function ProductCard(
           : (
             <div>
               <button
+                type="button"
                 class="bg-primary w-full tracking-normal capitalize mt-[1.875rem] text-base leading-5 rounded-[0.3125rem] p-0 disabled:opacity-30 disabled:cursor-not-allowed hover:opacity-100 flex justify-center items-center text-white transition-all duration-250 h-[2.625rem] relative font-bold border border-transparent"
                 disabled
                 title="Produto Esgotado"
