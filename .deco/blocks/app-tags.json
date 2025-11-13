@@ -35,24 +35,6 @@
         "icon": "https://assets.decocache.com/copelcolchoes/9c8fc790-961d-4afb-b778-3d8cb1db6095/discount-icon.png",
         "fontSize": "pequeno",
         "fontWeight": "medio"
-      },
-      {
-        "iconPosition": "esquerda",
-        "fontSize": "pequeno",
-        "fontWeight": "medio",
-        "textColor": "#ffffff",
-        "backgroundColor": "#000000",
-        "borderColor": "#000000",
-        "position": "superior-direito",
-        "target": {
-          "categoryId": "1000058"
-        },
-        "text": "Colchão",
-        "enabled": true,
-        "offset": {
-          "offsetYMobile": 1,
-          "offsetYDesktop": 1
-        }
       }
     ]
   },
