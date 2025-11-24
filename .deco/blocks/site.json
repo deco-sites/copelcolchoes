@@ -36,14 +36,25 @@
     }
   ],
   "commerce": {
-    "account": "copelcolchoes",
-    "platform": "vtex",
-    "publicUrl": "secure.copelcolchoes.com.br",
-    "salesChannel": "1",
-    "defaultSegment": {
-      "channelPrivacy": "public"
-    },
-    "usePortalSitemap": true
+    "platform": "other"
   },
-  "__resolveType": "site/apps/site.ts"
+  "__resolveType": "site/apps/site.ts",
+  "caching": {
+    "directives": []
+  },
+  "firstByteThresholdMS": false,
+  "abTesting": {
+    "replaces": [],
+    "includeScriptsToHead": {
+      "includes": []
+    },
+    "includeScriptsToBody": {
+      "includes": []
+    }
+  },
+  "flavor": {
+    "framework": "fresh"
+  },
+  "whilelistURLs": [],
+  "whitelistPatterns": []
 }
