@@ -7,7 +7,7 @@ import SearchBarComponent from "$store/islands/HeaderSearchbar.tsx";
 import { clx } from "$store/sdk/clx.ts";
 import { useDevice } from "@deco/deco/hooks";
 import ModalLoginCustom from "$store/islands/ModalLoginCustom.tsx";
-import { useUser } from "deco-sites/std/packs/vtex/hooks/useUser.ts";
+import { useUser } from "apps/vtex/hooks/useUser.ts";
 import { AppContext } from "apps/vtex/mod.ts";
 
 export interface Props {
