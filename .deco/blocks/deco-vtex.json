@@ -1,0 +1,11 @@
+{
+  "__resolveType": "site/apps/deco/vtex.ts",
+  "account": "copelcolchoes",
+  "platform": "vtex",
+  "publicUrl": "https://secure.copelcolchoes.com.br",
+  "salesChannel": "1",
+  "defaultSegment": {
+    "channelPrivacy": "public"
+  },
+  "usePortalSitemap": true
+}
