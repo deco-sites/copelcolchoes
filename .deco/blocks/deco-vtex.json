@@ -7,5 +7,6 @@
   "defaultSegment": {
     "channelPrivacy": "public"
   },
-  "usePortalSitemap": true
+  "usePortalSitemap": true,
+  "setRefreshToken": false
 }

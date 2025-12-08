@@ -12,7 +12,7 @@
           "collectionId": "244"
         },
         "text": "Promoção da Semana",
-        "enabled": false,
+        "enabled": true,
         "icon": "https://assets.decocache.com/copelcolchoes/9c8fc790-961d-4afb-b778-3d8cb1db6095/discount-icon.png",
         "fontSize": "pequeno",
         "fontWeight": "medio"
@@ -27,7 +27,7 @@
           "collectionId": "244"
         },
         "text": "Black Friday",
-        "enabled": true,
+        "enabled": false,
         "offset": {
           "offsetYDesktop": -12,
           "offsetYMobile": -16
