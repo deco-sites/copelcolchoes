@@ -31,41 +31,6 @@
                   "images": [
                     {
                       "action": {
-                        "href": "/promocao",
-                        "variant": "primary"
-                      },
-                      "mobile": {
-                        "image": "https://assets.decocache.com/copelcolchoes/6c07e35a-429e-4018-a33b-0421119acdfc/banner-black-friday-esquenta-440x320-10-25.jpg",
-                        "width": 440,
-                        "height": 320
-                      },
-                      "desktop": {
-                        "image": "https://assets.decocache.com/copelcolchoes/a865512b-7a43-4a82-929d-48723862a999/banner-black-friday-30-10-25-1.png",
-                        "width": 1519,
-                        "height": 473
-                      },
-                      "alt": "Black Friday -  Copel Colchoes"
-                    },
-                    {
-                      "alt": "Comprou e Ganhou - Black Friday -  Copel Colchoes",
-                      "action": {
-                        "href": "/promocao",
-                        "variant": "primary"
-                      },
-                      "mobile": {
-                        "image": "https://assets.decocache.com/copelcolchoes/d52f3542-8e0d-4c34-b38f-b57fbd0d2eb4/BANNER-PIX-SITE-mobile-1.jpg",
-                        "width": 440,
-                        "height": 320
-                      },
-                      "desktop": {
-                        "image": "https://assets.decocache.com/copelcolchoes/3a13a140-438a-4833-83cd-cd8ac4425fa5/banner-black-friday-30-10-25-7.png",
-                        "width": 1519,
-                        "height": 473
-                      }
-                    },
-                    {
-                      "alt": "Black Friday - Colchoes -  Copel Colchoes",
-                      "action": {
                         "href": "/colchoes",
                         "variant": "primary"
                       },
@@ -78,7 +43,8 @@
                         "image": "https://assets.decocache.com/copelcolchoes/5e08c707-2681-4f8e-8412-69dec6fe9103/banner-black-friday-30-10-25-5.png",
                         "width": 1519,
                         "height": 473
-                      }
+                      },
+                      "alt": "Black Friday - Colchoes -  Copel Colchoes"
                     },
                     {
                       "alt": "60 Anos Copel Aniversario - Cama Box -  Copel Colchoes",
@@ -92,7 +58,7 @@
                         "height": 320
                       },
                       "desktop": {
-                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/241e9ac0-95cc-4227-825f-2a3ecd993db1/banner-desktop-dezembro-2024-03.jpg",
+                        "image": "https://assets.decocache.com/copelcolchoes/88685c80-4962-4e75-aa1d-47028b8e407a/banner-copel-colchoes-descktop-dez-25-5.jpg",
                         "width": 1519,
                         "height": 473
                       }
@@ -109,7 +75,7 @@
                         "height": 320
                       },
                       "desktop": {
-                        "image": "https://assets.decocache.com/copelcolchoes/69dff9c0-f1de-43ec-803a-6c5b0422dfc5/banner-black-friday-30-10-25-2.png",
+                        "image": "https://assets.decocache.com/copelcolchoes/064c39bb-62ba-47e9-8a81-5a05f9fd976c/banner-copel-colchoes-descktop-dez-25-1.jpg",
                         "width": 1519,
                         "height": 473
                       }
@@ -126,7 +92,7 @@
                         "height": 320
                       },
                       "desktop": {
-                        "image": "https://assets.decocache.com/copelcolchoes/c0ca57df-11db-41c3-85d5-23b357e9efe2/banner-black-friday-30-10-25-4.png",
+                        "image": "https://assets.decocache.com/copelcolchoes/2887ff4b-5587-48a2-86e3-6ec5e8bc06a7/banner-copel-colchoes-descktop-dez-25-2.jpg",
                         "width": 1519,
                         "height": 473
                       }
@@ -143,7 +109,7 @@
                         "height": 320
                       },
                       "desktop": {
-                        "image": "https://assets.decocache.com/copelcolchoes/661a6b4f-7c7b-4a0e-a829-6ff2cb8eabc2/banner-black-friday-30-10-25-6.png",
+                        "image": "https://assets.decocache.com/copelcolchoes/f6a71718-e530-4e2a-8d52-9365c531ec27/banner-copel-colchoes-descktop-dez-25-4.jpg",
                         "width": 1519,
                         "height": 473
                       }
@@ -160,7 +126,7 @@
                         "height": 320
                       },
                       "desktop": {
-                        "image": "https://deco-sites-assets.s3.sa-east-1.amazonaws.com/copelcolchoes/2e5e4e48-9688-45ad-8110-a7a0fe3043cd/banner-desktop-dezembro-2024-06.jpg",
+                        "image": "https://assets.decocache.com/copelcolchoes/ab069952-eb77-41db-a742-669f7d85c885/banner-copel-colchoes-descktop-dez-25-3.jpg",
                         "width": 1519,
                         "height": 473
                       }
